@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <title>ESP32 - Disruptive Architectures</title>
+        <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+        <link rel="stylesheet" href="/assets/css/main.css" id="maincss">
+    </head>
+    <body>
+        <nav>
+    
+    <a href="#" onclick="toggle_menu()" id="hamb_menu">☰</a>
+    
+    <a href="/">Index</a>&nbsp;
+    <a href="#" onclick="toggle_themes()">Mudar Tema</a>
+</nav>
+
+        <aside id="course_menu">
+    
+    
+    <b class="course_name">Disruptive Architectures</b>
+
+    
+    <b class="section_name">Sobre a disciplina</b>
+    
+    
+    <a href="/classes/00_index.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/01_definicoes.html" class="class_link">Definições de IoT</a>
+    
+    <a href="/classes/02_avaliacoes.html" class="class_link">Avaliações</a>
+    
+    
+    <b class="section_name">Eletrônica Básica</b>
+    
+    
+    <a href="/classes/10_circuitoseletricos.html" class="class_link">Circuitos Simples</a>
+    
+    <a href="/classes/14_desafios.html" class="class_link">Desfios! #01</a>
+    
+    
+    <b class="section_name">Sistemas Embarcados</b>
+    
+    
+    <a href="/classes/20_sistemas_embarcados.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/22_esp32.html" class="class_link">ESP32</a>
+    
+    <a href="/classes/21_arduino.html" class="class_link">Arduino</a>
+    
+    
+    <b class="section_name">Protocolos M2M</b>
+    
+    
+    <a href="/classes/30_m2m.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/31_UART.html" class="class_link">UART</a>
+    
+    <a href="/classes/32_I2C.html" class="class_link">I2C</a>
+    
+    <a href="/classes/33_SPI.html" class="class_link">SPI</a>
+    
+    
+    <b class="section_name">Backend</b>
+    
+    
+    <a href="/classes/40_node_red.html" class="class_link">Node-Red</a>
+    
+    <a href="/classes/41_python.html" class="class_link">Python</a>
+    
+    
+    <b class="section_name">Protocolos TCP/IP (Aplicação)</b>
+    
+    
+    <a href="/classes/50_http.html" class="class_link">HTTP</a>
+    
+    <a href="/classes/51_MQTT.html" class="class_link">MQTT</a>
+    
+    <a href="/classes/52_WebSocket.html" class="class_link">WebSocket</a>
+    
+    
+    <b class="section_name">Soluções</b>
+    
+    
+    <a href="/classes/92_desafios_sol.html" class="class_link">Desfios! #01</a>
+    
+    
+
+
+  
+</aside>
+
+        <aside id="toc_menu" style="float:right"> 
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#01-pisca-led-blink-com-esp32">#01 Pisca LED (Blink) com ESP32</a></li>
+<li class="toc-entry toc-h1"><a href="#02-buzzer-sonoro-com-esp32">#02 Buzzer Sonoro com ESP32</a></li>
+<li class="toc-entry toc-h1"><a href="#03-leitura-de-potenciômetro-e-controle-de-led-com-pwm">#03 Leitura de Potenciômetro e Controle de LED com PWM</a></li>
+</ul>
+</aside>
+
+        <main>
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                class
+                <span class="nc ">ESP32</span>
+                : public
+                
+                <span class="nc ">Disruptive Architectures</span>
+                
+                , public
+                <span class="nc ">Sistemas Embarcados</span> 
+                
+            </div> 
+            <center><h1> ESP32</h1></center>
+            <p>Nas imagens acima temos a foto do ESP32 Dev Kit e um esquema básico de seus
+pinos, similar aos que podemos encontrar em simuladores como o TinkerCad. O
+ESP32 é uma plataforma de desenvolvimento poderosa, que possui um
+microcontrolador da Espressif com Wi-Fi e Bluetooth integrados, e que pode ser
+programada usando o Arduino IDE, facilitando muito a transição para quem já
+conhece o Arduino tradicional.</p>
+
+<p>Ao longo dos projetos a seguir, vamos explorar as possibilidades do ESP32, como
+programá-lo e conectá-lo a outros dispositivos, aproveitando seus recursos
+avançados.</p>
+
+<hr>
+
+<h1 id="01-pisca-led-blink-com-esp32">
+<a class="anchor" href="#01-pisca-led-blink-com-esp32" aria-hidden="true"><span class="octicon octicon-link"></span></a>#01 Pisca LED (Blink) com ESP32</h1>
+
+<p>O clássico “Hello World” do ESP32 também é piscar um LED!</p>
+
+<p>Antes de começar, você precisará baixar a Arduino IDE, se ainda não tiver, em
+<a href="https://www.arduino.cc/en/software/">arduino.cc/software</a>.</p>
+
+<p>Depois de instalar, precisamos configurar a IDE para reconhecer o ESP32 seguindo
+estes passos básicos:</p>
+
+<ul>
+  <li>Acesse <strong>Arquivo → Preferências</strong>
+</li>
+  <li>Na caixa “URLs adicionais para Gerenciadores de Placas”, cole o link:
+<code class="language-plaintext highlighter-rouge">https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json</code>
+</li>
+  <li>Confirme e após isso vá em <strong>Ferramentas → Placa → Gerenciador de Placas</strong>
+</li>
+  <li>Procure por “ESP32” e instale o pacote da Espressif Systems</li>
+  <li>Selecione a placa correta, normalmente “ESP32 Dev Module” para a maioria dos
+kits</li>
+  <li>Escolha a porta USB correta onde o ESP32 está conectado</li>
+</ul>
+
+<p>Pronto, agora podemos começar a programar!</p>
+
+<hr>
+
+<p>O código base para piscar o LED embutido (LED_BUILTIN) do ESP32 é parecido com o
+Arduino:</p>
+
+<p>```cpp void setup() { pinMode(LED_BUILTIN, OUTPUT);  // Configura o pino do LED
+como saída }</p>
+
+<p>void loop() { digitalWrite(LED_BUILTIN, HIGH); // Liga o LED delay(500);
+// Espera 500 milissegundos digitalWrite(LED_BUILTIN, LOW);  // Desliga o LED
+delay(500);                      // Espera mais 500 milissegundos } ```</p>
+
+<p>Só que atenção: dependendo do modelo do seu ESP32, o LED pode estar ligado a um
+pino diferente, normalmente o 2. Então, se o LED_BUILTIN não funcionar,
+substitua por <code class="language-plaintext highlighter-rouge">2</code> ou consulte o esquema da sua placa.</p>
+
+<hr>
+
+<h1 id="02-buzzer-sonoro-com-esp32">
+<a class="anchor" href="#02-buzzer-sonoro-com-esp32" aria-hidden="true"><span class="octicon octicon-link"></span></a>#02 Buzzer Sonoro com ESP32</h1>
+
+<p>Vamos fazer o ESP32 emitir sons usando um buzzer. Você vai precisar do buzzer e
+fios para conectar.</p>
+
+<p>Conecte o pino positivo do buzzer a um pino PWM, por exemplo o pino 27, e o
+negativo ao GND.</p>
+
+<p>O código para gerar tons é semelhante ao Arduino, usando a função <code class="language-plaintext highlighter-rouge">ledcWrite</code> do
+ESP32 para o PWM:</p>
+
+<p>```cpp const int buzzerPin = 27; const int freq = 440; // Frequência em Hz const
+int pwmChannel = 0; const int resolution = 8; // bits</p>
+
+<p>void setup() { ledcSetup(pwmChannel, freq, resolution); // Configura PWM
+ledcAttachPin(buzzerPin, pwmChannel);   // Associa PWM ao pino }</p>
+
+<p>void loop() { ledcWrite(pwmChannel, 128); // Meio ciclo ligado para gerar tom
+delay(500); ledcWrite(pwmChannel, 0);   // Desliga o buzzer delay(500); } ```</p>
+
+<p>O ESP32 tem 16 canais PWM, então escolha o canal que desejar e ajuste frequência
+e resolução para seu projeto.</p>
+
+<hr>
+
+<h1 id="03-leitura-de-potenciômetro-e-controle-de-led-com-pwm">
+<a class="anchor" href="#03-leitura-de-potenci%C3%B4metro-e-controle-de-led-com-pwm" aria-hidden="true"><span class="octicon octicon-link"></span></a>#03 Leitura de Potenciômetro e Controle de LED com PWM</h1>
+
+<p>O ESP32 também tem entradas analógicas (ADC) muito precisas. Vamos ler um
+potenciômetro conectado no pino 36 (ADC1_CHANNEL_0) e controlar o brilho de um
+LED no pino 25.</p>
+
+<p>Faça a ligação:</p>
+
+<ul>
+  <li>Potenciômetro: pino do meio ao 36, os outros dois a 3.3V e GND</li>
+  <li>LED: ânodo ao pino 25 via um resistor, catodo ao GND</li>
+</ul>
+
+<p>Código:</p>
+
+<p>```cpp const int potPin = 36; const int ledPin = 25; const int pwmChannel = 1;
+const int resolution = 8;</p>
+
+<p>void setup() { Serial.begin(115200); ledcSetup(pwmChannel, 5000, resolution); //
+5kHz PWM no canal 1 ledcAttachPin(ledPin, pwmChannel); }</p>
+
+<p>void loop() { int potValue = analogRead(potPin);        // Leitura analógica
+(0-4095) int pwmValue = map(potValue, 0, 4095, 0, 255); // Mapeia para PWM 0-255
+ledcWrite(pwmChannel, pwmValue);          // Ajusta brilho do LED
+Serial.print(“Potenciômetro: “); Serial.println(potValue); delay(200); } ```</p>
+
+<hr>
+
+<p>Com esses passos e exemplos você já pode explorar o grande potencial do ESP32,
+unindo conectividade, sensoriamento e controle em um só dispositivo, com a
+simplicidade do Arduino IDE.</p>
+
+<p>Nos próximos projetos, veremos como integrar sensores IoT, usar Wi-Fi e
+Bluetooth, e criar soluções cada vez mais inteligentes!</p>
+
+
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                class
+                <span class="nc ">ESP32</span>
+                : public
+                <span class="nc ">Disruptive Architectures</span>
+                
+                , public
+                <span class="nc ">Sistemas Embarcados</span> 
+                
+            </div> 
+        </main>
+        <script type="text/javascript" src="/assets/scripts.js"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+        <script src=" https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js "></script>
+        <script type="module">
+            mermaid.initialize({theme:"neutral",
+                                securityLevel: "strict",
+                                startOnLoad: true
+                                });
+        </script>
+    </body>
+</html>

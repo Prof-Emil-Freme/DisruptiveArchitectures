@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <title>SPI - Disruptive Architectures</title>
+        <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+        <link rel="stylesheet" href="/assets/css/main.css" id="maincss">
+    </head>
+    <body>
+        <nav>
+    
+    <a href="#" onclick="toggle_menu()" id="hamb_menu">☰</a>
+    
+    <a href="/">Index</a>&nbsp;
+    <a href="#" onclick="toggle_themes()">Mudar Tema</a>
+</nav>
+
+        <aside id="course_menu">
+    
+    
+    <b class="course_name">Disruptive Architectures</b>
+
+    
+    <b class="section_name">Sobre a disciplina</b>
+    
+    
+    <a href="/classes/00_index.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/01_definicoes.html" class="class_link">Definições de IoT</a>
+    
+    <a href="/classes/02_avaliacoes.html" class="class_link">Avaliações</a>
+    
+    
+    <b class="section_name">Eletrônica Básica</b>
+    
+    
+    <a href="/classes/10_circuitoseletricos.html" class="class_link">Circuitos Simples</a>
+    
+    <a href="/classes/14_desafios.html" class="class_link">Desfios! #01</a>
+    
+    
+    <b class="section_name">Sistemas Embarcados</b>
+    
+    
+    <a href="/classes/20_sistemas_embarcados.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/22_esp32.html" class="class_link">ESP32</a>
+    
+    <a href="/classes/21_arduino.html" class="class_link">Arduino</a>
+    
+    
+    <b class="section_name">Protocolos M2M</b>
+    
+    
+    <a href="/classes/30_m2m.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/31_UART.html" class="class_link">UART</a>
+    
+    <a href="/classes/32_I2C.html" class="class_link">I2C</a>
+    
+    <a href="/classes/33_SPI.html" class="class_link">SPI</a>
+    
+    
+    <b class="section_name">Backend</b>
+    
+    
+    <a href="/classes/40_node_red.html" class="class_link">Node-Red</a>
+    
+    <a href="/classes/41_python.html" class="class_link">Python</a>
+    
+    
+    <b class="section_name">Protocolos TCP/IP (Aplicação)</b>
+    
+    
+    <a href="/classes/50_http.html" class="class_link">HTTP</a>
+    
+    <a href="/classes/51_MQTT.html" class="class_link">MQTT</a>
+    
+    <a href="/classes/52_WebSocket.html" class="class_link">WebSocket</a>
+    
+    
+    <b class="section_name">Soluções</b>
+    
+    
+    <a href="/classes/92_desafios_sol.html" class="class_link">Desfios! #01</a>
+    
+    
+
+
+  
+</aside>
+
+        <aside id="toc_menu" style="float:right"> 
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#spi-serial-peripheral-interface">SPI Serial Peripheral Interface</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#conexão-física">Conexão Física</a></li>
+<li class="toc-entry toc-h2"><a href="#programando">Programando</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#exemplo-de-comunicação">Exemplo de Comunicação</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</aside>
+
+        <main>
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                class
+                <span class="nc ">SPI</span>
+                : public
+                
+                <span class="nc ">Disruptive Architectures</span>
+                
+                , public
+                <span class="nc ">Protocolos M2M</span> 
+                
+            </div> 
+            <center><h1> SPI</h1></center>
+            <h1 id="spi-serial-peripheral-interface">
+<a class="anchor" href="#spi-serial-peripheral-interface" aria-hidden="true"><span class="octicon octicon-link"></span></a>SPI <strong>Serial Peripheral Interface</strong>
+</h1>
+
+<p>Para além do I2C, temos também o SPI, um protocolo de comunicação serial
+síncrono que se destaca pela sua alta velocidade e pela comunicação
+<em>full-duplex</em>, o que significa que os dados podem ser enviados e recebidos
+simultaneamente. Ele é amplamente utilizado em aplicações que exigem maior taxa
+de transferência de dados, como cartões SD, displays e alguns tipos de sensores.
+A principal desvantagem em relação ao I2C é a necessidade de um número maior de
+fios.</p>
+
+<blockquote>
+  <p>Historicamente, a documentação do SPI utilizava os termos <em>Master</em> (Mestre) e
+<em>Slave</em> (Escravo). No entanto, a comunidade de tecnologia tem se movido para
+substituir essa terminologia por alternativas mais inclusivas e descritivas.
+Por isso, adotaremos os termos <strong>Controlador</strong> e <strong>Periférico</strong>,
+respectivamente. O termo “Controlador” descreve com mais precisão o papel do
+dispositivo que gerencia o barramento e inicia a comunicação, enquanto
+“Periférico” define adequadamente os dispositivos que respondem às
+solicitações.</p>
+</blockquote>
+
+<h2 id="conexão-física">
+<a class="anchor" href="#conex%C3%A3o-f%C3%ADsica" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conexão Física</h2>
+
+<p>A comunicação SPI exige, no mínimo, quatro linhas para conectar um controlador a
+um periférico. Lembre-se também de conectar o <code class="language-plaintext highlighter-rouge">GND</code> entre os dispositivos.</p>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">SCLK</code> (<strong>Serial Clock</strong>): Linha que transporta o sinal de clock gerado pelo
+Controlador para sincronizar a transmissão de dados.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">COPI/MOSI</code> (<strong>Controler Out Peripheral In</strong>): Linha de saída de dados do
+<strong>C</strong>ontrolador para a entrada do <strong>P</strong>eriférico.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">CIPO/MISO</code> (<strong>Controler In Peripheral Out</strong>): Linha de entrada de dados no
+<strong>C</strong>ontrolador, vindo da saída do <strong>P</strong>eriférico.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">CS/PS/SS</code> (<strong>Chip/Peripheral Select</strong>): Pino no controlador que seleciona com qual
+periférico ele deseja se comunicar. Cada periférico no barramento precisa de
+uma linha <code class="language-plaintext highlighter-rouge">SS</code> dedicada. Quando o nível lógico dessa linha vai para baixo
+(<code class="language-plaintext highlighter-rouge">LOW</code>), o periférico é ativado.</li>
+</ul>
+
+<p><img src="attachments/spi_generico.png" alt=""></p>
+
+<p>De forma similar ao I2C, o protocolo SPI também suporta a comunicação com
+múltiplos periféricos em um único barramento. A principal diferença, no entanto,
+está no método de seleção: em vez de um endereço via software, o SPI utiliza uma
+linha de hardware dedicada, o Chip Select (CS), para cada periférico que se
+deseja controlar.</p>
+
+<p><img src="attachments/spi_multi.png" alt=""></p>
+
+<h2 id="programando">
+<a class="anchor" href="#programando" aria-hidden="true"><span class="octicon octicon-link"></span></a>Programando</h2>
+
+<p>No ambiente do Arduino, a comunicação SPI é gerenciada pela biblioteca padrão
+<code class="language-plaintext highlighter-rouge">SPI.h</code>. Ela fornece as funções necessárias para configurar o microcontrolador
+como controlador ou periférico.</p>
+
+<h3 id="exemplo-de-comunicação">
+<a class="anchor" href="#exemplo-de-comunica%C3%A7%C3%A3o" aria-hidden="true"><span class="octicon octicon-link"></span></a>Exemplo de Comunicação</h3>
+
+<p>No cenário a seguir, o controlador envia o caractere <code class="language-plaintext highlighter-rouge">'H'</code> para o periférico. O
+periférico, ao receber o dado, envia de volta o caractere <code class="language-plaintext highlighter-rouge">'W'</code> na mesma
+transação.</p>
+
+<p><strong>Código do Controlador</strong></p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*
+ * Descrição:
+ * Este código configura a placa como controlador SPI enviando um caractere
+ * para o periférico e recebendo a resposta. Um LED integrado indica o momento
+ * da transmissão para feedback visual, enquanto as mensagens são exibidas no monitor serial.
+ */</span>
+
+ <span class="cp">#include</span> <span class="cpf">&lt;SPI.h&gt;</span><span class="cp">
+</span>
+<span class="c1">// Define o pino que será usado para o Chip Select (CS).</span>
+<span class="c1">// O pino 10 é o padrão para SS (Slave Select) na maioria das placas Arduino,</span>
+<span class="c1">// mas você pode usar qualquer outro pino digital para controlar múltiplos periféricos.</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">pinoCS</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+
+<span class="c1">// Configura os parâmetros da comunicação SPI:</span>
+<span class="c1">// - Velocidade de 8MHz</span>
+<span class="c1">// - Ordem de bits MSB (Most Significant Bit First)</span>
+<span class="c1">// - Modo SPI 0</span>
+<span class="n">SPISettings</span> <span class="nf">mySPISettings</span><span class="p">(</span><span class="mi">8000000</span><span class="p">,</span> <span class="n">MSBFIRST</span><span class="p">,</span> <span class="n">SPI_MODE0</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Inicializa a comunicação serial para exibir mensagens de debug.</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+
+  <span class="c1">// Configura o pino de Chip Select como saída.</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">pinoCS</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+  
+  <span class="c1">// Garante que o Periférico comece desativado, mantendo a linha CS em nível ALTO.</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pinoCS</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+  
+  <span class="c1">// Configura o LED integrado como saída para dar feedback visual.</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+  
+  <span class="c1">// Inicializa o hardware SPI da placa.</span>
+  <span class="n">SPI</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Controlador: Ativando periférico..."</span><span class="p">);</span>
+
+  <span class="c1">// --- Início da Transação SPI ---</span>
+
+  <span class="c1">// Acende o LED para indicar que a comunicação está prestes a começar.</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span> 
+  
+  <span class="c1">// Aplica as configurações SPI definidas anteriormente.</span>
+  <span class="n">SPI</span><span class="p">.</span><span class="n">beginTransaction</span><span class="p">(</span><span class="n">mySPISettings</span><span class="p">);</span>
+  
+  <span class="c1">// Ativa o periférico, colocando a linha CS em nível BAIXO.</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pinoCS</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+  
+  <span class="c1">// Envia o caractere 'H' e, ao mesmo tempo, lê o byte retornado pelo periférico.</span>
+  <span class="kt">char</span> <span class="n">receivedChar</span> <span class="o">=</span> <span class="n">SPI</span><span class="p">.</span><span class="n">transfer</span><span class="p">(</span><span class="sc">'H'</span><span class="p">);</span>
+  
+  <span class="c1">// Desativa o periférico, retornando a linha CS para o nível ALTO.</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pinoCS</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+  
+  <span class="c1">// Libera o barramento SPI para outros dispositivos.</span>
+  <span class="n">SPI</span><span class="p">.</span><span class="n">endTransaction</span><span class="p">();</span>
+
+  <span class="c1">// Apaga o LED para indicar que a transação terminou.</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+
+  <span class="c1">// --- Fim da Transação SPI ---</span>
+
+  <span class="c1">// Exibe o caractere recebido no monitor serial.</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"Controlador: Recebido de volta -&gt; "</span><span class="p">);</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">receivedChar</span><span class="p">);</span>
+  
+  <span class="c1">// Aguarda 1 segundo antes de iniciar a próxima comunicação.</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Código do Periférico</strong></p>
+
+<p>Como o SPI depende de uma resposta imediata e síncrona ao clock do controlador,
+a programação do periférico geralmente depende de <strong>interrupções</strong> de hardware.
+A forma de configurar isso pode variar entre diferentes arquiteturas de
+microcontroladores, como AVR (Arduino Uno) e ESP32.</p>
+
+<p><strong>Periférico em Arduino (AVR)</strong></p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*
+ * Descrição:
+ * Código para configurar o Arduino como periférico SPI. Ele usa uma rotina de
+ * interrupção (ISR) para responder instantaneamente quando recebe um dado.
+ **/</span>
+<span class="cp">#include</span> <span class="cpf">&lt;SPI.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;stdint.h&gt;</span><span class="cp">
+</span>
+<span class="k">volatile</span> <span class="kt">char</span> <span class="n">receivedChar</span><span class="p">;</span>
+<span class="k">volatile</span> <span class="kt">bool</span> <span class="n">newDataAvailable</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+
+<span class="c1">// ISR (Interrupt Service Routine) - Executada quando a transferência SPI é completada</span>
+<span class="n">ISR</span> <span class="p">(</span><span class="n">SPI_STC_vect</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">receivedChar</span> <span class="o">=</span> <span class="n">SPDR</span><span class="p">;</span>     <span class="c1">// Lê o byte que acabou de ser recebido</span>
+  <span class="n">newDataAvailable</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>   <span class="c1">// Marca flag indicando que um novo dado chegou</span>
+  <span class="n">SPDR</span> <span class="o">=</span> <span class="sc">'W'</span><span class="p">;</span>                <span class="c1">// Prepara o próximo byte para ser enviado de volta</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">MISO</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+  <span class="c1">// Importante: SS deve ser entrada para ser controlado pelo controlador</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">SS</span><span class="p">,</span> <span class="n">INPUT</span><span class="p">);</span>
+
+  <span class="n">SPCR</span> <span class="o">|=</span> <span class="n">_BV</span><span class="p">(</span><span class="n">SPE</span><span class="p">);</span>   <span class="c1">// Habilita o hardware SPI</span>
+  <span class="n">SPCR</span> <span class="o">|=</span> <span class="n">_BV</span><span class="p">(</span><span class="n">SPIE</span><span class="p">);</span>  <span class="c1">// Habilita a interrupção SPI</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Arduino SPI Periférico inicializado"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">newDataAvailable</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"Periférico recebeu: "</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">receivedChar</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">", enviou de volta: W"</span><span class="p">);</span>
+    <span class="n">newDataAvailable</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span> <span class="c1">// Reseta a flag</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Periférico em ESP32</strong></p>
+
+<p>No ESP32, bibliotecas específicas podem abstrair a complexidade do hardware,
+tornando a configuração mais simples.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*
+ * Descrição:
+ * Código para configurar a ESP32 como periférico SPI. A biblioteca
+ * abstrai a configuração da interrupção através de uma função de callback.
+ **/</span>
+<span class="cp">#include</span> <span class="cpf">&lt;esp32SPI.h&gt;</span><span class="cp">
+</span>
+<span class="n">esp32SPI</span> <span class="n">spi</span><span class="p">;</span>
+<span class="k">volatile</span> <span class="kt">char</span> <span class="n">receivedChar</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">volatile</span> <span class="kt">bool</span> <span class="n">newDataAvailable</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+
+<span class="c1">// Função de callback que será chamada quando dados forem recebidos via SPI</span>
+<span class="kt">void</span> <span class="nf">onSPIReceive</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">receivedChar</span> <span class="o">=</span> <span class="n">spi</span><span class="p">.</span><span class="n">read</span><span class="p">();</span>
+  <span class="n">spi</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="sc">'W'</span><span class="p">);</span> <span class="c1">// Prepara a resposta para o controlador</span>
+  <span class="n">newDataAvailable</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+  <span class="n">spi</span><span class="p">.</span><span class="n">onReceive</span><span class="p">(</span><span class="n">onSPIReceive</span><span class="p">);</span> <span class="c1">// Registra a função de callback</span>
+  <span class="n">spi</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"ESP32 SPI Periférico inicializado"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">newDataAvailable</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"Periférico recebeu: "</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">receivedChar</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">", enviou de volta: W"</span><span class="p">);</span>
+    <span class="n">newDataAvailable</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                class
+                <span class="nc ">SPI</span>
+                : public
+                <span class="nc ">Disruptive Architectures</span>
+                
+                , public
+                <span class="nc ">Protocolos M2M</span> 
+                
+            </div> 
+        </main>
+        <script type="text/javascript" src="/assets/scripts.js"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+        <script src=" https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js "></script>
+        <script type="module">
+            mermaid.initialize({theme:"neutral",
+                                securityLevel: "strict",
+                                startOnLoad: true
+                                });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <title>Introdução - Disruptive Architectures</title>
+        <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+        <link rel="stylesheet" href="/assets/css/main.css" id="maincss">
+    </head>
+    <body>
+        <nav>
+    
+    <a href="#" onclick="toggle_menu()" id="hamb_menu">☰</a>
+    
+    <a href="/">Index</a>&nbsp;
+    <a href="#" onclick="toggle_themes()">Mudar Tema</a>
+</nav>
+
+        <aside id="course_menu">
+    
+    
+    <b class="course_name">Disruptive Architectures</b>
+
+    
+    <b class="section_name">Sobre a disciplina</b>
+    
+    
+    <a href="/classes/00_index.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/01_definicoes.html" class="class_link">Definições de IoT</a>
+    
+    <a href="/classes/02_avaliacoes.html" class="class_link">Avaliações</a>
+    
+    
+    <b class="section_name">Eletrônica Básica</b>
+    
+    
+    <a href="/classes/10_circuitoseletricos.html" class="class_link">Circuitos Simples</a>
+    
+    <a href="/classes/14_desafios.html" class="class_link">Desfios! #01</a>
+    
+    
+    <b class="section_name">Sistemas Embarcados</b>
+    
+    
+    <a href="/classes/20_sistemas_embarcados.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/22_esp32.html" class="class_link">ESP32</a>
+    
+    <a href="/classes/21_arduino.html" class="class_link">Arduino</a>
+    
+    
+    <b class="section_name">Protocolos M2M</b>
+    
+    
+    <a href="/classes/30_m2m.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/31_UART.html" class="class_link">UART</a>
+    
+    <a href="/classes/32_I2C.html" class="class_link">I2C</a>
+    
+    <a href="/classes/33_SPI.html" class="class_link">SPI</a>
+    
+    
+    <b class="section_name">Backend</b>
+    
+    
+    <a href="/classes/40_node_red.html" class="class_link">Node-Red</a>
+    
+    <a href="/classes/41_python.html" class="class_link">Python</a>
+    
+    
+    <b class="section_name">Protocolos TCP/IP (Aplicação)</b>
+    
+    
+    <a href="/classes/50_http.html" class="class_link">HTTP</a>
+    
+    <a href="/classes/51_MQTT.html" class="class_link">MQTT</a>
+    
+    <a href="/classes/52_WebSocket.html" class="class_link">WebSocket</a>
+    
+    
+    <b class="section_name">Soluções</b>
+    
+    
+    <a href="/classes/92_desafios_sol.html" class="class_link">Desfios! #01</a>
+    
+    
+
+
+  
+</aside>
+
+        <aside id="toc_menu" style="float:right"> 
+    <ul id="toc" class="section-nav">
+</ul>
+</aside>
+
+        <main>
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                class
+                <span class="nc ">Introdução</span>
+                : public
+                
+                <span class="nc ">Disruptive Architectures</span>
+                
+                , public
+                <span class="nc ">Protocolos M2M</span> 
+                
+            </div> 
+            <center><h1> Introdução</h1></center>
+            <p>Um dos grandes pontos de IoT, é a colaboração de diversos equipamentos para a
+atuaçao no ambiente, seja ele uma residência, seja uma planta industrial. Para
+que haja essa colaboração precisamos de alguma forma fazer a comunicação entre
+esses dispositivos, e para isso temos diversas soluções, ou mais tecnicamente
+<em>Protocolos de Comunicação</em>.</p>
+
+<p>Estes procolos atuam em diferentes camadas e distâncias, cada um suas
+caracteriticas, alguns, você até já deve conhecer, como o Ethernet ou Wi-Fi, mas
+existem protocolos mais específicos, e iremos abordar alguns deles ao longo da
+disciplina.</p>
+
+<div class="ritz grid-container" dir="ltr">
+    <table class="waffle" cellspacing="0" cellpadding="0">
+<tbody>
+            <tr style="height: 20px">
+                <td class="s1" dir="ltr" colspan="3">Intraplaca (Chip-to-Chip)</td>
+                <td class="s2" dir="ltr" colspan="3">Rede Pessoal (PAN) - Curto Alcance</td>
+            </tr>
+            <tr style="height: 20px">
+                <td class="s3" dir="ltr">UART </td>
+                <td class="s3" dir="ltr">I²C </td>
+                <td class="s4" dir="ltr">SPI </td>
+                <td class="s3" dir="ltr">Bluetooth &amp; BLE </td>
+                <td class="s3" dir="ltr">Zigbee</td>
+                <td class="s4" dir="ltr">Z-Wave</td>
+            </tr>
+            <tr style="height: 293px">
+                <td class="s6" dir="ltr">Comunicação serial ponto a ponto, simples e de baixa velocidade, entre dois dispositivos, como um microcontrolador e um sensor ou módulo GPS.</td>
+                <td class="s6" dir="ltr">Barramento de comunicação para múltiplos dispositivos "periféricos" e um ou mais "controladores" com apenas dois fios. Ideal para conectar vários sensores a um único microcontrolador.</td>
+                <td class="s7" dir="ltr">Comunicação serial síncrona de alta velocidade. Permite a conexão de múltiplos periféricos, sendo mais rápido que o I²C.</td>
+                <td class="s8" dir="ltr">Padrão de comunicação sem fio para conectar dispositivos próximos. O BLE é otimizado para baixo consumo de energia.</td>
+                <td class="s8" dir="ltr">Protocolo de baixo custo e baixo consumo de energia baseado no padrão IEEE 802.15.4, ideal para redes mesh (malha).</td>
+                <td class="s9" dir="ltr">Protocolo sem fio proprietário, também focado em redes mesh e automação residencial. Opera em uma frequência sub-GHz, sofrendo menos interferência que Zigbee/Wi-Fi.</td>
+            </tr>
+            <tr style="height: 20px">
+                <td class="s10" dir="ltr">Centímetros</td>
+                <td class="s10" dir="ltr">&lt; 1 metro</td>
+                <td class="s5" dir="ltr">&lt; 1 metro</td>
+                <td class="s10" dir="ltr">10 - 100 metros</td>
+                <td class="s10" dir="ltr">10 - 100 metros</td>
+                <td class="s5" dir="ltr">30 - 100 metros</td>
+            </tr>
+            <tr style="height: 185px">
+                <td class="s6" dir="ltr">Debugging, comunicação entre microcontroladores e módulos.</td>
+                <td class="s6" dir="ltr">Sensores de temperatura, acelerômetros, displays OLED.</td>
+                <td class="s7" dir="ltr">Cartões de memória SD, displays de alta velocidade, conversores A/D.</td>
+                <td class="s8" dir="ltr">Wearables (relógios, fones), periféricos, beacons de localização.</td>
+                <td class="s8" dir="ltr">Automação residencial (lâmpadas, interruptores), redes de sensores industriais.</td>
+                <td class="s9" dir="ltr">Fechaduras inteligentes, termostatos, sensores de segurança residencial.</td>
+            </tr>
+            <tr style="height: 20px">
+                <td class="s12" dir="ltr">Até 1 Mbps</td>
+                <td class="s12" dir="ltr">Até 1 Mbps</td>
+                <td class="s13" dir="ltr">Até 3,4 Mbps</td>
+                <td class="s12" dir="ltr">Até 50 Mbps</td>
+                <td class="s12" dir="ltr">Até 2 Mbps (BLE 5.0)</td>
+                <td class="s13" dir="ltr">Até 250 Kbps</td>
+            </tr>
+            <tr style="height: 20px">
+                <td class="s14"></td>
+                <td class="s14"></td>
+                <td class="s14"></td>
+                <td class="s14"></td>
+                <td class="s14"></td>
+                <td class="s14"></td>
+            </tr>
+            <tr style="height: 20px">
+                <td class="s15" dir="ltr" colspan="3">Rede Local (LAN) - Médio Alcance</td>
+                <td class="s16" dir="ltr" colspan="3">Rede de Longa Distância (WAN) - Longo Alcance</td>
+            </tr>
+            <tr style="height: 20px">
+                <td class="s3" dir="ltr">Wi-Fi (IEEE 802.11)</td>
+                <td class="s3" dir="ltr">Ethernet (IEEE 802.3)</td>
+                <td class="s4" dir="ltr">Thread</td>
+                <td class="s3" dir="ltr">LoRaWAN </td>
+                <td class="s3" dir="ltr">Sigfox</td>
+                <td class="s4" dir="ltr">Celular</td>
+            </tr>
+            <tr style="height: 20px">
+                <td class="s17" dir="ltr">Padrão de rede sem fio de alta velocidade, ideal para dispositivos que precisam de alta taxa de transferência de dados e já possuem infraestrutura de rede local.</td>
+                <td class="s17" dir="ltr">Comunicação por cabo que oferece alta velocidade, estabilidade e segurança. Usado em gateways ou dispositivos fixos que exigem uma conexão robusta.</td>
+                <td class="s18" dir="ltr">Protocolo de rede mesh IPv6 de baixo consumo, seguro e confiável, projetado especificamente para automação residencial e predial.</td>
+                <td class="s19" dir="ltr">Protocolo de rede de baixa potência e longo alcance (LPWAN) que permite comunicação por quilômetros. Ideal para enviar pequenos pacotes de dados.</td>
+                <td class="s19" dir="ltr">Outro protocolo LPWAN que opera em uma rede global. Focado na simplicidade e no envio de mensagens muito pequenas (uplink) com baixíssimo consumo.</td>
+                <td class="s20" dir="ltr">Utiliza a infraestrutura de telefonia celular para conectar dispositivos. NB-IoT e LTE-M são otimizados para IoT (baixo consumo e custo). 5G oferece altíssima velocidade e baixa latência.</td>
+            </tr>
+            <tr style="height: 20px">
+                <td class="s10" dir="ltr">50 - 250 metros</td>
+                <td class="s10" dir="ltr">Até 100 metros (por segmento)</td>
+                <td class="s5" dir="ltr">Até 100 metros</td>
+                <td class="s10" dir="ltr">2 - 15 km (urbano/rural)</td>
+                <td class="s10" dir="ltr">10 - 50 km</td>
+                <td class="s5" dir="ltr">Vários quilômetros (cobertura celular)</td>
+            </tr>
+            <tr style="height: 20px">
+                <td class="s17" dir="ltr">Câmeras de segurança, assistentes de voz, dispositivos que enviam grandes volumes de dados.</td>
+                <td class="s17" dir="ltr">Gateways de IoT, computadores de placa única (Raspberry Pi), equipamentos industriais.</td>
+                <td class="s18" dir="ltr">Dispositivos para casas inteligentes que fazem parte do ecossistema Matter.</td>
+                <td class="s19" dir="ltr">Cidades inteligentes (lixeiras, iluminação), monitoramento agrícola, rastreamento de ativos.</td>
+                <td class="s19" dir="ltr">Medidores de água/gás, botões de pânico, sensores de alarme simples.</td>
+                <td class="s20" dir="ltr">Rastreamento de veículos, agricultura de precisão, saúde conectada, aplicações industriais críticas (5G).</td>
+            </tr>
+            <tr style="height: 20px">
+                <td class="s12" dir="ltr">Até 100 Kbps</td>
+                <td class="s12" dir="ltr">Até 1 Gbps (Wi-Fi 6)</td>
+                <td class="s13" dir="ltr">10 Mbps a 100 Gbps+</td>
+                <td class="s12" dir="ltr">Até 250 Kbps</td>
+                <td class="s12" dir="ltr">0.3 Kbps a 50 Kbps</td>
+                <td class="s13" dir="ltr">100 bps (uplink)</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<blockquote class="attention">
+  <p>Abordaremos os protocolos em uma visão geral de aplicação deles pois as
+biliotecas diponíveis para se trabalhar com o arduino já se encarregam do
+trabalho duro e mais baixo nivel desses protocolos</p>
+</blockquote>
+
+
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                class
+                <span class="nc ">Introdução</span>
+                : public
+                <span class="nc ">Disruptive Architectures</span>
+                
+                , public
+                <span class="nc ">Protocolos M2M</span> 
+                
+            </div> 
+        </main>
+        <script type="text/javascript" src="/assets/scripts.js"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+        <script src=" https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js "></script>
+        <script type="module">
+            mermaid.initialize({theme:"neutral",
+                                securityLevel: "strict",
+                                startOnLoad: true
+                                });
+        </script>
+    </body>
+</html>

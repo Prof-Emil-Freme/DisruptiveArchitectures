@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <title>Arduino - Disruptive Architectures</title>
+        <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+        <link rel="stylesheet" href="/assets/css/main.css" id="maincss">
+    </head>
+    <body>
+        <nav>
+    
+    <a href="#" onclick="toggle_menu()" id="hamb_menu">☰</a>
+    
+    <a href="/">Index</a>&nbsp;
+    <a href="#" onclick="toggle_themes()">Mudar Tema</a>
+</nav>
+
+        <aside id="course_menu">
+    
+    
+    <b class="course_name">Disruptive Architectures</b>
+
+    
+    <b class="section_name">Sobre a disciplina</b>
+    
+    
+    <a href="/classes/00_index.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/01_definicoes.html" class="class_link">Definições de IoT</a>
+    
+    <a href="/classes/02_avaliacoes.html" class="class_link">Avaliações</a>
+    
+    
+    <b class="section_name">Eletrônica Básica</b>
+    
+    
+    <a href="/classes/10_circuitoseletricos.html" class="class_link">Circuitos Simples</a>
+    
+    <a href="/classes/14_desafios.html" class="class_link">Desfios! #01</a>
+    
+    
+    <b class="section_name">Sistemas Embarcados</b>
+    
+    
+    <a href="/classes/20_sistemas_embarcados.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/22_esp32.html" class="class_link">ESP32</a>
+    
+    <a href="/classes/21_arduino.html" class="class_link">Arduino</a>
+    
+    
+    <b class="section_name">Protocolos M2M</b>
+    
+    
+    <a href="/classes/30_m2m.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/31_UART.html" class="class_link">UART</a>
+    
+    <a href="/classes/32_I2C.html" class="class_link">I2C</a>
+    
+    <a href="/classes/33_SPI.html" class="class_link">SPI</a>
+    
+    
+    <b class="section_name">Backend</b>
+    
+    
+    <a href="/classes/40_node_red.html" class="class_link">Node-Red</a>
+    
+    <a href="/classes/41_python.html" class="class_link">Python</a>
+    
+    
+    <b class="section_name">Protocolos TCP/IP (Aplicação)</b>
+    
+    
+    <a href="/classes/50_http.html" class="class_link">HTTP</a>
+    
+    <a href="/classes/51_MQTT.html" class="class_link">MQTT</a>
+    
+    <a href="/classes/52_WebSocket.html" class="class_link">WebSocket</a>
+    
+    
+    <b class="section_name">Soluções</b>
+    
+    
+    <a href="/classes/92_desafios_sol.html" class="class_link">Desfios! #01</a>
+    
+    
+
+
+  
+</aside>
+
+        <aside id="toc_menu" style="float:right"> 
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#o-arduino">O Arduino</a></li>
+<li class="toc-entry toc-h1"><a href="#01-pisca-led-blink">#01 Pisca LED (Blink)</a></li>
+<li class="toc-entry toc-h1"><a href="#buzzer-sonoro">Buzzer Sonoro</a></li>
+<li class="toc-entry toc-h1"><a href="#leitura-de-potenciômetro">Leitura de Potenciômetro</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#controle-de-intensidade-do-led-com-potenciômetro">Controle de Intensidade do LED com Potenciômetro</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#conclusão">Conclusão</a></li>
+</ul>
+</aside>
+
+        <main>
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                class
+                <span class="nc ">Arduino</span>
+                : public
+                
+                <span class="nc ">Disruptive Architectures</span>
+                
+                , public
+                <span class="nc ">Sistemas Embarcados</span> 
+                
+            </div> 
+            <center><h1> Arduino</h1></center>
+            <h1 id="o-arduino">
+<a class="anchor" href="#o-arduino" aria-hidden="true"><span class="octicon octicon-link"></span></a>O Arduino</h1>
+
+<p><img src="attachments/uno.jpg" alt='Arduino Uno "Original"'>
+<img src="attachments/arduino_esquema.png" alt="Esquema"></p>
+
+<p>Nas imagens acima temos uma foto do Arduino Uno e um esquema dele, como o
+TinkerCad gera. O Arduino é uma <em>Plataforma de desenvolvimento</em> que utiliza do
+microcontrolador ATmega328, podendo ser encontrado em diversos formatos de
+encapsulamento.</p>
+
+<p>Ao longo dos projetos abaixo vamos ver as possíbilidades do Arduino e como
+programa-lo e conecta-lo com com outros dispositivos.</p>
+
+<h1 id="01-pisca-led-blink">
+<a class="anchor" href="#01-pisca-led-blink" aria-hidden="true"><span class="octicon octicon-link"></span></a>#01 Pisca LED (Blink)</h1>
+
+<p>Esse é o <strong>“Hello World”</strong> do Arduino. A primeira coisa que precisamos é da IDE
+dele que pode ser encontrada <a href="https://www.arduino.cc/en/software/">aqui</a>.</p>
+
+<p>Depois de instalado, quando abrir pela primeira vez, diversos pacores serão
+instalados também, e por fim será visto algo como a figura:</p>
+
+<p><img src="attachments/arduino_ide.png" alt=""></p>
+
+<p>Diferente de outras IDEs já conhecidas, essa é um pouco mais simples. Por padrão
+os projetos de arduino são nomeados como <code class="language-plaintext highlighter-rouge">sketch</code> e tem a extensão <code class="language-plaintext highlighter-rouge">.ino</code>. Nesse
+ambiente iremos trabalhar com a linguagem C/C++, mas de forma simplificada,
+já que a plataforma fornece uma série de abstrações para facilitar nosso
+trabalho.</p>
+
+<p>Como podemos notar, temos um código com o seguinte padrão que iremos utilizar.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">setup</span><span class="p">(){</span>
+
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">(){</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Se voltar a discussão da aula <a href="/classes/01_definicoes.html#1-microcontroladores-mcus">O Início</a>
+verá que “Um microcontrolador executa um programa único em loop contínuo”, bom,
+na função <code class="language-plaintext highlighter-rouge">setup()</code> iremos escrever os código necessários para a condição
+inicial do nosso programa. E no <code class="language-plaintext highlighter-rouge">loop()</code> será o que nosso programa irá fazer
+contínuamente.</p>
+
+<p>Para nosso primeiro projeto precisamos apenas da placa e então do seguinte código:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// put your setup code here, to run once:</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// put your main code here, to run repeatedly:</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Muita coisa acontecendo, mas vamos destrinchar com calma:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">pinMode</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+</code></pre></div></div>
+<p>Aqui estamos configurando um “pino” do arduino, no caso estamos utilizando a
+constante predefinida <code class="language-plaintext highlighter-rouge">LED_BUILTIN</code> que corresponde ao led soldado a placa do
+Arduino, e estamos definindo com <code class="language-plaintext highlighter-rouge">OUTPUT</code> ou seja, iremos enviar/escrever dados
+neste “pino”.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+</code></pre></div></div>
+<p>Com o <code class="language-plaintext highlighter-rouge">digitalWrite(pino, valor)</code> é possivel definir o estado digital do pino
+configurado como saída. Como é uma saida digital pode ser <code class="language-plaintext highlighter-rouge">HIGH</code> (tensão alta, geralmente 5V) para ligar
+o componente, ou <code class="language-plaintext highlighter-rouge">LOW</code> (0V) para desligar.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+</code></pre></div></div>
+<p>Por fim o código pausa a execução do programa pelo tempo em milissegundos
+indicado, no caso 500ms que é 0.5 segundo.</p>
+
+<p>Depois de feito o código podemos conectar a placa, por sua entrada USB no
+computador, e ele deverá reconhecer. Caso não reconheça será necessário escolher
+a porta USb e o tipo da placa que estamos utilizando – Provavelmente Arduino
+Uno.</p>
+
+<p>Feito isso podemos compilar e verificar nosso código clicando no simbolo de
+“certinho/check” ✔️ <code class="language-plaintext highlighter-rouge">CTRL+R</code>.</p>
+
+<p>E se tudo correu bem podemos fazer o upload do código para a placa clicando no
+simbolo de seta <code class="language-plaintext highlighter-rouge">CTRL+U</code>.</p>
+
+<p>E teremos o led soldado à placa piscando!</p>
+
+<h1 id="buzzer-sonoro">
+<a class="anchor" href="#buzzer-sonoro" aria-hidden="true"><span class="octicon octicon-link"></span></a>Buzzer Sonoro</h1>
+
+<p>Para o nosso segundo projeto, vamos fazer o Arduino emitir sons! Para isso,
+você precisará da sua placa, de um buzzer (uma pequena cápsula que gera som) e
+de dois fios para a conexão.</p>
+
+<p>Conecte o pino positivo do buzzer (geralmente o mais longo, ou marcado com “+”)
+na porta digital <code class="language-plaintext highlighter-rouge">3</code> da sua placa. O pino negativo deve ser conectado à porta
+<code class="language-plaintext highlighter-rouge">GND</code> (Ground/Terra).</p>
+
+<p>Agora, vamos ao código:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="kt">int</span> <span class="n">speakerPin</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// put your setup code here, to run once:</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">speakerPin</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// put your main code here, to run repeatedly:</span>
+  <span class="n">tone</span><span class="p">(</span><span class="n">speakerPin</span><span class="p">,</span> <span class="mi">440</span><span class="p">);</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+  <span class="n">noTone</span><span class="p">(</span><span class="n">speakerPin</span><span class="p">);</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Parece simples, não é? Vamos destrinchar o que há de novo:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="kt">int</span> <span class="n">speakerPin</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Aqui, criamos uma constante chamada <code class="language-plaintext highlighter-rouge">speakerPin</code> para guardar o número do pino
+ao qual conectamos o buzzer. Usar um nome em vez do número torna o código mais
+fácil de ler e modificar no futuro.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">tone</span><span class="p">(</span><span class="n">speakerPin</span><span class="p">,</span> <span class="mi">440</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Esta é a função principal para gerar som. O <code class="language-plaintext highlighter-rouge">tone(pino, frequencia)</code> cria uma
+onda quadrada no pino especificado com uma frequência que define a nota musical.
+No nosso caso, estamos gerando um som de <strong>440 Hz</strong> no pino 3, que corresponde à
+nota musical Lá. Perceba que o pino 3 tem um til <code class="language-plaintext highlighter-rouge">~</code> ao lado dele na placa do
+Arduino, mas o que isso significa?</p>
+
+<p>O Arduino tem 2 tipos de pinos dentro do conjunto de pinos digitais (que vão de 0 a 13):</p>
+
+<p>Pinos Digitais Comuns: A maioria dos pinos digitais funciona como um interruptor
+de luz: eles podem estar apenas em dois estados, ou completamente ligados (HIGH,
+5V) ou completamente desligados (LOW, 0V). Não há meio-termo.</p>
+
+<p>Pinos Digitais PWM (~): Os pinos marcados com um til (~), como o nosso pino 3,
+são especiais. Eles ainda são digitais, mas possuem a capacidade de PWM (Pulse
+Width Modulation). Isso significa que eles podem ligar e desligar centenas de
+vezes por segundo. Ao variar a proporção de tempo entre ligado e desligado, eles
+conseguem simular valores intermediários. Pense neles não como um interruptor,
+mas como um dimmer, aquele botão que controla a intensidade de uma lâmpada. Com
+eles, podemos controlar o brilho de um LED ou a velocidade de um motor ou a
+frequência do buzzer.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">noTone</span><span class="p">(</span><span class="n">speakerPin</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Como o nome sugere, <code class="language-plaintext highlighter-rouge">noTone(pino)</code> para a geração do som que foi iniciada pela
+função <code class="language-plaintext highlighter-rouge">tone</code>. Essencialmente, ela desliga o som no pino do buzzer.</p>
+
+<p>O resto do código funciona de forma parecida com o nosso projeto do LED: o
+<code class="language-plaintext highlighter-rouge">loop</code> liga o som com <code class="language-plaintext highlighter-rouge">tone</code>, espera meio segundo com <code class="language-plaintext highlighter-rouge">delay(500)</code>, desliga o
+som com <code class="language-plaintext highlighter-rouge">noTone</code> e espera mais meio segundo em silêncio antes de repetir tudo de
+novo.</p>
+
+<h1 id="leitura-de-potenciômetro">
+<a class="anchor" href="#leitura-de-potenci%C3%B4metro" aria-hidden="true"><span class="octicon octicon-link"></span></a>Leitura de Potenciômetro</h1>
+
+<p>Agora vamos aprender a ler informações de um sensor analógico. Usaremos um
+potenciômetro, que é basicamente um botão de girar, para enviar valores
+variáveis para a placa e visualizá-los no computador. Para a montagem, você
+precisará da placa, do potenciômetro e de três fios.</p>
+
+<p>A conexão é simples: o potenciômetro tem três pinos. Conecte um dos pinos
+externos ao <code class="language-plaintext highlighter-rouge">GND</code> e o outro ao <code class="language-plaintext highlighter-rouge">5V</code>. O pino do meio, que é o pino de sinal, deve
+ser conectado à porta analógica <code class="language-plaintext highlighter-rouge">A0</code> da sua placa.</p>
+
+<p>Com tudo montado, vamos ao código:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">potPin</span> <span class="o">=</span> <span class="n">A0</span><span class="p">;</span>  
+<span class="kt">int</span> <span class="n">potValue</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span> 
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">potValue</span> <span class="o">=</span> <span class="n">analogRead</span><span class="p">(</span><span class="n">potPin</span><span class="p">);</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"Valor do Potenciometro: "</span><span class="p">);</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">potValue</span><span class="p">);</span>    
+  <span class="n">delay</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>                 
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>E temos mais novidades nesse código:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">potPin</span> <span class="o">=</span> <span class="n">A0</span><span class="p">;</span>  
+</code></pre></div></div>
+
+<p>Aqui A0 é uma definição da platafoma do arduino que facilita acessarmos os pinos
+de leitura analógica (Analogic Input)</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Esta função, colocada no <code class="language-plaintext highlighter-rouge">setup()</code>, inicia a comunicação serial entre o Arduino
+e o computador. É como abrir um canal de conversa. O número <code class="language-plaintext highlighter-rouge">9600</code> é a
+“velocidade” da comunicação (baud rate), e é importante que o Arduino e o
+computador estejam configurados com a mesma velocidade para se entenderem.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">potValue</span> <span class="o">=</span> <span class="n">analogRead</span><span class="p">(</span><span class="n">potPin</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Enquanto <code class="language-plaintext highlighter-rouge">digitalWrite()</code> enviava um sinal <code class="language-plaintext highlighter-rouge">HIGH</code> ou <code class="language-plaintext highlighter-rouge">LOW</code>, a função
+<code class="language-plaintext highlighter-rouge">analogRead(pino)</code> <em>lê</em> a tensão em um pino de entrada analógica (como o <code class="language-plaintext highlighter-rouge">A0</code>).
+Ela converte essa tensão em um número que vai de <strong>0</strong> (quando o pino está em
+0V) a <strong>1023</strong> (quando o pino está em 5V). Nós guardamos esse número na variável
+<code class="language-plaintext highlighter-rouge">potValue</code>.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"Valor do Potenciometro: "</span><span class="p">);</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">potValue</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Aqui, usamos duas funções para enviar os dados para o computador.
+<code class="language-plaintext highlighter-rouge">Serial.print()</code> escreve o texto na tela, mas não pula para a próxima linha. Em
+seguida, <code class="language-plaintext highlighter-rouge">Serial.println()</code> escreve o valor da variável <code class="language-plaintext highlighter-rouge">potValue</code> e move o
+cursor para a linha de baixo, deixando a saída organizada para a próxima
+leitura.</p>
+
+<p>Teremos os valores do potenciômetro, de 0 a 1023, aparecendo na tela em tempo
+real conforme você gira o eixo!</p>
+
+<h2 id="controle-de-intensidade-do-led-com-potenciômetro">
+<a class="anchor" href="#controle-de-intensidade-do-led-com-potenci%C3%B4metro" aria-hidden="true"><span class="octicon octicon-link"></span></a>Controle de Intensidade do LED com Potenciômetro</h2>
+
+<p>Vamos agora construir um projeto interativo utilizando tudo que já vimos: um
+dimmer para controlar a intensidade de um LED. Usaremos o valor lido de um
+potenciômetro para ajustar o brilho do LED em tempo real. Para a montagem, você
+precisará da placa, um LED, um potenciômetro, um resistor de 220Ω (ou 330Ω) e
+alguns fios.</p>
+
+<p>A montagem combina nossos projetos anteriores:</p>
+
+<ol>
+  <li>
+<strong>Potenciômetro:</strong> Conecte um pino externo ao <code class="language-plaintext highlighter-rouge">GND</code>, o outro ao <code class="language-plaintext highlighter-rouge">5V</code> e o
+pino do meio à porta analógica <code class="language-plaintext highlighter-rouge">A0</code>.</li>
+  <li>
+<strong>LED:</strong> Conecte o pino mais curto (cátodo) ao <code class="language-plaintext highlighter-rouge">GND</code>. Conecte o pino mais
+longo (ânodo) a uma ponta do resistor, e a outra ponta do resistor à porta
+digital <code class="language-plaintext highlighter-rouge">~3</code>. Usamos o pino 3 por ser um pino PWM.</li>
+</ol>
+
+<p>Com o circuito pronto, vamos ao código:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="kt">int</span> <span class="n">potPin</span> <span class="o">=</span> <span class="n">A0</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">ledPin</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">potValue</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>   
+
+
+<span class="kt">int</span> <span class="nf">ai2pwm</span><span class="p">(</span><span class="kt">int</span> <span class="n">val</span><span class="p">){</span>
+  <span class="k">return</span> <span class="n">map</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1023</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">ledPin</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="n">potValue</span> <span class="o">=</span> <span class="n">analogRead</span><span class="p">(</span><span class="n">potPin</span><span class="p">);</span>
+
+  <span class="n">analogWrite</span><span class="p">(</span><span class="n">ledPin</span><span class="p">,</span> <span class="n">ai2pwm</span><span class="p">(</span><span class="n">potValue</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Este código introduz duas funções novas e muito importantes.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">analogWrite</span><span class="p">(</span><span class="n">ledPin</span><span class="p">,</span> <span class="n">valor</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Esta é a função que nos permite usar o poder do PWM. O <code class="language-plaintext highlighter-rouge">analogWrite(pino,
+valor)</code> envia um pulso para um pino PWM (<code class="language-plaintext highlighter-rouge">~</code>). O <code class="language-plaintext highlighter-rouge">valor</code> que enviamos deve ser
+um número entre <strong>0</strong> (LED completamente desligado) e <strong>255</strong> (LED com brilho
+máximo). Ao variar esse número, controlamos a intensidade do brilho do LED.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">ai2pwm</span><span class="p">(</span><span class="kt">int</span> <span class="n">val</span><span class="p">){</span>
+  <span class="k">return</span> <span class="n">map</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1023</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Aqui temos um problema de “escala”. A função <code class="language-plaintext highlighter-rouge">analogRead()</code> nos dá um valor
+entre <strong>0 e 1023</strong>, mas a <code class="language-plaintext highlighter-rouge">analogWrite()</code> espera um valor entre <strong>0 e 255</strong>. A
+função <code class="language-plaintext highlighter-rouge">map()</code> resolve isso para nós! Ela remapeia um número de uma faixa para
+outra. A sintaxe é: <code class="language-plaintext highlighter-rouge">map(valor, minimo_original, maximo_original, minimo_novo,
+maximo_novo)</code>. No nosso caso, ela pega o valor lido do potenciômetro (entre
+0-1023) e o “traduz” para a escala que o <code class="language-plaintext highlighter-rouge">analogWrite()</code> entende (entre 0-255).
+Nós criamos a função <code class="language-plaintext highlighter-rouge">ai2pwm</code> para deixar nosso <code class="language-plaintext highlighter-rouge">loop()</code> principal mais limpo e
+legível.</p>
+
+<p>Agora temos o nosso LED funcionando com um dimmer! Ao girar o eixo do
+potenciômetro, você verá o brilho do LED aumentar e diminuir suavemente.</p>
+
+<h1 id="conclusão">
+<a class="anchor" href="#conclus%C3%A3o" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusão</h1>
+
+<p>Ao longo destes projetos, você construiu a base sólida para desbravar o universo
+do Arduino. Mais do que apenas seguir receitas, você aprendeu a pensar como um
+desenvolvedor de sistemas embarcados.</p>
+
+<p>Vamos recapitular os fundamentos que você dominou:</p>
+
+<ul>
+  <li>Saídas Digitais (digitalWrite): O controle fundamental de ligar e desligar componentes.</li>
+  <li>Saídas PWM (analogWrite): A capacidade de simular saídas analógicas para controlar a intensidade.</li>
+  <li>Entradas Analógicas (analogRead): A habilidade de ler dados de sensores com valores variáveis.</li>
+  <li>Comunicação Serial (Serial.print): A ferramenta indispensável para visualizar dados e depurar seu código.</li>
+  <li>Mapeamento de Dados (map): A lógica de programação para “traduzir” informações entre diferentes componentes.</li>
+</ul>
+
+<p>O mais importante é que estes quatro projetos formaram a base para integrar
+componentes muito mais complexos. A partir de agora, o desafio muda: não se
+trata mais de aprender o que é uma saída digital, mas sim de entender as
+especificidades do próximo componente que você irá utilizar.</p>
+
+<p>Seja um sensor de umidade, um display LCD, um módulo GPS ou um acelerômetro, a
+sua análise inicial será sempre a mesma: “Como eu converso com este componente?
+Ele me envia dados (entrada) ou recebe comandos (saída)? Ele é digital,
+analógico ou usa um protocolo específico?”. A base que você construiu aqui é o
+que permite responder a essas perguntas.</p>
+
+<p>Inclusive, quando você encontrar componentes que usam protocolos de comunicação
+como o I2C ou SPI, perceberá que, por trás das bibliotecas e rotinas mais
+complexas, os construtos básicos que você aprendeu são os mesmos. Haverá sempre
+uma etapa de inicialização no setup(), uma função para ler dados do componente e
+outra para escrever comandos nele. A estrutura fundamental de ler, processar e
+escrever que você praticou aqui é universal.</p>
+
+
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                class
+                <span class="nc ">Arduino</span>
+                : public
+                <span class="nc ">Disruptive Architectures</span>
+                
+                , public
+                <span class="nc ">Sistemas Embarcados</span> 
+                
+            </div> 
+        </main>
+        <script type="text/javascript" src="/assets/scripts.js"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+        <script src=" https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js "></script>
+        <script type="module">
+            mermaid.initialize({theme:"neutral",
+                                securityLevel: "strict",
+                                startOnLoad: true
+                                });
+        </script>
+    </body>
+</html>

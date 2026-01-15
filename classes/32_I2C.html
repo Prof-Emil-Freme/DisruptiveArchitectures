@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <title>I2C - Disruptive Architectures</title>
+        <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+        <link rel="stylesheet" href="/assets/css/main.css" id="maincss">
+    </head>
+    <body>
+        <nav>
+    
+    <a href="#" onclick="toggle_menu()" id="hamb_menu">☰</a>
+    
+    <a href="/">Index</a>&nbsp;
+    <a href="#" onclick="toggle_themes()">Mudar Tema</a>
+</nav>
+
+        <aside id="course_menu">
+    
+    
+    <b class="course_name">Disruptive Architectures</b>
+
+    
+    <b class="section_name">Sobre a disciplina</b>
+    
+    
+    <a href="/classes/00_index.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/01_definicoes.html" class="class_link">Definições de IoT</a>
+    
+    <a href="/classes/02_avaliacoes.html" class="class_link">Avaliações</a>
+    
+    
+    <b class="section_name">Eletrônica Básica</b>
+    
+    
+    <a href="/classes/10_circuitoseletricos.html" class="class_link">Circuitos Simples</a>
+    
+    <a href="/classes/14_desafios.html" class="class_link">Desfios! #01</a>
+    
+    
+    <b class="section_name">Sistemas Embarcados</b>
+    
+    
+    <a href="/classes/20_sistemas_embarcados.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/22_esp32.html" class="class_link">ESP32</a>
+    
+    <a href="/classes/21_arduino.html" class="class_link">Arduino</a>
+    
+    
+    <b class="section_name">Protocolos M2M</b>
+    
+    
+    <a href="/classes/30_m2m.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/31_UART.html" class="class_link">UART</a>
+    
+    <a href="/classes/32_I2C.html" class="class_link">I2C</a>
+    
+    <a href="/classes/33_SPI.html" class="class_link">SPI</a>
+    
+    
+    <b class="section_name">Backend</b>
+    
+    
+    <a href="/classes/40_node_red.html" class="class_link">Node-Red</a>
+    
+    <a href="/classes/41_python.html" class="class_link">Python</a>
+    
+    
+    <b class="section_name">Protocolos TCP/IP (Aplicação)</b>
+    
+    
+    <a href="/classes/50_http.html" class="class_link">HTTP</a>
+    
+    <a href="/classes/51_MQTT.html" class="class_link">MQTT</a>
+    
+    <a href="/classes/52_WebSocket.html" class="class_link">WebSocket</a>
+    
+    
+    <b class="section_name">Soluções</b>
+    
+    
+    <a href="/classes/92_desafios_sol.html" class="class_link">Desfios! #01</a>
+    
+    
+
+
+  
+</aside>
+
+        <aside id="toc_menu" style="float:right"> 
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#i2c-inter-integrated-circuit">\(I^2C\) Inter-Integrated Circuit</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#conexão-física">Conexão Física</a></li>
+<li class="toc-entry toc-h2"><a href="#programando">Programando</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#cenário-1-controlador-requisita-e-periférico-responde">Cenário 1: Controlador requisita e periférico responde</a></li>
+<li class="toc-entry toc-h3"><a href="#cenário-2-controlador-envia-e-periférico-recebe">Cenário 2: Controlador envia e periférico recebe</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</aside>
+
+        <main>
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                class
+                <span class="nc ">I2C</span>
+                : public
+                
+                <span class="nc ">Disruptive Architectures</span>
+                
+                , public
+                <span class="nc ">Protocolos M2M</span> 
+                
+            </div> 
+            <center><h1> I2C</h1></center>
+            <h1 id="i2c-inter-integrated-circuit">
+<a class="anchor" href="#i2c-inter-integrated-circuit" aria-hidden="true"><span class="octicon octicon-link"></span></a>\(I^2C\) <strong>Inter-Integrated Circuit</strong>
+</h1>
+
+<p>O I2C é um protocolo de comunicação serial que permite a conexão de múltiplos
+dispositivos periféricos (escravos) a um ou mais dispositivos controladores
+(mestres). Diferente do UART que é ponto-a-ponto, o I2C utiliza um barramento
+compartilhado, o que simplifica significativamente a fiação em projetos com
+vários sensores e atuadores.</p>
+
+<h2 id="conexão-física">
+<a class="anchor" href="#conex%C3%A3o-f%C3%ADsica" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conexão Física</h2>
+
+<p>Para a comunicação, o I2C utiliza apenas duas linhas de sinal, além da
+referência de aterramento (<code class="language-plaintext highlighter-rouge">GND</code>). Os pinos são dedicados e conhecidos como:</p>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">SDA</code> (<strong>Serial Data Line</strong>): Linha por onde os dados são enviados e
+recebidos.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">SCL</code> (<strong>Serial Clock Line</strong>): Linha que carrega o sinal de clock,
+sincronizando a comunicação.</li>
+</ul>
+
+<p><img src="attachments/i2c_esq.png" alt=""></p>
+
+<p>A conexão é feita em paralelo: todos os pinos <code class="language-plaintext highlighter-rouge">SDA</code> são conectados juntos e
+todos os pinos <code class="language-plaintext highlighter-rouge">SCL</code> são conectados juntos. Lembre-se também de conectar os
+pinos <code class="language-plaintext highlighter-rouge">GND</code> de todos os dispositivos para garantir uma referência de tensão
+comum.</p>
+
+<p>No I2C, um dispositivo atua como <strong>controlador</strong> (mestre), responsável por
+iniciar a comunicação e gerar o sinal de clock na linha <code class="language-plaintext highlighter-rouge">SCL</code>. Os outros
+dispositivos, os <strong>periféricos</strong> (escravos), “escutam” o barramento e só
+respondem quando são chamados pelo controlador através de um endereço único.</p>
+
+<p><img src="attachments/i2c_multi.png" alt=""></p>
+
+<blockquote>
+  <p>Cada dispositivo em um barramento I2C precisa ter um <strong>endereço</strong> único, que
+geralmente é um número de 7 bits. É através desse endereço que o controlador
+consegue se comunicar com um periférico específico, mesmo que vários outros
+estejam conectados no mesmo barramento. A colisão de endereços é um problema
+comum e deve ser verificada no datasheet dos componentes.</p>
+</blockquote>
+
+<h2 id="programando">
+<a class="anchor" href="#programando" aria-hidden="true"><span class="octicon octicon-link"></span></a>Programando</h2>
+
+<p>No ambiente do Arduino, utilizamos a biblioteca <code class="language-plaintext highlighter-rouge">Wire.h</code>, que se encarrega de
+abstrair e gerenciar toda a comunicação de baixo nível do protocolo I2C.</p>
+
+<h3 id="cenário-1-controlador-requisita-e-periférico-responde">
+<a class="anchor" href="#cen%C3%A1rio-1-controlador-requisita-e-perif%C3%A9rico-responde" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cenário 1: Controlador requisita e periférico responde</h3>
+
+<p>Neste exemplo, o controlador solicita 6 bytes de dados do periférico com o
+endereço 2. O periférico, por sua vez, aguarda uma requisição e responde com a
+mensagem “hello2”.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * CONTROLADOR
+ * Fazendo requisição
+ */</span>
+ <span class="cp">#include</span> <span class="cpf">&lt;Wire.h&gt;</span><span class="c1"> //Incluo a biblioteca de comunicação I2C</span><span class="cp">
+</span>
+ <span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+   <span class="n">Wire</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>        <span class="c1">// Inicializo o *bus* I2C como controlador</span>
+   <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>  <span class="c1">// Inicializo o serial para debug</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+   <span class="c1">// Faço uma requisição para o periférico de endereço 2, esperando 6 bytes</span>
+   <span class="n">Wire</span><span class="p">.</span><span class="n">requestFrom</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+
+   <span class="k">while</span> <span class="p">(</span><span class="n">Wire</span><span class="p">.</span><span class="n">available</span><span class="p">())</span> <span class="p">{</span> <span class="c1">// Enquanto a comunicação estiver ativa:</span>
+     <span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Wire</span><span class="p">.</span><span class="n">read</span><span class="p">();</span>    <span class="c1">// Recebo a informação byte a byte</span>
+     <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+   <span class="p">}</span>
+   <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">();</span>
+   <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * PERIFÉRICO
+ * Respondendo requisição do controlador
+ */</span>
+ <span class="cp">#include</span> <span class="cpf">&lt;Wire.h&gt;</span><span class="cp">
+</span>
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+   <span class="n">Wire</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>                <span class="c1">// Se conecta ao "bus" I2C com o endereço 2</span>
+   <span class="n">Wire</span><span class="p">.</span><span class="n">onRequest</span><span class="p">(</span><span class="n">requestEvent</span><span class="p">);</span> <span class="c1">// Registro a função que será chamada em uma requisição</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+   <span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Esta função é executada toda vez que o controlador requisitar dados</span>
+<span class="c1">// para o endereço registrado (2).</span>
+<span class="kt">void</span> <span class="nf">requestEvent</span><span class="p">()</span> <span class="p">{</span>
+   <span class="n">Wire</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"hello2"</span><span class="p">);</span> <span class="c1">// Respondo a mensagem com 6 bytes.</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="cenário-2-controlador-envia-e-periférico-recebe">
+<a class="anchor" href="#cen%C3%A1rio-2-controlador-envia-e-perif%C3%A9rico-recebe" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cenário 2: Controlador envia e periférico recebe</h3>
+
+<p>Aqui, o controlador envia continuamente uma string e um valor numérico para o
+periférico de endereço 2. O periférico está configurado para receber esses dados
+e exibi-los em seu próprio monitor serial.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * CONTROLADOR
+ * Enviando dados
+ */</span>
+<span class="cp">#include</span> <span class="cpf">&lt;Wire.h&gt;</span><span class="cp">
+</span>
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">Wire</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="c1">// Inicializa como controlador</span>
+<span class="p">}</span>
+
+<span class="n">byte</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">Wire</span><span class="p">.</span><span class="n">beginTransmission</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// Inicia transmissão para o periférico de endereço 2</span>
+  <span class="n">Wire</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"x is "</span><span class="p">);</span>        <span class="c1">// Envia uma string (5 bytes)</span>
+  <span class="n">Wire</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>             <span class="c1">// Envia o valor da variável x (1 byte)</span>
+  <span class="n">Wire</span><span class="p">.</span><span class="n">endTransmission</span><span class="p">();</span>    <span class="c1">// Finaliza a transmissão</span>
+
+  <span class="n">x</span><span class="o">++</span><span class="p">;</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * PERIFÉRICO
+ * Consome informação do controller
+ */</span>
+<span class="cp">#include</span> <span class="cpf">&lt;Wire.h&gt;</span><span class="cp">
+</span>
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">Wire</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>                 <span class="c1">// Se conecta ao "bus" I2C com o endereço 2</span>
+  <span class="n">Wire</span><span class="p">.</span><span class="n">onReceive</span><span class="p">(</span><span class="n">receiveEvent</span><span class="p">);</span>  <span class="c1">// Registro a função que será chamada ao receber dados</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>            <span class="c1">// Inicializo o serial para debug</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Esta função é executada toda vez que o controlador enviar dados</span>
+<span class="c1">// para o endereço registrado (2). O parâmetro 'howMany' indica</span>
+<span class="c1">// quantos bytes foram recebidos.</span>
+<span class="kt">void</span> <span class="nf">receiveEvent</span><span class="p">(</span><span class="kt">int</span> <span class="n">howMany</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">while</span><span class="p">(</span><span class="n">Wire</span><span class="p">.</span><span class="n">available</span><span class="p">())</span>
+  <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Wire</span><span class="p">.</span><span class="n">read</span><span class="p">();</span>   <span class="c1">// recebe o byte como um caractere</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>        <span class="c1">// imprime o caractere</span>
+  <span class="p">}</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">();</span> <span class="c1">// Pula uma linha ao final da mensagem</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                class
+                <span class="nc ">I2C</span>
+                : public
+                <span class="nc ">Disruptive Architectures</span>
+                
+                , public
+                <span class="nc ">Protocolos M2M</span> 
+                
+            </div> 
+        </main>
+        <script type="text/javascript" src="/assets/scripts.js"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+        <script src=" https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js "></script>
+        <script type="module">
+            mermaid.initialize({theme:"neutral",
+                                securityLevel: "strict",
+                                startOnLoad: true
+                                });
+        </script>
+    </body>
+</html>

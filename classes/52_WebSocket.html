@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <title>WebSocket - Disruptive Architectures</title>
+        <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+        <link rel="stylesheet" href="/assets/css/main.css" id="maincss">
+    </head>
+    <body>
+        <nav>
+    
+    <a href="#" onclick="toggle_menu()" id="hamb_menu">☰</a>
+    
+    <a href="/">Index</a>&nbsp;
+    <a href="#" onclick="toggle_themes()">Mudar Tema</a>
+</nav>
+
+        <aside id="course_menu">
+    
+    
+    <b class="course_name">Disruptive Architectures</b>
+
+    
+    <b class="section_name">Sobre a disciplina</b>
+    
+    
+    <a href="/classes/00_index.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/01_definicoes.html" class="class_link">Definições de IoT</a>
+    
+    <a href="/classes/02_avaliacoes.html" class="class_link">Avaliações</a>
+    
+    
+    <b class="section_name">Eletrônica Básica</b>
+    
+    
+    <a href="/classes/10_circuitoseletricos.html" class="class_link">Circuitos Simples</a>
+    
+    <a href="/classes/14_desafios.html" class="class_link">Desfios! #01</a>
+    
+    
+    <b class="section_name">Sistemas Embarcados</b>
+    
+    
+    <a href="/classes/20_sistemas_embarcados.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/22_esp32.html" class="class_link">ESP32</a>
+    
+    <a href="/classes/21_arduino.html" class="class_link">Arduino</a>
+    
+    
+    <b class="section_name">Protocolos M2M</b>
+    
+    
+    <a href="/classes/30_m2m.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/31_UART.html" class="class_link">UART</a>
+    
+    <a href="/classes/32_I2C.html" class="class_link">I2C</a>
+    
+    <a href="/classes/33_SPI.html" class="class_link">SPI</a>
+    
+    
+    <b class="section_name">Backend</b>
+    
+    
+    <a href="/classes/40_node_red.html" class="class_link">Node-Red</a>
+    
+    <a href="/classes/41_python.html" class="class_link">Python</a>
+    
+    
+    <b class="section_name">Protocolos TCP/IP (Aplicação)</b>
+    
+    
+    <a href="/classes/50_http.html" class="class_link">HTTP</a>
+    
+    <a href="/classes/51_MQTT.html" class="class_link">MQTT</a>
+    
+    <a href="/classes/52_WebSocket.html" class="class_link">WebSocket</a>
+    
+    
+    <b class="section_name">Soluções</b>
+    
+    
+    <a href="/classes/92_desafios_sol.html" class="class_link">Desfios! #01</a>
+    
+    
+
+
+  
+</aside>
+
+        <aside id="toc_menu" style="float:right"> 
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#servidor-websocket-com-esp32">Servidor WebSocket com ESP32</a></li>
+<li class="toc-entry toc-h1"><a href="#cliente-websocket-simples-em-javascript">Cliente WebSocket Simples em JavaScript</a></li>
+</ul>
+</aside>
+
+        <main>
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                class
+                <span class="nc ">WebSocket</span>
+                : public
+                
+                <span class="nc ">Disruptive Architectures</span>
+                
+                , public
+                <span class="nc ">Protocolos TCP/IP (Aplicação)</span> 
+                
+            </div> 
+            <center><h1> WebSocket</h1></center>
+            <p>O protocolo WebSocket surge para superar algumas limitações do HTTP,
+especialmente em aplicações que exigem comunicação em tempo real entre cliente e
+servidor. Diferentemente do HTTP, que funciona no modelo requisição-resposta, o
+WebSocket estabelece uma conexão persistente e bidirecional, permitindo que
+ambas as partes enviem dados a qualquer momento, sem a necessidade de reiniciar
+a comunicação a cada troca.</p>
+
+<p>Essa característica faz do WebSocket um protocolo ideal para aplicações IoT que
+demandam atualizações rápidas e contínuas, como monitoramento, controle remoto,
+jogos online, chats e dashboards dinâmicos. Além disso, o WebSocket reduz a
+sobrecarga de cabeçalhos e conexões repetidas, otimizando o uso da banda e do
+processamento.</p>
+
+<h1 id="servidor-websocket-com-esp32">
+<a class="anchor" href="#servidor-websocket-com-esp32" aria-hidden="true"><span class="octicon octicon-link"></span></a>Servidor WebSocket com ESP32</h1>
+
+<p>Vamos ver um exemplo simples onde o ESP32 atua como servidor WebSocket,
+aceitando conexões e enviando mensagens para os clientes conectados.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;WiFi.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;WebSocketsServer.h&gt;</span><span class="cp">
+</span>
+<span class="c1">// Credenciais Wi-Fi</span>
+<span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">ssid</span> <span class="o">=</span> <span class="s">"SEU_SSID"</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">password</span> <span class="o">=</span> <span class="s">"SUA_SENHA"</span><span class="p">;</span>
+
+<span class="n">WebSocketsServer</span> <span class="n">webSocket</span> <span class="o">=</span> <span class="n">WebSocketsServer</span><span class="p">(</span><span class="mi">81</span><span class="p">);</span> <span class="c1">// Porta 81 para o WebSocket</span>
+
+<span class="kt">void</span> <span class="nf">onWebSocketEvent</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">num</span><span class="p">,</span> <span class="n">WStype_t</span> <span class="n">type</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="o">*</span> <span class="n">payload</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">length</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">switch</span><span class="p">(</span><span class="n">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">WStype_DISCONNECTED</span><span class="p">:</span>
+      <span class="n">Serial</span><span class="p">.</span><span class="n">printf</span><span class="p">(</span><span class="s">"Cliente %u desconectado</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="n">WStype_CONNECTED</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">IPAddress</span> <span class="n">ip</span> <span class="o">=</span> <span class="n">webSocket</span><span class="p">.</span><span class="n">remoteIP</span><span class="p">(</span><span class="n">num</span><span class="p">);</span>
+      <span class="n">Serial</span><span class="p">.</span><span class="n">printf</span><span class="p">(</span><span class="s">"Cliente %u conectado, IP: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="n">ip</span><span class="p">.</span><span class="n">toString</span><span class="p">().</span><span class="n">c_str</span><span class="p">());</span>
+      <span class="n">webSocket</span><span class="p">.</span><span class="n">sendTXT</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="s">"Bem-vindo ao WebSocket ESP32!"</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">case</span> <span class="n">WStype_TEXT</span><span class="p">:</span>
+      <span class="n">Serial</span><span class="p">.</span><span class="n">printf</span><span class="p">(</span><span class="s">"Recebido do cliente %u: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="n">payload</span><span class="p">);</span>
+      <span class="c1">// Ecoa a mensagem para todos os clientes</span>
+      <span class="n">webSocket</span><span class="p">.</span><span class="n">broadcastTXT</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="n">length</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">default</span><span class="o">:</span>
+      <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
+  <span class="n">WiFi</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="n">ssid</span><span class="p">,</span> <span class="n">password</span><span class="p">);</span>
+  
+  <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"Conectando ao Wi-Fi"</span><span class="p">);</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">WiFi</span><span class="p">.</span><span class="n">status</span><span class="p">()</span> <span class="o">!=</span> <span class="n">WL_CONNECTED</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"."</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">Conectado!"</span><span class="p">);</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"IP: "</span><span class="p">);</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">WiFi</span><span class="p">.</span><span class="n">localIP</span><span class="p">());</span>
+
+  <span class="n">webSocket</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+  <span class="n">webSocket</span><span class="p">.</span><span class="n">onEvent</span><span class="p">(</span><span class="n">onWebSocketEvent</span><span class="p">);</span>
+
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Servidor WebSocket iniciado."</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">webSocket</span><span class="p">.</span><span class="n">loop</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h1 id="cliente-websocket-simples-em-javascript">
+<a class="anchor" href="#cliente-websocket-simples-em-javascript" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cliente WebSocket Simples em JavaScript</h1>
+
+<p>Para testar o servidor, pode-se usar uma página HTML simples que cria uma
+conexão WebSocket e mostra as mensagens enviadas e recebidas:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;title&gt;</span>Cliente WebSocket ESP32<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>Cliente WebSocket<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;textarea</span> <span class="na">id=</span><span class="s">"log"</span> <span class="na">cols=</span><span class="s">"50"</span> <span class="na">rows=</span><span class="s">"10"</span> <span class="na">readonly</span><span class="nt">&gt;&lt;/textarea&gt;&lt;br&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"message"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">placeholder=</span><span class="s">"Digite uma mensagem..."</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">onclick=</span><span class="s">"sendMessage()"</span><span class="nt">&gt;</span>Enviar<span class="nt">&lt;/button&gt;</span>
+
+  <span class="nt">&lt;script&gt;</span>
+    <span class="kd">const</span> <span class="nx">log</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">log</span><span class="dl">'</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">ws</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">WebSocket</span><span class="p">(</span><span class="dl">'</span><span class="s1">ws://ENDERECO_IP_ESP32:81</span><span class="dl">'</span><span class="p">);</span>
+
+    <span class="nx">ws</span><span class="p">.</span><span class="nx">onopen</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">log</span><span class="p">.</span><span class="nx">value</span> <span class="o">+=</span> <span class="dl">"</span><span class="s2">Conectado ao servidor WebSocket</span><span class="se">\n</span><span class="dl">"</span><span class="p">;</span>
+    <span class="p">};</span>
+
+    <span class="nx">ws</span><span class="p">.</span><span class="nx">onmessage</span> <span class="o">=</span> <span class="nx">event</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">log</span><span class="p">.</span><span class="nx">value</span> <span class="o">+=</span> <span class="dl">"</span><span class="s2">Recebido: </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nx">data</span> <span class="o">+</span> <span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">;</span>
+    <span class="p">};</span>
+
+    <span class="nx">ws</span><span class="p">.</span><span class="nx">onclose</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">log</span><span class="p">.</span><span class="nx">value</span> <span class="o">+=</span> <span class="dl">"</span><span class="s2">Conexão fechada</span><span class="se">\n</span><span class="dl">"</span><span class="p">;</span>
+    <span class="p">};</span>
+
+    <span class="kd">function</span> <span class="nf">sendMessage</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">input</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">);</span>
+      <span class="nx">ws</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+      <span class="nx">log</span><span class="p">.</span><span class="nx">value</span> <span class="o">+=</span> <span class="dl">"</span><span class="s2">Enviado: </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">input</span><span class="p">.</span><span class="nx">value</span> <span class="o">+</span> <span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">;</span>
+      <span class="nx">input</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>Exemplo WebSocket no Node-RED</p>
+
+<p>O Node-RED oferece dois nós para WebSocket:</p>
+
+<ul>
+  <li>
+    <p>WebSocket In (para receber mensagens)</p>
+  </li>
+  <li>
+    <p>WebSocket Out (para enviar mensagens)</p>
+  </li>
+</ul>
+
+<p>Eles podem operar como servidor (modo “Listen On”) para aceitar conexões, ou
+como cliente para se conectar a servidores externos. Criando um servidor
+WebSocket que recebe e envia mensagens</p>
+
+<ul>
+  <li>
+    <p>Adicione um nó WebSocket In configurado como “Listen On”, com o caminho
+/ws/chat.</p>
+  </li>
+  <li>
+    <p>Conecte a um nó Debug para visualizar as mensagens recebidas.</p>
+  </li>
+  <li>
+    <p>Para enviar mensagens, use um nó Inject conectado a um nó WebSocket Out
+configurado com o mesmo caminho.</p>
+  </li>
+</ul>
+
+<p>Fluxo básico de chat via WebSocket</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"websocket_in"</span><span class="p">,</span><span class="w"> </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"websocket in"</span><span class="p">,</span><span class="w"> </span><span class="nl">"z"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flow2"</span><span class="p">,</span><span class="w"> </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Escutar
+/ws/chat"</span><span class="p">,</span><span class="w"> </span><span class="nl">"server"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ws_server"</span><span class="p">,</span><span class="w"> </span><span class="nl">"client"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="nl">"x"</span><span class="p">:</span><span class="w"> </span><span class="mi">140</span><span class="p">,</span><span class="w"> </span><span class="nl">"y"</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w"> </span><span class="nl">"wires"</span><span class="p">:</span><span class="w">
+</span><span class="p">[[</span><span class="s2">"debug_1"</span><span class="p">]]</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"debug_1"</span><span class="p">,</span><span class="w"> </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"debug"</span><span class="p">,</span><span class="w"> </span><span class="nl">"z"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flow2"</span><span class="p">,</span><span class="w"> </span><span class="nl">"name"</span><span class="p">:</span><span class="w">
+</span><span class="s2">"Mostrar mensagens"</span><span class="p">,</span><span class="w"> </span><span class="nl">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nl">"x"</span><span class="p">:</span><span class="w"> </span><span class="mi">330</span><span class="p">,</span><span class="w"> </span><span class="nl">"y"</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w"> </span><span class="nl">"wires"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w">
+</span><span class="s2">"inject_1"</span><span class="p">,</span><span class="w"> </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inject"</span><span class="p">,</span><span class="w"> </span><span class="nl">"z"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flow2"</span><span class="p">,</span><span class="w"> </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enviar 'Olá WebSocket'"</span><span class="p">,</span><span class="w">
+</span><span class="nl">"props"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"payload"</span><span class="p">}],</span><span class="w"> </span><span class="nl">"payload"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Olá WebSocket"</span><span class="p">,</span><span class="w"> </span><span class="nl">"payloadType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+</span><span class="nl">"repeat"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="nl">"once"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nl">"x"</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w"> </span><span class="nl">"y"</span><span class="p">:</span><span class="w"> </span><span class="mi">240</span><span class="p">,</span><span class="w"> </span><span class="nl">"wires"</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="s2">"websocket_out"</span><span class="p">]]</span><span class="w"> </span><span class="p">},</span><span class="w">
+</span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"websocket_out"</span><span class="p">,</span><span class="w"> </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"websocket out"</span><span class="p">,</span><span class="w"> </span><span class="nl">"z"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flow2"</span><span class="p">,</span><span class="w"> </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enviar
+para /ws/chat"</span><span class="p">,</span><span class="w"> </span><span class="nl">"server"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ws_server"</span><span class="p">,</span><span class="w"> </span><span class="nl">"client"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="nl">"x"</span><span class="p">:</span><span class="w"> </span><span class="mi">340</span><span class="p">,</span><span class="w"> </span><span class="nl">"y"</span><span class="p">:</span><span class="w"> </span><span class="mi">240</span><span class="p">,</span><span class="w">
+</span><span class="nl">"wires"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ws_server"</span><span class="p">,</span><span class="w"> </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"websocket-listener"</span><span class="p">,</span><span class="w"> </span><span class="nl">"path"</span><span class="p">:</span><span class="w">
+</span><span class="s2">"/ws/chat"</span><span class="p">,</span><span class="w"> </span><span class="nl">"wholemsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"payload"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Assim, clientes WebSocket podem se conectar ao endpoint
+ws://<endere>:1880/ws/chat, enviar mensagens que aparecerão no debug,
+e receber mensagens enviadas pelo nó Inject.</endere></p>
+
+
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                class
+                <span class="nc ">WebSocket</span>
+                : public
+                <span class="nc ">Disruptive Architectures</span>
+                
+                , public
+                <span class="nc ">Protocolos TCP/IP (Aplicação)</span> 
+                
+            </div> 
+        </main>
+        <script type="text/javascript" src="/assets/scripts.js"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+        <script src=" https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js "></script>
+        <script type="module">
+            mermaid.initialize({theme:"neutral",
+                                securityLevel: "strict",
+                                startOnLoad: true
+                                });
+        </script>
+    </body>
+</html>

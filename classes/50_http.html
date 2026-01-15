@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <title>HTTP - Disruptive Architectures</title>
+        <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+        <link rel="stylesheet" href="/assets/css/main.css" id="maincss">
+    </head>
+    <body>
+        <nav>
+    
+    <a href="#" onclick="toggle_menu()" id="hamb_menu">☰</a>
+    
+    <a href="/">Index</a>&nbsp;
+    <a href="#" onclick="toggle_themes()">Mudar Tema</a>
+</nav>
+
+        <aside id="course_menu">
+    
+    
+    <b class="course_name">Disruptive Architectures</b>
+
+    
+    <b class="section_name">Sobre a disciplina</b>
+    
+    
+    <a href="/classes/00_index.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/01_definicoes.html" class="class_link">Definições de IoT</a>
+    
+    <a href="/classes/02_avaliacoes.html" class="class_link">Avaliações</a>
+    
+    
+    <b class="section_name">Eletrônica Básica</b>
+    
+    
+    <a href="/classes/10_circuitoseletricos.html" class="class_link">Circuitos Simples</a>
+    
+    <a href="/classes/14_desafios.html" class="class_link">Desfios! #01</a>
+    
+    
+    <b class="section_name">Sistemas Embarcados</b>
+    
+    
+    <a href="/classes/20_sistemas_embarcados.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/22_esp32.html" class="class_link">ESP32</a>
+    
+    <a href="/classes/21_arduino.html" class="class_link">Arduino</a>
+    
+    
+    <b class="section_name">Protocolos M2M</b>
+    
+    
+    <a href="/classes/30_m2m.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/31_UART.html" class="class_link">UART</a>
+    
+    <a href="/classes/32_I2C.html" class="class_link">I2C</a>
+    
+    <a href="/classes/33_SPI.html" class="class_link">SPI</a>
+    
+    
+    <b class="section_name">Backend</b>
+    
+    
+    <a href="/classes/40_node_red.html" class="class_link">Node-Red</a>
+    
+    <a href="/classes/41_python.html" class="class_link">Python</a>
+    
+    
+    <b class="section_name">Protocolos TCP/IP (Aplicação)</b>
+    
+    
+    <a href="/classes/50_http.html" class="class_link">HTTP</a>
+    
+    <a href="/classes/51_MQTT.html" class="class_link">MQTT</a>
+    
+    <a href="/classes/52_WebSocket.html" class="class_link">WebSocket</a>
+    
+    
+    <b class="section_name">Soluções</b>
+    
+    
+    <a href="/classes/92_desafios_sol.html" class="class_link">Desfios! #01</a>
+    
+    
+
+
+  
+</aside>
+
+        <aside id="toc_menu" style="float:right"> 
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#servidor-http-simples-com-esp32">Servidor HTTP Simples com ESP32</a></li>
+<li class="toc-entry toc-h1"><a href="#cliente-http-get-com-esp32">Cliente HTTP GET com ESP32</a></li>
+<li class="toc-entry toc-h1"><a href="#exemplo-http-no-node-red">Exemplo HTTP no Node-RED</a></li>
+</ul>
+</aside>
+
+        <main>
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                class
+                <span class="nc ">HTTP</span>
+                : public
+                
+                <span class="nc ">Disruptive Architectures</span>
+                
+                , public
+                <span class="nc ">Protocolos TCP/IP (Aplicação)</span> 
+                
+            </div> 
+            <center><h1> HTTP</h1></center>
+            <p>O protocolo HTTP (Hypertext Transfer Protocol) é um dos pilares da internet
+moderna, sendo amplamente utilizado para a transferência de dados entre clientes
+e servidores. Diferente do MQTT, que foi concebido para aplicações IoT e tem uma
+abordagem leve e eficiente, o HTTP é mais robusto e universal, o que o torna
+ideal para comunicação geral na web, incluindo na interação com dispositivos
+conectados.</p>
+
+<p>No modelo HTTP, a comunicação acontece de forma direta entre cliente e servidor,
+seguindo a arquitetura cliente/servidor. O cliente, que pode ser um navegador,
+aplicativo ou dispositivo IoT, envia requisições HTTP (requests) ao servidor,
+que processa essas requisições e envia uma resposta (response), contendo o
+recurso solicitado ou um código de status indicando o resultado da operação.</p>
+
+<p>Cada requisição HTTP contém uma linha de método (GET, POST, PUT, DELETE, entre
+outros), que indica a ação desejada, além de cabeçalhos que carregam informações
+adicionais e, opcionalmente, um corpo com dados, especialmente em métodos como
+POST e PUT. Essa estrutura simples, porém poderosa, permite a construção de APIs
+RESTful, que são amplamente utilizadas para comunicação entre sistemas e
+dispositivos.</p>
+
+<h1 id="servidor-http-simples-com-esp32">
+<a class="anchor" href="#servidor-http-simples-com-esp32" aria-hidden="true"><span class="octicon octicon-link"></span></a>Servidor HTTP Simples com ESP32</h1>
+
+<p>Para experiências iniciais com HTTP no mundo IoT, o ESP32 pode ser programado
+para atuar como um servidor web simples, possibilitando a interação via
+navegador ou aplicações que façam requisições HTTP. Abaixo, um exemplo básico
+que cria uma página web que exibe “Olá, Mundo!” e responde a requisições GET.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;WiFi.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;WebServer.h&gt;</span><span class="cp">
+</span>
+<span class="c1">// Defina suas credenciais Wi-Fi</span>
+<span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">ssid</span> <span class="o">=</span> <span class="s">"SEU_SSID"</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">password</span> <span class="o">=</span> <span class="s">"SUA_SENHA"</span><span class="p">;</span>
+
+<span class="n">WebServer</span> <span class="nf">server</span><span class="p">(</span><span class="mi">80</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">handleRoot</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">server</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="s">"text/plain"</span><span class="p">,</span> <span class="s">"Olá, Mundo!"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
+  <span class="n">WiFi</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="n">ssid</span><span class="p">,</span> <span class="n">password</span><span class="p">);</span>
+  
+  <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"Conectando à rede Wi-Fi"</span><span class="p">);</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">WiFi</span><span class="p">.</span><span class="n">status</span><span class="p">()</span> <span class="o">!=</span> <span class="n">WL_CONNECTED</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"."</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"conectado!"</span><span class="p">);</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"Endereço IP: "</span><span class="p">);</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">WiFi</span><span class="p">.</span><span class="n">localIP</span><span class="p">());</span>
+
+  <span class="n">server</span><span class="p">.</span><span class="n">on</span><span class="p">(</span><span class="s">"/"</span><span class="p">,</span> <span class="n">handleRoot</span><span class="p">);</span>
+  <span class="n">server</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Servidor HTTP iniciado"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">server</span><span class="p">.</span><span class="n">handleClient</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h1 id="cliente-http-get-com-esp32">
+<a class="anchor" href="#cliente-http-get-com-esp32" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cliente HTTP GET com ESP32</h1>
+
+<p>Além de responder requisições, o ESP32 também pode agir como cliente HTTP,
+consumindo dados de servidores externos. O exemplo a seguir faz uma requisição
+GET a um servidor web e imprime a resposta no monitor serial.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;WiFi.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;HTTPClient.h&gt;</span><span class="cp">
+</span>
+<span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">ssid</span> <span class="o">=</span> <span class="s">"SEU_SSID"</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">password</span> <span class="o">=</span> <span class="s">"SUA_SENHA"</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
+  <span class="n">WiFi</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="n">ssid</span><span class="p">,</span> <span class="n">password</span><span class="p">);</span>
+
+  <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"Conectando à rede Wi-Fi"</span><span class="p">);</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">WiFi</span><span class="p">.</span><span class="n">status</span><span class="p">()</span> <span class="o">!=</span> <span class="n">WL_CONNECTED</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"."</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"conectado!"</span><span class="p">);</span>
+  
+  <span class="n">HTTPClient</span> <span class="n">http</span><span class="p">;</span>
+  <span class="n">http</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="s">"http://worldtimeapi.org/api/timezone/Etc/UTC"</span><span class="p">);</span> <span class="c1">// URL exemplo</span>
+  <span class="kt">int</span> <span class="n">httpCode</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">GET</span><span class="p">();</span>
+  
+  <span class="k">if</span> <span class="p">(</span><span class="n">httpCode</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">String</span> <span class="n">payload</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">getString</span><span class="p">();</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Resposta do servidor:"</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">payload</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">printf</span><span class="p">(</span><span class="s">"Erro na requisição: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">httpCode</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">http</span><span class="p">.</span><span class="n">end</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Não faz nada no loop</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h1 id="exemplo-http-no-node-red">
+<a class="anchor" href="#exemplo-http-no-node-red" aria-hidden="true"><span class="octicon octicon-link"></span></a>Exemplo HTTP no Node-RED</h1>
+
+<p>No Node-RED, criar um endpoint HTTP é simples e permite que seus fluxos
+respondam a requisições externas.</p>
+
+<ul>
+  <li>
+    <p>Adicione um nó HTTP In, configure o método (GET, POST, etc.) e defina a URL do
+endpoint, por exemplo, /hello.</p>
+  </li>
+  <li>
+    <p>Use um nó Template ou Function para preparar a resposta (exemplo: “Olá do
+Node-RED!”).</p>
+  </li>
+  <li>
+    <p>Conecte à saída a um nó HTTP Response para enviar a resposta ao cliente.</p>
+  </li>
+</ul>
+
+<p>Fluxo básico de um endpoint GET /hello</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http_in_1"</span><span class="p">,</span><span class="w"> </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http in"</span><span class="p">,</span><span class="w"> </span><span class="nl">"z"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flow1"</span><span class="p">,</span><span class="w"> </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Receber GET
+/hello"</span><span class="p">,</span><span class="w"> </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/hello"</span><span class="p">,</span><span class="w"> </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"get"</span><span class="p">,</span><span class="w"> </span><span class="nl">"x"</span><span class="p">:</span><span class="w"> </span><span class="mi">130</span><span class="p">,</span><span class="w"> </span><span class="nl">"y"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="nl">"wires"</span><span class="p">:</span><span class="w">
+</span><span class="p">[[</span><span class="s2">"function_1"</span><span class="p">]]</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"function_1"</span><span class="p">,</span><span class="w"> </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"function"</span><span class="p">,</span><span class="w"> </span><span class="nl">"z"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flow1"</span><span class="p">,</span><span class="w">
+</span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resposta simples"</span><span class="p">,</span><span class="w"> </span><span class="nl">"func"</span><span class="p">:</span><span class="w"> </span><span class="s2">"msg.payload = </span><span class="se">\"</span><span class="s2">Olá do Node-RED!</span><span class="se">\"</span><span class="s2">;</span><span class="se">\n</span><span class="s2">return
+msg;"</span><span class="p">,</span><span class="w"> </span><span class="nl">"x"</span><span class="p">:</span><span class="w"> </span><span class="mi">320</span><span class="p">,</span><span class="w"> </span><span class="nl">"y"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="nl">"wires"</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="s2">"http_response_1"</span><span class="p">]]</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w">
+</span><span class="s2">"http_response_1"</span><span class="p">,</span><span class="w"> </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http response"</span><span class="p">,</span><span class="w"> </span><span class="nl">"z"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flow1"</span><span class="p">,</span><span class="w"> </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="nl">"x"</span><span class="p">:</span><span class="w"> </span><span class="mi">510</span><span class="p">,</span><span class="w">
+</span><span class="nl">"y"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="nl">"wires"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Com este fluxo, ao acessar http://<endere>:1880/hello em um
+navegador, verá a mensagem "Olá do Node-RED!".</endere></p>
+
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                class
+                <span class="nc ">HTTP</span>
+                : public
+                <span class="nc ">Disruptive Architectures</span>
+                
+                , public
+                <span class="nc ">Protocolos TCP/IP (Aplicação)</span> 
+                
+            </div> 
+        </main>
+        <script type="text/javascript" src="/assets/scripts.js"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+        <script src=" https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js "></script>
+        <script type="module">
+            mermaid.initialize({theme:"neutral",
+                                securityLevel: "strict",
+                                startOnLoad: true
+                                });
+        </script>
+    </body>
+</html>

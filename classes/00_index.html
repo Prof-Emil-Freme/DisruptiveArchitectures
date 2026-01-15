@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <title>Introdução - Disruptive Architectures</title>
+        <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+        <link rel="stylesheet" href="/assets/css/main.css" id="maincss">
+    </head>
+    <body>
+        <nav>
+    
+    <a href="#" onclick="toggle_menu()" id="hamb_menu">☰</a>
+    
+    <a href="/">Index</a>&nbsp;
+    <a href="#" onclick="toggle_themes()">Mudar Tema</a>
+</nav>
+
+        <aside id="course_menu">
+    
+    
+    <b class="course_name">Disruptive Architectures</b>
+
+    
+    <b class="section_name">Sobre a disciplina</b>
+    
+    
+    <a href="/classes/00_index.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/01_definicoes.html" class="class_link">Definições de IoT</a>
+    
+    <a href="/classes/02_avaliacoes.html" class="class_link">Avaliações</a>
+    
+    
+    <b class="section_name">Eletrônica Básica</b>
+    
+    
+    <a href="/classes/10_circuitoseletricos.html" class="class_link">Circuitos Simples</a>
+    
+    <a href="/classes/14_desafios.html" class="class_link">Desfios! #01</a>
+    
+    
+    <b class="section_name">Sistemas Embarcados</b>
+    
+    
+    <a href="/classes/20_sistemas_embarcados.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/22_esp32.html" class="class_link">ESP32</a>
+    
+    <a href="/classes/21_arduino.html" class="class_link">Arduino</a>
+    
+    
+    <b class="section_name">Protocolos M2M</b>
+    
+    
+    <a href="/classes/30_m2m.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/31_UART.html" class="class_link">UART</a>
+    
+    <a href="/classes/32_I2C.html" class="class_link">I2C</a>
+    
+    <a href="/classes/33_SPI.html" class="class_link">SPI</a>
+    
+    
+    <b class="section_name">Backend</b>
+    
+    
+    <a href="/classes/40_node_red.html" class="class_link">Node-Red</a>
+    
+    <a href="/classes/41_python.html" class="class_link">Python</a>
+    
+    
+    <b class="section_name">Protocolos TCP/IP (Aplicação)</b>
+    
+    
+    <a href="/classes/50_http.html" class="class_link">HTTP</a>
+    
+    <a href="/classes/51_MQTT.html" class="class_link">MQTT</a>
+    
+    <a href="/classes/52_WebSocket.html" class="class_link">WebSocket</a>
+    
+    
+    <b class="section_name">Soluções</b>
+    
+    
+    <a href="/classes/92_desafios_sol.html" class="class_link">Desfios! #01</a>
+    
+    
+
+
+  
+</aside>
+
+        <aside id="toc_menu" style="float:right"> 
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#disruptive-architectures-ia-e-iot-lele">Disruptive Architectures: IA e IoT lele</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#objetivos-do-curso">Objetivos do Curso</a></li>
+<li class="toc-entry toc-h2"><a href="#o-que-você-precisa-para-acompanhar">O que você precisa para acompanhar?</a></li>
+<li class="toc-entry toc-h2"><a href="#dinâmica-das-aulas">Dinâmica das Aulas</a></li>
+<li class="toc-entry toc-h2"><a href="#softwares-necessários">Softwares Necessários</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#ai">AI</a></li>
+<li class="toc-entry toc-h3"><a href="#iot">IoT</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#ideias-de-projetos">Ideias de Projetos</a></li>
+</ul>
+</li>
+</ul>
+</aside>
+
+        <main>
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                class
+                <span class="nc ">Introdução</span>
+                : public
+                
+                <span class="nc ">Disruptive Architectures</span>
+                
+                , public
+                <span class="nc ">Sobre a disciplina</span> 
+                
+            </div> 
+            <center><h1> Introdução</h1></center>
+            <h1 id="disruptive-architectures-ia-e-iot-lele">
+<a class="anchor" href="#disruptive-architectures-ia-e-iot-lele" aria-hidden="true"><span class="octicon octicon-link"></span></a>Disruptive Architectures: IA e IoT lele</h1>
+
+<p>Seja bem-vindo(a) à disciplina de Disruptive Architectures: IA e IoT!</p>
+
+<p>Aqui, você encontrará todo o material trabalhado em sala, orientações, desafios
+práticos, laboratórios e referências para expandir seus horizontes.</p>
+
+<ul>
+  <li>
+<strong>Curso:</strong> Tecnologia de Desenvolvimento de Sistemas</li>
+  <li>
+<strong>Disciplina:</strong> Disruptive Architectures: IA e IoT</li>
+  <li>
+<strong>Turmas 2025:</strong> 2TDSPW</li>
+  <li>
+<strong>Professor:</strong> Emil Freme</li>
+</ul>
+
+<h2 id="objetivos-do-curso">
+<a class="anchor" href="#objetivos-do-curso" aria-hidden="true"><span class="octicon octicon-link"></span></a>Objetivos do Curso</h2>
+
+<p>Ao final desta jornada, você será capaz de:</p>
+
+<ul>
+  <li>Compreender, na prática, os fundamentos de Análise de Dados, Machine Learning
+(ML) e Deep Learning (DL)</li>
+  <li>Aplicar técnicas e conceitos de DL em pequenos projetos</li>
+  <li>Desenvolver soluções de IA relevantes para desafios do cotidiano</li>
+  <li>Entender o funcionamento e potencial dos sistemas baseados em IoT (Internet
+das Coisas)</li>
+  <li>Reconhecer as principais tecnologias habilitadoras da IoT</li>
+  <li>Criar e programar experimentos e projetos de IoT</li>
+</ul>
+
+<h2 id="o-que-você-precisa-para-acompanhar">
+<a class="anchor" href="#o-que-voc%C3%AA-precisa-para-acompanhar" aria-hidden="true"><span class="octicon octicon-link"></span></a>O que você precisa para acompanhar?</h2>
+
+<ul>
+  <li>Lógica de programação (básica)</li>
+  <li>Conhecimento inicial de Python e C/C++</li>
+  <li>Atenção à sintaxe</li>
+  <li>E, principalmente, dedicação para mergulhar em novos desafios!</li>
+</ul>
+
+<h2 id="dinâmica-das-aulas">
+<a class="anchor" href="#din%C3%A2mica-das-aulas" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dinâmica das Aulas</h2>
+
+<p>Nossa proposta é aprender fazendo: cada encontro traz um desafio (exercícios,
+investigações, projetos) unindo teoria e prática. Os laboratórios são curtos e
+focados, sempre com objetivos claros para você avançar etapa por etapa.</p>
+
+<h2 id="softwares-necessários">
+<a class="anchor" href="#softwares-necess%C3%A1rios" aria-hidden="true"><span class="octicon octicon-link"></span></a>Softwares Necessários</h2>
+
+<p>A maior parte do nosso trabalho será com scripts em Python e ferramentas
+amplamente utilizadas no mercado, que você pode rodar localmente ou na nuvem:</p>
+
+<h3 id="ai">
+<a class="anchor" href="#ai" aria-hidden="true"><span class="octicon octicon-link"></span></a>AI</h3>
+
+<ul>
+  <li>
+<strong>Instalação local recomendada:</strong>
+    <ul>
+      <li>Python 3.x</li>
+      <li>Jupyter Notebook</li>
+      <li>Anaconda</li>
+    </ul>
+  </li>
+  <li>
+<strong>Opções na nuvem:</strong>
+    <ul>
+      <li>Google Colab</li>
+      <li>Kaggle</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="iot">
+<a class="anchor" href="#iot" aria-hidden="true"><span class="octicon octicon-link"></span></a>IoT</h3>
+
+<ul>
+  <li>
+<strong>Instalação local recomendada:</strong>
+    <ul>
+      <li>Arduino IDE</li>
+    </ul>
+  </li>
+  <li>
+<strong>Opções de simuladores online:</strong>
+    <ul>
+      <li>TinkerCad</li>
+      <li>Wowki</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="ideias-de-projetos">
+<a class="anchor" href="#ideias-de-projetos" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ideias de Projetos</h2>
+
+<p>As possibilidades de IA e IoT são inúmeras. Pense em um problema do seu dia a
+dia que poderiam ser resolvido com Machine Learning.</p>
+
+
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                class
+                <span class="nc ">Introdução</span>
+                : public
+                <span class="nc ">Disruptive Architectures</span>
+                
+                , public
+                <span class="nc ">Sobre a disciplina</span> 
+                
+            </div> 
+        </main>
+        <script type="text/javascript" src="/assets/scripts.js"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+        <script src=" https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js "></script>
+        <script type="module">
+            mermaid.initialize({theme:"neutral",
+                                securityLevel: "strict",
+                                startOnLoad: true
+                                });
+        </script>
+    </body>
+</html>

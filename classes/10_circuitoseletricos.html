@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <title>Circuitos Simples - Disruptive Architectures</title>
+        <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+        <link rel="stylesheet" href="/assets/css/main.css" id="maincss">
+    </head>
+    <body>
+        <nav>
+    
+    <a href="#" onclick="toggle_menu()" id="hamb_menu">☰</a>
+    
+    <a href="/">Index</a>&nbsp;
+    <a href="#" onclick="toggle_themes()">Mudar Tema</a>
+</nav>
+
+        <aside id="course_menu">
+    
+    
+    <b class="course_name">Disruptive Architectures</b>
+
+    
+    <b class="section_name">Sobre a disciplina</b>
+    
+    
+    <a href="/classes/00_index.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/01_definicoes.html" class="class_link">Definições de IoT</a>
+    
+    <a href="/classes/02_avaliacoes.html" class="class_link">Avaliações</a>
+    
+    
+    <b class="section_name">Eletrônica Básica</b>
+    
+    
+    <a href="/classes/10_circuitoseletricos.html" class="class_link">Circuitos Simples</a>
+    
+    <a href="/classes/14_desafios.html" class="class_link">Desfios! #01</a>
+    
+    
+    <b class="section_name">Sistemas Embarcados</b>
+    
+    
+    <a href="/classes/20_sistemas_embarcados.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/22_esp32.html" class="class_link">ESP32</a>
+    
+    <a href="/classes/21_arduino.html" class="class_link">Arduino</a>
+    
+    
+    <b class="section_name">Protocolos M2M</b>
+    
+    
+    <a href="/classes/30_m2m.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/31_UART.html" class="class_link">UART</a>
+    
+    <a href="/classes/32_I2C.html" class="class_link">I2C</a>
+    
+    <a href="/classes/33_SPI.html" class="class_link">SPI</a>
+    
+    
+    <b class="section_name">Backend</b>
+    
+    
+    <a href="/classes/40_node_red.html" class="class_link">Node-Red</a>
+    
+    <a href="/classes/41_python.html" class="class_link">Python</a>
+    
+    
+    <b class="section_name">Protocolos TCP/IP (Aplicação)</b>
+    
+    
+    <a href="/classes/50_http.html" class="class_link">HTTP</a>
+    
+    <a href="/classes/51_MQTT.html" class="class_link">MQTT</a>
+    
+    <a href="/classes/52_WebSocket.html" class="class_link">WebSocket</a>
+    
+    
+    <b class="section_name">Soluções</b>
+    
+    
+    <a href="/classes/92_desafios_sol.html" class="class_link">Desfios! #01</a>
+    
+    
+
+
+  
+</aside>
+
+        <aside id="toc_menu" style="float:right"> 
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#a-protoboard">A Protoboard</a></li>
+<li class="toc-entry toc-h1"><a href="#componentes-eletrônicos">Componentes Eletrônicos</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#os-básicos">Os básicos</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#chaves-e-botões">Chaves e Botões</a></li>
+<li class="toc-entry toc-h3"><a href="#resistor">Resistor</a></li>
+<li class="toc-entry toc-h3"><a href="#diodos">Diodos</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#led-um-diodo-especial">LED: Um diodo especial</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#potenciômetros">Potenciômetros</a></li>
+<li class="toc-entry toc-h3"><a href="#capacitores">Capacitores</a></li>
+<li class="toc-entry toc-h3"><a href="#motores-dc-simples">Motores DC Simples</a></li>
+<li class="toc-entry toc-h3"><a href="#buzzers">Buzzers</a></li>
+<li class="toc-entry toc-h3"><a href="#transistores">Transistores</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#algumas-relações-importantes">Algumas relações importantes!</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#lei-de-ohm">Lei de Ohm.</a></li>
+<li class="toc-entry toc-h3"><a href="#potência-elétrica">Potência Elétrica</a></li>
+<li class="toc-entry toc-h3"><a href="#em-resumo">Em resumo:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</aside>
+
+        <main>
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                class
+                <span class="nc ">Circuitos Simples</span>
+                : public
+                
+                <span class="nc ">Disruptive Architectures</span>
+                
+                , public
+                <span class="nc ">Eletrônica Básica</span> 
+                
+            </div> 
+            <center><h1> Circuitos Simples</h1></center>
+            <p>Antes de que seja possível cair de cabeça em toda a magia do IoT, é bom que
+se tenha uma habilidade básica e entendimento de circuítos eletrônicos. Afinal,
+quando for necessário fazer um protótipo ou integração de um sensor XPTO qualquer
+em nosso sistema, ficará mais fácil dominando esses conceitos.</p>
+
+<p>Quando os circuítos são desenhados, existem alguns padrões que torna fácil o
+entendimento e reprodução deles. Vamos começar com um dos mais simples deles.</p>
+
+<p>Uma bateria e um led</p>
+
+<p><img src="figuras/circuito1.png" alt="circuito 1" style="width:49%"></p>
+
+<p>Esse é um dos circuitos mais simples que podemos montar, ele é composto por uma
+bateria, que é o ícone no topo desse esquema, um led, mostrado na parte
+inferior, e um resistor de 330 ohms – essa é a unidade de medida de
+resistência, e por fim o que liga todos esses componentes é algum tipo de “fio”,
+que pode ser de fato fios de cobre, ou jumpers, pode ser um sistema de
+<em>protoboard</em>, ou ainda uma placa de circuíto impresso (ou feita em casa).</p>
+
+<p>Assim podemos criar o circuíto da seguinte forma:</p>
+
+<p><img src="figuras/circuito1.png" alt="circuito 1" style="width:49%">
+<img src="figuras/circuito1_foto.jpg" alt="foto do circuito 1" style="width:49%"></p>
+
+<p>É uma possibilidade, mas para facilitar o processo de prototipagem é comum
+utilizarmos as <em>protoboards</em> (ou <em>breadboard</em> em inglês).</p>
+
+<p><img src="figuras/circuito1.png" alt="circuito 1" style="width:49%">
+<img src="figuras/circuito1_foto2.jpg" alt="foto do circuito 1 melhorado" style="width:50%"></p>
+
+<h2 id="a-protoboard">
+<a class="anchor" href="#a-protoboard" aria-hidden="true"><span class="octicon octicon-link"></span></a>A <em>Protoboard</em>
+</h2>
+
+<p>Esse equipamentos facilita a parte de prototipagem, pois ele conta com a
+estrutura mostrada na imagem abaixo. Cada trilha (linha) pode ser conectada por
+diversos pinos, e todos que estiverem na mesma trilha compartilham do mesmo sinal
+e/ou alimentação elétrica</p>
+
+<p><img src="attachments/protoboard01.png" alt="Protoboard" style="width:49%"></p>
+
+<p>No exemplo desse circuito, veja como as trilhas ficam energizadas:</p>
+
+<p><img src="attachments/protoboard02.png" alt="" style="width:49%"></p>
+
+<p>Na figura acima, as trilhas energizadas estão destacadas em amarelo, enquanto os
+componentes e jumpers aparecem em roxo. É possível observar que o circuito se
+fecha com a bateria, permitindo seu funcionamento.</p>
+
+<p>Note também que há diversos outros pinos já energizados disponíveis para a
+montagem de novos circuitos. É importante sempre lembrar do ‘caminho’ da
+eletricidade: ela parte do polo positivo (geralmente representado pela cor
+vermelha) em direção ao polo negativo ou terra (representado pela cor preta).</p>
+
+<p>Com tudo isso em mente já conseguimos olhar para outros componentes eletrônicos
+comuns. Na figura abaixo é possível ver alguns desses componentes, e seus
+equivalentes simbólicos para que consigamos ler e interpretar um diagrama
+eletrônico.</p>
+
+<p><img src="figuras/iconesCircuitos.png" alt="icones de circuitos" style="width:100%"></p>
+
+<h1 id="componentes-eletrônicos">
+<a class="anchor" href="#componentes-eletr%C3%B4nicos" aria-hidden="true"><span class="octicon octicon-link"></span></a>Componentes Eletrônicos</h1>
+
+<h2 id="os-básicos">
+<a class="anchor" href="#os-b%C3%A1sicos" aria-hidden="true"><span class="octicon octicon-link"></span></a>Os básicos</h2>
+
+<h3 id="chaves-e-botões">
+<a class="anchor" href="#chaves-e-bot%C3%B5es" aria-hidden="true"><span class="octicon octicon-link"></span></a>Chaves e Botões</h3>
+<svg width="340" height="220">
+  <defs>
+    <clippath id="chaves-clip">
+      <rect x="0" y="0" width="340" height="220"></rect>
+    </clippath>
+  </defs>
+
+  <image href="figuras/iconesCircuitos.png" clip-path="url(#chaves-clip)" width="1128" x="-550" y="-25">
+  </image>
+</svg>
+
+<p>São dispositivos mecânicos ou eletrônicos que permitem abrir ou fechar um
+circuito, interrompendo ou permitindo a passagem de corrente elétrica. São
+usados para controlar o funcionamento de circuitos.</p>
+
+<p><strong>Exemplos de uso:</strong></p>
+<ul>
+  <li>Interruptores para ligar e desligar luzes ou motores.</li>
+  <li>Botões de pressão em controles remotos, campainhas, ou painéis de controle.</li>
+</ul>
+
+<p><strong>Tipos comuns:</strong></p>
+<ul>
+  <li>Chave liga/desliga (interruptor basculante).</li>
+  <li>Botão de pressão (momentâneo).</li>
+  <li>Chave seletora (permite selecionar entre várias posições).</li>
+  <li>Chave DIP (usada para configurações em placas eletrônicas).</li>
+</ul>
+
+<h3 id="resistor">
+<a class="anchor" href="#resistor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Resistor</h3>
+
+<svg width="270" height="170">
+  <defs>
+    <clippath id="resistor-clip">
+      <rect x="0" y="0" width="270" height="170"></rect>
+    </clippath>
+  </defs>
+
+  <image href="figuras/iconesCircuitos.png" clip-path="url(#resistor-clip)" width="1128" x="-590" y="-480">
+  </image>
+</svg>
+
+<p>Limita a corrente elétrica que passa em um circuito, protegendo componentes
+sensíveis e ajustando níveis de tensão e corrente.</p>
+
+<p><strong>Exemplos de uso:</strong></p>
+<ul>
+  <li>Proteger LEDs para que não queimem.</li>
+  <li>Definir divisores de tensão para sensores.</li>
+  <li>Controlar corrente em circuitos de áudio.</li>
+</ul>
+
+<p><strong>Tipos comuns:</strong></p>
+<ul>
+  <li>Resistor fixo (valores padrão como 220Ω, 1kΩ).</li>
+  <li>Resistor variável (trimpot ou potenciômetro).</li>
+  <li>Resistor de fio (para altas potências).</li>
+  <li>Resistor SMD (montagem em superfície para placas de circuito impresso).</li>
+</ul>
+
+<h3 id="diodos">
+<a class="anchor" href="#diodos" aria-hidden="true"><span class="octicon octicon-link"></span></a>Diodos</h3>
+
+<svg width="220" height="140">
+  <defs>
+    <clippath id="diodo-clip">
+      <rect x="0" y="0" width="220" height="140"></rect>
+    </clippath>
+  </defs>
+
+  <image href="figuras/iconesCircuitos.png" clip-path="url(#diodo-clip)" width="1128" x="0" y="-590">
+  </image>
+</svg>
+
+<p>Permitem que a corrente passe somente em uma direção. Usados para proteção ou
+controle da direção da corrente.</p>
+
+<p><strong>Exemplos de uso:</strong></p>
+<ul>
+  <li>Retificação em fontes de alimentação (converter corrente alternada em contínua).</li>
+  <li>Proteção contra polaridade invertida em circuitos.</li>
+  <li>Controle de sinais em circuitos digitais.</li>
+</ul>
+
+<p><strong>Tipos comuns:</strong></p>
+<ul>
+  <li>Diodo retificador (1N4001).</li>
+  <li>Diodo zener (usado para regulação de tensão).</li>
+  <li>Diodo de alta velocidade.</li>
+</ul>
+
+<h4 id="led-um-diodo-especial">
+<a class="anchor" href="#led-um-diodo-especial" aria-hidden="true"><span class="octicon octicon-link"></span></a>LED: Um diodo especial</h4>
+
+<svg width="240" height="160">
+  <defs>
+    <clippath id="led-clip">
+      <rect x="0" y="0" width="240" height="160"></rect>
+    </clippath>
+  </defs>
+
+  <image href="figuras/iconesCircuitos.png" clip-path="url(#led-clip)" width="1128" x="-250" y="-350">
+  </image>
+</svg>
+
+<p>É um diodo que emite luz visível ou infravermelha quando a corrente elétrica
+passa por ele.</p>
+
+<p><strong>Exemplos de uso:</strong></p>
+<ul>
+  <li>Indicadores de estado em painéis eletrônicos.</li>
+  <li>Luzes de notificação em dispositivos.</li>
+  <li>Comunicação via infravermelho (controle remoto).</li>
+</ul>
+
+<p><strong>Tipos comuns:</strong></p>
+<ul>
+  <li>LED padrão (vermelho, verde, azul, amarelo).</li>
+  <li>LED RGB (contém LEDs vermelho, verde e azul para gerar várias cores).</li>
+  <li>LED infravermelho (usado para comunicação remota).</li>
+  <li>LED de alta potência para iluminação.</li>
+</ul>
+
+<h3 id="potenciômetros">
+<a class="anchor" href="#potenci%C3%B4metros" aria-hidden="true"><span class="octicon octicon-link"></span></a>Potenciômetros</h3>
+
+<svg width="230" height="170">
+  <defs>
+    <clippath id="pot-clip">
+      <rect x="0" y="0" width="230" height="170"></rect>
+    </clippath>
+  </defs>
+
+  <image href="figuras/iconesCircuitos.png" clip-path="url(#pot-clip)" width="1128" x="-600" y="-270">
+  </image>
+</svg>
+
+<p>Resistores ajustáveis que permitem alterar a resistência manualmente,
+controlando a quantidade de corrente que passa.</p>
+
+<p><strong>Exemplos de uso:</strong></p>
+<ul>
+  <li>Ajustar o volume em rádios e amplificadores.</li>
+  <li>Controlar a intensidade luminosa de LEDs.</li>
+  <li>Ajustar a sensibilidade de sensores em projetos de IoT.</li>
+</ul>
+
+<p><strong>Tipos comuns:</strong></p>
+<ul>
+  <li>Potenciômetro rotativo (padrão, ajustado girando um eixo).</li>
+  <li>Potenciômetro deslizante.</li>
+  <li>Trimpot (ajuste fino, geralmente usado em circuitos para calibração).</li>
+</ul>
+
+<h3 id="capacitores">
+<a class="anchor" href="#capacitores" aria-hidden="true"><span class="octicon octicon-link"></span></a>Capacitores</h3>
+
+<svg width="280" height="110">
+  <defs>
+    <clippath id="cap-clip">
+      <rect x="0" y="0" width="280" height="110"></rect>
+    </clippath>
+  </defs>
+
+  <image href="figuras/iconesCircuitos.png" clip-path="url(#cap-clip)" width="1128" x="-240" y="-590">
+  </image>
+</svg>
+<p>Armazenam energia elétrica temporariamente e liberam de forma controlada. Ajuda
+na filtragem de ruídos, estabilização de sinais e temporização.</p>
+
+<p><strong>Exemplos de uso:</strong></p>
+<ul>
+  <li>Filtrar ruídos em fontes de alimentação.</li>
+  <li>Criar temporizadores em circuitos eletrônicos.</li>
+  <li>Acoplar sinais em amplificadores para bloquear DC.</li>
+</ul>
+
+<p><strong>Tipos comuns:</strong></p>
+<ul>
+  <li>Capacitor cerâmico (ideais para filtrar sinais em alta frequência).</li>
+  <li>Capacitor eletrolítico (maiores capacidades, usados em fontes).</li>
+  <li>Capacitor de tantálio.</li>
+  <li>Capacitor de filme plástico.</li>
+</ul>
+
+<h3 id="motores-dc-simples">
+<a class="anchor" href="#motores-dc-simples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Motores DC Simples</h3>
+
+<p>Convertem energia elétrica em movimento rotacional, essenciais para projetos que
+envolvem movimento.</p>
+
+<p><strong>Exemplos de uso:</strong></p>
+<ul>
+  <li>Robôs que se movimentam.</li>
+  <li>Ventiladores e bombas pequenas.</li>
+  <li>Modelismo e automação simples.</li>
+</ul>
+
+<p><strong>Tipos comuns:</strong></p>
+<ul>
+  <li>Motor DC com escovas.</li>
+  <li>Motor brushless (sem escovas, mais eficiente).</li>
+  <li>Motor com engrenagem (para aumento de torque).</li>
+</ul>
+
+<h3 id="buzzers">
+<a class="anchor" href="#buzzers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Buzzers</h3>
+
+<svg width="226" height="226">
+  <defs>
+    <clippath id="buz-clip">
+      <rect x="0" y="0" width="226" height="226"></rect>
+    </clippath>
+  </defs>
+
+  <image href="figuras/iconesCircuitos.png" clip-path="url(#buz-clip)" width="1128" x="-900" y="-250">
+  </image>
+</svg>
+
+<p>Geram sons para alertas sonoros em dispositivos eletrônicos.</p>
+
+<p><strong>Exemplos de uso:</strong></p>
+<ul>
+  <li>Alarmes e sinalizações em dispositivos.</li>
+  <li>Acerte/notifique erros ou eventos.</li>
+  <li>Partes de sistemas de feedback tátil/sonoro.</li>
+</ul>
+
+<p><strong>Tipos comuns:</strong></p>
+<ul>
+  <li>Buzzer passivo (precisa de sinal oscilante para emitir som).</li>
+  <li>Buzzer ativo (gera som com apenas a aplicação da tensão).</li>
+</ul>
+
+<h3 id="transistores">
+<a class="anchor" href="#transistores" aria-hidden="true"><span class="octicon octicon-link"></span></a>Transistores</h3>
+
+<svg width="340" height="290">
+  <defs>
+    <clippath id="trans-clip">
+      <rect x="0" y="0" width="340" height="290"></rect>
+    </clippath>
+  </defs>
+
+  <image href="figuras/iconesCircuitos.png" clip-path="url(#trans-clip)" width="1128" x="-220" y="0">
+  </image>
+</svg>
+
+<p>Atuam como amplificadores de sinal ou interruptores eletrônicos, usados para
+controlar correntes maiores com sinais menores.</p>
+
+<p><strong>Exemplos de uso:</strong></p>
+<ul>
+  <li>Amplificação de sinais de áudio.</li>
+  <li>Controle de motores e LEDs com microcontroladores.</li>
+  <li>Circuitos de chaveamento e reguladores de tensão.</li>
+</ul>
+
+<p><strong>Tipos comuns:</strong></p>
+<ul>
+  <li>Transistor Bipolar de Junção (NPN e PNP).</li>
+  <li>Transistor de Efeito de Campo (MOSFET).</li>
+  <li>Transistor Darlington (alto ganho de corrente).</li>
+</ul>
+
+<h2 id="algumas-relações-importantes">
+<a class="anchor" href="#algumas-rela%C3%A7%C3%B5es-importantes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Algumas relações importantes!</h2>
+
+<p>Para finalizar nossa discussão de eletrônica básica, vamos ver algumas relações
+que ajudam a montar circuítos que funcionem:</p>
+
+<h3 id="lei-de-ohm">
+<a class="anchor" href="#lei-de-ohm" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lei de Ohm.</h3>
+
+\[V = { {R}\over{I} }\]
+
+<p>Onde:</p>
+
+<ul>
+  <li>
+<strong>V</strong> = Tensão (medida em volts, V)</li>
+  <li>
+<strong>R</strong> = Resistência (medida em ohms, Ω)</li>
+  <li>
+<strong>I</strong> = Corrente elétrica (medida em ampères, A)</li>
+</ul>
+
+<p>Ou seja, a tensão aplicada em um componente é igual à resistência dele
+multiplicada pela corrente que passa por ele.</p>
+
+<p>A partir dessa relação, podemos isolar as variáveis conforme a necessidade:</p>
+
+\[R = \frac{V}{I} \quad \quad I = \frac{V}{R}\]
+
+<p>Essas fórmulas permitem, por exemplo, calcular qual resistor usar para limitar a
+corrente de um LED.</p>
+
+<h3 id="potência-elétrica">
+<a class="anchor" href="#pot%C3%AAncia-el%C3%A9trica" aria-hidden="true"><span class="octicon octicon-link"></span></a>Potência Elétrica</h3>
+
+\[P = V \times I\]
+
+<ul>
+  <li>
+<strong>P</strong> = Potência (medida em watts, W)</li>
+  <li>
+<strong>V</strong> = Tensão (medida em volts, V)</li>
+  <li>
+<strong>I</strong> = Corrente elétrica (medida em ampères, A)</li>
+</ul>
+
+<p>Ela indica quanta energia elétrica está sendo consumida ou dissipada em um
+componente. Isso é útil, por exemplo, para garantir que um resistor não aqueça
+além do limite ou para dimensionar a fonte de alimentação de um circuito.</p>
+
+<h3 id="em-resumo">
+<a class="anchor" href="#em-resumo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Em resumo:</h3>
+
+<ul>
+  <li>Use a <strong>Lei de Ohm</strong> para relacionar tensão, corrente e resistência.</li>
+  <li>Use a <strong>fórmula da potência</strong> para saber o quanto de energia está sendo
+consumido.</li>
+</ul>
+
+<p>Com essas duas relações básicas, já é possível interpretar e projetar circuitos
+simples com mais segurança e eficiência.</p>
+
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                class
+                <span class="nc ">Circuitos Simples</span>
+                : public
+                <span class="nc ">Disruptive Architectures</span>
+                
+                , public
+                <span class="nc ">Eletrônica Básica</span> 
+                
+            </div> 
+        </main>
+        <script type="text/javascript" src="/assets/scripts.js"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+        <script src=" https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js "></script>
+        <script type="module">
+            mermaid.initialize({theme:"neutral",
+                                securityLevel: "strict",
+                                startOnLoad: true
+                                });
+        </script>
+    </body>
+</html>

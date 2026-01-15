@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <title>Definições de IoT - Disruptive Architectures</title>
+        <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+        <link rel="stylesheet" href="/assets/css/main.css" id="maincss">
+    </head>
+    <body>
+        <nav>
+    
+    <a href="#" onclick="toggle_menu()" id="hamb_menu">☰</a>
+    
+    <a href="/">Index</a>&nbsp;
+    <a href="#" onclick="toggle_themes()">Mudar Tema</a>
+</nav>
+
+        <aside id="course_menu">
+    
+    
+    <b class="course_name">Disruptive Architectures</b>
+
+    
+    <b class="section_name">Sobre a disciplina</b>
+    
+    
+    <a href="/classes/00_index.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/01_definicoes.html" class="class_link">Definições de IoT</a>
+    
+    <a href="/classes/02_avaliacoes.html" class="class_link">Avaliações</a>
+    
+    
+    <b class="section_name">Eletrônica Básica</b>
+    
+    
+    <a href="/classes/10_circuitoseletricos.html" class="class_link">Circuitos Simples</a>
+    
+    <a href="/classes/14_desafios.html" class="class_link">Desfios! #01</a>
+    
+    
+    <b class="section_name">Sistemas Embarcados</b>
+    
+    
+    <a href="/classes/20_sistemas_embarcados.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/22_esp32.html" class="class_link">ESP32</a>
+    
+    <a href="/classes/21_arduino.html" class="class_link">Arduino</a>
+    
+    
+    <b class="section_name">Protocolos M2M</b>
+    
+    
+    <a href="/classes/30_m2m.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/31_UART.html" class="class_link">UART</a>
+    
+    <a href="/classes/32_I2C.html" class="class_link">I2C</a>
+    
+    <a href="/classes/33_SPI.html" class="class_link">SPI</a>
+    
+    
+    <b class="section_name">Backend</b>
+    
+    
+    <a href="/classes/40_node_red.html" class="class_link">Node-Red</a>
+    
+    <a href="/classes/41_python.html" class="class_link">Python</a>
+    
+    
+    <b class="section_name">Protocolos TCP/IP (Aplicação)</b>
+    
+    
+    <a href="/classes/50_http.html" class="class_link">HTTP</a>
+    
+    <a href="/classes/51_MQTT.html" class="class_link">MQTT</a>
+    
+    <a href="/classes/52_WebSocket.html" class="class_link">WebSocket</a>
+    
+    
+    <b class="section_name">Soluções</b>
+    
+    
+    <a href="/classes/92_desafios_sol.html" class="class_link">Desfios! #01</a>
+    
+    
+
+
+  
+</aside>
+
+        <aside id="toc_menu" style="float:right"> 
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#o-que-é-iot">O que é IoT?</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#sensores-sentem-o-ambiente">Sensores sentem o ambiente</a></li>
+<li class="toc-entry toc-h2"><a href="#atuadores-inteferem-no-ambiente">Atuadores Inteferem no ambiente</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#controladores-tomam-decisões">Controladores tomam decisões</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#1-microcontroladores-mcus">1. Microcontroladores (MCUs)</a></li>
+<li class="toc-entry toc-h4"><a href="#2-computadores-de-placa-única-sbcs">2. Computadores de Placa Única (SBCs)</a></li>
+<li class="toc-entry toc-h4"><a href="#3-hardware-programável-fpgas">3. Hardware Programável (FPGAs)</a></li>
+<li class="toc-entry toc-h4"><a href="#4-controladores-lógicos-programáveis-plcs">4. Controladores Lógicos Programáveis (PLCs)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#iot-em-setores-específicos">IoT em Setores Específicos</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#iot-médica-iomt---internet-of-medical-things">IoT Médica (IoMT - Internet of Medical Things)</a></li>
+<li class="toc-entry toc-h3"><a href="#iot-agrícola-agri-iot-ou-agricultura-inteligente">IoT Agrícola (Agri-IoT ou Agricultura Inteligente)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#para-saber-mais">Para saber mais:</a></li>
+</ul>
+</aside>
+
+        <main>
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                class
+                <span class="nc ">Definições de IoT</span>
+                : public
+                
+                <span class="nc ">Disruptive Architectures</span>
+                
+                , public
+                <span class="nc ">Sobre a disciplina</span> 
+                
+            </div> 
+            <center><h1> Definições de IoT</h1></center>
+            <p>A Internet das Coisas (IoT) é uma área em plena expansão, impulsionada
+principalmente pelos avanços na miniaturização de sensores, controladores e
+tecnologias de comunicação sem fio. A integração entre dispositivos físicos e
+sistemas digitais possibilita a coleta, o processamento e o compartilhamento
+contínuo de dados em tempo real.</p>
+
+<p>Nosso estudo sobre tecnologias IoT irá abranger desde o projeto de circuitos e
+sistemas embarcados até a transmissão de dados em rede e sua integração com
+modelos de inteligência artificial, permitindo compreender o ciclo completo — da
+captação à análise inteligente da informação.</p>
+
+<h1 id="o-que-é-iot">
+<a class="anchor" href="#o-que-%C3%A9-iot" aria-hidden="true"><span class="octicon octicon-link"></span></a>O que é IoT?</h1>
+
+<p>Minha definição:</p>
+
+<center>"Coisas" + (Sensores, Controladores, Atuadores) + Internet</center>
+
+<p>IoT pode ser entendida como a interconexão de “coisas” —
+equipamentos, objetos ou sistemas — que incorporam sensores, controladores e
+atuadores conectados à Internet, possibilitando comunicação e automação
+inteligentes.</p>
+
+<hr>
+
+<h2 id="sensores-sentem-o-ambiente">
+<a class="anchor" href="#sensores-sentem-o-ambiente" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sensores sentem o ambiente</h2>
+
+<p>Os sensores são os seus “sentidos”. Eles são os componentes fundamentais que
+permitem a um dispositivo perceber o mundo físico ao seu redor, convertendo
+estímulos como luz, som, movimento e temperatura em sinais elétricos que o
+controlador pode interpretar. A capacidade de coletar dados do ambiente é o que
+torna a IoT tão poderosa, permitindo desde a automação residencial até o
+monitoramento industrial complexo.</p>
+
+<p>A imagem abaixo mostra uma vasta gama de sensores, cada um especializado em
+detectar um tipo específico de fenômeno físico.</p>
+
+<p><img src="figuras/sensores.png" alt="sensores"></p>
+
+<h2 id="atuadores-inteferem-no-ambiente">
+<a class="anchor" href="#atuadores-inteferem-no-ambiente" aria-hidden="true"><span class="octicon octicon-link"></span></a>Atuadores Inteferem no ambiente</h2>
+
+<p>Enquanto os sensores permitem que os sistemas de IoT “sintam” o mundo, os
+atuadores são os componentes que lhes permitem “agir”. Eles são a contraparte
+dos sensores: recebem um comando elétrico e o convertem em uma ação física no
+mundo real. Seja movendo, aquecendo, iluminando ou emitindo som, os atuadores
+fecham o ciclo da automação, transformando dados e decisões digitais em
+interações tangíveis.</p>
+
+<p><img src="figuras/atuadores.png" alt="atuadores"></p>
+
+<h3 id="controladores-tomam-decisões">
+<a class="anchor" href="#controladores-tomam-decis%C3%B5es" aria-hidden="true"><span class="octicon octicon-link"></span></a>Controladores tomam decisões</h3>
+
+<p>Por fim no coração de todo dispositivo de Internet das Coisas (IoT) existe um
+controlador, o componente responsável pelo processamento, controle e
+comunicação. A seleção de uma categoria de controlador é uma decisão de
+engenharia crítica, ditada pelas necessidades da aplicação. Conforme ilustrado
+na figura abaixo que vai da <strong>IoT de Consumo (CIoT)</strong> para a <strong>IoT Industrial
+(IIoT)</strong>, os controladores variam drasticamente em custo, poder de processamento
+e nível de especialização.</p>
+
+<p><img src="figuras/tiposdecontroladores.png" alt="tipos de controladores"></p>
+
+<h4 id="1-microcontroladores-mcus">
+<a class="anchor" href="#1-microcontroladores-mcus" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Microcontroladores (MCUs)</h4>
+
+<p>Representando a base da IoT, os microcontroladores são circuítos integrados
+que reunem processador, memória e entrada e saida (I/O) em um único chip,
+projetados para executar tarefas específicas em sistemas embarcados. Eles
+executam um programa único (firmware) em um loop contínuo, sem um sistema
+operacional complexo.</p>
+
+<p>Tem como caracteristicas o controle em tempo real, baixo consumo de energia e
+acesso direto ao hardware. São ideais para ler dados de sensores, controlar
+motores, gerenciar LEDs e comunicar-se através de protocolos de baixa velocidade
+(como I2C, SPI, UART). Modelos mais avançados integram nativamente módulos de
+conectividade sem fio (Wi-Fi, Bluetooth), tornando-os soluções completas para
+nós de IoT.</p>
+
+<p>Por seu baixo custo, simplicidade e eficiência energética, os MCUs são a escolha
+predominante para dispositivos de ponta na IoT de Consumo, como wearables,
+sensores domésticos inteligentes e eletrônicos de baixo custo.</p>
+
+<ul>
+  <li>
+<em>Exemplos:</em> Arduino Uno, ESP32</li>
+</ul>
+
+<h4 id="2-computadores-de-placa-única-sbcs">
+<a class="anchor" href="#2-computadores-de-placa-%C3%BAnica-sbcs" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Computadores de Placa Única (SBCs)</h4>
+
+<p>Os SBCs representam um aumento significativo no poder de processamento e na
+flexibilidade, atuando como um intermediário entre dispositivos simples e
+sistemas industriais complexos. São computadores totalmente funcionais
+construídos em uma única placa de circuito. Diferente dos MCUs, eles possuem
+processadores muito mais potentes (baseados em arquiteturas como ARM ou x86),
+mais memória RAM e a capacidade de executar sistemas operacionais completos,
+como Linux.</p>
+
+<p>A presença de um sistema operacional permite multitarefa, gerenciamento de rede
+avançado e a execução de softwares complexos. Eles podem processar dados
+localmente (edge computing), hospedar servidores, gerenciar bancos de dados e
+até mesmo executar algoritmos de inteligência artificial. Oferecem conectividade
+padrão de desktop, como USB, Ethernet e HDMI.</p>
+
+<p>Os SBCs são ideais para aplicações que exigem mais processamento do que um MCU
+pode oferecer, como gateways de IoT (que agregam dados de múltiplos sensores),
+centrais de automação residencial, sistemas de vigilância por vídeo e quiosques
+interativos.</p>
+
+<p>As SBCs podem aparecer em ambos os lados do espectro do IoT, assim como os
+computadores comuns que temos em casa, suas específicações que regem seu valor
+final e aplicação.</p>
+
+<ul>
+  <li>
+<em>Exemplos</em>: Raspbery Pi, Orange Pi</li>
+</ul>
+
+<h4 id="3-hardware-programável-fpgas">
+<a class="anchor" href="#3-hardware-program%C3%A1vel-fpgas" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. Hardware Programável (FPGAs)</h4>
+
+<p>Os FPGAs (Field-Programmable Gate Arrays) oferecem uma abordagem
+fundamentalmente diferente: em vez de programar software, o próprio hardware é
+configurado para realizar uma tarefa.</p>
+
+<p>São circuitos integrados compostos por blocos de lógica configuráveis e
+interconexões programáveis. O desenvolvedor descreve o comportamento do hardware
+usando uma Linguagem de Descrição de Hardware (HDL). Essa descrição é então
+sintetizada e carregada no FPGA, criando um circuito digital personalizado.</p>
+
+<p>A principal vantagem é o paralelismo massivo e a latência extremamente baixa.
+Tarefas que seriam lentas em um processador sequencial podem ser executadas
+simultaneamente em hardware, resultando em um desempenho excepcional para
+processamento de sinais, visão computacional de alta velocidade e comunicação de
+protocolos customizados.</p>
+
+<p>Devido ao seu custo mais elevado e à necessidade de conhecimento especializado,
+os FPGAs são usados em aplicações de nicho de alto desempenho, tanto em produtos
+de consumo avançados quanto em equipamentos industriais e de telecomunicações
+que exigem processamento em tempo real com determinismo absoluto.</p>
+
+<h4 id="4-controladores-lógicos-programáveis-plcs">
+<a class="anchor" href="#4-controladores-l%C3%B3gicos-program%C3%A1veis-plcs" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. Controladores Lógicos Programáveis (PLCs)</h4>
+
+<p>No extremo industrial do espectro, os PLCs são a espinha dorsal da automação
+industrial, projetados para confiabilidade e operação ininterrupta em ambientes
+hostis.</p>
+
+<p>São computadores industriais robustos, projetados para suportar condições
+severas de temperatura, vibração, umidade e interferência eletromagnética. Sua
+arquitetura é modular, permitindo a fácil expansão de módulos de entrada e saída
+para conectar-se a uma vasta gama de sensores e atuadores industriais.</p>
+
+<p>Otimizados para controle em tempo real e execução determinística. São
+programados usando linguagens padrão da indústria (como a Lógica Ladder),
+focadas na robustez e na facilidade de diagnóstico por técnicos de chão de
+fábrica. Sua principal função não é o processamento de dados em massa, mas sim
+garantir que os processos de controle ocorram de forma previsível e segura,
+repetidamente.</p>
+
+<p>Os PLCs são a escolha padrão para o controle de máquinas, linhas de montagem,
+processos robóticos e infraestrutura crítica. Seu alto custo é justificado pela
+sua extrema confiabilidade, segurança e longo ciclo de vida, requisitos
+indispensáveis no mundo da IoT Industrial.</p>
+
+<h2 id="iot-em-setores-específicos">
+<a class="anchor" href="#iot-em-setores-espec%C3%ADficos" aria-hidden="true"><span class="octicon octicon-link"></span></a>IoT em Setores Específicos</h2>
+
+<p>A escolha de um controlador depende diretamente dos desafios e requisitos do
+setor de aplicação. Os campos da saúde e da agricultura, por exemplo, utilizam
+todo o espectro de controladores para atender às suas necessidades únicas.</p>
+
+<h3 id="iot-médica-iomt---internet-of-medical-things">
+<a class="anchor" href="#iot-m%C3%A9dica-iomt---internet-of-medical-things" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong>IoT Médica (IoMT - Internet of Medical Things)</strong>
+</h3>
+
+<p>A IoMT exige altíssima confiabilidade, segurança de dados, certificação rigorosa
+e, frequentemente, miniaturização e baixo consumo de energia.</p>
+
+<ul>
+  <li>
+<strong>Monitores Corporais e Wearables:</strong> <strong>Microcontroladores</strong> são a escolha
+dominante para dispositivos usados pelo paciente, como monitores de glicose,
+sensores de ECG, oxímetros e bombas de insulina portáteis. Seu baixo consumo
+de energia é vital para a longa duração da bateria, e seu pequeno formato
+permite a criação de dispositivos discretos e confortáveis.</li>
+  <li>
+<strong>Equipamentos de Diagnóstico e Monitores de Leito:</strong> <strong>SBCs</strong> são
+frequentemente usados em estações de monitoramento ao lado do leito do
+paciente, que agregam dados de vários sensores, exibem informações em uma tela
+e se comunicam com o sistema central do hospital. Também são encontrados em
+equipamentos de análise que exigem mais processamento local.</li>
+  <li>
+<strong>Equipamentos de Imagem e Suporte à Vida:</strong> Em sistemas complexos como
+aparelhos de ultrassom ou ressonância magnética, <strong>FPGAs</strong> são utilizados para
+o processamento de sinais e imagens em tempo real de altíssima velocidade.
+Para equipamentos críticos de suporte à vida, como ventiladores pulmonares e
+máquinas de anestesia, são usados controladores embarcados de grau médico, que
+compartilham os princípios de confiabilidade e determinismo dos <strong>PLCs</strong>,
+garantindo uma operação à prova de falhas.</li>
+</ul>
+
+<h3 id="iot-agrícola-agri-iot-ou-agricultura-inteligente">
+<a class="anchor" href="#iot-agr%C3%ADcola-agri-iot-ou-agricultura-inteligente" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong>IoT Agrícola (Agri-IoT ou Agricultura Inteligente)</strong>
+</h3>
+
+<p>A Agri-IoT enfrenta desafios como ambientes externos hostis, necessidade de
+comunicação a longa distância e a busca por soluções de baixo custo para
+implantação em larga escala.</p>
+
+<ul>
+  <li>
+<strong>Sensores de Campo:</strong> <strong>Microcontroladores</strong> de baixo consumo são a base da
+agricultura de precisão. Eles são usados em milhares de sensores espalhados
+pelo campo para medir umidade do solo, pH, temperatura e umidade do ar.
+Combinados com rádios de longo alcance (como LoRaWAN), esses dispositivos
+podem operar por anos com uma única bateria.</li>
+  <li>
+<strong>Gateways e Drones:</strong> <strong>SBCs</strong> atuam como gateways nas fazendas, coletando
+dados dos sensores de campo e enviando-os para a nuvem. Também são o “cérebro”
+de drones agrícolas, processando imagens de câmeras multiespectrais para
+analisar a saúde das culturas e identificar a necessidade de irrigação ou
+pesticidas.</li>
+  <li>
+<strong>Maquinário Pesado e Automação:</strong> <strong>PLCs</strong> são fundamentais na automação de
+grande escala. Eles controlam tratores e colheitadeiras autônomas, sistemas de
+irrigação pivotantes, automação de silos e processos em estufas de alta
+tecnologia. A robustez e a confiabilidade dos PLCs são essenciais para operar
+maquinário pesado de forma segura e eficiente, 24 horas por dia.</li>
+</ul>
+
+<h1 id="para-saber-mais">
+<a class="anchor" href="#para-saber-mais" aria-hidden="true"><span class="octicon octicon-link"></span></a>Para saber mais:</h1>
+
+<ol>
+  <li>
+    <p>Gubbi, J., Buyya, R., Marusic, S., &amp; Palaniswami, M. (2013). Internet of Things (IoT): A Vision, Architectural Elements, and Future Directions. Future Generation Computer Systems, 29(7), 1645–1660.</p>
+  </li>
+  <li>
+    <p>Ashton, K. (2009). That ‘Internet of Things’ Thing. RFID Journal.</p>
+  </li>
+  <li>
+    <p>IEEE Internet of Things. (2024). IEEE Internet of Things Initiative Overview. IEEE.</p>
+  </li>
+  <li>
+    <p>Evans, D. (2011). The Internet of Things — How the Next Evolution of the Internet Is Changing Everything. Cisco Internet Business Solutions Group (IBSG).</p>
+  </li>
+  <li>
+    <p>Madakam, S., Ramaswamy, R., &amp; Tripathi, S. (2015). Internet of Things (IoT): A Literature Review. Journal of Computer and Communications, 3(5), 164–173.</p>
+  </li>
+</ol>
+
+
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                class
+                <span class="nc ">Definições de IoT</span>
+                : public
+                <span class="nc ">Disruptive Architectures</span>
+                
+                , public
+                <span class="nc ">Sobre a disciplina</span> 
+                
+            </div> 
+        </main>
+        <script type="text/javascript" src="/assets/scripts.js"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+        <script src=" https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js "></script>
+        <script type="module">
+            mermaid.initialize({theme:"neutral",
+                                securityLevel: "strict",
+                                startOnLoad: true
+                                });
+        </script>
+    </body>
+</html>

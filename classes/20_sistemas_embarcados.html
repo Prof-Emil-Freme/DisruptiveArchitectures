@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <title>Introdução - Disruptive Architectures</title>
+        <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+        <link rel="stylesheet" href="/assets/css/main.css" id="maincss">
+    </head>
+    <body>
+        <nav>
+    
+    <a href="#" onclick="toggle_menu()" id="hamb_menu">☰</a>
+    
+    <a href="/">Index</a>&nbsp;
+    <a href="#" onclick="toggle_themes()">Mudar Tema</a>
+</nav>
+
+        <aside id="course_menu">
+    
+    
+    <b class="course_name">Disruptive Architectures</b>
+
+    
+    <b class="section_name">Sobre a disciplina</b>
+    
+    
+    <a href="/classes/00_index.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/01_definicoes.html" class="class_link">Definições de IoT</a>
+    
+    <a href="/classes/02_avaliacoes.html" class="class_link">Avaliações</a>
+    
+    
+    <b class="section_name">Eletrônica Básica</b>
+    
+    
+    <a href="/classes/10_circuitoseletricos.html" class="class_link">Circuitos Simples</a>
+    
+    <a href="/classes/14_desafios.html" class="class_link">Desfios! #01</a>
+    
+    
+    <b class="section_name">Sistemas Embarcados</b>
+    
+    
+    <a href="/classes/20_sistemas_embarcados.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/22_esp32.html" class="class_link">ESP32</a>
+    
+    <a href="/classes/21_arduino.html" class="class_link">Arduino</a>
+    
+    
+    <b class="section_name">Protocolos M2M</b>
+    
+    
+    <a href="/classes/30_m2m.html" class="class_link">Introdução</a>
+    
+    <a href="/classes/31_UART.html" class="class_link">UART</a>
+    
+    <a href="/classes/32_I2C.html" class="class_link">I2C</a>
+    
+    <a href="/classes/33_SPI.html" class="class_link">SPI</a>
+    
+    
+    <b class="section_name">Backend</b>
+    
+    
+    <a href="/classes/40_node_red.html" class="class_link">Node-Red</a>
+    
+    <a href="/classes/41_python.html" class="class_link">Python</a>
+    
+    
+    <b class="section_name">Protocolos TCP/IP (Aplicação)</b>
+    
+    
+    <a href="/classes/50_http.html" class="class_link">HTTP</a>
+    
+    <a href="/classes/51_MQTT.html" class="class_link">MQTT</a>
+    
+    <a href="/classes/52_WebSocket.html" class="class_link">WebSocket</a>
+    
+    
+    <b class="section_name">Soluções</b>
+    
+    
+    <a href="/classes/92_desafios_sol.html" class="class_link">Desfios! #01</a>
+    
+    
+
+
+  
+</aside>
+
+        <aside id="toc_menu" style="float:right"> 
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#o-que-é-um-sistema-embarcado">O que é um sistema embarcado</a></li>
+<li class="toc-entry toc-h1"><a href="#e-como-se-desenvolve-para-sistemas-embarcados">E como se desenvolve para sistemas embarcados?</a></li>
+</ul>
+</aside>
+
+        <main>
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                class
+                <span class="nc ">Introdução</span>
+                : public
+                
+                <span class="nc ">Disruptive Architectures</span>
+                
+                , public
+                <span class="nc ">Sistemas Embarcados</span> 
+                
+            </div> 
+            <center><h1> Introdução</h1></center>
+            <h1 id="o-que-é-um-sistema-embarcado">
+<a class="anchor" href="#o-que-%C3%A9-um-sistema-embarcado" aria-hidden="true"><span class="octicon octicon-link"></span></a>O que é um sistema embarcado</h1>
+
+<p>Quando falamos de sistemas embarcados, imagine dispositivos “espertos” criados
+para cumprir uma tarefa específica dentro de algum aparelho – pode ser desde o
+controle do micro-ondas, a central eletrônica de um carro, até aquele sensor de
+luz que ativa a iluminação automática. Diferente do computador ou notebook, que
+servem para uma infinidade de funções, os sistemas embarcados existem para fazer
+exatamente aquilo para o que foram projetados – e fazer muito bem.</p>
+
+<p>Em termos práticos, eles são pequenos computadores construídos para rodar um
+software (o chamado “firmware”), geralmente em cima de um hardware enxuto, com
+microcontroladores e sensores pensados para otimizar espaço, energia e
+estabilidade. Toda essa combinação é desenhada para atender a requisitos como
+resposta rápida, confiabilidade e baixo custo — itens fundamentais para boa
+parte dos eletrônicos ao nosso redor.</p>
+
+<p>Sistemas embarcados podem ser super simples, como um controle remoto, ou
+incrivelmente complexos, como os computadores de bordo de aviões e carros
+autônomos. Seja qual for o caso, todos têm como característica central a união
+entre hardware e software para dar conta de uma tarefa específica, nem mais, nem
+menos.</p>
+
+<h1 id="e-como-se-desenvolve-para-sistemas-embarcados">
+<a class="anchor" href="#e-como-se-desenvolve-para-sistemas-embarcados" aria-hidden="true"><span class="octicon octicon-link"></span></a>E como se desenvolve para sistemas embarcados?</h1>
+
+<p>Na bancada, o processo normalmente envolve três grandes etapas: escrever o
+código que define o comportamento do sistema, compilar esse código para o
+microcontrolador escolhido, e então gravar (“flashear”) esse código na placa.
+Por isso, escolher bem as ferramentas de desenvolvimento pode facilitar (e
+muito) o dia a dia:</p>
+
+<ul>
+  <li>
+<strong>Arduino IDE</strong>: Extremamente popular, especialmente para quem está começando,
+pela simplicidade da interface e quantidade absurda de projetos e exemplos
+prontos. Com ela, dá para usar tanto placas Arduino como aquelas baseadas em
+ESP32, tornando o início do aprendizado menos complicado.</li>
+  <li>
+<strong>Espressif/ESP-IDF</strong>: Esta é a ferramenta oficial para quem quer tirar o
+máximo proveito do ESP32. Ela fornece acesso a recursos avançados do chip e
+permite criar projetos mais robustos ou profissionais. Vai um pouco além da
+“zona de conforto” do Arduino, mas é super poderosa.</li>
+  <li>
+<strong>PlatformIO</strong>: Um ambiente multiplataforma que integra várias placas e
+microcontroladores diferentes, além de se conectar facilmente a IDEs modernas
+como o VS Code. Para quem já está familiarizado com as opções básicas e busca
+produtividade e escalabilidade, é um prato cheio.</li>
+</ul>
+
+<p>Essas plataformas ajudam a “traduzir” as ideias do papel para o hardware,
+oferecendo desde suporte para conexões físicas até ferramentas de depuração e
+gerenciamento de bibliotecas.</p>
+
+<p>Dando esse passo a mais, entender sistemas embarcados vai muito além do código:
+é pensar em como cada parte do circuito tem um papel para garantir que seu
+projeto funcione direitinho na prática.</p>
+
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                class
+                <span class="nc ">Introdução</span>
+                : public
+                <span class="nc ">Disruptive Architectures</span>
+                
+                , public
+                <span class="nc ">Sistemas Embarcados</span> 
+                
+            </div> 
+        </main>
+        <script type="text/javascript" src="/assets/scripts.js"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+        <script src=" https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js "></script>
+        <script type="module">
+            mermaid.initialize({theme:"neutral",
+                                securityLevel: "strict",
+                                startOnLoad: true
+                                });
+        </script>
+    </body>
+</html>
