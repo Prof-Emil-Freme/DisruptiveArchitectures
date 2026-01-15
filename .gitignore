@@ -1,0 +1,6 @@
+_site/
+.jekyll-cache/
+GemFile.lock
+Gemfile.lock
+*~
+.obsidian/
