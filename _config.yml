@@ -1,5 +1,5 @@
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://prof-emil-freme.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/DisruptiveArchitectures" # the subpath of your site, e.g. /blog
 title: "Disruptive Architectures" # the name of your site, e.g. ACME Corp.
 
 permalink: /:year/:month/:title:output_ext

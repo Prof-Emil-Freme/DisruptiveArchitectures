@@ -12,7 +12,7 @@
                 | sort: "class.order"
     %}
     {% for class in classes %}
-    <a href="{{class.url}}" class="class_link">{{class.class.title}}</a>
+    <a href="{{class.url | relative_url}}" class="class_link">{{class.class.title}}</a>
     {% endfor %}
     {% endfor %}
 
