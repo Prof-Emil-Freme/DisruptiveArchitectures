@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <title>9. Colaboração Multi-Agente - Disruptive Architectures</title>
+        <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+        <link rel="stylesheet" href="/DisruptiveArchitectures/assets/css/main.css" id="maincss">
+    </head>
+    <body>
+        <nav>
+    
+    <a href="javascript:void(0)" onclick="toggle_menu()" id="hamb_menu">☰ Aulas</a>
+    <a href="javascript:void(0)" onclick="toggle_toc()" id="toc_btn">📑 Índice</a>
+    
+    <a href="/DisruptiveArchitectures/">Index</a>&nbsp;
+    <a href="javascript:void(0)" onclick="toggle_themes()">Mudar Tema</a>
+</nav>
+
+        <aside id="course_menu">
+    
+    
+    <b class="course_name">Disruptive Architectures</b>
+
+    
+    <b class="section_name">Sobre a disciplina</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/00_index.html" class="class_link">Introdução</a>
+    
+    <a href="/DisruptiveArchitectures/classes/01_notas.html" class="class_link">Notas</a>
+    
+    <a href="/DisruptiveArchitectures/classes/02_Cronograma.html" class="class_link">Cronograma</a>
+    
+    
+    <b class="section_name">IoT</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/03_definicoes.html" class="class_link">Definições de IoT</a>
+    
+    <a href="/DisruptiveArchitectures/classes/04_circuitoseletricos.html" class="class_link">Circuítos (eletro)eletrônicos</a>
+    
+    
+    <b class="section_name">Sistemas Embarcados</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/05_sistemas_embarcados.html" class="class_link">Introdução</a>
+    
+    <a href="/DisruptiveArchitectures/classes/06_arduino.html" class="class_link">Arduino</a>
+    
+    
+    <b class="section_name">Protocolos M2M</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/07_m2m.html" class="class_link">Introdução</a>
+    
+    <a href="/DisruptiveArchitectures/classes/08_UART.html" class="class_link">UART</a>
+    
+    <a href="/DisruptiveArchitectures/classes/09_I2C.html" class="class_link">I2C</a>
+    
+    <a href="/DisruptiveArchitectures/classes/10_SPI.html" class="class_link">SPI</a>
+    
+    
+    <b class="section_name">Sensores, Atuadores e IO</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/13_multisensores_analogicos.html" class="class_link">Sensores analógicos</a>
+    
+    <a href="/DisruptiveArchitectures/classes/14_motores.html" class="class_link">Motores</a>
+    
+    <a href="/DisruptiveArchitectures/classes/11_sensore_controladores.html" class="class_link">Input: Keypad</a>
+    
+    <a href="/DisruptiveArchitectures/classes/12_lcdi2c.html" class="class_link">Output: LCD 16x2 I2C</a>
+    
+    <a href="/DisruptiveArchitectures/classes/15_genius.html" class="class_link">Projeto: Genius</a>
+    
+    
+    <b class="section_name">IA: Fundamentos & Estruturação</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/15_ia_local_fundamentos.html" class="class_link">1. Demistificando GenAI & Modelos Locais</a>
+    
+    <a href="/DisruptiveArchitectures/classes/16_system_prompts.html" class="class_link">2. System Prompts & Guardrails</a>
+    
+    <a href="/DisruptiveArchitectures/classes/17_structured_outputs.html" class="class_link">3. Saídas Estruturadas & JSON</a>
+    
+    
+    <b class="section_name">Backend</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/16_node_red.html" class="class_link">Node-Red</a>
+    
+    
+    <b class="section_name">Protocolos TCP/IP (Aplicação)</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/17_MQTT.html" class="class_link">MQTT</a>
+    
+    
+    <b class="section_name">IA: Conhecimento & Ferramentas</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/18_embeddings_vetores.html" class="class_link">4. Embeddings & Vector DBs</a>
+    
+    <a href="/DisruptiveArchitectures/classes/19_rag_local.html" class="class_link">5. RAG Local & Manuais Técnicos</a>
+    
+    <a href="/DisruptiveArchitectures/classes/20_function_calling.html" class="class_link">6. Function Calling & Tools</a>
+    
+    
+    <b class="section_name">IA: Visão & Agentes Autônomos</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/21_vlm_multimodal.html" class="class_link">7. Visão Computacional & VLMs</a>
+    
+    <a href="/DisruptiveArchitectures/classes/22_react_agents.html" class="class_link">8. Agentes ReAct em Python Puro</a>
+    
+    <a href="/DisruptiveArchitectures/classes/23_multi_agentes.html" class="class_link">9. Colaboração Multi-Agente</a>
+    
+    
+    <b class="section_name">Desafio</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/18_Desafio.html" class="class_link">Genius + MQTT + Dashboard</a>
+    
+    
+    <b class="section_name">Plataformas IoT</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/19_IoTPlatforms.html" class="class_link">AWS IoT Core: Things</a>
+    
+    <a href="/DisruptiveArchitectures/classes/20_IoTPlatformsDevice.html" class="class_link">Configurando um dispositivo</a>
+    
+    
+    <b class="section_name">IA: Protocolos IoT & Edge Gateway</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/24_ia_mqtt_gateways.html" class="class_link">10. IA com Protocolo MQTT</a>
+    
+    <a href="/DisruptiveArchitectures/classes/25_quantizacao_edge.html" class="class_link">11. Quantização & Otimização Edge</a>
+    
+    <a href="/DisruptiveArchitectures/classes/26_projeto_gateway_part1.html" class="class_link">12. Projeto Gateway: Arquitetura</a>
+    
+    <a href="/DisruptiveArchitectures/classes/27_projeto_gateway_part2.html" class="class_link">13. Projeto Gateway: Resiliência</a>
+    
+    
+
+
+  
+</aside>
+
+        <aside id="toc_menu"> 
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#gestão-de-estado--colaboração-multi-agente">Gestão de Estado &amp; Colaboração Multi-Agente</a></li>
+<li class="toc-entry toc-h1"><a href="#teoria">Teoria</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#1-por-que-agentes-únicos-falham-em-aplicações-iot-contínuas">1. Por que Agentes Únicos Falham em Aplicações IoT Contínuas?</a></li>
+<li class="toc-entry toc-h2"><a href="#2-a-estratégia-de-hierarquia-de-modelos-na-borda">2. A Estratégia de Hierarquia de Modelos na Borda</a></li>
+<li class="toc-entry toc-h2"><a href="#3-gestão-de-estado-compartilhado-the-blackboard-pattern">3. Gestão de Estado Compartilhado (The Blackboard Pattern)</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#prática">Prática</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#passo-1-download-dos-dois-modelos-no-ollama">Passo 1: Download dos Dois Modelos no Ollama</a></li>
+<li class="toc-entry toc-h2"><a href="#passo-2-construindo-o-sistema-multi-agente">Passo 2: Construindo o Sistema Multi-Agente</a></li>
+<li class="toc-entry toc-h2"><a href="#passo-3-executando-e-observando-a-eficiência">Passo 3: Executando e Observando a Eficiência</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#saída-típica-do-sistema">Saída Típica do Sistema:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#questionário-de-fixação">Questionário de Fixação</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#gabarito-comentado">Gabarito Comentado</a></li>
+</ul>
+</li>
+</ul>
+</aside>
+
+        <main>
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                public class 
+                
+                <span class="nc ">Disruptive Architectures</span>
+                :
+                <span class="nc ">IA: Visão & Agentes Autônomos</span> 
+                
+                , 
+                <span class="nc ">9. Colaboração Multi-Agente</span>
+                
+            </div> 
+            <center><h1> 9. Colaboração Multi-Agente</h1></center>
+            <h1 id="gestão-de-estado--colaboração-multi-agente">
+<a class="anchor" href="#gest%C3%A3o-de-estado--colabora%C3%A7%C3%A3o-multi-agente" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gestão de Estado &amp; Colaboração Multi-Agente</h1>
+
+<p>Na aula anterior, desenvolvemos um agente individual baseado no padrão ReAct. No entanto, quando aplicamos IA em sistemas industriais ou prediais com dezenas de sensores transmitindo dados a cada segundo, <strong>tentar fazer um único modelo executar todas as tarefas simultâneas causa gargalos graves</strong>: a janela de contexto se polui rapidamente, a inferência fica lenta e o modelo começa a esquecer instruções.</p>
+
+<p>Nesta aula, implementaremos a mais moderna abordagem de arquitetura distribuída: <strong>Sistemas Multi-Agentes Especializados com Gestão de Estado Compartilhado</strong>.</p>
+
+<pre class="mermaid">
+flowchart TD
+    SensorStream["📡 Telemetria Contínua de Sensores<br>(Vibração, Temperatura, Pressão)"] --&gt; Agent1
+    
+    subgraph POLLING["1. Agente Monitor (Polling 24/7)"]
+        Agent1["⚡ Monitor Agent<br>(Qwen 2.5 1.5B - Ultrarrápido &amp; Leve)"]
+        Agent1 --&gt; AnomalyCheck{"⚠️ Anomalia Detectada?"}
+    end
+    
+    AnomalyCheck --&gt;|"Não (Status Normal)"| LogSilent["📝 Grava Log Silencioso / Descarta"]
+    
+    AnomalyCheck --&gt;|"Sim (Vibração Crítica!)"| SharedState[("💾 Estado Compartilhado<br>{'alert': true, 'issue': 'Vibração 95Hz no Motor 1'}")]
+    
+    subgraph DISPATCH["2. Agente Despachante (Sob Demanda)"]
+        SharedState --&gt; Agent2["🧠 Dispatcher Agent<br>(Llama 3.2 3B - Alto Raciocínio)"]
+        Agent2 --&gt; ActionPlan["📋 1. Formula Plano de Contenção de Emergência"]
+        Agent2 --&gt; SMS["📱 2. Redige Mensagem Clara para Equipe de Manutenção"]
+    end
+    
+    style POLLING fill:#f8fafc,stroke:#94a3b8,stroke-width:2px;
+    style DISPATCH fill:#f0fdf4,stroke:#22c55e,stroke-width:2px;
+    style SharedState fill:#fef3c7,stroke:#f59e0b,stroke-width:2px;
+    style Agent1 fill:#e0e7ff,stroke:#6366f1,stroke-width:2px;
+    style Agent2 fill:#dcfce7,stroke:#16a34a,stroke-width:2px;
+</pre>
+
+<hr>
+
+<h1 id="teoria">
+<a class="anchor" href="#teoria" aria-hidden="true"><span class="octicon octicon-link"></span></a>Teoria</h1>
+
+<h2 id="1-por-que-agentes-únicos-falham-em-aplicações-iot-contínuas">
+<a class="anchor" href="#1-por-que-agentes-%C3%BAnicos-falham-em-aplica%C3%A7%C3%B5es-iot-cont%C3%ADnuas" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Por que Agentes Únicos Falham em Aplicações IoT Contínuas?</h2>
+
+<ol>
+  <li>
+<strong>Poluição e Estouro de Contexto (<em>Context Drift</em>):</strong> Colocar milhares de linhas de telemetria bruta na mesma janela de conversa de um único modelo esgota a memória RAM e dilui a capacidade de raciocínio.</li>
+  <li>
+<strong>Desperdício Energético e Computacional:</strong> Usar um modelo grande e pesado (ex: 8B ou 14B) para verificar a cada segundo se um sensor ultrapassou 30 graus é um enorme desperdício de bateria e processamento.</li>
+  <li>
+<strong>Especialização de Papéis (<em>Separation of Concerns</em>):</strong> Na engenharia de software, dividimos problemas complexos em microsserviços. Em IA, dividimos o sistema em <strong>agentes especialistas</strong> com papéis bem definidos.</li>
+</ol>
+
+<hr>
+
+<h2 id="2-a-estratégia-de-hierarquia-de-modelos-na-borda">
+<a class="anchor" href="#2-a-estrat%C3%A9gia-de-hierarquia-de-modelos-na-borda" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. A Estratégia de Hierarquia de Modelos na Borda</h2>
+
+<p>Para alcançar máxima eficiência energética e velocidade em hardware local, combinamos dois níveis de modelos:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Nível do Agente</th>
+      <th style="text-align: left">Modelo Recomendado</th>
+      <th style="text-align: left">Papel Principal</th>
+      <th style="text-align: left">Frequência de Execução</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Agente Monitor</strong></td>
+      <td style="text-align: left">
+<strong><code class="language-plaintext highlighter-rouge">qwen2.5:1.5b</code></strong> (ou 0.5B)</td>
+      <td style="text-align: left">Filtragem rápida de dados, classificação JSON e detecção de anomalias</td>
+      <td style="text-align: left"><strong>Alta Frequência (Executa a cada segundo)</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Agente Despachante</strong></td>
+      <td style="text-align: left"><strong><code class="language-plaintext highlighter-rouge">llama3.2:3b</code></strong></td>
+      <td style="text-align: left">Raciocínio contextual complexo, diagnóstico, elaboração de planos e redação de avisos</td>
+      <td style="text-align: left"><strong>Baixa Frequência (Desperta apenas sob alerta)</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Essa divisão economiza mais de <strong>80% do consumo de CPU</strong> do nosso gateway inteligente!</p>
+
+<hr>
+
+<h2 id="3-gestão-de-estado-compartilhado-the-blackboard-pattern">
+<a class="anchor" href="#3-gest%C3%A3o-de-estado-compartilhado-the-blackboard-pattern" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. Gestão de Estado Compartilhado (<em>The Blackboard Pattern</em>)</h2>
+
+<p>Para que dois ou mais agentes colaborem de forma assíncrona sem se bloquearem, utilizamos o padrão de arquitetura de software conhecido como <strong>Blackboard (Quadro-Negro)</strong>:</p>
+<ul>
+  <li>O <strong>Agente Monitor</strong> escreve em um dicionário de estado em memória quando identifica uma anomalia.</li>
+  <li>O <strong>Agente Despachante</strong> lê o estado, gera as ações de resposta e atualiza o quadro com as resoluções executadas.</li>
+</ul>
+
+<hr>
+
+<h1 id="prática">
+<a class="anchor" href="#pr%C3%A1tica" aria-hidden="true"><span class="octicon octicon-link"></span></a>Prática</h1>
+
+<p>Vamos construir um sistema multi-agente em Python (<code class="language-plaintext highlighter-rouge">multi_agent_system.py</code>) combinando o modelo ultraleve <code class="language-plaintext highlighter-rouge">qwen2.5:1.5b</code> (Monitor) e o modelo <code class="language-plaintext highlighter-rouge">llama3.2:3b</code> (Despachante).</p>
+
+<h2 id="passo-1-download-dos-dois-modelos-no-ollama">
+<a class="anchor" href="#passo-1-download-dos-dois-modelos-no-ollama" aria-hidden="true"><span class="octicon octicon-link"></span></a>Passo 1: Download dos Dois Modelos no Ollama</h2>
+
+<p>Certifique-se de que ambos os modelos estejam disponíveis:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ollama pull qwen2.5:1.5b
+ollama pull llama3.2:3b
+</code></pre></div></div>
+
+<hr>
+
+<h2 id="passo-2-construindo-o-sistema-multi-agente">
+<a class="anchor" href="#passo-2-construindo-o-sistema-multi-agente" aria-hidden="true"><span class="octicon octicon-link"></span></a>Passo 2: Construindo o Sistema Multi-Agente</h2>
+
+<p>Crie o arquivo <code class="language-plaintext highlighter-rouge">multi_agent_system.py</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">json</span>
+<span class="kn">import</span> <span class="n">time</span>
+<span class="kn">import</span> <span class="n">ollama</span>
+<span class="kn">from</span> <span class="n">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
+
+
+<span class="c1"># 1. CONTRATO DE DADOS ENTRE OS AGENTES
+</span><span class="k">class</span> <span class="nc">AnomalySignal</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">alert</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="nc">Field</span><span class="p">(</span>
+        <span class="p">...,</span>
+        <span class="n">description</span><span class="o">=</span><span class="sh">"</span><span class="s">True se o dado representar uma anomalia ou perigo, False se normal.</span><span class="sh">"</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">severity</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="nc">Field</span><span class="p">(</span>
+        <span class="p">...,</span> <span class="n">description</span><span class="o">=</span><span class="sh">"</span><span class="s">BAIXA, MEDIA, ALTA ou CRITICA (ou NENHUMA se normal).</span><span class="sh">"</span>
+    <span class="p">)</span>
+    <span class="n">issue_summary</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="nc">Field</span><span class="p">(</span>
+        <span class="p">...,</span>
+        <span class="n">description</span><span class="o">=</span><span class="sh">"</span><span class="s">Descrição concisa do problema detectado ou </span><span class="sh">'</span><span class="s">Operação normal</span><span class="sh">'</span><span class="s">.</span><span class="sh">"</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<span class="c1"># 2. AGENTE 1: MONITOR (Rápido, Analítico, Baseado em JSON)
+</span><span class="k">def</span> <span class="nf">agente_monitor_analisar_telemetria</span><span class="p">(</span>
+    <span class="n">telemetria_json</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AnomalySignal</span> <span class="o">|</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="n">system_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"""</span><span class="s">Você é o Agente Monitor de Sensores de alta velocidade.
+Sua única função é inspecionar o JSON de telemetria e emitir ESTRITAMENTE um payload JSON com o seguinte schema:
+</span><span class="si">{</span><span class="n">AnomalySignal</span><span class="p">.</span><span class="nf">model_json_schema</span><span class="p">()</span><span class="si">}</span><span class="s">
+
+Seja ultra rigoroso: se temperatura &gt; 80C ou vibracao == </span><span class="sh">'</span><span class="s">HIGH</span><span class="sh">'</span><span class="s">, emita alert: true com severidade ALTA ou CRITICA.
+Responda apenas o JSON.</span><span class="sh">"""</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Usamos o Qwen 2.5 1.5B pelo seu baixíssimo tempo de inferência
+</span>        <span class="n">response</span> <span class="o">=</span> <span class="n">ollama</span><span class="p">.</span><span class="nf">chat</span><span class="p">(</span>
+            <span class="n">model</span><span class="o">=</span><span class="sh">"</span><span class="s">qwen2.5:1.5b</span><span class="sh">"</span><span class="p">,</span>
+            <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+                <span class="p">{</span><span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">system</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="n">system_prompt</span><span class="p">},</span>
+                <span class="p">{</span><span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">user</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="n">telemetria_json</span><span class="p">},</span>
+            <span class="p">],</span>
+            <span class="nb">format</span><span class="o">=</span><span class="sh">"</span><span class="s">json</span><span class="sh">"</span><span class="p">,</span>
+            <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="sh">"</span><span class="s">temperature</span><span class="sh">"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">},</span>
+        <span class="p">)</span>
+
+        <span class="n">resultado</span> <span class="o">=</span> <span class="n">AnomalySignal</span><span class="p">.</span><span class="nf">model_validate_json</span><span class="p">(</span>
+            <span class="n">response</span><span class="p">[</span><span class="sh">"</span><span class="s">message</span><span class="sh">"</span><span class="p">][</span><span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">resultado</span>
+    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">❌ [MONITOR ERRO]: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">None</span>
+
+
+<span class="c1"># 3. AGENTE 2: DESPACHANTE (Especialista, Contextual, voltado para humanos)
+</span><span class="k">def</span> <span class="nf">agente_despachante_tratar_emergencia</span><span class="p">(</span>
+    <span class="n">unidade_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">sinal</span><span class="p">:</span> <span class="n">AnomalySignal</span><span class="p">,</span> <span class="n">telemetria_completa</span><span class="p">:</span> <span class="nb">str</span>
+<span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="se">\n</span><span class="s">🚨 [DESPACHANTE ACIONADO]: Iniciando protocolo de emergência...</span><span class="sh">"</span><span class="p">)</span>
+
+    <span class="n">prompt_despachante</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"""</span><span class="s">Você é o Agente Despachante de Engenharia e Segurança Operacional.
+Um alerta crítico foi detectado pelo Agente Monitor na unidade </span><span class="sh">'</span><span class="si">{</span><span class="n">unidade_id</span><span class="si">}</span><span class="sh">'</span><span class="s">.
+
+Dados do Alerta:
+- Severidade: </span><span class="si">{</span><span class="n">sinal</span><span class="p">.</span><span class="n">severity</span><span class="si">}</span><span class="s">
+- Descrição da Anomalia: </span><span class="si">{</span><span class="n">sinal</span><span class="p">.</span><span class="n">issue_summary</span><span class="si">}</span><span class="s">
+- Telemetria Bruta: </span><span class="si">{</span><span class="n">telemetria_completa</span><span class="si">}</span><span class="s">
+
+Suas Tarefas:
+1. Elabore um plano de ação técnico imediato em 2 tópicos.
+2. Redija uma mensagem de texto (SMS/WhatsApp) urgente e clara (máximo 2 linhas) para enviar ao técnico de plantão.
+
+Formate a resposta de forma limpa e profissional.</span><span class="sh">"""</span>
+
+    <span class="c1"># Usamos o Llama 3.2 3B para raciocínio elaborado e comunicação humana
+</span>    <span class="n">response</span> <span class="o">=</span> <span class="n">ollama</span><span class="p">.</span><span class="nf">chat</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">=</span><span class="sh">"</span><span class="s">llama3.2:3b</span><span class="sh">"</span><span class="p">,</span>
+        <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">user</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="n">prompt_despachante</span><span class="p">}],</span>
+        <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="sh">"</span><span class="s">temperature</span><span class="sh">"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">},</span>
+    <span class="p">)</span>
+
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="sh">"</span> <span class="o">+</span> <span class="sh">"</span><span class="s">=</span><span class="sh">"</span> <span class="o">*</span> <span class="mi">65</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">📋 PLANO DE CONTENÇÃO &amp; MENSAGEM DO DESPACHANTE:</span><span class="sh">"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">=</span><span class="sh">"</span> <span class="o">*</span> <span class="mi">65</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="sh">"</span><span class="s">message</span><span class="sh">"</span><span class="p">][</span><span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">].</span><span class="nf">strip</span><span class="p">())</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">=</span><span class="sh">"</span> <span class="o">*</span> <span class="mi">65</span> <span class="o">+</span> <span class="sh">"</span><span class="se">\n</span><span class="sh">"</span><span class="p">)</span>
+
+
+<span class="c1"># --- 4. LAÇO PRINCIPAL DE SIMULAÇÃO DE TELEMETRIA ---
+</span><span class="n">stream_telemetria_sensores</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="sh">"</span><span class="s">unit_id</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">MOTOR-01</span><span class="sh">"</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">temp</span><span class="sh">"</span><span class="p">:</span> <span class="mf">42.1</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">vibration</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">NORMAL</span><span class="sh">"</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">rpm</span><span class="sh">"</span><span class="p">:</span> <span class="mi">1750</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">current_amp</span><span class="sh">"</span><span class="p">:</span> <span class="mf">4.2</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="sh">"</span><span class="s">unit_id</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">MOTOR-01</span><span class="sh">"</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">temp</span><span class="sh">"</span><span class="p">:</span> <span class="mf">43.5</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">vibration</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">NORMAL</span><span class="sh">"</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">rpm</span><span class="sh">"</span><span class="p">:</span> <span class="mi">1755</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">current_amp</span><span class="sh">"</span><span class="p">:</span> <span class="mf">4.3</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="sh">"</span><span class="s">unit_id</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">CALDEIRA-04</span><span class="sh">"</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">temp</span><span class="sh">"</span><span class="p">:</span> <span class="mf">94.8</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">vibration</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">HIGH</span><span class="sh">"</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">rpm</span><span class="sh">"</span><span class="p">:</span> <span class="mi">3200</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">current_amp</span><span class="sh">"</span><span class="p">:</span> <span class="mf">18.5</span><span class="p">,</span>
+    <span class="p">},</span>  <span class="c1"># &lt;-- Anomalia Crítica!
+</span>    <span class="p">{</span>
+        <span class="sh">"</span><span class="s">unit_id</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">MOTOR-02</span><span class="sh">"</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">temp</span><span class="sh">"</span><span class="p">:</span> <span class="mf">39.0</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">vibration</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">LOW</span><span class="sh">"</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">rpm</span><span class="sh">"</span><span class="p">:</span> <span class="mi">1200</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">current_amp</span><span class="sh">"</span><span class="p">:</span> <span class="mf">3.1</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">]</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">=== INICIANDO SISTEMA MULTI-AGENTE DISTRIBUÍDO ===</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">evento</span> <span class="ow">in</span> <span class="n">stream_telemetria_sensores</span><span class="p">:</span>
+    <span class="n">json_str</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="nf">dumps</span><span class="p">(</span><span class="n">evento</span><span class="p">)</span>
+    <span class="n">uid</span> <span class="o">=</span> <span class="n">evento</span><span class="p">[</span><span class="sh">"</span><span class="s">unit_id</span><span class="sh">"</span><span class="p">]</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="se">\n</span><span class="s">📡 [TELEMETRIA RECEBIDA] Dispositivo: </span><span class="si">{</span><span class="n">uid</span><span class="si">}</span><span class="s"> | Dados: </span><span class="si">{</span><span class="n">json_str</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+
+    <span class="n">inicio_t</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="nf">time</span><span class="p">()</span>
+    <span class="c1"># 1. Agente Monitor avalia o dado instantaneamente
+</span>    <span class="n">sinal</span> <span class="o">=</span> <span class="nf">agente_monitor_analisar_telemetria</span><span class="p">(</span><span class="n">json_str</span><span class="p">)</span>
+    <span class="n">tempo_monitor</span> <span class="o">=</span> <span class="p">(</span><span class="n">time</span><span class="p">.</span><span class="nf">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">inicio_t</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span>
+
+    <span class="k">if</span> <span class="n">sinal</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">sinal</span><span class="p">.</span><span class="n">alert</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span>
+            <span class="sa">f</span><span class="sh">"</span><span class="s">   🟢 [MONITOR (</span><span class="si">{</span><span class="n">tempo_monitor</span><span class="si">:</span><span class="p">.</span><span class="mi">1</span><span class="n">f</span><span class="si">}</span><span class="s">ms)]: Telemetria Normal. Despachante permanece em repouso.</span><span class="sh">"</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="n">sinal</span> <span class="ow">and</span> <span class="n">sinal</span><span class="p">.</span><span class="n">alert</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span>
+            <span class="sa">f</span><span class="sh">"</span><span class="s">   🔴 [MONITOR (</span><span class="si">{</span><span class="n">tempo_monitor</span><span class="si">:</span><span class="p">.</span><span class="mi">1</span><span class="n">f</span><span class="si">}</span><span class="s">ms)]: ANOMALIA DETECTADA! Severidade: </span><span class="si">{</span><span class="n">sinal</span><span class="p">.</span><span class="n">severity</span><span class="si">}</span><span class="s"> | Motivo: </span><span class="si">{</span><span class="n">sinal</span><span class="p">.</span><span class="n">issue_summary</span><span class="si">}</span><span class="sh">"</span>
+        <span class="p">)</span>
+        <span class="c1"># 2. Desperta o Agente Despachante apenas se necessário
+</span>        <span class="nf">agente_despachante_tratar_emergencia</span><span class="p">(</span><span class="n">uid</span><span class="p">,</span> <span class="n">sinal</span><span class="p">,</span> <span class="n">json_str</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr>
+
+<h2 id="passo-3-executando-e-observando-a-eficiência">
+<a class="anchor" href="#passo-3-executando-e-observando-a-efici%C3%AAncia" aria-hidden="true"><span class="octicon octicon-link"></span></a>Passo 3: Executando e Observando a Eficiência</h2>
+
+<p>Execute o script:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python multi_agent_system.py
+</code></pre></div></div>
+
+<h3 id="saída-típica-do-sistema">
+<a class="anchor" href="#sa%C3%ADda-t%C3%ADpica-do-sistema" aria-hidden="true"><span class="octicon octicon-link"></span></a>Saída Típica do Sistema:</h3>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>=== INICIANDO SISTEMA MULTI-AGENTE DISTRIBUÍDO ===
+
+📡 [TELEMETRIA RECEBIDA] Dispositivo: MOTOR-01 | Dados: {"unit_id": "MOTOR-01", "temp": 42.1, "vibration": "NORMAL", "rpm": 1750, "current_amp": 4.2}
+   🟢 [MONITOR (145.2ms)]: Telemetria Normal. Despachante permanece em repouso.
+
+📡 [TELEMETRIA RECEBIDA] Dispositivo: MOTOR-01 | Dados: {"unit_id": "MOTOR-01", "temp": 43.5, "vibration": "NORMAL", "rpm": 1755, "current_amp": 4.3}
+   🟢 [MONITOR (141.8ms)]: Telemetria Normal. Despachante permanece em repouso.
+
+📡 [TELEMETRIA RECEBIDA] Dispositivo: CALDEIRA-04 | Dados: {"unit_id": "CALDEIRA-04", "temp": 94.8, "vibration": "HIGH", "rpm": 3200, "current_amp": 18.5}
+   🔴 [MONITOR (152.0ms)]: ANOMALIA DETECTADA! Severidade: CRITICA | Motivo: Temperatura de 94.8C e vibração ALTA na caldeira.
+
+🚨 [DESPACHANTE ACIONADO]: Iniciando protocolo de emergência...
+
+=================================================================
+📋 PLANO DE CONTENÇÃO &amp; MENSAGEM DO DESPACHANTE:
+=================================================================
+Plano de Ação Técnico:
+1. Desarmar imediatamente o relé principal da CALDEIRA-04 para interromper o aquecimento e aliviar a pressão.
+2. Inspecionar os rolamentos do rotor e o circuito de refrigeração para identificar a causa da vibração de 3200 RPM associada a 94.8°C.
+
+Mensagem de Alerta (SMS/WhatsApp):
+⚠️ ALERTA CRÍTICO: Caldeira 04 superaquecendo (94.8°C) com vibração alta e corrente de 18.5A. Desarme preventivo recomendado imediatamente!
+=================================================================
+
+📡 [TELEMETRIA RECEBIDA] Dispositivo: MOTOR-02 | Dados: {"unit_id": "MOTOR-02", "temp": 39.0, "vibration": "LOW", "rpm": 1200, "current_amp": 3.1}
+   🟢 [MONITOR (139.4ms)]: Telemetria Normal. Despachante permanece em repouso.
+</code></pre></div></div>
+
+<hr>
+
+<h1 id="questionário-de-fixação">
+<a class="anchor" href="#question%C3%A1rio-de-fixa%C3%A7%C3%A3o" aria-hidden="true"><span class="octicon octicon-link"></span></a>Questionário de Fixação</h1>
+
+<p><strong>1. Qual é a principal vantagem de adotar uma arquitetura Multi-Agente hierárquica em sistemas de monitoramento contínuo de IoT?</strong><br>
+a) Aumentar o custo financeiro da solução com hardware mais potente.<br>
+b) Permitir que um modelo leve e ultrarrápido (ex: 1.5B) filtre dados de alta frequência consumindo pouca CPU, acordando modelos mais pesados (ex: 3B+) apenas sob anomalias.<br>
+c) Eliminar todos os cabos de rede do prédio.<br>
+d) Substituir a linguagem Python por HTML estático.<br>
+e) Apagar os registros de log para economizar disco.</p>
+
+<p><strong>2. O que é o padrão de arquitetura <em>Blackboard</em> (Quadro-Negro) na coordenação de agentes autônomos?</strong><br>
+a) Uma tela de pintura digital em LCD para desenhar gráficos.<br>
+b) Um espaço de memória ou estado compartilhado onde múltiplos agentes independentes podem ler dados do ambiente e escrever ações ou alertas de forma desacoplada.<br>
+c) Um método de criptografia de senhas para portas seriais.<br>
+d) A carcaça de plástico preta usada na montagem do Raspberry Pi.<br>
+e) Um comando do sistema operacional para desligar a tela do computador.</p>
+
+<p><strong>3. Por que não é recomendado utilizar um modelo de grande porte (como 70B ou APIs de nuvem com alto custo) para cada leitura individual de sensor a cada 500 milissegundos?</strong><br>
+a) Porque modelos grandes não sabem interpretar números.<br>
+b) Porque geraria um custo financeiro proibitivo por token, consumo de banda massivo e saturação desnecessária de recursos de processamento.<br>
+c) Porque o protocolo MQTT só aceita modelos com menos de 1 bilhão de parâmetros.<br>
+d) Porque sensores analógicos param de funcionar se conectados à nuvem.<br>
+e) Porque o Pydantic rejeita modelos com mais de 3B parâmetros.</p>
+
+<p><strong>4. No código prático apresentado nesta aula, qual foi o papel específico desempenhado pelo <em>Agente Despachante</em>?</strong><br>
+a) Ficar em loop lendo a porta serial a cada milissegundo.<br>
+b) Analisar o contexto do alerta crítico enviado pelo Monitor, estruturar um plano de contenção técnica e redigir uma mensagem compreensível para os engenheiros de manutenção.<br>
+c) Compilar o código C++ para a placa Arduino.<br>
+d) Formatar a memória flash do gateway.<br>
+e) Aumentar a temperatura do motor para 100°C.</p>
+
+<p><strong>5. Como garantimos que o sinal transmitido entre o Agente Monitor e o Agente Despachante mantenha consistência e confiabilidade?</strong><br>
+a) Enviando arquivos de áudio gravados por microfone.<br>
+b) Definindo um contrato de dados estruturado e tipado com Pydantic (<code class="language-plaintext highlighter-rouge">AnomalySignal</code>), garantindo que o sinal contenha campos explícitos (<code class="language-plaintext highlighter-rouge">alert</code>, <code class="language-plaintext highlighter-rouge">severity</code>, <code class="language-plaintext highlighter-rouge">issue_summary</code>).<br>
+c) Deixando o modelo gerar texto poético livre.<br>
+d) Desativando a validação de tipos no Python.<br>
+e) Reiniciando o Ollama a cada mensagem enviada.</p>
+
+<hr>
+
+<h3 id="gabarito-comentado">
+<a class="anchor" href="#gabarito-comentado" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gabarito Comentado</h3>
+
+<ol>
+  <li>
+<strong>b) Permitir que um modelo leve e ultrarrápido (ex: 1.5B) filtre dados de alta frequência…</strong><br>
+<em>Justificativa:</em> A especialização de papéis viabiliza alta taxa de amostragem de dados na borda com baixíssimo consumo de energia.</li>
+  <li>
+<strong>b) Um espaço de memória ou estado compartilhado onde múltiplos agentes independentes podem ler e escrever…</strong><br>
+<em>Justificativa:</em> O padrão Blackboard centraliza o estado do sistema, permitindo que agentes especialistas atuem colaborativamente de forma assíncrona.</li>
+  <li>
+<strong>b) Porque geraria um custo financeiro proibitivo por token, consumo de banda massivo…</strong><br>
+<em>Justificativa:</em> Mais de 99% dos dados de sensores em operação normal são rotineiros e podem ser descartados ou filtrados por modelos minúsculos na borda.</li>
+  <li>
+<strong>b) Analisar o contexto do alerta crítico enviado pelo Monitor, estruturar um plano de contenção…</strong><br>
+<em>Justificativa:</em> O Despachante atua como o especialista de alta cognição responsável pela síntese, planejamento e interface humana.</li>
+  <li>
+<strong>b) Definindo um contrato de dados estruturado e tipado com Pydantic (<code class="language-plaintext highlighter-rouge">AnomalySignal</code>)…</strong><br>
+<em>Justificativa:</em> Contratos tipados previnem ruídos e garantem interoperabilidade determinística entre diferentes agentes autônomos.</li>
+</ol>
+
+            <hr/>
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                public class 
+                
+                <span class="nc ">Disruptive Architectures</span>
+                :
+                <span class="nc ">IA: Visão & Agentes Autônomos</span> 
+                
+                , 
+                <span class="nc ">9. Colaboração Multi-Agente</span>
+                
+            </div> 
+        </main>
+        <script type="text/javascript" src="/DisruptiveArchitectures/assets/scripts.js"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+        <script src=" https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js "></script>
+        <script type="module">
+            mermaid.initialize({theme:"neutral",
+                                securityLevel: "strict",
+                                startOnLoad: true
+                                });
+        </script>
+    </body>
+</html>

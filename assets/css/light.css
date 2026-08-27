@@ -106,58 +106,89 @@ pre.highlight, pre figure > pre {
   margin: 1em;
 }
 
+.highlight pre {
+  white-space: pre-wrap; /* Standard property to force wrapping */
+  word-wrap: break-word; /* Breaks long words if necessary */
+  overflow-wrap: break-word;
+}
+
 .smallImgLeft {
   max-width: 100pt;
   float: left;
   margin: 1em;
 }
 
-.info,
-.tip,
-.example,
-.warning,
-.danger,
-.attention {
+.attention, .danger, .warning, .example, .tip, .info {
   border: none;
   margin: 2em;
-  padding: 0;
-  border-radius: 0.5em 0.5em 0 0;
-  /*background-color:#f000f0;*/
+  padding: 0 1.5em;
+  border-radius: 0.5em;
 }
-.info ::before,
-.tip ::before,
-.example ::before,
-.warning ::before,
-.danger ::before,
-.attention ::before {
+.attention::before, .danger::before, .warning::before, .example::before, .tip::before, .info::before {
   display: block;
   padding: 0.2em 1em;
-  margin: 0 -2em 1em -2em;
   background-color: rgba(128, 128, 128, 0.5);
   mix-blend-mode: divide;
   border-radius: 0.5em 0.5em 0 0;
-  border-bottom: none;
+  margin: 0 -1.5em 1em -1.5em;
 }
-.info ::after,
-.tip ::after,
-.example ::after,
-.warning ::after,
-.danger ::after,
-.attention ::after {
+.attention::after, .danger::after, .warning::after, .example::after, .tip::after, .info::after {
   content: ".";
   display: block;
   padding: 0.2em 1em;
-  margin: 1em -2em 0 -2em;
   background-color: rgba(128, 128, 128, 0.5);
   mix-blend-mode: divide;
   border-radius: 0 0 0.5em 0.5em;
-  border-bottom: none;
+  margin: 0 -1.5em 1em -1.5em;
   text-align: right;
 }
 
-.attention ::before {
+.info::before {
+  content: "Info";
+  background-color: #2196f3;
+}
+.info::after {
+  background-color: #2196f3;
+}
+
+.tip::before {
+  content: "Dica!";
+  background-color: #4caf50;
+}
+.tip::after {
+  background-color: #4caf50;
+}
+
+.example::before {
+  content: "Examplo";
+  background-color: #9c27b0;
+}
+.example::after {
+  background-color: #9c27b0;
+}
+
+.warning::before {
+  content: "Aviso";
+  background-color: #ff9800;
+}
+.warning::after {
+  background-color: #ff9800;
+}
+
+.danger::before {
+  content: "Perigo";
+  background-color: #f44336;
+}
+.danger::after {
+  background-color: #f44336;
+}
+
+.attention::before {
   content: "Atenção!";
-  background-color: rgba(128, 128, 128, 0.5);
+  background-color: #607d8b;
+}
+.attention::after {
+  background-color: #607d8b;
 }
 
 @media (max-width: 1324px) {
@@ -178,11 +209,15 @@ pre.highlight, pre figure > pre {
   top: 41px;
   width: 20%;
   max-width: 25ch;
+  max-height: calc(100vh - 45px);
+  overflow-y: auto;
+  overflow-x: hidden;
   margin: 0;
   float: left;
   border-right: 1px solid #3c2e52;
   border-bottom: 1px solid #3c2e52;
   padding: 0.5em 1em 0.5em 1.5em;
+  z-index: 5;
 }
 #course_menu a {
   display: block;
@@ -214,20 +249,29 @@ pre.highlight, pre figure > pre {
   padding: 0 0 0.1em 0.2em;
 }
 
-#hamb_menu {
+#hamb_menu,
+#toc_btn {
   display: none;
 }
 
 @media (max-width: 1124px) {
   #course_menu {
-    width: 90%;
+    width: 100%;
+    max-width: 100%;
+    max-height: 60vh;
+    float: none;
     display: none;
+    position: static;
+    border-right: none;
+    border-bottom: 2px solid #3c2e52;
   }
-  #hamb_menu {
+  #hamb_menu,
+  #toc_btn {
     display: inline-block;
-    padding: 0 1em;
+    padding: 0 0.8em;
     text-decoration: none;
-    font-weight: 900;
+    font-weight: 700;
+    cursor: pointer;
   }
 }
 #toc_menu {
@@ -238,11 +282,15 @@ pre.highlight, pre figure > pre {
   right: 0;
   width: 20%;
   max-width: 25ch;
+  max-height: calc(100vh - 45px);
+  overflow-y: auto;
+  overflow-x: hidden;
   margin: 0;
   float: right;
   border-left: 1px solid #3c2e52;
   border-bottom: 1px solid #3c2e52;
   padding: 0.5em 1.5em 0.5em 1em;
+  z-index: 5;
 }
 #toc_menu a {
   display: block;
@@ -276,8 +324,14 @@ pre.highlight, pre figure > pre {
 
 @media (max-width: 1124px) {
   #toc_menu {
-    width: 90%;
+    width: 100%;
+    max-width: 100%;
+    max-height: 60vh;
+    float: none;
     display: none;
+    position: static;
+    border-left: none;
+    border-bottom: 2px solid #3c2e52;
   }
 }
 .highlight .hll {

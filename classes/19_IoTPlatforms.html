@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <title>AWS IoT Core: Things - Disruptive Architectures</title>
+        <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+        <link rel="stylesheet" href="/DisruptiveArchitectures/assets/css/main.css" id="maincss">
+    </head>
+    <body>
+        <nav>
+    
+    <a href="javascript:void(0)" onclick="toggle_menu()" id="hamb_menu">☰ Aulas</a>
+    <a href="javascript:void(0)" onclick="toggle_toc()" id="toc_btn">📑 Índice</a>
+    
+    <a href="/DisruptiveArchitectures/">Index</a>&nbsp;
+    <a href="javascript:void(0)" onclick="toggle_themes()">Mudar Tema</a>
+</nav>
+
+        <aside id="course_menu">
+    
+    
+    <b class="course_name">Disruptive Architectures</b>
+
+    
+    <b class="section_name">Sobre a disciplina</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/00_index.html" class="class_link">Introdução</a>
+    
+    <a href="/DisruptiveArchitectures/classes/01_notas.html" class="class_link">Notas</a>
+    
+    <a href="/DisruptiveArchitectures/classes/02_Cronograma.html" class="class_link">Cronograma</a>
+    
+    
+    <b class="section_name">IoT</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/03_definicoes.html" class="class_link">Definições de IoT</a>
+    
+    <a href="/DisruptiveArchitectures/classes/04_circuitoseletricos.html" class="class_link">Circuítos (eletro)eletrônicos</a>
+    
+    
+    <b class="section_name">Sistemas Embarcados</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/05_sistemas_embarcados.html" class="class_link">Introdução</a>
+    
+    <a href="/DisruptiveArchitectures/classes/06_arduino.html" class="class_link">Arduino</a>
+    
+    
+    <b class="section_name">Protocolos M2M</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/07_m2m.html" class="class_link">Introdução</a>
+    
+    <a href="/DisruptiveArchitectures/classes/08_UART.html" class="class_link">UART</a>
+    
+    <a href="/DisruptiveArchitectures/classes/09_I2C.html" class="class_link">I2C</a>
+    
+    <a href="/DisruptiveArchitectures/classes/10_SPI.html" class="class_link">SPI</a>
+    
+    
+    <b class="section_name">Sensores, Atuadores e IO</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/13_multisensores_analogicos.html" class="class_link">Sensores analógicos</a>
+    
+    <a href="/DisruptiveArchitectures/classes/14_motores.html" class="class_link">Motores</a>
+    
+    <a href="/DisruptiveArchitectures/classes/11_sensore_controladores.html" class="class_link">Input: Keypad</a>
+    
+    <a href="/DisruptiveArchitectures/classes/12_lcdi2c.html" class="class_link">Output: LCD 16x2 I2C</a>
+    
+    <a href="/DisruptiveArchitectures/classes/15_genius.html" class="class_link">Projeto: Genius</a>
+    
+    
+    <b class="section_name">IA: Fundamentos & Estruturação</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/15_ia_local_fundamentos.html" class="class_link">1. Demistificando GenAI & Modelos Locais</a>
+    
+    <a href="/DisruptiveArchitectures/classes/16_system_prompts.html" class="class_link">2. System Prompts & Guardrails</a>
+    
+    <a href="/DisruptiveArchitectures/classes/17_structured_outputs.html" class="class_link">3. Saídas Estruturadas & JSON</a>
+    
+    
+    <b class="section_name">Backend</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/16_node_red.html" class="class_link">Node-Red</a>
+    
+    
+    <b class="section_name">Protocolos TCP/IP (Aplicação)</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/17_MQTT.html" class="class_link">MQTT</a>
+    
+    
+    <b class="section_name">IA: Conhecimento & Ferramentas</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/18_embeddings_vetores.html" class="class_link">4. Embeddings & Vector DBs</a>
+    
+    <a href="/DisruptiveArchitectures/classes/19_rag_local.html" class="class_link">5. RAG Local & Manuais Técnicos</a>
+    
+    <a href="/DisruptiveArchitectures/classes/20_function_calling.html" class="class_link">6. Function Calling & Tools</a>
+    
+    
+    <b class="section_name">IA: Visão & Agentes Autônomos</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/21_vlm_multimodal.html" class="class_link">7. Visão Computacional & VLMs</a>
+    
+    <a href="/DisruptiveArchitectures/classes/22_react_agents.html" class="class_link">8. Agentes ReAct em Python Puro</a>
+    
+    <a href="/DisruptiveArchitectures/classes/23_multi_agentes.html" class="class_link">9. Colaboração Multi-Agente</a>
+    
+    
+    <b class="section_name">Desafio</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/18_Desafio.html" class="class_link">Genius + MQTT + Dashboard</a>
+    
+    
+    <b class="section_name">Plataformas IoT</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/19_IoTPlatforms.html" class="class_link">AWS IoT Core: Things</a>
+    
+    <a href="/DisruptiveArchitectures/classes/20_IoTPlatformsDevice.html" class="class_link">Configurando um dispositivo</a>
+    
+    
+    <b class="section_name">IA: Protocolos IoT & Edge Gateway</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/24_ia_mqtt_gateways.html" class="class_link">10. IA com Protocolo MQTT</a>
+    
+    <a href="/DisruptiveArchitectures/classes/25_quantizacao_edge.html" class="class_link">11. Quantização & Otimização Edge</a>
+    
+    <a href="/DisruptiveArchitectures/classes/26_projeto_gateway_part1.html" class="class_link">12. Projeto Gateway: Arquitetura</a>
+    
+    <a href="/DisruptiveArchitectures/classes/27_projeto_gateway_part2.html" class="class_link">13. Projeto Gateway: Resiliência</a>
+    
+    
+
+
+  
+</aside>
+
+        <aside id="toc_menu"> 
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#plataformas-iot">Plataformas IoT</a></li>
+<li class="toc-entry toc-h1"><a href="#arquitetura-de-um-sistema-iot">Arquitetura de um sistema IoT</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#iot-core-criando-um-thing">IoT Core: Criando um Thing.</a></li>
+</ul>
+</li>
+</ul>
+</aside>
+
+        <main>
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                public class 
+                
+                <span class="nc ">Disruptive Architectures</span>
+                :
+                <span class="nc ">Plataformas IoT</span> 
+                
+                , 
+                <span class="nc ">AWS IoT Core: Things</span>
+                
+            </div> 
+            <center><h1> AWS IoT Core: Things</h1></center>
+            <h1 id="plataformas-iot">
+<a class="anchor" href="#plataformas-iot" aria-hidden="true"><span class="octicon octicon-link"></span></a>Plataformas IoT</h1>
+
+<p>Tudo que vimos até agora se aplica em pequena escala e na forma que chamamos de
+<strong>on-premises</strong>, ou seja, com o equipamento situado em nosso ambiente de aplicação.
+Conforme o volume de clientes, equipamentos e processamento cresce, manter essa
+infraestrutura começa a ficar mais difícil.</p>
+
+<p>Para isso, tanto a AWS como Azure contam com soluções focadas especificamente em
+IoT, IoT Core e IoT Hub especificamente. Claro que é possível construir essa
+mesma infraestrutura em plataformas que não tem esse produto dedicado, contudo
+essas ferramentas facilitam diversos pontos do processo de gerenciamento da
+solução IoT.</p>
+
+<h1 id="arquitetura-de-um-sistema-iot">
+<a class="anchor" href="#arquitetura-de-um-sistema-iot" aria-hidden="true"><span class="octicon octicon-link"></span></a>Arquitetura de um sistema IoT</h1>
+
+<p>Quando pensamos em uma Arquitetura IoT podemos dividi-la em duas seções
+principais, uma composta pelas “Coisas” que chamamos de <strong>edge</strong> e outra
+composta pela <strong><em>cloud</em></strong>. A comunicação entre as duas partes é feita através de
+um <strong>gateway</strong>.</p>
+
+<p><img src="assets/cloudgateway.png" alt=""></p>
+
+<p>Os dispositivos da <strong>edge</strong> podem se comunicar diretamente com o <strong>“Cloud
+Gateway”</strong> caso consigam, como é o caso da ESP32 que já possui módulo WiFi. Ou
+pode ser necessário agregar as informações dos sensores e controladores em um
+<strong>“Edge Gateway”</strong> que esse sim se comunica com o <strong>“Cloud Gateway”</strong>.</p>
+
+<p><img src="assets/edgegateway.png" alt=""></p>
+
+<p>O Cloud Gateway atua como um endpoint único que distribui milhões de conexões
+MQTT entre múltiplos servidores internos. Ele gerencia o peso das sessões
+persistentes e a segurança (TLS) de forma nativa, garantindo alta
+disponibilidade e escalabilidade sem que você precise gerenciar o hardware.</p>
+
+<p>Depois que o gateway recebe a informação da borda, é possível utilizar as
+ferramentas internas da sua cloud para o consumo, tratamento, e dispersão dos
+dados, o que garante uma camada maior de segurança de sua aplicação</p>
+
+<p>Caso você utilize uma plataforma cloud que não ofereça o serviço de IoT
+dedicado, todas as camadas de gerenciamento e segurança deverão ser
+desenvolvidas por sua solução.</p>
+
+<p>Nos próximos tópicos estaremos configurando o AWS IoT Core para conectar um
+dispositivo a Cloud.</p>
+
+<h2 id="iot-core-criando-um-thing">
+<a class="anchor" href="#iot-core-criando-um-thing" aria-hidden="true"><span class="octicon octicon-link"></span></a>IoT Core: Criando um <strong>Thing</strong>.</h2>
+
+<p>Depois de feito login em seu console da AWS procure em serviços <em>Internet of
+Things</em></p>
+
+<p><img src="assets/awsservices.png" alt=""></p>
+
+<p>Depois procure por IoT Core e acesse.</p>
+
+<p><img src="assets/iotcore01.png" alt=""></p>
+
+<p>Para fazer a integração, precisamos criar um <em>“Thing”</em>, no menu esquerdo
+procure por <code class="language-plaintext highlighter-rouge">Manage &gt; All Devices &gt; Things</code> e acesse.</p>
+
+<p>Nesta pagina é possível gerenciar todos os seus dispositivos. Para criar um novo,
+clique no botão <strong>“Create things”</strong></p>
+
+<p><img src="assets/createthings.png" alt=""></p>
+
+<p>Podemos criar diversos dispositivos de uma só vez, ou apenas um. Por
+simplicidade criaremos apenas um. Selecione <em>“Create single thing”</em> e clique
+em <em>Next</em></p>
+
+<p><img src="assets/createonething.png" alt=""></p>
+
+<p>O próximo passo é definir alguns atributos da “Coisa” que estamos criando. Ela
+irá precisar de um nome identificador. Este será o ID do dispositivo na
+plataforma.</p>
+
+<blockquote>
+  <p><em>Device Shadow (Gêmeo Digital)</em>: A nuvem mantém uma cópia virtual do estado do
+dispositivo. Se um sensor ficar offline, o aplicativo lê o “Shadow”. Quando o
+sensor volta, a AWS sincroniza o estado automaticamente. Para este documento
+não utilizaremos.</p>
+</blockquote>
+
+<p><img src="assets/creatthingproperties.png" alt=""></p>
+
+<p>Agora a AWS irá pedir para criar um certificado para o dispositivo se conectar a
+plataforma. Selecione <em>“Auto-generate a new certificate”</em> assim a amazon irá
+gerar todos os certificados necessários. Depois de selecionado clique em <em>Next</em></p>
+
+<p><img src="assets/createthingcetificate.png" alt=""></p>
+
+<p>Próximo passo é criar uma política de acesso, que é responsável por habilitar ou
+negar o acesso a serviços dentro da plataforma. Para criar uma nova política
+clique em <em>“Create policy”</em>. Uma nova aba será aberta para fazer esse processo.</p>
+
+<p><img src="assets/createthingpolicy01.png" alt=""></p>
+
+<p>Precisamos definir um nome para essa nova politica de acesso, e depois vamos utilizar
+as <em>“Policy Examples”</em> para iniciar a criação dela.</p>
+
+<p><img src="assets/createthingpolicy02.png" alt=""></p>
+
+<p>Ao clicar em <em>“Policy Examples”</em> procure por aquela que com o nome <code class="language-plaintext highlighter-rouge">Publish to
+any topic prefixed by the thing name</code>, clique em sua caixa de seleção e depois
+em _“Add to policy”</p>
+
+<p><img src="assets/createthingpolicy03.png" alt=""></p>
+
+<p>Feito isso, alguns <strong>statements</strong> já foram criados para nós, e o mais importante
+com o campo <strong>Policy resource</strong> correto, que é algo como</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>arn:aws:iot:&lt;Sua Região&gt;:&lt;Seu User ID&gt;:client/${iot:Connection.Thing.ThingName}
+</code></pre></div></div>
+
+<p>Agora abra o editor json e deixe o como o código abaixo. <em>Preste atenção na
+string do Resource! Você deverá trocar pelas suas informações</em></p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iot:Connect"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:iot:&lt;Sua Região&gt;:&lt;Seu User ID&gt;:client/${iot:Connection.Thing.ThingName}"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iot:Publish"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:iot:&lt;Sua Região&gt;:&lt;Seu User ID&gt;:topic/esp32/${iot:Connection.Thing.ThingName}/*"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iot:Receive"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:iot:&lt;Sua Região&gt;:&lt;Seu User ID&gt;:topic/esp32/${iot:Connection.Thing.ThingName}/*"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iot:Subscribe"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:iot:&lt;Sua Região&gt;:&lt;Seu User ID&gt;:topicfilter/esp32/${iot:Connection.Thing.ThingName}/*"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="attention">
+  <p>Podemos utilizar a seguinte politica para testes, contudo essa é uma falha crítica
+de segurança</p>
+
+  <div class="language-json highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iot:*"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>  </div>
+
+  <p>Essa política concede poder total (Allow *) sobre todo o seu ambiente IoT.</p>
+
+  <p>O Problema: Ela viola o Princípio do Menor Privilégio. Se um único sensor for
+invadido, o hacker ganha a “chave mestra” para controlar, espiar ou deletar
+toda a sua frota. Segurança zero!</p>
+
+</div>
+
+<p>Feito isso verifique se está tudo correto, e clique em <em>“Create”</em></p>
+
+<p><img src="assets/finishpolicy.png" alt=""></p>
+
+<p>Esta política implementa um isolamento de segurança por dispositivo:</p>
+
+<p>O que faz: Permite conectar, publicar, receber e subscrever mensagens.</p>
+
+<p>A restrição: O dispositivo só pode atuar em recursos (tópicos e IDs) que
+correspondam exatamente ao seu próprio Thing Name.</p>
+
+<p>Na prática, ela impede que um dispositivo interaja com os dados de outro, mesmo
+usando a mesma política.</p>
+
+<p>Depois da politica criada ela estará listada em sua lista de políticas</p>
+
+<p><img src="assets/listpolicies.png" alt=""></p>
+
+<p>Agora volte a página anterior, se sua nova politica não estiver listada, clique
+no botão de atualização. Selecione a política recém criada, e clique em <em>“Create
+thing”</em>.</p>
+
+<p><img src="assets/addpolicy.png" alt=""></p>
+
+<p><span style="color:red; font-size:2em">CUIDADO!</span> Depois de clicar em
+<em>“Create thing”</em> será apresentado um pop-up para download dos certificados. Essa
+é a única vez que eles podem ser baixados. Certifique-se de fazer
+download de todos e guardá-los em um lugar seguro.</p>
+
+<p><img src="assets/certificatesDownload.png" alt=""></p>
+
+<p>Esses certificados serão utilizados para garantir a identidade de nossos
+dispositivos.</p>
+
+<p>Depois de feito o download, clique em <em>“Done”</em>, seu dispositivo deverá ser
+listado na lista de <strong>Things</strong></p>
+
+<p><img src="assets/listthingcreated.png" alt=""></p>
+
+
+            <hr/>
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                public class 
+                
+                <span class="nc ">Disruptive Architectures</span>
+                :
+                <span class="nc ">Plataformas IoT</span> 
+                
+                , 
+                <span class="nc ">AWS IoT Core: Things</span>
+                
+            </div> 
+        </main>
+        <script type="text/javascript" src="/DisruptiveArchitectures/assets/scripts.js"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+        <script src=" https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js "></script>
+        <script type="module">
+            mermaid.initialize({theme:"neutral",
+                                securityLevel: "strict",
+                                startOnLoad: true
+                                });
+        </script>
+    </body>
+</html>

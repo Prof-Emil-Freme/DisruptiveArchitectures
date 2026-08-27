@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <title>1. Demistificando GenAI & Modelos Locais - Disruptive Architectures</title>
+        <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+        <link rel="stylesheet" href="/DisruptiveArchitectures/assets/css/main.css" id="maincss">
+    </head>
+    <body>
+        <nav>
+    
+    <a href="javascript:void(0)" onclick="toggle_menu()" id="hamb_menu">☰ Aulas</a>
+    <a href="javascript:void(0)" onclick="toggle_toc()" id="toc_btn">📑 Índice</a>
+    
+    <a href="/DisruptiveArchitectures/">Index</a>&nbsp;
+    <a href="javascript:void(0)" onclick="toggle_themes()">Mudar Tema</a>
+</nav>
+
+        <aside id="course_menu">
+    
+    
+    <b class="course_name">Disruptive Architectures</b>
+
+    
+    <b class="section_name">Sobre a disciplina</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/00_index.html" class="class_link">Introdução</a>
+    
+    <a href="/DisruptiveArchitectures/classes/01_notas.html" class="class_link">Notas</a>
+    
+    <a href="/DisruptiveArchitectures/classes/02_Cronograma.html" class="class_link">Cronograma</a>
+    
+    
+    <b class="section_name">IoT</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/03_definicoes.html" class="class_link">Definições de IoT</a>
+    
+    <a href="/DisruptiveArchitectures/classes/04_circuitoseletricos.html" class="class_link">Circuítos (eletro)eletrônicos</a>
+    
+    
+    <b class="section_name">Sistemas Embarcados</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/05_sistemas_embarcados.html" class="class_link">Introdução</a>
+    
+    <a href="/DisruptiveArchitectures/classes/06_arduino.html" class="class_link">Arduino</a>
+    
+    
+    <b class="section_name">Protocolos M2M</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/07_m2m.html" class="class_link">Introdução</a>
+    
+    <a href="/DisruptiveArchitectures/classes/08_UART.html" class="class_link">UART</a>
+    
+    <a href="/DisruptiveArchitectures/classes/09_I2C.html" class="class_link">I2C</a>
+    
+    <a href="/DisruptiveArchitectures/classes/10_SPI.html" class="class_link">SPI</a>
+    
+    
+    <b class="section_name">Sensores, Atuadores e IO</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/13_multisensores_analogicos.html" class="class_link">Sensores analógicos</a>
+    
+    <a href="/DisruptiveArchitectures/classes/14_motores.html" class="class_link">Motores</a>
+    
+    <a href="/DisruptiveArchitectures/classes/11_sensore_controladores.html" class="class_link">Input: Keypad</a>
+    
+    <a href="/DisruptiveArchitectures/classes/12_lcdi2c.html" class="class_link">Output: LCD 16x2 I2C</a>
+    
+    <a href="/DisruptiveArchitectures/classes/15_genius.html" class="class_link">Projeto: Genius</a>
+    
+    
+    <b class="section_name">IA: Fundamentos & Estruturação</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/15_ia_local_fundamentos.html" class="class_link">1. Demistificando GenAI & Modelos Locais</a>
+    
+    <a href="/DisruptiveArchitectures/classes/16_system_prompts.html" class="class_link">2. System Prompts & Guardrails</a>
+    
+    <a href="/DisruptiveArchitectures/classes/17_structured_outputs.html" class="class_link">3. Saídas Estruturadas & JSON</a>
+    
+    
+    <b class="section_name">Backend</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/16_node_red.html" class="class_link">Node-Red</a>
+    
+    
+    <b class="section_name">Protocolos TCP/IP (Aplicação)</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/17_MQTT.html" class="class_link">MQTT</a>
+    
+    
+    <b class="section_name">IA: Conhecimento & Ferramentas</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/18_embeddings_vetores.html" class="class_link">4. Embeddings & Vector DBs</a>
+    
+    <a href="/DisruptiveArchitectures/classes/19_rag_local.html" class="class_link">5. RAG Local & Manuais Técnicos</a>
+    
+    <a href="/DisruptiveArchitectures/classes/20_function_calling.html" class="class_link">6. Function Calling & Tools</a>
+    
+    
+    <b class="section_name">IA: Visão & Agentes Autônomos</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/21_vlm_multimodal.html" class="class_link">7. Visão Computacional & VLMs</a>
+    
+    <a href="/DisruptiveArchitectures/classes/22_react_agents.html" class="class_link">8. Agentes ReAct em Python Puro</a>
+    
+    <a href="/DisruptiveArchitectures/classes/23_multi_agentes.html" class="class_link">9. Colaboração Multi-Agente</a>
+    
+    
+    <b class="section_name">Desafio</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/18_Desafio.html" class="class_link">Genius + MQTT + Dashboard</a>
+    
+    
+    <b class="section_name">Plataformas IoT</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/19_IoTPlatforms.html" class="class_link">AWS IoT Core: Things</a>
+    
+    <a href="/DisruptiveArchitectures/classes/20_IoTPlatformsDevice.html" class="class_link">Configurando um dispositivo</a>
+    
+    
+    <b class="section_name">IA: Protocolos IoT & Edge Gateway</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/24_ia_mqtt_gateways.html" class="class_link">10. IA com Protocolo MQTT</a>
+    
+    <a href="/DisruptiveArchitectures/classes/25_quantizacao_edge.html" class="class_link">11. Quantização & Otimização Edge</a>
+    
+    <a href="/DisruptiveArchitectures/classes/26_projeto_gateway_part1.html" class="class_link">12. Projeto Gateway: Arquitetura</a>
+    
+    <a href="/DisruptiveArchitectures/classes/27_projeto_gateway_part2.html" class="class_link">13. Projeto Gateway: Resiliência</a>
+    
+    
+
+
+  
+</aside>
+
+        <aside id="toc_menu"> 
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#demistificando-genai--a-revolução-dos-modelos-locais">Demistificando GenAI &amp; A Revolução dos Modelos Locais</a></li>
+<li class="toc-entry toc-h1"><a href="#teoria">Teoria</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#1-o-que-acontece-por-baixo-do-capô-de-um-llm">1. O que acontece “por baixo do capô” de um LLM?</a></li>
+<li class="toc-entry toc-h2"><a href="#2-conceitos-fundamentais-de-engenharia-de-modelos">2. Conceitos Fundamentais de Engenharia de Modelos</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#tokens-vs-palavras">Tokens vs. Palavras</a></li>
+<li class="toc-entry toc-h3"><a href="#janela-de-contexto-context-window">Janela de Contexto (Context Window)</a></li>
+<li class="toc-entry toc-h3"><a href="#hiperparâmetros-de-amostragem-sampling">Hiperparâmetros de Amostragem (Sampling)</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#visualizador-interativo-amostragem-por-temperatura">Visualizador Interativo: Amostragem por Temperatura</a></li>
+<li class="toc-entry toc-h2"><a href="#3-por-que-execução-local-edge-ai-para-iot">3. Por que Execução Local (Edge AI) para IoT?</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#prática">Prática</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#passo-1-instalação-do-ollama">Passo 1: Instalação do Ollama</a></li>
+<li class="toc-entry toc-h2"><a href="#passo-2-download-dos-modelos-compactos-slms">Passo 2: Download dos Modelos Compactos (SLMs)</a></li>
+<li class="toc-entry toc-h2"><a href="#passo-3-benchmarking-de-inferência-e-taxa-de-tokens">Passo 3: Benchmarking de Inferência e Taxa de Tokens</a></li>
+<li class="toc-entry toc-h2"><a href="#passo-4-comparando-o-comportamento-da-temperatura-no-cli">Passo 4: Comparando o Comportamento da Temperatura no CLI</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#questionário-de-fixação">Questionário de Fixação</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#gabarito-comentado">Gabarito Comentado</a></li>
+</ul>
+</li>
+</ul>
+</aside>
+
+        <main>
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                public class 
+                
+                <span class="nc ">Disruptive Architectures</span>
+                :
+                <span class="nc ">IA: Fundamentos & Estruturação</span> 
+                
+                , 
+                <span class="nc ">1. Demistificando GenAI & Modelos Locais</span>
+                
+            </div> 
+            <center><h1> 1. Demistificando GenAI & Modelos Locais</h1></center>
+            <h1 id="demistificando-genai--a-revolução-dos-modelos-locais">
+<a class="anchor" href="#demistificando-genai--a-revolu%C3%A7%C3%A3o-dos-modelos-locais" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demistificando GenAI &amp; A Revolução dos Modelos Locais</h1>
+
+<p>Bem-vindo à fase de Inteligência Artificial da nossa disciplina! Até aqui, exploramos como os microcontroladores e microprocessadores sentem o mundo por meio de sensores e atuam em motores, relés e displays. Agora, vamos adicionar uma nova camada cognitiva aos nossos sistemas embarcados: <strong>Modelos de Linguagem de Grande Escala (LLMs - Large Language Models) e Pequena Escala (SLMs - Small Language Models) executados localmente na borda (Edge AI)</strong>.</p>
+
+<p>Ao longo desta jornada de 13 encontros práticos no formato <em>Problem-Based Learning</em> (PBL), construiremos juntos um <strong>Local AI Smart Gateway Agent</strong>: um gateway inteligente, 100% privado e autônomo, capaz de interpretar sensores, tomar decisões lógicas, raciocinar sobre manuais de hardware e controlar dispositivos físicos via MQTT.</p>
+
+<pre class="mermaid">
+graph LR
+    subgraph Edge_Gateway["Hardware Local (Edge Gateway / PC / SBC)"]
+        Sensors["📡 Telemetria de Sensores"] --&gt; Engine["⚙️ Motor Local (Ollama / Llama.cpp)"]
+        Engine --&gt; Model["🧠 SLM Local (Llama 3.2 / Qwen 2.5)"]
+        Model --&gt; Decision["⚡ Decisão Lógica / Ação"]
+        Decision --&gt; Actuators["🔌 Atuadores &amp; Relés"]
+    end
+    style Edge_Gateway fill:#f8f9fa,stroke:#333,stroke-width:2px;
+    style Model fill:#e8f0fe,stroke:#4285f4,stroke-width:2px;
+</pre>
+
+<hr>
+
+<h1 id="teoria">
+<a class="anchor" href="#teoria" aria-hidden="true"><span class="octicon octicon-link"></span></a>Teoria</h1>
+
+<h2 id="1-o-que-acontece-por-baixo-do-capô-de-um-llm">
+<a class="anchor" href="#1-o-que-acontece-por-baixo-do-cap%C3%B4-de-um-llm" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. O que acontece “por baixo do capô” de um LLM?</h2>
+
+<p>Diferente de um código tradicional em C++ ou Python, onde declaramos regras determinísticas (<code class="language-plaintext highlighter-rouge">if temp &gt; 30: liga_cooler()</code>), um LLM é essencialmente uma <strong>máquina estatística de predição de próximo token</strong> (<em>Next-Token Prediction</em>) treinada sobre uma arquitetura de rede neural chamada <strong>Transformer</strong>.</p>
+
+<p>Quando fornecemos um texto de entrada (<em>prompt</em>), o modelo:</p>
+<ol>
+  <li>
+<strong>Tokeniza o texto</strong>: Converte caracteres e palavras em identificadores numéricos (<em>Tokens</em>).</li>
+  <li>
+<strong>Gera Embeddings</strong>: Mapeia esses tokens para um espaço vetorial contínuo de alta dimensão.</li>
+  <li>
+<strong>Aplica Camadas de Atenção (<em>Self-Attention</em>)</strong>: Calcula o relacionamento semântico e a importância relativa entre todos os tokens da frase.</li>
+  <li>
+<strong>Calcula a Distribuição de Probabilidades (<em>Logits</em>)</strong>: Atribui uma probabilidade estatística para cada palavra/token possível no vocabulário como o sucessor mais plausível.</li>
+  <li>
+<strong>Amostra o próximo token</strong>: Escolhe o próximo token com base em hiperparâmetros de amostragem (<em>Temperature, Top-P, Min-P</em>) e repete o ciclo iterativamente até emitir o token de fim de sequência (<code class="language-plaintext highlighter-rouge">&lt;|end_of_text|&gt;</code>).</li>
+</ol>
+
+\[\text{P}(w_t \mid w_1, w_2, \dots, w_{t-1}) = \text{Softmax}\left(\frac{z_t}{T}\right)\]
+
+<p>Onde \(z_t\) representa o vetor de <em>logits</em> brutos gerados pela última camada e \(T\) é a <strong>Temperatura</strong>.</p>
+
+<hr>
+
+<h2 id="2-conceitos-fundamentais-de-engenharia-de-modelos">
+<a class="anchor" href="#2-conceitos-fundamentais-de-engenharia-de-modelos" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Conceitos Fundamentais de Engenharia de Modelos</h2>
+
+<h3 id="tokens-vs-palavras">
+<a class="anchor" href="#tokens-vs-palavras" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tokens vs. Palavras</h3>
+<p>Um modelo não lê letras nem palavras inteiras diretamente. Ele utiliza algoritmos de sub-palavras (como <em>Byte-Pair Encoding - BPE</em>).</p>
+<ul>
+  <li>Em média, no idioma inglês, <strong>1 token \(\approx\) 0.75 palavras</strong> (ou 100 tokens \(\approx\) 75 palavras).</li>
+  <li>Em português ou em códigos técnicos/JSON, a fragmentação pode ser ligeiramente maior. Pontuações, quebras de linha e espaços também contam como tokens!</li>
+</ul>
+
+<h3 id="janela-de-contexto-context-window">
+<a class="anchor" href="#janela-de-contexto-context-window" aria-hidden="true"><span class="octicon octicon-link"></span></a>Janela de Contexto (<em>Context Window</em>)</h3>
+<p>A janela de contexto é a memória de trabalho máxima que o modelo consegue processar em uma única chamada (entrada + saída).</p>
+<ul>
+  <li>Modelos modernos como <code class="language-plaintext highlighter-rouge">Llama 3.2</code> possuem suporte a até <strong>128k tokens</strong> de contexto.</li>
+  <li>Em sistemas embarcados e edge devices, janelas de contexto muito longas consomem proporcionalmente mais memória RAM para o armazenamento do <strong>KV-Cache</strong> (<em>Key-Value Cache</em>). Por isso, no edge, otimizamos o contexto para ser conciso e objetivo!</li>
+</ul>
+
+<h3 id="hiperparâmetros-de-amostragem-sampling">
+<a class="anchor" href="#hiperpar%C3%A2metros-de-amostragem-sampling" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hiperparâmetros de Amostragem (<em>Sampling</em>)</h3>
+<ul>
+  <li>
+<strong>Temperatura (\(T\)):</strong> Controla a aleatoriedade da distribuição de probabilidades gerada pelo Softmax.
+    <ul>
+      <li>\(T = 0.0\) (<em>Greedy Decoding</em>): O modelo sempre escolhe o token com a maior probabilidade absoluta. Indispensável para código, comandos de sensores e JSON.</li>
+      <li>\(T = 0.7 - 1.0\): O modelo introduz variabilidade e criatividade na geração.</li>
+    </ul>
+  </li>
+  <li>
+<strong>Top-P (<em>Nucleus Sampling</em>):</strong> Restringe as opções aos \(N\) tokens cujas probabilidades somadas atingem o limiar \(P\) (ex: \(P=0.9\)).</li>
+  <li>
+<strong>Min-P:</strong> Nova técnica de amostragem moderna que descarta qualquer token cuja probabilidade seja inferior a uma fração proporcional do token principal (ex: \(\text{Min-P} = 0.05\)).</li>
+</ul>
+
+<hr>
+
+<h2 id="visualizador-interativo-amostragem-por-temperatura">
+<a class="anchor" href="#visualizador-interativo-amostragem-por-temperatura" aria-hidden="true"><span class="octicon octicon-link"></span></a>Visualizador Interativo: Amostragem por Temperatura</h2>
+
+<p>Experimente ajustar a temperatura no simulador abaixo para observar como a curva de probabilidades de escolha do próximo token varia entre determinística (\(T \to 0\)) e aleatória (\(T \to 1.5\)):</p>
+
+<div id="p5-temperature-container" style="width: 100%; max-width: 650px; margin: 20px auto; border: 1px solid #ccc; border-radius: 8px; overflow: hidden; background: #ffffff;"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+
+<script>
+new p5(function(p) {
+    let tempSlider;
+    const tokens = [
+        { word: "LIGAR", logit: 4.5 },
+        { word: "DESLIGAR", logit: 3.2 },
+        { word: "MANTER", logit: 2.1 },
+        { word: "ERRO", logit: 0.8 },
+        { word: "REINICIAR", logit: 0.3 }
+    ];
+
+    p.setup = function() {
+        let canvas = p.createCanvas(600, 320);
+        canvas.parent("p5-temperature-container");
+        p.textFont("sans-serif");
+        
+        p.createSpan("Temperatura (T): ").parent("p5-temperature-container").style("margin-left", "15px");
+        tempSlider = p.createSlider(0.1, 1.5, 0.2, 0.05);
+        tempSlider.parent("p5-temperature-container");
+        tempSlider.style("width", "180px");
+    };
+
+    p.draw = function() {
+        p.background(250);
+        let T = tempSlider.value();
+        
+        p.fill(33);
+        p.textSize(14);
+        p.textStyle(p.BOLD);
+        p.text("Distribuição de Probabilidade Softmax (Próximo Token)", 20, 25);
+        p.textStyle(p.NORMAL);
+        p.textSize(12);
+        p.text(`Valor de T = ${T.toFixed(2)} (${T <= 0.3 ? "Modo Determinístico / Lógico" : T <= 0.8 ? "Balanceado" : "Alta Criatividade / Caos"})`, 20, 45);
+
+        // Softmax calculation
+        let expValues = tokens.map(t => Math.exp(t.logit / T));
+        let sumExp = expValues.reduce((a, b) => a + b, 0);
+        let probs = expValues.map(v => v / sumExp);
+
+        let startY = 70;
+        let barHeight = 35;
+        let maxBarWidth = 360;
+
+        for (let i = 0; i < tokens.length; i++) {
+            let y = startY + i * (barHeight + 12);
+            let prob = probs[i];
+            let barW = prob * maxBarWidth;
+
+            p.fill(60);
+            p.textAlign(p.RIGHT, p.CENTER);
+            p.text(tokens[i].word, 110, y + barHeight / 2);
+
+            // Barra de probabilidade
+            p.fill(i === 0 ? p.color(66, 133, 244) : p.color(150, 180, 240));
+            p.noStroke();
+            p.rect(120, y + 4, barW, barHeight - 8, 4);
+
+            // Rótulo numérico
+            p.fill(30);
+            p.textAlign(p.LEFT, p.CENTER);
+            p.text(`${(prob * 100).toFixed(1)}%`, 130 + barW, y + barHeight / 2);
+        }
+    };
+}, "p5-temperature-container");
+</script>
+
+<hr>
+
+<h2 id="3-por-que-execução-local-edge-ai-para-iot">
+<a class="anchor" href="#3-por-que-execu%C3%A7%C3%A3o-local-edge-ai-para-iot" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. Por que Execução Local (Edge AI) para IoT?</h2>
+
+<p>Quando pensamos em aplicar IA para automação predial, veículos autônomos ou monitoramento industrial, enviar cada dado de sensor para APIs de nuvem (como OpenAI ou Google Cloud) traz desvantagens críticas:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Fator</th>
+      <th style="text-align: left">IA em Nuvem (Cloud APIs)</th>
+      <th style="text-align: left">IA Local na Borda (Edge AI)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Latência</strong></td>
+      <td style="text-align: left">500ms a 3.000ms (depende do link de rede)</td>
+      <td style="text-align: left">
+<strong>50ms a 200ms</strong> (execução local direta em barramento)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Privacidade &amp; Segurança</strong></td>
+      <td style="text-align: left">Dados de telemetria e áudio trafegam na WAN</td>
+      <td style="text-align: left"><strong>100% dos dados permanecem na rede local</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Custo Recorrente</strong></td>
+      <td style="text-align: left">Cobrança por milhão de tokens consumidos</td>
+      <td style="text-align: left">
+<strong>Custo Zero</strong> de licença ou API após aquisição do hardware</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Disponibilidade / Offline</strong></td>
+      <td style="text-align: left">Falha total em caso de queda de link de internet</td>
+      <td style="text-align: left">
+<strong>Resiliência total</strong> (opera 24/7 sem conexão externa)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Consumo de Banda</strong></td>
+      <td style="text-align: left">Alto tráfego de dados contínuo</td>
+      <td style="text-align: left">
+<strong>Zero tráfego externo</strong> na WAN</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Com o surgimento de modelos compactos de alta densidade como o <strong>Llama 3.2 (1B e 3B)</strong> e a família <strong>Qwen 2.5 (0.5B a 3B)</strong>, agora é perfeitamente viável executar modelos inteligentes diretamente na CPU de computadores comuns, Mini-PCs ou SBCs como a Raspberry Pi 5!</p>
+
+<hr>
+
+<h1 id="prática">
+<a class="anchor" href="#pr%C3%A1tica" aria-hidden="true"><span class="octicon octicon-link"></span></a>Prática</h1>
+
+<p>Nesta sessão de laboratório, vamos instalar o ecossistema de inferência local <strong>Ollama</strong>, carregar os modelos ultraleves recomendados e realizar nosso primeiro <em>benchmark</em> de taxa de geração de tokens em hardware padrão.</p>
+
+<h2 id="passo-1-instalação-do-ollama">
+<a class="anchor" href="#passo-1-instala%C3%A7%C3%A3o-do-ollama" aria-hidden="true"><span class="octicon octicon-link"></span></a>Passo 1: Instalação do Ollama</h2>
+
+<p>O <strong>Ollama</strong> empacota o motor C++ <code class="language-plaintext highlighter-rouge">llama.cpp</code>, drivers de aceleração gráfica (CUDA, Metal, ROCm, Vulkan) e o gerenciador de modelos em um único serviço local de alta performance.</p>
+
+<ul>
+  <li>
+<strong>Windows:</strong> Baixe e execute o instalador oficial em <a href="https://ollama.com/download/windows">ollama.com/download/windows</a>.</li>
+  <li>
+<strong>Linux:</strong> Execute no terminal:
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>curl <span class="nt">-fsSL</span> https://ollama.com/install.sh | sh
+</code></pre></div>    </div>
+  </li>
+  <li>
+<strong>macOS:</strong> Baixe a aplicação oficial ou instale via Homebrew:
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>ollama
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>Verifique se o serviço está ativo executando no terminal ou PowerShell:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ollama <span class="nt">--version</span>
+</code></pre></div></div>
+
+<hr>
+
+<h2 id="passo-2-download-dos-modelos-compactos-slms">
+<a class="anchor" href="#passo-2-download-dos-modelos-compactos-slms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Passo 2: Download dos Modelos Compactos (SLMs)</h2>
+
+<p>Vamos baixar dois dos modelos abertos mais eficientes do mundo para dispositivos com recursos moderados:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Llama 3.2 (1 Bilhão de parâmetros - Meta) -&gt; ~1.3 GB de RAM</span>
+ollama pull llama3.2:1b
+
+<span class="c"># Qwen 2.5 (1.5 Bilhões de parâmetros - Alibaba) -&gt; ~1.8 GB de RAM</span>
+ollama pull qwen2.5:1.5b
+</code></pre></div></div>
+
+<hr>
+
+<h2 id="passo-3-benchmarking-de-inferência-e-taxa-de-tokens">
+<a class="anchor" href="#passo-3-benchmarking-de-infer%C3%AAncia-e-taxa-de-tokens" aria-hidden="true"><span class="octicon octicon-link"></span></a>Passo 3: Benchmarking de Inferência e Taxa de Tokens</h2>
+
+<p>Para avaliar se o seu hardware é capaz de atender aos requisitos de tempo de resposta da sua aplicação IoT, podemos executar o Ollama no modo verboso (<code class="language-plaintext highlighter-rouge">--verbose</code>). Esse modo exibe métricas precisas de:</p>
+<ol>
+  <li>
+<strong>Total duration:</strong> Tempo total decorrido.</li>
+  <li>
+<strong>Load duration:</strong> Tempo gasto para carregar os tensores do modelo na memória.</li>
+  <li>
+<strong>Prompt eval rate:</strong> Taxa de processamento dos tokens de entrada (tokens/segundo).</li>
+  <li>
+<strong>Eval rate:</strong> Taxa real de geração dos tokens de saída (tokens/segundo).</li>
+</ol>
+
+<p>Execute o teste com o modelo de 1B:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ollama run llama3.2:1b <span class="nt">--verbose</span> <span class="s2">"Explique em um único parágrafo o que é o protocolo MQTT e por que ele é ideal para IoT."</span>
+</code></pre></div></div>
+
+<p>Observe o relatório final retornado no terminal:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>total duration:       1.42s
+load duration:        21.3ms
+prompt eval count:    28 token(s)
+prompt eval duration: 112ms
+prompt eval rate:     250.00 tokens/s
+eval count:           85 token(s)
+eval duration:        1.28s
+eval rate:            66.40 tokens/s
+</code></pre></div></div>
+
+<blockquote>
+  <p>[!NOTE]
+Uma taxa de geração (<code class="language-plaintext highlighter-rouge">eval rate</code>) acima de <strong>15 a 20 tokens/segundo</strong> já é mais rápida que a velocidade média de leitura humana e perfeitamente adequada para automação em tempo real!</p>
+</blockquote>
+
+<hr>
+
+<h2 id="passo-4-comparando-o-comportamento-da-temperatura-no-cli">
+<a class="anchor" href="#passo-4-comparando-o-comportamento-da-temperatura-no-cli" aria-hidden="true"><span class="octicon octicon-link"></span></a>Passo 4: Comparando o Comportamento da Temperatura no CLI</h2>
+
+<p>Inicie uma sessão interativa no Ollama e alterne os parâmetros em tempo de execução para observar a variação entre respostas determinísticas e criativas:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ollama run llama3.2:1b
+</code></pre></div></div>
+
+<p>Dentro da sessão interativa do Ollama:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; /set parameter temperature 0.0
+&gt;&gt;&gt; Classifique o status do sensor: "temperatura de 98 graus detectada na caldeira". Responda apenas com: NORMAL, ALERTA ou CRITICO.
+CRITICO
+
+&gt;&gt;&gt; /set parameter temperature 1.2
+&gt;&gt;&gt; Crie uma mensagem poética para avisar que a caldeira superaqueceu.
+O fogo dança perigoso além do limite, o aço clama por alívio nas sombras do vapor...
+&gt;&gt;&gt; /bye
+</code></pre></div></div>
+
+<hr>
+
+<h1 id="questionário-de-fixação">
+<a class="anchor" href="#question%C3%A1rio-de-fixa%C3%A7%C3%A3o" aria-hidden="true"><span class="octicon octicon-link"></span></a>Questionário de Fixação</h1>
+
+<p><strong>1. O que significa afirmar que um LLM realiza <em>Next-Token Prediction</em>?</strong><br>
+a) O modelo procura respostas pré-programadas em uma base de dados relacional SQL.<br>
+b) O modelo calcula estatisticamente a probabilidade de cada token do vocabulário ser o sucessor do texto já fornecido.<br>
+c) O modelo executa compilação estática de código binário em C++.<br>
+d) O modelo realiza busca booleana por palavras-chave em arquivos locais de texto.<br>
+e) O modelo envia os dados brutos de entrada para um servidor de busca na web.</p>
+
+<p><strong>2. Para aplicações de controle de atuadores e conversão de comandos em sistemas embarcados (onde não toleramos respostas inconsistentes), qual configuração de Temperatura ($T$) é recomendada?</strong><br>
+a) $T = 1.5$ (Alta aleatoriedade para explorar novos comandos).<br>
+b) $T = 1.0$ (Modo conversacional padrão).<br>
+c) $T = 0.0$ (Decodificação gulosa / <em>Greedy Decoding</em> determinística).<br>
+d) $T = -1.0$ (Modo invertido de probabilidade).<br>
+e) A temperatura não afeta o resultado em modelos de linguagem.</p>
+
+<p><strong>3. Qual das seguintes alternativas apresenta uma vantagem direta do uso de <em>Edge AI</em> (modelos locais) em comparação com APIs de nuvem para projetos de IoT?</strong><br>
+a) Redução a zero da necessidade de memória RAM no dispositivo local.<br>
+b) Garantia de funcionamento offline, privacidade dos dados de sensores e latência previsível.<br>
+c) Eliminação da necessidade de sensores e atuadores físicos.<br>
+d) Possibilidade de rodar modelos de 400 bilhões de parâmetros em um Arduino Uno.<br>
+e) Substituição integral de todos os protocolos de rede por sinal de rádio analógico.</p>
+
+<p><strong>4. Em relação aos <em>Tokens</em> em LLMs, é correto afirmar:</strong><br>
+a) Um token sempre equivale exatamente a um byte de memória.<br>
+b) Um token representa necessariamente uma palavra inteira e nunca pontuações ou sub-palavras.<br>
+c) Modelos processam texto dividindo-o em fragmentos chamados tokens através de algoritmos de tokenização como o BPE.<br>
+d) A contagem de tokens independe do idioma ou da sintaxe utilizada.<br>
+e) Os tokens de saída não consomem tempo de processamento nem janela de contexto.</p>
+
+<p><strong>5. Ao realizar o benchmark de um modelo via <code class="language-plaintext highlighter-rouge">ollama run ... --verbose</code>, qual métrica indica a velocidade em que o modelo escreve a resposta gerada?</strong><br>
+a) <code class="language-plaintext highlighter-rouge">load duration</code><br>
+b) <code class="language-plaintext highlighter-rouge">prompt eval count</code><br>
+c) <code class="language-plaintext highlighter-rouge">eval rate</code> (tokens/s)<br>
+d) <code class="language-plaintext highlighter-rouge">temperature coefficient</code><br>
+e) <code class="language-plaintext highlighter-rouge">context overflow index</code></p>
+
+<hr>
+
+<h3 id="gabarito-comentado">
+<a class="anchor" href="#gabarito-comentado" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gabarito Comentado</h3>
+
+<ol>
+  <li>
+<strong>b) O modelo calcula estatisticamente a probabilidade de cada token…</strong><br>
+<em>Justificativa:</em> Os LLMs baseados em Transformers geram texto amostrando recursivamente a distribuição de probabilidade condicional do próximo token calculada na camada final (Softmax sobre os logits).</li>
+  <li>
+<strong>c) $T = 0.0$ (Decodificação gulosa / <em>Greedy Decoding</em> determinística).</strong><br>
+<em>Justificativa:</em> Em sistemas de controle e IoT, queremos que a mesma entrada de sensor sempre resulte na mesma decisão ou código de controle previsível, o que é garantido por $T=0.0$.</li>
+  <li>
+<strong>b) Garantia de funcionamento offline, privacidade dos dados de sensores e latência previsível.</strong><br>
+<em>Justificativa:</em> O processamento na borda mantém os dados dentro da rede local, elimina custos recorrentes de API por token e não depende de conectividade com a internet para manter o sistema operacional.</li>
+  <li>
+<strong>c) Modelos processam texto dividindo-o em fragmentos chamados tokens através de algoritmos de tokenização como o BPE.</strong><br>
+<em>Justificativa:</em> A tokenização decompõe palavras, números, códigos e pontuações em IDs numéricos que alimentam as camadas de embedding do modelo.</li>
+  <li>
+<strong>c) <code class="language-plaintext highlighter-rouge">eval rate</code> (tokens/s)</strong><br>
+<em>Justificativa:</em> O parâmetro <code class="language-plaintext highlighter-rouge">eval rate</code> mede a quantidade de tokens de resposta que o motor de inferência gera por segundo na fase de decodificação.</li>
+</ol>
+
+            <hr/>
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                public class 
+                
+                <span class="nc ">Disruptive Architectures</span>
+                :
+                <span class="nc ">IA: Fundamentos & Estruturação</span> 
+                
+                , 
+                <span class="nc ">1. Demistificando GenAI & Modelos Locais</span>
+                
+            </div> 
+        </main>
+        <script type="text/javascript" src="/DisruptiveArchitectures/assets/scripts.js"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+        <script src=" https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js "></script>
+        <script type="module">
+            mermaid.initialize({theme:"neutral",
+                                securityLevel: "strict",
+                                startOnLoad: true
+                                });
+        </script>
+    </body>
+</html>

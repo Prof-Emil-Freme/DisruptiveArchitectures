@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <title>5. RAG Local & Manuais Técnicos - Disruptive Architectures</title>
+        <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+        <link rel="stylesheet" href="/DisruptiveArchitectures/assets/css/main.css" id="maincss">
+    </head>
+    <body>
+        <nav>
+    
+    <a href="javascript:void(0)" onclick="toggle_menu()" id="hamb_menu">☰ Aulas</a>
+    <a href="javascript:void(0)" onclick="toggle_toc()" id="toc_btn">📑 Índice</a>
+    
+    <a href="/DisruptiveArchitectures/">Index</a>&nbsp;
+    <a href="javascript:void(0)" onclick="toggle_themes()">Mudar Tema</a>
+</nav>
+
+        <aside id="course_menu">
+    
+    
+    <b class="course_name">Disruptive Architectures</b>
+
+    
+    <b class="section_name">Sobre a disciplina</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/00_index.html" class="class_link">Introdução</a>
+    
+    <a href="/DisruptiveArchitectures/classes/01_notas.html" class="class_link">Notas</a>
+    
+    <a href="/DisruptiveArchitectures/classes/02_Cronograma.html" class="class_link">Cronograma</a>
+    
+    
+    <b class="section_name">IoT</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/03_definicoes.html" class="class_link">Definições de IoT</a>
+    
+    <a href="/DisruptiveArchitectures/classes/04_circuitoseletricos.html" class="class_link">Circuítos (eletro)eletrônicos</a>
+    
+    
+    <b class="section_name">Sistemas Embarcados</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/05_sistemas_embarcados.html" class="class_link">Introdução</a>
+    
+    <a href="/DisruptiveArchitectures/classes/06_arduino.html" class="class_link">Arduino</a>
+    
+    
+    <b class="section_name">Protocolos M2M</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/07_m2m.html" class="class_link">Introdução</a>
+    
+    <a href="/DisruptiveArchitectures/classes/08_UART.html" class="class_link">UART</a>
+    
+    <a href="/DisruptiveArchitectures/classes/09_I2C.html" class="class_link">I2C</a>
+    
+    <a href="/DisruptiveArchitectures/classes/10_SPI.html" class="class_link">SPI</a>
+    
+    
+    <b class="section_name">Sensores, Atuadores e IO</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/13_multisensores_analogicos.html" class="class_link">Sensores analógicos</a>
+    
+    <a href="/DisruptiveArchitectures/classes/14_motores.html" class="class_link">Motores</a>
+    
+    <a href="/DisruptiveArchitectures/classes/11_sensore_controladores.html" class="class_link">Input: Keypad</a>
+    
+    <a href="/DisruptiveArchitectures/classes/12_lcdi2c.html" class="class_link">Output: LCD 16x2 I2C</a>
+    
+    <a href="/DisruptiveArchitectures/classes/15_genius.html" class="class_link">Projeto: Genius</a>
+    
+    
+    <b class="section_name">IA: Fundamentos & Estruturação</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/15_ia_local_fundamentos.html" class="class_link">1. Demistificando GenAI & Modelos Locais</a>
+    
+    <a href="/DisruptiveArchitectures/classes/16_system_prompts.html" class="class_link">2. System Prompts & Guardrails</a>
+    
+    <a href="/DisruptiveArchitectures/classes/17_structured_outputs.html" class="class_link">3. Saídas Estruturadas & JSON</a>
+    
+    
+    <b class="section_name">Backend</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/16_node_red.html" class="class_link">Node-Red</a>
+    
+    
+    <b class="section_name">Protocolos TCP/IP (Aplicação)</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/17_MQTT.html" class="class_link">MQTT</a>
+    
+    
+    <b class="section_name">IA: Conhecimento & Ferramentas</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/18_embeddings_vetores.html" class="class_link">4. Embeddings & Vector DBs</a>
+    
+    <a href="/DisruptiveArchitectures/classes/19_rag_local.html" class="class_link">5. RAG Local & Manuais Técnicos</a>
+    
+    <a href="/DisruptiveArchitectures/classes/20_function_calling.html" class="class_link">6. Function Calling & Tools</a>
+    
+    
+    <b class="section_name">IA: Visão & Agentes Autônomos</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/21_vlm_multimodal.html" class="class_link">7. Visão Computacional & VLMs</a>
+    
+    <a href="/DisruptiveArchitectures/classes/22_react_agents.html" class="class_link">8. Agentes ReAct em Python Puro</a>
+    
+    <a href="/DisruptiveArchitectures/classes/23_multi_agentes.html" class="class_link">9. Colaboração Multi-Agente</a>
+    
+    
+    <b class="section_name">Desafio</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/18_Desafio.html" class="class_link">Genius + MQTT + Dashboard</a>
+    
+    
+    <b class="section_name">Plataformas IoT</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/19_IoTPlatforms.html" class="class_link">AWS IoT Core: Things</a>
+    
+    <a href="/DisruptiveArchitectures/classes/20_IoTPlatformsDevice.html" class="class_link">Configurando um dispositivo</a>
+    
+    
+    <b class="section_name">IA: Protocolos IoT & Edge Gateway</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/24_ia_mqtt_gateways.html" class="class_link">10. IA com Protocolo MQTT</a>
+    
+    <a href="/DisruptiveArchitectures/classes/25_quantizacao_edge.html" class="class_link">11. Quantização & Otimização Edge</a>
+    
+    <a href="/DisruptiveArchitectures/classes/26_projeto_gateway_part1.html" class="class_link">12. Projeto Gateway: Arquitetura</a>
+    
+    <a href="/DisruptiveArchitectures/classes/27_projeto_gateway_part2.html" class="class_link">13. Projeto Gateway: Resiliência</a>
+    
+    
+
+
+  
+</aside>
+
+        <aside id="toc_menu"> 
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#retrieval-augmented-generation-rag-local">Retrieval-Augmented Generation (RAG) Local</a></li>
+<li class="toc-entry toc-h1"><a href="#teoria">Teoria</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#1-o-problema-das-alucinações-em-modelos-de-linguagem">1. O Problema das Alucinações em Modelos de Linguagem</a></li>
+<li class="toc-entry toc-h2"><a href="#2-a-tríade-do-rag-chunking-retrieval-e-generation">2. A Tríade do RAG: Chunking, Retrieval e Generation</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#a-chunking-fragmentação-inteligente">A. Chunking (Fragmentação Inteligente)</a></li>
+<li class="toc-entry toc-h3"><a href="#b-retrieval-recuperação-com-top-k">B. Retrieval (Recuperação com Top-\(k\))</a></li>
+<li class="toc-entry toc-h3"><a href="#c-generation--grounding-prompt">C. Generation &amp; Grounding Prompt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#prática">Prática</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#passo-1-download-do-modelo-de-raciocínio-3b">Passo 1: Download do Modelo de Raciocínio (3B)</a></li>
+<li class="toc-entry toc-h2"><a href="#passo-2-construindo-a-pipeline-rag-completa">Passo 2: Construindo a Pipeline RAG Completa</a></li>
+<li class="toc-entry toc-h2"><a href="#passo-3-executando-e-verificando-a-ausência-de-alucinações">Passo 3: Executando e Verificando a Ausência de Alucinações</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#saída-esperada-no-terminal">Saída Esperada no Terminal:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#questionário-de-fixação">Questionário de Fixação</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#gabarito-comentado">Gabarito Comentado</a></li>
+</ul>
+</li>
+</ul>
+</aside>
+
+        <main>
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                public class 
+                
+                <span class="nc ">Disruptive Architectures</span>
+                :
+                <span class="nc ">IA: Conhecimento & Ferramentas</span> 
+                
+                , 
+                <span class="nc ">5. RAG Local & Manuais Técnicos</span>
+                
+            </div> 
+            <center><h1> 5. RAG Local & Manuais Técnicos</h1></center>
+            <h1 id="retrieval-augmented-generation-rag-local">
+<a class="anchor" href="#retrieval-augmented-generation-rag-local" aria-hidden="true"><span class="octicon octicon-link"></span></a>Retrieval-Augmented Generation (RAG) Local</h1>
+
+<p>Na aula anterior, aprendemos como transformar textos técnicos em vetores matemáticos e buscar trechos relevantes no <strong>ChromaDB</strong>. Agora, vamos fechar o ciclo cognitivo implementando uma das arquiteturas mais importantes da IA moderna: o <strong>RAG (Retrieval-Augmented Generation / Geração Aumentada por Recuperação)</strong>.</p>
+
+<p>Com o RAG, nosso assistente de borda não inventará respostas nem sofrerá de <strong>alucinações</strong>: ele usará o LLM como um motor de raciocínio e síntese estritamente ancorado nos documentos técnicos recuperados em tempo real.</p>
+
+<pre class="mermaid">
+flowchart TD
+    subgraph INGESTAO["1. Ingestão Offline de Manuais"]
+        Doc["📚 Manuais em PDF / Markdown"] --&gt; Chunking["✂️ Chunking &amp; Divisão"]
+        Chunking --&gt; Embed["🧮 nomic-embed-text"]
+        Embed --&gt; VectorDB[("🗄️ ChromaDB")]
+    end
+
+    subgraph RUNTIME["2. Consulta em Tempo de Execução (RAG Loop)"]
+        UserQ["❓ 'O display está mostrando Erro E01, como conserto?'"] --&gt; EmbedQuery["🧮 Embedding da Dúvida"]
+        EmbedQuery --&gt; SearchChroma{"🔍 Busca Semântica Top-k (k=1)"}
+        VectorDB --&gt; SearchChroma
+        SearchChroma --&gt; ContextRetrieved["📄 Contexto Recuperado:<br>'Erro E01: Sensor de temperatura desconectado no GPIO 4.'"]
+        
+        ContextRetrieved --&gt; PromptAugment["📝 Prompt Aterrado (Grounding):<br>'Responda usando APENAS o contexto...'"]
+        UserQ --&gt; PromptAugment
+        PromptAugment --&gt; LLMLocal["🧠 LLM Local (Llama 3.2 3B)"]
+        LLMLocal --&gt; FinalAnswer["💡 Resposta Técnica Confiável:<br>'Verifique a fiação do sensor no pino GPIO 4.'"]
+    end
+    style INGESTAO fill:#f1f5f9,stroke:#64748b,stroke-width:2px;
+    style RUNTIME fill:#f0fdf4,stroke:#22c55e,stroke-width:2px;
+    style LLMLocal fill:#e0e7ff,stroke:#6366f1,stroke-width:2px;
+    style FinalAnswer fill:#dcfce7,stroke:#16a34a,stroke-width:2px;
+</pre>
+
+<hr>
+
+<h1 id="teoria">
+<a class="anchor" href="#teoria" aria-hidden="true"><span class="octicon octicon-link"></span></a>Teoria</h1>
+
+<h2 id="1-o-problema-das-alucinações-em-modelos-de-linguagem">
+<a class="anchor" href="#1-o-problema-das-alucina%C3%A7%C3%B5es-em-modelos-de-linguagem" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. O Problema das Alucinações em Modelos de Linguagem</h2>
+
+<p>Modelos de linguagem treinados na internet possuem dois grandes problemas para o suporte a hardware e IoT:</p>
+<ol>
+  <li>
+<strong>Falta de Conhecimento Específico:</strong> Eles não conhecem o código de erro proprietário da sua placa personalizada criada no laboratório.</li>
+  <li>
+<strong>Alucinação Confiável:</strong> Quando não sabem uma resposta, os LLMs tendem a inventar explicações com tom professoral e convincente (por exemplo, inventando pinos inexistentes no microcontrolador que podem queimar o circuito!).</li>
+</ol>
+
+<p>O <strong>RAG</strong> resolve isso aplicando a regra de <strong>Aterramento (<em>Grounding</em>)</strong>:</p>
+<blockquote>
+  <p><em>“Você não responderá com base na sua memória de treinamento genérica. Você responderá EXCLUSIVAMENTE com base no fragmento de texto oficial que acabei de colocar diante dos seus olhos.”</em></p>
+</blockquote>
+
+<hr>
+
+<h2 id="2-a-tríade-do-rag-chunking-retrieval-e-generation">
+<a class="anchor" href="#2-a-tr%C3%ADade-do-rag-chunking-retrieval-e-generation" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. A Tríade do RAG: Chunking, Retrieval e Generation</h2>
+
+<h3 id="a-chunking-fragmentação-inteligente">
+<a class="anchor" href="#a-chunking-fragmenta%C3%A7%C3%A3o-inteligente" aria-hidden="true"><span class="octicon octicon-link"></span></a>A. Chunking (Fragmentação Inteligente)</h3>
+<p>Documentos longos (como datasheets de 50 páginas) não devem ser inseridos inteiros no banco vetorial. Eles devem ser divididos em pequenos blocos (<em>Chunks</em>):</p>
+<ul>
+  <li>
+<strong>Tamanho do Chunk (<em>Chunk Size</em>):</strong> Normalmente entre 200 e 500 caracteres para itens de erro e comandos de hardware.</li>
+  <li>
+<strong>Sobreposição (<em>Overlap</em>):</strong> Margem de 10% a 15% entre chunks adjacentes para garantir que frases divididas na borda não percam o sentido semântico.</li>
+</ul>
+
+<h3 id="b-retrieval-recuperação-com-top-k">
+<a class="anchor" href="#b-retrieval-recupera%C3%A7%C3%A3o-com-top-k" aria-hidden="true"><span class="octicon octicon-link"></span></a>B. Retrieval (Recuperação com Top-\(k\))</h3>
+<p>Ao receber a pergunta do técnico, o sistema busca no ChromaDB os \(k\) blocos mais relevantes:</p>
+<ul>
+  <li>
+<strong>Cuidado com Modelos Pequenos na Borda (\(&lt;3B\)):</strong> Injetar 5 a 10 chunks longos em um modelo pequeno causa o fenômeno de <strong>Diluição de Atenção (<em>Lost in the Middle</em>)</strong>, onde o modelo se confunde com excesso de texto e esquece a pergunta original.</li>
+  <li>Para SLMs na borda, manter <strong>\(k = 1\) ou \(k = 2\)</strong> garante foco absoluto e tempo de inferência instantâneo!</li>
+</ul>
+
+<h3 id="c-generation--grounding-prompt">
+<a class="anchor" href="#c-generation--grounding-prompt" aria-hidden="true"><span class="octicon octicon-link"></span></a>C. Generation &amp; Grounding Prompt</h3>
+<p>Injeta-se o contexto recuperado diretamente dentro do prompt enviado ao LLM com instruções de recusa explícita:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Você é um assistente técnico de suporte a hardware.
+Responda à pergunta do usuário utilizando ESTRITAMENTE as informações do Contexto abaixo.
+Se a informação necessária para responder NÃO estiver presente no Contexto, responda apenas:
+'ERRO DESCONHECIDO: Informação não encontrada nos manuais técnicos oficiais.'
+
+--- CONTEXTO OFICIAL ---
+{contexto_recuperado_do_chromadb}
+------------------------
+
+Pergunta: {pergunta_do_usuario}
+</code></pre></div></div>
+
+<hr>
+
+<h1 id="prática">
+<a class="anchor" href="#pr%C3%A1tica" aria-hidden="true"><span class="octicon octicon-link"></span></a>Prática</h1>
+
+<p>Vamos construir uma pipeline RAG completa em Python (<code class="language-plaintext highlighter-rouge">rag_manuals.py</code>), integrando o ChromaDB com o modelo local <code class="language-plaintext highlighter-rouge">llama3.2:3b</code> para suporte a falhas e diagnósticos de hardware.</p>
+
+<h2 id="passo-1-download-do-modelo-de-raciocínio-3b">
+<a class="anchor" href="#passo-1-download-do-modelo-de-racioc%C3%ADnio-3b" aria-hidden="true"><span class="octicon octicon-link"></span></a>Passo 1: Download do Modelo de Raciocínio (3B)</h2>
+
+<p>Para tarefas que exigem sintetizar texto a partir de contexto e seguir instruções estritas de recusa, o modelo de 3 bilhões de parâmetros oferece excelente equilíbrio de qualidade e velocidade:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ollama pull llama3.2:3b
+</code></pre></div></div>
+
+<hr>
+
+<h2 id="passo-2-construindo-a-pipeline-rag-completa">
+<a class="anchor" href="#passo-2-construindo-a-pipeline-rag-completa" aria-hidden="true"><span class="octicon octicon-link"></span></a>Passo 2: Construindo a Pipeline RAG Completa</h2>
+
+<p>Crie o arquivo <code class="language-plaintext highlighter-rouge">rag_manuals.py</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">chromadb</span>
+<span class="kn">import</span> <span class="n">ollama</span>
+
+<span class="c1"># 1. Configuração do Banco Vetorial e Coleção de Manuais
+</span><span class="n">chroma_client</span> <span class="o">=</span> <span class="n">chromadb</span><span class="p">.</span><span class="nc">Client</span><span class="p">()</span>
+<span class="n">collection</span> <span class="o">=</span> <span class="n">chroma_client</span><span class="p">.</span><span class="nf">create_collection</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sh">"</span><span class="s">manual_diagnosticos_iot</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="c1"># 2. Base de Conhecimento Oficial do Fabricante
+</span><span class="n">manuais_hardware</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span>
+        <span class="sh">"</span><span class="s">MAN-01</span><span class="sh">"</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">Código de Falha E-01: Falha no sensor de temperatura DHT22. O pino de dados GPIO 4 não responde. Solução: Verifique o resistor de pull-up de 10k entre VCC e Dados.</span><span class="sh">"</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="p">(</span>
+        <span class="sh">"</span><span class="s">MAN-02</span><span class="sh">"</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">Código de Falha E-02: Subtensão na linha de 3.3V. A bateria LiPo está abaixo de 3.2V. Solução: Conecte o cabo USB-C para carga ou substitua a célula de bateria.</span><span class="sh">"</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="p">(</span>
+        <span class="sh">"</span><span class="s">MAN-03</span><span class="sh">"</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">Código de Falha E-03: Desconexão do Broker MQTT. O Gateway não consegue alcançar a porta 1883. Solução: Verifique as credenciais de rede Wi-Fi e se o serviço Mosquitto está ativo.</span><span class="sh">"</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="p">(</span>
+        <span class="sh">"</span><span class="s">MAN-04</span><span class="sh">"</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">Código de Falha E-04: Atuação de proteção de sobrecorrente do relé no pino 12. Solução: Desconecte a carga externa imediatamente e verifique curto-circuito na fiação.</span><span class="sh">"</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="p">(</span>
+        <span class="sh">"</span><span class="s">MAN-05</span><span class="sh">"</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">Procedimento de Calibração do Sensor de Solo: Mergulhe a sonda em água destilada, leia o pino A0 e ajuste o trimpot azul até a saída analógica registrar valor 512.</span><span class="sh">"</span><span class="p">,</span>
+    <span class="p">),</span>
+<span class="p">]</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">=== 1. INDEXANDO MANUAIS TÉCNICOS NO CHROMADB ===</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">doc_id</span><span class="p">,</span> <span class="n">texto</span> <span class="ow">in</span> <span class="n">manuais_hardware</span><span class="p">:</span>
+    <span class="n">emb</span> <span class="o">=</span> <span class="n">ollama</span><span class="p">.</span><span class="nf">embeddings</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="sh">"</span><span class="s">nomic-embed-text</span><span class="sh">"</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="n">texto</span><span class="p">)[</span>
+        <span class="sh">"</span><span class="s">embedding</span><span class="sh">"</span>
+    <span class="p">]</span>
+    <span class="n">collection</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span>
+        <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="n">doc_id</span><span class="p">],</span>
+        <span class="n">embeddings</span><span class="o">=</span><span class="p">[</span><span class="n">emb</span><span class="p">],</span>
+        <span class="n">documents</span><span class="o">=</span><span class="p">[</span><span class="n">texto</span><span class="p">],</span>
+        <span class="n">metadatas</span><span class="o">=</span><span class="p">[{</span><span class="sh">"</span><span class="s">doc_id</span><span class="sh">"</span><span class="p">:</span> <span class="n">doc_id</span><span class="p">}],</span>
+    <span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">✅ </span><span class="si">{</span><span class="nf">len</span><span class="p">(</span><span class="n">manuais_hardware</span><span class="p">)</span><span class="si">}</span><span class="s"> manuais indexados com sucesso!</span><span class="se">\n</span><span class="sh">"</span><span class="p">)</span>
+
+
+<span class="c1"># 3. Função Central RAG: Recuperação + Aumento de Prompt + Geração Local
+</span><span class="k">def</span> <span class="nf">diagnosticar_problema_rag</span><span class="p">(</span><span class="n">pergunta_usuario</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">❓ Pergunta do Técnico: </span><span class="se">\"</span><span class="si">{</span><span class="n">pergunta_usuario</span><span class="si">}</span><span class="se">\"</span><span class="sh">"</span><span class="p">)</span>
+
+    <span class="c1"># A. Recuperação (Retrieval)
+</span>    <span class="n">q_emb</span> <span class="o">=</span> <span class="n">ollama</span><span class="p">.</span><span class="nf">embeddings</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="sh">"</span><span class="s">nomic-embed-text</span><span class="sh">"</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="n">pergunta_usuario</span><span class="p">)[</span>
+        <span class="sh">"</span><span class="s">embedding</span><span class="sh">"</span>
+    <span class="p">]</span>
+    <span class="n">busca</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="nf">query</span><span class="p">(</span><span class="n">query_embeddings</span><span class="o">=</span><span class="p">[</span><span class="n">q_emb</span><span class="p">],</span> <span class="n">n_results</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">contexto</span> <span class="o">=</span> <span class="n">busca</span><span class="p">[</span><span class="sh">"</span><span class="s">documents</span><span class="sh">"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">doc_id</span> <span class="o">=</span> <span class="n">busca</span><span class="p">[</span><span class="sh">"</span><span class="s">metadatas</span><span class="sh">"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="sh">"</span><span class="s">doc_id</span><span class="sh">"</span><span class="p">]</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">📖 Contexto Recuperado do Banco (</span><span class="si">{</span><span class="n">doc_id</span><span class="si">}</span><span class="s">): </span><span class="se">\"</span><span class="si">{</span><span class="n">contexto</span><span class="si">}</span><span class="se">\"</span><span class="sh">"</span><span class="p">)</span>
+
+    <span class="c1"># B. Aumento de Prompt com Aterramento Rigoroso (Augmentation)
+</span>    <span class="n">prompt_aterrado</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"""</span><span class="s">Você é um engenheiro de suporte de hardware especialista em IoT.
+Responda à pergunta do técnico utilizando EXCLUSIVAMENTE as informações fornecidas no Contexto abaixo.
+
+Diretrizes Críticas:
+1. Seja direto, técnico e cite a solução passo a passo.
+2. Se a resposta NÃO estiver claramente descrita no Contexto, responda APENAS:
+   </span><span class="sh">'</span><span class="s">ERRO DESCONHECIDO: Falha não catalogada nos manuais oficiais do equipamento.</span><span class="sh">'</span><span class="s">
+
+--- CONTEXTO OFICIAL ---
+</span><span class="si">{</span><span class="n">contexto</span><span class="si">}</span><span class="s">
+------------------------
+
+Pergunta do Técnico: </span><span class="si">{</span><span class="n">pergunta_usuario</span><span class="si">}</span><span class="s">
+Resposta do Engenheiro:</span><span class="sh">"""</span>
+
+    <span class="c1"># C. Geração Ancorada no LLM (Generation)
+</span>    <span class="n">resposta</span> <span class="o">=</span> <span class="n">ollama</span><span class="p">.</span><span class="nf">chat</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">=</span><span class="sh">"</span><span class="s">llama3.2:3b</span><span class="sh">"</span><span class="p">,</span>
+        <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">user</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="n">prompt_aterrado</span><span class="p">}],</span>
+        <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="sh">"</span><span class="s">temperature</span><span class="sh">"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">},</span>  <span class="c1"># Máximo determinismo
+</span>    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">resposta</span><span class="p">[</span><span class="sh">"</span><span class="s">message</span><span class="sh">"</span><span class="p">][</span><span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">].</span><span class="nf">strip</span><span class="p">()</span>
+
+
+<span class="c1"># --- Bateria de Testes: Perguntas Reais vs Perguntas Inexistentes ---
+</span><span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">=== 2. EXECUTANDO TESTES DE DIAGNÓSTICO COM RAG LOCAL ===</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="n">perguntas_teste</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="sh">"</span><span class="s">O painel acusou Erro E-01 no sensor de temperatura, como devo proceder?</span><span class="sh">"</span><span class="p">,</span>
+    <span class="sh">"</span><span class="s">A placa está acusando erro E-02 e o LED vermelho pisca. O que fazer?</span><span class="sh">"</span><span class="p">,</span>
+    <span class="sh">"</span><span class="s">Como faço para calibrar o sensor de umidade de solo no pino analógico?</span><span class="sh">"</span><span class="p">,</span>
+    <span class="sh">"</span><span class="s">Apareceu o Erro E-99 de superaquecimento quântico no processador, o que é?</span><span class="sh">"</span><span class="p">,</span>  <span class="c1"># Falha inexistente!
+</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">perguntas_teste</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">-</span><span class="sh">"</span> <span class="o">*</span> <span class="mi">65</span><span class="p">)</span>
+    <span class="n">solucao</span> <span class="o">=</span> <span class="nf">diagnosticar_problema_rag</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="se">\n</span><span class="s">🤖 Resposta da IA:</span><span class="se">\n</span><span class="si">{</span><span class="n">solucao</span><span class="si">}</span><span class="se">\n</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr>
+
+<h2 id="passo-3-executando-e-verificando-a-ausência-de-alucinações">
+<a class="anchor" href="#passo-3-executando-e-verificando-a-aus%C3%AAncia-de-alucina%C3%A7%C3%B5es" aria-hidden="true"><span class="octicon octicon-link"></span></a>Passo 3: Executando e Verificando a Ausência de Alucinações</h2>
+
+<p>Execute o script:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python rag_manuals.py
+</code></pre></div></div>
+
+<h3 id="saída-esperada-no-terminal">
+<a class="anchor" href="#sa%C3%ADda-esperada-no-terminal" aria-hidden="true"><span class="octicon octicon-link"></span></a>Saída Esperada no Terminal:</h3>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>=== 1. INDEXANDO MANUAIS TÉCNICOS NO CHROMADB ===
+✅ 5 manuais indexados com sucesso!
+
+=== 2. EXECUTANDO TESTES DE DIAGNÓSTICO COM RAG LOCAL ===
+-----------------------------------------------------------------
+❓ Pergunta do Técnico: "O painel acusou Erro E-01 no sensor de temperatura, como devo proceder?"
+📖 Contexto Recuperado do Banco (MAN-01): "Código de Falha E-01: Falha no sensor de temperatura DHT22. O pino de dados GPIO 4 não responde. Solução: Verifique o resistor de pull-up de 10k entre VCC e Dados."
+
+🤖 Resposta da IA:
+Para solucionar o Erro E-01, verifique o resistor de pull-up de 10k ohms instalado entre os pinos VCC e Dados (GPIO 4) do sensor DHT22.
+
+-----------------------------------------------------------------
+❓ Pergunta do Técnico: "Apareceu o Erro E-99 de superaquecimento quântico no processador, o que é?"
+📖 Contexto Recuperado do Banco (MAN-04): "Código de Falha E-04: Atuação de proteção de sobrecorrente do relé no pino 12..."
+
+🤖 Resposta da IA:
+ERRO DESCONHECIDO: Falha não catalogada nos manuais oficiais do equipamento.
+</code></pre></div></div>
+
+<blockquote>
+  <p>[!NOTE]
+<strong>Vitória contra a Alucinação:</strong> Repare que quando perguntamos sobre o código inexistente <em>“Erro E-99”</em>, o modelo recuperou o documento mais próximo, mas, graças ao prompt de aterramento rigoroso, <strong>recusou-se a inventar uma resposta</strong>, emitindo a mensagem padronizada de falha não catalogada!</p>
+</blockquote>
+
+<hr>
+
+<h1 id="questionário-de-fixação">
+<a class="anchor" href="#question%C3%A1rio-de-fixa%C3%A7%C3%A3o" aria-hidden="true"><span class="octicon octicon-link"></span></a>Questionário de Fixação</h1>
+
+<p><strong>1. Qual é o principal objetivo da arquitetura RAG (Retrieval-Augmented Generation)?</strong><br>
+a) Treinar um modelo de linguagem do zero usando GPUs industriais.<br>
+b) Fornecer documentos externos relevantes em tempo de execução para ancorar a geração do modelo, eliminando alucinações e expandindo seu conhecimento.<br>
+c) Compactar arquivos de áudio para transmissão via rádio frequência.<br>
+d) Substituir a necessidade de escrever código em Python.<br>
+e) Apagar a memória de contexto do microcontrolador.</p>
+
+<p><strong>2. Na arquitetura RAG, o que significa a etapa de <em>Retrieval</em> (Recuperação)?</strong><br>
+a) A recuperação de arquivos excluídos da lixeira do sistema operacional.<br>
+b) A busca no banco vetorial dos fragmentos de texto mais similares semanticamente à dúvida do usuário.<br>
+c) A compilação do código binário para o Arduino.<br>
+d) O envio de pacotes de telemetria por cabos seriais.<br>
+e) A formatação do disco rígido local.</p>
+
+<p><strong>3. Por que ao utilizar modelos de linguagem compactos na borda (SLMs de 1B a 3B) é recomendado manter um valor baixo de $k$ (ex: $k=1$ ou $k=2$)?</strong><br>
+a) Porque o ChromaDB não suporta mais de dois documentos.<br>
+b) Para evitar a diluição de atenção (<em>Lost in the Middle</em>), economizar memória RAM com o KV-Cache e garantir que o modelo foque no trecho exato.<br>
+c) Porque o Python limita o número de variáveis a 2.<br>
+d) Para diminuir o consumo elétrico dos sensores analógicos.<br>
+e) Porque modelos compactos não sabem ler mais de 10 palavras por minuto.</p>
+
+<p><strong>4. O que é o <em>Grounding</em> (Aterramento) de um modelo de linguagem?</strong><br>
+a) A conexão física do pino GND do Arduino à carcaça metálica para evitar ruído elétrico.<br>
+b) A instrução estrita dada ao modelo para que ele formule sua resposta baseando-se unicamente nas evidências do contexto fornecido, recusando-se a inventar fatos.<br>
+c) O desligamento do computador em caso de superaquecimento.<br>
+d) A gravação permanente do modelo na memória flash do microcontrolador.<br>
+e) A conversão de tensores em matrizes esparsas.</p>
+
+<p><strong>5. Se um usuário fizer uma pergunta sobre um problema que não existe na documentação indexada no ChromaDB, qual é o comportamento esperado de uma pipeline RAG bem projetada?</strong><br>
+a) O modelo deve inventar uma solução criativa para não deixar o usuário sem resposta.<br>
+b) O modelo deve travar e encerrar a execução do sistema operacional.<br>
+c) O modelo deve identificar que o contexto recuperado não contém a resposta e emitir uma mensagem explícita de recusa ou erro desconhecido.<br>
+d) O modelo deve apagar a coleção do banco vetorial.<br>
+e) O modelo deve enviar um e-mail de socorro para a OpenAI.</p>
+
+<hr>
+
+<h3 id="gabarito-comentado">
+<a class="anchor" href="#gabarito-comentado" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gabarito Comentado</h3>
+
+<ol>
+  <li>
+<strong>b) Fornecer documentos externos relevantes em tempo de execução para ancorar a geração…</strong><br>
+<em>Justificativa:</em> O RAG conecta o raciocínio linguístico do LLM a repositórios dinâmicos de dados reais e privados sem a necessidade de dispendiosos re-treinamentos.</li>
+  <li>
+<strong>b) A busca no banco vetorial dos fragmentos de texto mais similares semanticamente…</strong><br>
+<em>Justificativa:</em> A etapa de Retrieval consulta a base vetorial utilizando o embedding da dúvida para encontrar os chunks de maior relevância.</li>
+  <li>
+<strong>b) Para evitar a diluição de atenção (<em>Lost in the Middle</em>), economizar memória RAM…</strong><br>
+<em>Justificativa:</em> SLMs possuem menor capacidade de filtrar ruídos em contextos excessivamente longos; blocos precisos e concisos ($k \le 2$) produzem respostas mais precisas.</li>
+  <li>
+<strong>b) A instrução estrita dada ao modelo para que ele formule sua resposta baseando-se unicamente nas evidências…</strong><br>
+<em>Justificativa:</em> Grounding é o processo de atrelar a resposta gerada a fontes verificáveis de verdade.</li>
+  <li>
+<strong>c) O modelo deve identificar que o contexto recuperado não contém a resposta e emitir uma mensagem explícita…</strong><br>
+<em>Justificativa:</em> Em ambientes técnicos e industriais, um “Não sei / Erro não catalogado” é infinitamente superior e mais seguro do que uma alucinação plausível que possa causar danos materiais.</li>
+</ol>
+
+            <hr/>
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                public class 
+                
+                <span class="nc ">Disruptive Architectures</span>
+                :
+                <span class="nc ">IA: Conhecimento & Ferramentas</span> 
+                
+                , 
+                <span class="nc ">5. RAG Local & Manuais Técnicos</span>
+                
+            </div> 
+        </main>
+        <script type="text/javascript" src="/DisruptiveArchitectures/assets/scripts.js"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+        <script src=" https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js "></script>
+        <script type="module">
+            mermaid.initialize({theme:"neutral",
+                                securityLevel: "strict",
+                                startOnLoad: true
+                                });
+        </script>
+    </body>
+</html>

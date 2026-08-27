@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <title>10. IA com Protocolo MQTT - Disruptive Architectures</title>
+        <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+        <link rel="stylesheet" href="/DisruptiveArchitectures/assets/css/main.css" id="maincss">
+    </head>
+    <body>
+        <nav>
+    
+    <a href="javascript:void(0)" onclick="toggle_menu()" id="hamb_menu">☰ Aulas</a>
+    <a href="javascript:void(0)" onclick="toggle_toc()" id="toc_btn">📑 Índice</a>
+    
+    <a href="/DisruptiveArchitectures/">Index</a>&nbsp;
+    <a href="javascript:void(0)" onclick="toggle_themes()">Mudar Tema</a>
+</nav>
+
+        <aside id="course_menu">
+    
+    
+    <b class="course_name">Disruptive Architectures</b>
+
+    
+    <b class="section_name">Sobre a disciplina</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/00_index.html" class="class_link">Introdução</a>
+    
+    <a href="/DisruptiveArchitectures/classes/01_notas.html" class="class_link">Notas</a>
+    
+    <a href="/DisruptiveArchitectures/classes/02_Cronograma.html" class="class_link">Cronograma</a>
+    
+    
+    <b class="section_name">IoT</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/03_definicoes.html" class="class_link">Definições de IoT</a>
+    
+    <a href="/DisruptiveArchitectures/classes/04_circuitoseletricos.html" class="class_link">Circuítos (eletro)eletrônicos</a>
+    
+    
+    <b class="section_name">Sistemas Embarcados</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/05_sistemas_embarcados.html" class="class_link">Introdução</a>
+    
+    <a href="/DisruptiveArchitectures/classes/06_arduino.html" class="class_link">Arduino</a>
+    
+    
+    <b class="section_name">Protocolos M2M</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/07_m2m.html" class="class_link">Introdução</a>
+    
+    <a href="/DisruptiveArchitectures/classes/08_UART.html" class="class_link">UART</a>
+    
+    <a href="/DisruptiveArchitectures/classes/09_I2C.html" class="class_link">I2C</a>
+    
+    <a href="/DisruptiveArchitectures/classes/10_SPI.html" class="class_link">SPI</a>
+    
+    
+    <b class="section_name">Sensores, Atuadores e IO</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/13_multisensores_analogicos.html" class="class_link">Sensores analógicos</a>
+    
+    <a href="/DisruptiveArchitectures/classes/14_motores.html" class="class_link">Motores</a>
+    
+    <a href="/DisruptiveArchitectures/classes/11_sensore_controladores.html" class="class_link">Input: Keypad</a>
+    
+    <a href="/DisruptiveArchitectures/classes/12_lcdi2c.html" class="class_link">Output: LCD 16x2 I2C</a>
+    
+    <a href="/DisruptiveArchitectures/classes/15_genius.html" class="class_link">Projeto: Genius</a>
+    
+    
+    <b class="section_name">IA: Fundamentos & Estruturação</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/15_ia_local_fundamentos.html" class="class_link">1. Demistificando GenAI & Modelos Locais</a>
+    
+    <a href="/DisruptiveArchitectures/classes/16_system_prompts.html" class="class_link">2. System Prompts & Guardrails</a>
+    
+    <a href="/DisruptiveArchitectures/classes/17_structured_outputs.html" class="class_link">3. Saídas Estruturadas & JSON</a>
+    
+    
+    <b class="section_name">Backend</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/16_node_red.html" class="class_link">Node-Red</a>
+    
+    
+    <b class="section_name">Protocolos TCP/IP (Aplicação)</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/17_MQTT.html" class="class_link">MQTT</a>
+    
+    
+    <b class="section_name">IA: Conhecimento & Ferramentas</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/18_embeddings_vetores.html" class="class_link">4. Embeddings & Vector DBs</a>
+    
+    <a href="/DisruptiveArchitectures/classes/19_rag_local.html" class="class_link">5. RAG Local & Manuais Técnicos</a>
+    
+    <a href="/DisruptiveArchitectures/classes/20_function_calling.html" class="class_link">6. Function Calling & Tools</a>
+    
+    
+    <b class="section_name">IA: Visão & Agentes Autônomos</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/21_vlm_multimodal.html" class="class_link">7. Visão Computacional & VLMs</a>
+    
+    <a href="/DisruptiveArchitectures/classes/22_react_agents.html" class="class_link">8. Agentes ReAct em Python Puro</a>
+    
+    <a href="/DisruptiveArchitectures/classes/23_multi_agentes.html" class="class_link">9. Colaboração Multi-Agente</a>
+    
+    
+    <b class="section_name">Desafio</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/18_Desafio.html" class="class_link">Genius + MQTT + Dashboard</a>
+    
+    
+    <b class="section_name">Plataformas IoT</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/19_IoTPlatforms.html" class="class_link">AWS IoT Core: Things</a>
+    
+    <a href="/DisruptiveArchitectures/classes/20_IoTPlatformsDevice.html" class="class_link">Configurando um dispositivo</a>
+    
+    
+    <b class="section_name">IA: Protocolos IoT & Edge Gateway</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/24_ia_mqtt_gateways.html" class="class_link">10. IA com Protocolo MQTT</a>
+    
+    <a href="/DisruptiveArchitectures/classes/25_quantizacao_edge.html" class="class_link">11. Quantização & Otimização Edge</a>
+    
+    <a href="/DisruptiveArchitectures/classes/26_projeto_gateway_part1.html" class="class_link">12. Projeto Gateway: Arquitetura</a>
+    
+    <a href="/DisruptiveArchitectures/classes/27_projeto_gateway_part2.html" class="class_link">13. Projeto Gateway: Resiliência</a>
+    
+    
+
+
+  
+</aside>
+
+        <aside id="toc_menu"> 
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#ia-sobre-mqtt--gateways-orientados-a-eventos">IA sobre MQTT &amp; Gateways Orientados a Eventos</a></li>
+<li class="toc-entry toc-h1"><a href="#teoria">Teoria</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#1-rest-http-vs-mqtt-qual-a-melhor-escolha-para-ia-em-iot">1. REST (HTTP) vs. MQTT: Qual a Melhor Escolha para IA em IoT?</a></li>
+<li class="toc-entry toc-h2"><a href="#2-tópicos-hierárquicos-e-qualidade-de-serviço-qos">2. Tópicos Hierárquicos e Qualidade de Serviço (QoS)</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#níveis-de-qualidade-de-serviço-qos">Níveis de Qualidade de Serviço (QoS):</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#3-o-desafio-do-desacoplamento-temporal-da-ia">3. O Desafio do Desacoplamento Temporal da IA</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#a-solução-profissional-filas-assíncronas-queuequeue-ou-asyncio">A Solução Profissional: Filas Assíncronas (queue.Queue ou asyncio)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#prática">Prática</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#passo-1-instalação-do-mosquitto-e-paho-mqtt">Passo 1: Instalação do Mosquitto e Paho-MQTT</a></li>
+<li class="toc-entry toc-h2"><a href="#passo-2-construindo-o-ai-smart-gateway-sobre-mqtt">Passo 2: Construindo o AI Smart Gateway sobre MQTT</a></li>
+<li class="toc-entry toc-h2"><a href="#passo-3-testando-a-ingestão-em-tempo-real-com-cli">Passo 3: Testando a Ingestão em Tempo Real com CLI</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#saída-no-terminal-do-gateway">Saída no Terminal do Gateway:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#questionário-de-fixação">Questionário de Fixação</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#gabarito-comentado">Gabarito Comentado</a></li>
+</ul>
+</li>
+</ul>
+</aside>
+
+        <main>
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                public class 
+                
+                <span class="nc ">Disruptive Architectures</span>
+                :
+                <span class="nc ">IA: Protocolos IoT & Edge Gateway</span> 
+                
+                , 
+                <span class="nc ">10. IA com Protocolo MQTT</span>
+                
+            </div> 
+            <center><h1> 10. IA com Protocolo MQTT</h1></center>
+            <h1 id="ia-sobre-mqtt--gateways-orientados-a-eventos">
+<a class="anchor" href="#ia-sobre-mqtt--gateways-orientados-a-eventos" aria-hidden="true"><span class="octicon octicon-link"></span></a>IA sobre MQTT &amp; Gateways Orientados a Eventos</h1>
+
+<p>Nas primeiras aulas do semestre, exploramos os protocolos de comunicação essenciais para sistemas embarcados, incluindo UART, I2C, SPI e MQTT. Agora, faremos a grande ponte entre o mundo dos <strong>protocolos assíncronos de Internet das Coisas (IoT)</strong> e os <strong>motores de inferência de inteligência artificial</strong>.</p>
+
+<p>Nesta aula, integraremos um agente de IA local ao protocolo <strong>MQTT (Message Queuing Telemetry Transport)</strong>, criando um gateway reativo capaz de escutar eventos de telemetria em tópicos distribuídos, tomar decisões inteligentes e publicar comandos para atuadores em tempo real!</p>
+
+<pre class="mermaid">
+flowchart LR
+    ESP32["📡 Dispositivo Remoto (ESP32)<br>Publica em: home/sensors/boiler"] --&gt;|MQTT Pub| Broker[("🔄 Broker MQTT Local<br>(Eclipse Mosquitto :1883)")]
+    
+    subgraph GATEWAY["AI Smart Gateway (Python + Ollama)"]
+        Broker --&gt;|MQTT Sub| ThreadWorker["🧵 Fila Assíncrona &amp; Worker Thread"]
+        ThreadWorker --&gt; LLM["🧠 Agente Local (Llama 3.2 1B)<br>Avalia Telemetria e Risco"]
+        LLM --&gt; Decision{"🚨 Decisão de Controle"}
+    end
+    
+    Decision --&gt;|"Publica Comando"| Broker
+    Broker --&gt;|MQTT Sub| RelayActuator["🔌 Módulo de Relé / Alarme<br>Inscrito em: home/actuators/alarm"]
+    
+    style Broker fill:#fef3c7,stroke:#f59e0b,stroke-width:2px;
+    style GATEWAY fill:#f0fdf4,stroke:#22c55e,stroke-width:2px;
+    style LLM fill:#e0e7ff,stroke:#6366f1,stroke-width:2px;
+    style RelayActuator fill:#fee2e2,stroke:#ef4444,stroke-width:2px;
+</pre>
+
+<hr>
+
+<h1 id="teoria">
+<a class="anchor" href="#teoria" aria-hidden="true"><span class="octicon octicon-link"></span></a>Teoria</h1>
+
+<h2 id="1-rest-http-vs-mqtt-qual-a-melhor-escolha-para-ia-em-iot">
+<a class="anchor" href="#1-rest-http-vs-mqtt-qual-a-melhor-escolha-para-ia-em-iot" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. REST (HTTP) vs. MQTT: Qual a Melhor Escolha para IA em IoT?</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Critério</th>
+      <th style="text-align: left">REST API (HTTP)</th>
+      <th style="text-align: left">MQTT (Publish / Subscribe)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Padrão de Comunicação</strong></td>
+      <td style="text-align: left">Síncrono (<em>Request / Response</em>)</td>
+      <td style="text-align: left"><strong>Assíncrono (<em>Publish / Subscribe</em>)</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Tamanho do Cabeçalho</strong></td>
+      <td style="text-align: left">Pesado (centenas de bytes em headers)</td>
+      <td style="text-align: left"><strong>Ultraleve (a partir de 2 bytes)</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Acoplamento de Rede</strong></td>
+      <td style="text-align: left">Cliente precisa conhecer o IP do servidor</td>
+      <td style="text-align: left">
+<strong>Desacoplamento total</strong> (mediado pelo Broker)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Consumo de Bateria</strong></td>
+      <td style="text-align: left">Alto (requer handshakes TCP frequentes)</td>
+      <td style="text-align: left">
+<strong>Mínimo</strong> (mantém conexão TCP viva com Keep-Alive)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Adequação para Sensores</strong></td>
+      <td style="text-align: left">Ruim para fluxos contínuos de eventos</td>
+      <td style="text-align: left"><strong>Ideal para telemetria em tempo real</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2 id="2-tópicos-hierárquicos-e-qualidade-de-serviço-qos">
+<a class="anchor" href="#2-t%C3%B3picos-hier%C3%A1rquicos-e-qualidade-de-servi%C3%A7o-qos" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Tópicos Hierárquicos e Qualidade de Serviço (QoS)</h2>
+
+<p>No MQTT, as mensagens são roteadas através de <strong>tópicos</strong> organizados em barras <code class="language-plaintext highlighter-rouge">/</code>:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">fabrica/setor_norte/prensa_01/temperatura</code></li>
+  <li><code class="language-plaintext highlighter-rouge">fabrica/setor_norte/prensa_01/vibracao</code></li>
+  <li>Coringas (<em>Wildcards</em>): <code class="language-plaintext highlighter-rouge">fabrica/setor_norte/+/temperatura</code> (um nível) ou <code class="language-plaintext highlighter-rouge">fabrica/#</code> (todos os sub-tópicos recursivos).</li>
+</ul>
+
+<h3 id="níveis-de-qualidade-de-serviço-qos">
+<a class="anchor" href="#n%C3%ADveis-de-qualidade-de-servi%C3%A7o-qos" aria-hidden="true"><span class="octicon octicon-link"></span></a>Níveis de Qualidade de Serviço (QoS):</h3>
+<ul>
+  <li>
+<strong>QoS 0 (No máximo uma vez):</strong> Disparo rápido sem confirmação de entrega (<em>Fire-and-forget</em>).</li>
+  <li>
+<strong>QoS 1 (Pelo menos uma vez):</strong> Garante entrega com confirmação (<em>PUBACK</em>), mas pode duplicar pacotes.</li>
+  <li>
+<strong>QoS 2 (Exatamente uma vez):</strong> Entrega garantida e sem duplicações com handshake de 4 vias (ideal para comandos de acionamento crítico).</li>
+</ul>
+
+<hr>
+
+<h2 id="3-o-desafio-do-desacoplamento-temporal-da-ia">
+<a class="anchor" href="#3-o-desafio-do-desacoplamento-temporal-da-ia" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. O Desafio do Desacoplamento Temporal da IA</h2>
+
+<p>Um dos erros mais graves ao integrar IA com MQTT é executar a inferência do LLM diretamente dentro da função de callback <code class="language-plaintext highlighter-rouge">on_message(client, userdata, msg)</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ❌ ERRO GRAVE: Bloqueia o loop de rede do MQTT!
+</span><span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">userdata</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+    <span class="c1"># O LLM demora 1 a 2 segundos para responder!
+</span>    <span class="c1"># Durante esse tempo, o cliente MQTT NÃO processa PINGs de rede,
+</span>    <span class="c1"># fazendo o broker desconectar o cliente por Timeout!
+</span>    <span class="n">res</span> <span class="o">=</span> <span class="n">ollama</span><span class="p">.</span><span class="nf">chat</span><span class="p">(...)</span>
+</code></pre></div></div>
+
+<h3 id="a-solução-profissional-filas-assíncronas-queuequeue-ou-asyncio">
+<a class="anchor" href="#a-solu%C3%A7%C3%A3o-profissional-filas-ass%C3%ADncronas-queuequeue-ou-asyncio" aria-hidden="true"><span class="octicon octicon-link"></span></a>A Solução Profissional: Filas Assíncronas (<code class="language-plaintext highlighter-rouge">queue.Queue</code> ou <code class="language-plaintext highlighter-rouge">asyncio</code>)</h3>
+<ol>
+  <li>O callback <code class="language-plaintext highlighter-rouge">on_message</code> apenas extrai o payload e o insere instantaneamente em uma <strong>Fila em Memória</strong> (<code class="language-plaintext highlighter-rouge">Queue</code>), liberando o loop do MQTT em menos de <strong>1 milissegundo</strong>.</li>
+  <li>Uma <strong>Thread de Processamento de IA dedicada</strong> retira mensagens da fila em segundo plano, executa a inferência e publica a resposta de volta no Broker!</li>
+</ol>
+
+<hr>
+
+<h1 id="prática">
+<a class="anchor" href="#pr%C3%A1tica" aria-hidden="true"><span class="octicon octicon-link"></span></a>Prática</h1>
+
+<p>Vamos configurar um broker <strong>Eclipse Mosquitto</strong> local e construir o nosso primeiro gateway assíncrono em Python (<code class="language-plaintext highlighter-rouge">mqtt_ai_gateway.py</code>) usando a biblioteca <code class="language-plaintext highlighter-rouge">paho-mqtt</code> e o modelo <code class="language-plaintext highlighter-rouge">llama3.2:1b</code>.</p>
+
+<h2 id="passo-1-instalação-do-mosquitto-e-paho-mqtt">
+<a class="anchor" href="#passo-1-instala%C3%A7%C3%A3o-do-mosquitto-e-paho-mqtt" aria-hidden="true"><span class="octicon octicon-link"></span></a>Passo 1: Instalação do Mosquitto e Paho-MQTT</h2>
+
+<ul>
+  <li>
+<strong>Windows:</strong> Baixe e instale o <a href="https://mosquitto.org/download/">Eclipse Mosquitto para Windows</a>.</li>
+  <li>
+<strong>Linux / Raspberry Pi:</strong>
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> mosquitto mosquitto-clients
+<span class="nb">sudo </span>systemctl <span class="nb">enable </span>mosquitto
+<span class="nb">sudo </span>systemctl start mosquitto
+</code></pre></div>    </div>
+  </li>
+  <li>
+<strong>macOS:</strong>
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>mosquitto
+brew services start mosquitto
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>Instale a biblioteca Python do MQTT:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>paho-mqtt
+</code></pre></div></div>
+
+<hr>
+
+<h2 id="passo-2-construindo-o-ai-smart-gateway-sobre-mqtt">
+<a class="anchor" href="#passo-2-construindo-o-ai-smart-gateway-sobre-mqtt" aria-hidden="true"><span class="octicon octicon-link"></span></a>Passo 2: Construindo o AI Smart Gateway sobre MQTT</h2>
+
+<p>Crie o arquivo <code class="language-plaintext highlighter-rouge">mqtt_ai_gateway.py</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">json</span>
+<span class="kn">import</span> <span class="n">queue</span>
+<span class="kn">import</span> <span class="n">threading</span>
+<span class="kn">import</span> <span class="n">time</span>
+<span class="kn">import</span> <span class="n">ollama</span>
+<span class="kn">import</span> <span class="n">paho.mqtt.client</span> <span class="k">as</span> <span class="n">mqtt</span>
+<span class="kn">from</span> <span class="n">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
+
+<span class="c1"># --- 1. CONFIGURAÇÕES DO BROKER MQTT ---
+</span><span class="n">MQTT_BROKER_HOST</span> <span class="o">=</span> <span class="sh">"</span><span class="s">localhost</span><span class="sh">"</span>
+<span class="n">MQTT_BROKER_PORT</span> <span class="o">=</span> <span class="mi">1883</span>
+<span class="n">TOPICO_TELEMETRIA</span> <span class="o">=</span> <span class="sh">"</span><span class="s">home/sensors/#</span><span class="sh">"</span>
+<span class="n">TOPICO_COMANDOS</span> <span class="o">=</span> <span class="sh">"</span><span class="s">home/actuators/alarm</span><span class="sh">"</span>
+
+<span class="c1"># Fila assíncrona para desacoplamento de rede e inferência
+</span><span class="n">fila_eventos_ia</span> <span class="o">=</span> <span class="n">queue</span><span class="p">.</span><span class="nc">Queue</span><span class="p">()</span>
+
+
+<span class="c1"># --- 2. CONTRATO DE DECISÃO DA IA ---
+</span><span class="k">class</span> <span class="nc">AIDecisionPayload</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">hazard_detected</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="nc">Field</span><span class="p">(</span>
+        <span class="p">...,</span> <span class="n">description</span><span class="o">=</span><span class="sh">"</span><span class="s">True se a telemetria indicar perigo, False se seguro.</span><span class="sh">"</span>
+    <span class="p">)</span>
+    <span class="n">action_command</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="nc">Field</span><span class="p">(</span>
+        <span class="p">...,</span>
+        <span class="n">description</span><span class="o">=</span><span class="sh">"</span><span class="s">Comando para o atuador: </span><span class="sh">'</span><span class="s">ALARM_ON</span><span class="sh">'</span><span class="s">, </span><span class="sh">'</span><span class="s">ALARM_OFF</span><span class="sh">'</span><span class="s"> ou </span><span class="sh">'</span><span class="s">NO_ACTION</span><span class="sh">'</span><span class="s">.</span><span class="sh">"</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">reasoning</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="nc">Field</span><span class="p">(</span>
+        <span class="p">...,</span> <span class="n">description</span><span class="o">=</span><span class="sh">"</span><span class="s">Breve justificativa técnica da decisão.</span><span class="sh">"</span>
+    <span class="p">)</span>
+
+
+<span class="c1"># --- 3. THREAD DEDICADA DE PROCESSAMENTO DE IA ---
+</span><span class="k">def</span> <span class="nf">worker_processamento_ia</span><span class="p">(</span><span class="n">mqtt_client</span><span class="p">:</span> <span class="n">mqtt</span><span class="p">.</span><span class="n">Client</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">🧠 [THREAD IA] Worker de inteligência artificial iniciado e ativo.</span><span class="sh">"</span><span class="p">)</span>
+
+    <span class="n">system_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"""</span><span class="s">Você é o cérebro autônomo de um Gateway de Segurança IoT.
+Analise a telemetria recebida do tópico MQTT e decida se há perigo iminente.
+Responda ESTRITAMENTE em JSON com o seguinte schema:
+</span><span class="si">{</span><span class="n">AIDecisionPayload</span><span class="p">.</span><span class="nf">model_json_schema</span><span class="p">()</span><span class="si">}</span><span class="s">
+
+Regras de Segurança:
+- Se temperatura &gt; 75C, pressao &gt; 80 psi ou fumaca == true -&gt; Dispare hazard_detected: true e action_command: </span><span class="sh">'</span><span class="s">ALARM_ON</span><span class="sh">'</span><span class="s">.
+- Caso contrário -&gt; hazard_detected: false e action_command: </span><span class="sh">'</span><span class="s">NO_ACTION</span><span class="sh">'</span><span class="s">.
+Responda apenas o JSON.</span><span class="sh">"""</span>
+
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Aguarda uma mensagem chegar na fila (bloqueante com timeout de 1s)
+</span>            <span class="n">item</span> <span class="o">=</span> <span class="n">fila_eventos_ia</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+            <span class="n">topico</span><span class="p">,</span> <span class="n">payload_str</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="sh">"</span><span class="s">topic</span><span class="sh">"</span><span class="p">],</span> <span class="n">item</span><span class="p">[</span><span class="sh">"</span><span class="s">payload</span><span class="sh">"</span><span class="p">]</span>
+
+            <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="se">\n</span><span class="s">⚙️ [THREAD IA] Avaliando telemetria de </span><span class="sh">'</span><span class="si">{</span><span class="n">topico</span><span class="si">}</span><span class="sh">'</span><span class="s">...</span><span class="sh">"</span><span class="p">)</span>
+            <span class="n">inicio</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="nf">time</span><span class="p">()</span>
+
+            <span class="n">response</span> <span class="o">=</span> <span class="n">ollama</span><span class="p">.</span><span class="nf">chat</span><span class="p">(</span>
+                <span class="n">model</span><span class="o">=</span><span class="sh">"</span><span class="s">llama3.2:1b</span><span class="sh">"</span><span class="p">,</span>
+                <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+                    <span class="p">{</span><span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">system</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="n">system_prompt</span><span class="p">},</span>
+                    <span class="p">{</span>
+                        <span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">user</span><span class="sh">"</span><span class="p">,</span>
+                        <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="sa">f</span><span class="sh">"</span><span class="s">Tópico: </span><span class="si">{</span><span class="n">topico</span><span class="si">}</span><span class="se">\n</span><span class="s">Payload: </span><span class="si">{</span><span class="n">payload_str</span><span class="si">}</span><span class="sh">"</span><span class="p">,</span>
+                    <span class="p">},</span>
+                <span class="p">],</span>
+                <span class="nb">format</span><span class="o">=</span><span class="sh">"</span><span class="s">json</span><span class="sh">"</span><span class="p">,</span>
+                <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="sh">"</span><span class="s">temperature</span><span class="sh">"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">},</span>
+            <span class="p">)</span>
+
+            <span class="n">duracao</span> <span class="o">=</span> <span class="p">(</span><span class="n">time</span><span class="p">.</span><span class="nf">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">inicio</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span>
+            <span class="n">decisao</span> <span class="o">=</span> <span class="n">AIDecisionPayload</span><span class="p">.</span><span class="nf">model_validate_json</span><span class="p">(</span>
+                <span class="n">response</span><span class="p">[</span><span class="sh">"</span><span class="s">message</span><span class="sh">"</span><span class="p">][</span><span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">]</span>
+            <span class="p">)</span>
+
+            <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">📊 [DECISÃO DA IA (</span><span class="si">{</span><span class="n">duracao</span><span class="si">:</span><span class="p">.</span><span class="mi">1</span><span class="n">f</span><span class="si">}</span><span class="s">ms)]:</span><span class="sh">"</span><span class="p">)</span>
+            <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">   -&gt; Risco Detectado: </span><span class="si">{</span><span class="n">decisao</span><span class="p">.</span><span class="n">hazard_detected</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+            <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">   -&gt; Ação Emitida: </span><span class="si">{</span><span class="n">decisao</span><span class="p">.</span><span class="n">action_command</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+            <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">   -&gt; Raciocínio: </span><span class="si">{</span><span class="n">decisao</span><span class="p">.</span><span class="n">reasoning</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+
+            <span class="c1"># Se a IA decidiu acionar o atuador, publica no tópico de comando
+</span>            <span class="k">if</span> <span class="n">decisao</span><span class="p">.</span><span class="n">action_command</span> <span class="o">!=</span> <span class="sh">"</span><span class="s">NO_ACTION</span><span class="sh">"</span><span class="p">:</span>
+                <span class="n">comando_payload</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="nf">dumps</span><span class="p">(</span>
+                    <span class="p">{</span>
+                        <span class="sh">"</span><span class="s">source</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">AI_SMART_GATEWAY</span><span class="sh">"</span><span class="p">,</span>
+                        <span class="sh">"</span><span class="s">command</span><span class="sh">"</span><span class="p">:</span> <span class="n">decisao</span><span class="p">.</span><span class="n">action_command</span><span class="p">,</span>
+                        <span class="sh">"</span><span class="s">reason</span><span class="sh">"</span><span class="p">:</span> <span class="n">decisao</span><span class="p">.</span><span class="n">reasoning</span><span class="p">,</span>
+                        <span class="sh">"</span><span class="s">timestamp</span><span class="sh">"</span><span class="p">:</span> <span class="n">time</span><span class="p">.</span><span class="nf">time</span><span class="p">(),</span>
+                    <span class="p">}</span>
+                <span class="p">)</span>
+                <span class="n">mqtt_client</span><span class="p">.</span><span class="nf">publish</span><span class="p">(</span>
+                    <span class="n">TOPICO_COMANDOS</span><span class="p">,</span> <span class="n">comando_payload</span><span class="p">,</span> <span class="n">qos</span><span class="o">=</span><span class="mi">1</span>
+                <span class="p">)</span>
+                <span class="nf">print</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="sh">"</span><span class="s">📢 [MQTT PUB] Comando publicado em </span><span class="sh">'</span><span class="si">{</span><span class="n">TOPICO_COMANDOS</span><span class="si">}</span><span class="sh">'</span><span class="s">: </span><span class="si">{</span><span class="n">comando_payload</span><span class="si">}</span><span class="sh">"</span>
+                <span class="p">)</span>
+
+            <span class="n">fila_eventos_ia</span><span class="p">.</span><span class="nf">task_done</span><span class="p">()</span>
+
+        <span class="k">except</span> <span class="n">queue</span><span class="p">.</span><span class="n">Empty</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">❌ [ERRO NO WORKER DE IA]: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+
+
+<span class="c1"># --- 4. CALLBACKS DO CLIENTE MQTT ---
+</span><span class="k">def</span> <span class="nf">on_connect</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">userdata</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">rc</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">rc</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span>
+            <span class="sa">f</span><span class="sh">"</span><span class="s">✅ [MQTT CONECTADO] Conexão estabelecida com sucesso no Broker </span><span class="sh">'</span><span class="si">{</span><span class="n">MQTT_BROKER_HOST</span><span class="si">}</span><span class="s">:</span><span class="si">{</span><span class="n">MQTT_BROKER_PORT</span><span class="si">}</span><span class="sh">'"</span>
+        <span class="p">)</span>
+        <span class="c1"># Inscreve-se em todos os tópicos de telemetria de sensores
+</span>        <span class="n">client</span><span class="p">.</span><span class="nf">subscribe</span><span class="p">(</span><span class="n">TOPICO_TELEMETRIA</span><span class="p">,</span> <span class="n">qos</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">📥 [MQTT SUB] Inscrito no padrão de tópicos: </span><span class="si">{</span><span class="n">TOPICO_TELEMETRIA</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">❌ Falha de conexão com código de retorno: </span><span class="si">{</span><span class="n">rc</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">userdata</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">Callback executado instantaneamente ao receber qualquer mensagem MQTT.</span><span class="sh">"""</span>
+    <span class="n">payload_str</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="n">payload</span><span class="p">.</span><span class="nf">decode</span><span class="p">(</span><span class="sh">"</span><span class="s">utf-8</span><span class="sh">"</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="sh">"</span><span class="s">ignore</span><span class="sh">"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="se">\n</span><span class="s">📩 [MQTT IN] Mensagem recebida em </span><span class="sh">'</span><span class="si">{</span><span class="n">msg</span><span class="p">.</span><span class="n">topic</span><span class="si">}</span><span class="sh">'</span><span class="s">: </span><span class="si">{</span><span class="n">payload_str</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+
+    <span class="c1"># Desacoplamento imediato: coloca o evento na fila sem bloquear a rede
+</span>    <span class="n">fila_eventos_ia</span><span class="p">.</span><span class="nf">put</span><span class="p">({</span><span class="sh">"</span><span class="s">topic</span><span class="sh">"</span><span class="p">:</span> <span class="n">msg</span><span class="p">.</span><span class="n">topic</span><span class="p">,</span> <span class="sh">"</span><span class="s">payload</span><span class="sh">"</span><span class="p">:</span> <span class="n">payload_str</span><span class="p">})</span>
+
+
+<span class="c1"># --- 5. INICIALIZAÇÃO DA APLICAÇÃO ---
+</span><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">mqtt</span><span class="p">.</span><span class="nc">Client</span><span class="p">(</span><span class="n">client_id</span><span class="o">=</span><span class="sh">"</span><span class="s">AI_Edge_Gateway_Node</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">client</span><span class="p">.</span><span class="n">on_connect</span> <span class="o">=</span> <span class="n">on_connect</span>
+    <span class="n">client</span><span class="p">.</span><span class="n">on_message</span> <span class="o">=</span> <span class="n">on_message</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">client</span><span class="p">.</span><span class="nf">connect</span><span class="p">(</span><span class="n">MQTT_BROKER_HOST</span><span class="p">,</span> <span class="n">MQTT_BROKER_PORT</span><span class="p">,</span> <span class="n">keepalive</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span>
+            <span class="sa">f</span><span class="sh">"</span><span class="s">❌ Não foi possível conectar ao Broker Mosquitto em </span><span class="si">{</span><span class="n">MQTT_BROKER_HOST</span><span class="si">}</span><span class="s">:</span><span class="si">{</span><span class="n">MQTT_BROKER_PORT</span><span class="si">}</span><span class="s">. Certifique-se de que o serviço está rodando!</span><span class="sh">"</span>
+        <span class="p">)</span>
+        <span class="nf">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Inicia a Thread da IA em segundo plano (Daemon)
+</span>    <span class="n">t_ia</span> <span class="o">=</span> <span class="n">threading</span><span class="p">.</span><span class="nc">Thread</span><span class="p">(</span>
+        <span class="n">target</span><span class="o">=</span><span class="n">worker_processamento_ia</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">client</span><span class="p">,),</span> <span class="n">daemon</span><span class="o">=</span><span class="bp">True</span>
+    <span class="p">)</span>
+    <span class="n">t_ia</span><span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">🚀 [GATEWAY PRONTO] Aguardando mensagens MQTT. Pressione Ctrl+C para encerrar.</span><span class="sh">"</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">client</span><span class="p">.</span><span class="nf">loop_forever</span><span class="p">()</span>
+    <span class="k">except</span> <span class="nb">KeyboardInterrupt</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">🛑 Encerrando Gateway de forma graciosa...</span><span class="sh">"</span><span class="p">)</span>
+        <span class="n">client</span><span class="p">.</span><span class="nf">disconnect</span><span class="p">()</span>
+</code></pre></div></div>
+
+<hr>
+
+<h2 id="passo-3-testando-a-ingestão-em-tempo-real-com-cli">
+<a class="anchor" href="#passo-3-testando-a-ingest%C3%A3o-em-tempo-real-com-cli" aria-hidden="true"><span class="octicon octicon-link"></span></a>Passo 3: Testando a Ingestão em Tempo Real com CLI</h2>
+
+<p>Abra dois novos terminais para simular os dispositivos de campo:</p>
+
+<p><strong>Terminal 2: Escutando os Atuadores (Simulador de Relé/Alarme)</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mosquitto_sub <span class="nt">-h</span> localhost <span class="nt">-t</span> <span class="s2">"home/actuators/#"</span> <span class="nt">-v</span>
+</code></pre></div></div>
+
+<p><strong>Terminal 3: Publicando Telemetria Normal vs Crítica</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Teste 1: Telemetria Normal (Temperatura Segura)</span>
+mosquitto_pub <span class="nt">-h</span> localhost <span class="nt">-t</span> <span class="s2">"home/sensors/boiler"</span> <span class="nt">-m</span> <span class="s1">'{"temp": 24.5, "pressure_psi": 30.0}'</span>
+
+<span class="c"># Teste 2: Telemetria Crítica (Superaquecimento e Pressão Excessiva!)</span>
+mosquitto_pub <span class="nt">-h</span> localhost <span class="nt">-t</span> <span class="s2">"home/sensors/boiler"</span> <span class="nt">-m</span> <span class="s1">'{"temp": 89.2, "pressure_psi": 95.0, "smoke": true}'</span>
+</code></pre></div></div>
+
+<h3 id="saída-no-terminal-do-gateway">
+<a class="anchor" href="#sa%C3%ADda-no-terminal-do-gateway" aria-hidden="true"><span class="octicon octicon-link"></span></a>Saída no Terminal do Gateway:</h3>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>📩 [MQTT IN] Mensagem recebida em 'home/sensors/boiler': {"temp": 89.2, "pressure_psi": 95.0, "smoke": true}
+
+⚙️ [THREAD IA] Avaliando telemetria de 'home/sensors/boiler'...
+📊 [DECISÃO DA IA (168.4ms)]:
+   -&gt; Risco Detectado: True
+   -&gt; Ação Emitida: ALARM_ON
+   -&gt; Raciocínio: Temperatura em 89.2C, pressão crítica de 95 psi e presença de fumaça detectada.
+📢 [MQTT PUB] Comando publicado em 'home/actuators/alarm': {"source": "AI_SMART_GATEWAY", "command": "ALARM_ON", ...}
+</code></pre></div></div>
+
+<hr>
+
+<h1 id="questionário-de-fixação">
+<a class="anchor" href="#question%C3%A1rio-de-fixa%C3%A7%C3%A3o" aria-hidden="true"><span class="octicon octicon-link"></span></a>Questionário de Fixação</h1>
+
+<p><strong>1. Qual é a principal característica do padrão arquitetural <em>Publish/Subscribe</em> utilizado pelo protocolo MQTT?</strong><br>
+a) Comunicação síncrona ponto a ponto com bloqueio total do canal.<br>
+b) Desacoplamento completo entre emissores (Publishers) e receptores (Subscribers), mediado por um Broker centralizador.<br>
+c) Necessidade obrigatória de cabos coaxiais de alta tensão.<br>
+d) Transmissão exclusiva de arquivos executáveis compilados em C.<br>
+e) Exigência de autenticação por biometria facial a cada mensagem.</p>
+
+<p><strong>2. Por que é considerado uma péssima prática de programação executar inferências de IA síncronas diretamente dentro do callback <code class="language-plaintext highlighter-rouge">on_message</code> do cliente MQTT?</strong><br>
+a) Porque a biblioteca do Ollama apaga o broker da memória.<br>
+b) Porque a inferência do LLM demora alguns segundos, bloqueando o loop de rede do MQTT e causando desconexão por timeout de Keep-Alive.<br>
+c) Porque o Python não suporta o uso de strings dentro de callbacks.<br>
+d) Porque os dados de telemetria são criptografados por hardware no microcontrolador.<br>
+e) Porque o microcontrolador ESP32 desliga automaticamente se o computador demorar mais de 10 milissegundos.</p>
+
+<p><strong>3. Qual é o papel da estrutura <code class="language-plaintext highlighter-rouge">queue.Queue</code> na arquitetura do nosso Gateway de IA com MQTT?</strong><br>
+a) Aumentar a resolução das imagens recebidas pela câmera.<br>
+b) Atuar como um buffer assíncrono desacoplado, permitindo que a rede MQTT receba mensagens instantaneamente enquanto uma thread de IA processa a fila no seu próprio ritmo.<br>
+c) Compilar o código Python em bytecode para o chip ATmega328.<br>
+d) Salvar os logs do sistema em um disquete magnético.<br>
+e) Substituir a necessidade do broker Mosquitto.</p>
+
+<p><strong>4. Em um esquema de tópicos hierárquicos MQTT, qual das seguintes opções representa uma inscrição com coringa (<em>wildcard</em>) válida para capturar todas as leituras de sensores de qualquer cômodo da residência?</strong><br>
+a) <code class="language-plaintext highlighter-rouge">home/sensors/+/temp</code><br>
+b) <code class="language-plaintext highlighter-rouge">home/sensors/#</code><br>
+c) <code class="language-plaintext highlighter-rouge">SELECT * FROM home_sensors</code><br>
+d) <code class="language-plaintext highlighter-rouge">home.sensors.all</code><br>
+e) <code class="language-plaintext highlighter-rouge">HTTP GET /home/sensors</code></p>
+
+<p><strong>5. Qual nível de QoS (Quality of Service) do MQTT é mais indicado para comandos críticos de desligamento de emergência de atuadores emitidos pela IA?</strong><br>
+a) QoS 0 (No máximo uma vez / <em>Fire-and-forget</em> sem confirmação).<br>
+b) QoS 1 ou QoS 2 (Garantia de entrega com confirmação de recebimento no broker).<br>
+c) QoS 5 (Modo quântico de alta velocidade).<br>
+d) QoS -1 (Modo de broadcast analógico).<br>
+e) O nível de QoS não interfere na confiabilidade da entrega.</p>
+
+<hr>
+
+<h3 id="gabarito-comentado">
+<a class="anchor" href="#gabarito-comentado" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gabarito Comentado</h3>
+
+<ol>
+  <li>
+<strong>b) Desacoplamento completo entre emissores (Publishers) e receptores (Subscribers)…</strong><br>
+<em>Justificativa:</em> O Broker atua como intermediário assíncrono, permitindo que múltiplos clientes troquem mensagens sem precisarem se conhecer diretamente.</li>
+  <li>
+<strong>b) Porque a inferência do LLM demora alguns segundos, bloqueando o loop de rede…</strong><br>
+<em>Justificativa:</em> O loop de rede precisa enviar pacotes <code class="language-plaintext highlighter-rouge">PINGREQ</code> e processar mensagens recebidas continuamente; bloqueá-lo com computação pesada quebra o protocolo.</li>
+  <li>
+<strong>b) Atuar como um buffer assíncrono desacoplado, permitindo que a rede MQTT receba…</strong><br>
+<em>Justificativa:</em> A fila em memória desacopla os tempos rápidos de rede (~1ms) dos tempos de inferência neural (~100-300ms).</li>
+  <li>
+<strong>b) <code class="language-plaintext highlighter-rouge">home/sensors/#</code></strong><br>
+<em>Justificativa:</em> O caractere <code class="language-plaintext highlighter-rouge">#</code> é o wildcard multi-nível do MQTT que casa com qualquer caminho de sub-tópico subsequente.</li>
+  <li>
+<strong>b) QoS 1 ou QoS 2 (Garantia de entrega com confirmação de recebimento no broker).</strong><br>
+<em>Justificativa:</em> Comandos críticos de atuação física não podem ser perdidos silenciosamente na rede; níveis com confirmação (QoS 1 ou 2) são obrigatórios.</li>
+</ol>
+
+            <hr/>
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                public class 
+                
+                <span class="nc ">Disruptive Architectures</span>
+                :
+                <span class="nc ">IA: Protocolos IoT & Edge Gateway</span> 
+                
+                , 
+                <span class="nc ">10. IA com Protocolo MQTT</span>
+                
+            </div> 
+        </main>
+        <script type="text/javascript" src="/DisruptiveArchitectures/assets/scripts.js"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+        <script src=" https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js "></script>
+        <script type="module">
+            mermaid.initialize({theme:"neutral",
+                                securityLevel: "strict",
+                                startOnLoad: true
+                                });
+        </script>
+    </body>
+</html>

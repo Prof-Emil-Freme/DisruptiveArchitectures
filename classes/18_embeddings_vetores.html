@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <title>4. Embeddings & Vector DBs - Disruptive Architectures</title>
+        <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+        <link rel="stylesheet" href="/DisruptiveArchitectures/assets/css/main.css" id="maincss">
+    </head>
+    <body>
+        <nav>
+    
+    <a href="javascript:void(0)" onclick="toggle_menu()" id="hamb_menu">☰ Aulas</a>
+    <a href="javascript:void(0)" onclick="toggle_toc()" id="toc_btn">📑 Índice</a>
+    
+    <a href="/DisruptiveArchitectures/">Index</a>&nbsp;
+    <a href="javascript:void(0)" onclick="toggle_themes()">Mudar Tema</a>
+</nav>
+
+        <aside id="course_menu">
+    
+    
+    <b class="course_name">Disruptive Architectures</b>
+
+    
+    <b class="section_name">Sobre a disciplina</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/00_index.html" class="class_link">Introdução</a>
+    
+    <a href="/DisruptiveArchitectures/classes/01_notas.html" class="class_link">Notas</a>
+    
+    <a href="/DisruptiveArchitectures/classes/02_Cronograma.html" class="class_link">Cronograma</a>
+    
+    
+    <b class="section_name">IoT</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/03_definicoes.html" class="class_link">Definições de IoT</a>
+    
+    <a href="/DisruptiveArchitectures/classes/04_circuitoseletricos.html" class="class_link">Circuítos (eletro)eletrônicos</a>
+    
+    
+    <b class="section_name">Sistemas Embarcados</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/05_sistemas_embarcados.html" class="class_link">Introdução</a>
+    
+    <a href="/DisruptiveArchitectures/classes/06_arduino.html" class="class_link">Arduino</a>
+    
+    
+    <b class="section_name">Protocolos M2M</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/07_m2m.html" class="class_link">Introdução</a>
+    
+    <a href="/DisruptiveArchitectures/classes/08_UART.html" class="class_link">UART</a>
+    
+    <a href="/DisruptiveArchitectures/classes/09_I2C.html" class="class_link">I2C</a>
+    
+    <a href="/DisruptiveArchitectures/classes/10_SPI.html" class="class_link">SPI</a>
+    
+    
+    <b class="section_name">Sensores, Atuadores e IO</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/13_multisensores_analogicos.html" class="class_link">Sensores analógicos</a>
+    
+    <a href="/DisruptiveArchitectures/classes/14_motores.html" class="class_link">Motores</a>
+    
+    <a href="/DisruptiveArchitectures/classes/11_sensore_controladores.html" class="class_link">Input: Keypad</a>
+    
+    <a href="/DisruptiveArchitectures/classes/12_lcdi2c.html" class="class_link">Output: LCD 16x2 I2C</a>
+    
+    <a href="/DisruptiveArchitectures/classes/15_genius.html" class="class_link">Projeto: Genius</a>
+    
+    
+    <b class="section_name">IA: Fundamentos & Estruturação</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/15_ia_local_fundamentos.html" class="class_link">1. Demistificando GenAI & Modelos Locais</a>
+    
+    <a href="/DisruptiveArchitectures/classes/16_system_prompts.html" class="class_link">2. System Prompts & Guardrails</a>
+    
+    <a href="/DisruptiveArchitectures/classes/17_structured_outputs.html" class="class_link">3. Saídas Estruturadas & JSON</a>
+    
+    
+    <b class="section_name">Backend</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/16_node_red.html" class="class_link">Node-Red</a>
+    
+    
+    <b class="section_name">Protocolos TCP/IP (Aplicação)</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/17_MQTT.html" class="class_link">MQTT</a>
+    
+    
+    <b class="section_name">IA: Conhecimento & Ferramentas</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/18_embeddings_vetores.html" class="class_link">4. Embeddings & Vector DBs</a>
+    
+    <a href="/DisruptiveArchitectures/classes/19_rag_local.html" class="class_link">5. RAG Local & Manuais Técnicos</a>
+    
+    <a href="/DisruptiveArchitectures/classes/20_function_calling.html" class="class_link">6. Function Calling & Tools</a>
+    
+    
+    <b class="section_name">IA: Visão & Agentes Autônomos</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/21_vlm_multimodal.html" class="class_link">7. Visão Computacional & VLMs</a>
+    
+    <a href="/DisruptiveArchitectures/classes/22_react_agents.html" class="class_link">8. Agentes ReAct em Python Puro</a>
+    
+    <a href="/DisruptiveArchitectures/classes/23_multi_agentes.html" class="class_link">9. Colaboração Multi-Agente</a>
+    
+    
+    <b class="section_name">Desafio</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/18_Desafio.html" class="class_link">Genius + MQTT + Dashboard</a>
+    
+    
+    <b class="section_name">Plataformas IoT</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/19_IoTPlatforms.html" class="class_link">AWS IoT Core: Things</a>
+    
+    <a href="/DisruptiveArchitectures/classes/20_IoTPlatformsDevice.html" class="class_link">Configurando um dispositivo</a>
+    
+    
+    <b class="section_name">IA: Protocolos IoT & Edge Gateway</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/24_ia_mqtt_gateways.html" class="class_link">10. IA com Protocolo MQTT</a>
+    
+    <a href="/DisruptiveArchitectures/classes/25_quantizacao_edge.html" class="class_link">11. Quantização & Otimização Edge</a>
+    
+    <a href="/DisruptiveArchitectures/classes/26_projeto_gateway_part1.html" class="class_link">12. Projeto Gateway: Arquitetura</a>
+    
+    <a href="/DisruptiveArchitectures/classes/27_projeto_gateway_part2.html" class="class_link">13. Projeto Gateway: Resiliência</a>
+    
+    
+
+
+  
+</aside>
+
+        <aside id="toc_menu"> 
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#embeddings--bancos-de-dados-vetoriais">Embeddings &amp; Bancos de Dados Vetoriais</a></li>
+<li class="toc-entry toc-h1"><a href="#teoria">Teoria</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#1-o-que-é-um-vetor-de-embedding">1. O que é um Vetor de Embedding?</a></li>
+<li class="toc-entry toc-h2"><a href="#2-medindo-a-proximidade-semântica-similaridade-de-cosseno">2. Medindo a Proximidade Semântica: Similaridade de Cosseno</a></li>
+<li class="toc-entry toc-h2"><a href="#visualizador-interativo-similaridade-de-cosseno-em-2d">Visualizador Interativo: Similaridade de Cosseno em 2D</a></li>
+<li class="toc-entry toc-h2"><a href="#3-o-que-é-um-banco-de-dados-vetorial-vector-db">3. O que é um Banco de Dados Vetorial (Vector DB)?</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#prática">Prática</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#passo-1-instalação-e-download-do-modelo-de-embedding">Passo 1: Instalação e Download do Modelo de Embedding</a></li>
+<li class="toc-entry toc-h2"><a href="#passo-2-construindo-o-banco-de-manuais-de-hardware">Passo 2: Construindo o Banco de Manuais de Hardware</a></li>
+<li class="toc-entry toc-h2"><a href="#passo-3-executando-o-banco-vetorial">Passo 3: Executando o Banco Vetorial</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#saída-esperada">Saída Esperada:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#questionário-de-fixação">Questionário de Fixação</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#gabarito-comentado">Gabarito Comentado</a></li>
+</ul>
+</li>
+</ul>
+</aside>
+
+        <main>
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                public class 
+                
+                <span class="nc ">Disruptive Architectures</span>
+                :
+                <span class="nc ">IA: Conhecimento & Ferramentas</span> 
+                
+                , 
+                <span class="nc ">4. Embeddings & Vector DBs</span>
+                
+            </div> 
+            <center><h1> 4. Embeddings & Vector DBs</h1></center>
+            <h1 id="embeddings--bancos-de-dados-vetoriais">
+<a class="anchor" href="#embeddings--bancos-de-dados-vetoriais" aria-hidden="true"><span class="octicon octicon-link"></span></a>Embeddings &amp; Bancos de Dados Vetoriais</h1>
+
+<p>Até este momento, nossos modelos de linguagem dependiam exclusivamente das informações contidas em seus parâmetros pré-treinados ou no texto imediato do prompt. Mas como fazemos para que nossa IA de borda consulte <strong>manuais técnicos de centenas de páginas, catálogos de componentes eletrônicos ou registros históricos de telemetria</strong> sem ultrapassar a janela de contexto ou exigir o re-treinamento do modelo?</p>
+
+<p>A resposta para essa pergunta começa com dois conceitos fundamentais: <strong>Embeddings Vetoriais</strong> e <strong>Bancos de Dados Vetoriais (Vector Databases)</strong>.</p>
+
+<pre class="mermaid">
+flowchart LR
+    TextDoc["📄 Trecho do Manual Técnico<br>'Erro E02: Tensão da bateria baixa. Troque a célula 3.3V.'"] --&gt; EmbedModel["🧮 Modelo de Embedding<br>(nomic-embed-text)"]
+    EmbedModel --&gt; Vector["📐 Vetor Numérico (768D)<br>[-0.042, 0.812, 0.155, ..., -0.320]"]
+    Vector --&gt; ChromaDB[("🗄️ ChromaDB<br>(Índice HNSW Local)")]
+    
+    Query["🔍 Pergunta do Técnico<br>'Por que o equipamento está sem energia?'"] --&gt; EmbedModel2["🧮 Modelo de Embedding"]
+    EmbedModel2 --&gt; QueryVector["📐 Vetor da Pergunta (768D)"]
+    QueryVector --&gt; Search{"⚡ Busca Semântica<br>(Similaridade de Cosseno)"}
+    ChromaDB --&gt; Search
+    Search --&gt; Result["✅ Trecho Mais Próximo Encontrado!"]
+    style EmbedModel fill:#e0e7ff,stroke:#6366f1,stroke-width:2px;
+    style ChromaDB fill:#fef3c7,stroke:#f59e0b,stroke-width:2px;
+    style Result fill:#d1fae5,stroke:#10b981,stroke-width:2px;
+</pre>
+
+<hr>
+
+<h1 id="teoria">
+<a class="anchor" href="#teoria" aria-hidden="true"><span class="octicon octicon-link"></span></a>Teoria</h1>
+
+<h2 id="1-o-que-é-um-vetor-de-embedding">
+<a class="anchor" href="#1-o-que-%C3%A9-um-vetor-de-embedding" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. O que é um Vetor de Embedding?</h2>
+
+<p>Um <strong>Embedding</strong> é uma representação numérica densa do significado semântico de um texto em um espaço geométrico de alta dimensão (normalmente entre 384 e 1536 dimensões).</p>
+
+<p>Diferente de uma simples contagem de palavras (como a antiga abordagem <em>Bag-of-Words</em> ou busca por <code class="language-plaintext highlighter-rouge">LIKE '%palavra%'</code> em SQL), um modelo de embedding (como o <code class="language-plaintext highlighter-rouge">nomic-embed-text</code> ou <code class="language-plaintext highlighter-rouge">bge-small</code>) foi treinado para posicionar <strong>conceitos com significados similares em regiões geométricas próximas do espaço vetorial</strong>.</p>
+
+<ul>
+  <li>As frases <em>“A caldeira está pegando fogo”</em> e <em>“Superaquecimento crítico no reservatório de vapor”</em> não compartilham quase nenhuma palavra idêntica.</li>
+  <li>Contudo, seus vetores de embedding terão uma distância angular extremamente pequena, permitindo a busca por <strong>significado e contexto</strong>, e não por correspondência exata de caracteres!</li>
+</ul>
+
+<hr>
+
+<h2 id="2-medindo-a-proximidade-semântica-similaridade-de-cosseno">
+<a class="anchor" href="#2-medindo-a-proximidade-sem%C3%A2ntica-similaridade-de-cosseno" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Medindo a Proximidade Semântica: Similaridade de Cosseno</h2>
+
+<p>Para comparar dois vetores \(\mathbf{u}\) e \(\mathbf{v}\) no espaço multidimensional, a métrica mais utilizada no mercado é a <strong>Similaridade de Cosseno</strong> (<em>Cosine Similarity</em>), que avalia o cosseno do ângulo \(\theta\) formado entre os dois vetores:</p>
+
+\[\text{Similaridade}(\mathbf{u}, \mathbf{v}) = \cos(\theta) = \frac{\mathbf{u} \cdot \mathbf{v}}{\|\mathbf{u}\| \|\mathbf{v}\|} = \frac{\sum_{i=1}^{n} u_i v_i}{\sqrt{\sum_{i=1}^{n} u_i^2} \sqrt{\sum_{i=1}^{n} v_i^2}}\]
+
+<ul>
+  <li>\(\cos(\theta) = 1.0\): Vetores apontam exatamente na mesma direção (\(\theta = 0^\circ\)), indicando <strong>máxima equivalência semântica</strong>.</li>
+  <li>\(\cos(\theta) = 0.0\): Vetores são ortogonais (\(\theta = 90^\circ\)), indicando <strong>independência semântica</strong>.</li>
+  <li>\(\cos(\theta) = -1.0\): Vetores apontam em direções opostas (\(\theta = 180^\circ\)).</li>
+</ul>
+
+<hr>
+
+<h2 id="visualizador-interativo-similaridade-de-cosseno-em-2d">
+<a class="anchor" href="#visualizador-interativo-similaridade-de-cosseno-em-2d" aria-hidden="true"><span class="octicon octicon-link"></span></a>Visualizador Interativo: Similaridade de Cosseno em 2D</h2>
+
+<p>Mova o ponto do vetor azul no simulador abaixo para alterar o ângulo em relação ao vetor de referência (verde) e acompanhe o cálculo ao vivo da Similaridade de Cosseno:</p>
+
+<div id="p5-cosine-container" style="width: 100%; max-width: 650px; margin: 20px auto; border: 1px solid #ccc; border-radius: 8px; overflow: hidden; background: #ffffff;"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+
+<script>
+new p5(function(p) {
+    let originX = 300;
+    let originY = 160;
+    let refX = 460, refY = 160; // Vetor Referência (0 graus)
+    let queryX = 420, queryY = 70; // Vetor Consulta (arrastável)
+    let isDragging = false;
+
+    p.setup = function() {
+        let canvas = p.createCanvas(600, 320);
+        canvas.parent("p5-cosine-container");
+        p.textFont("sans-serif");
+    };
+
+    p.draw = function() {
+        p.background(250);
+
+        // Eixos
+        p.stroke(220);
+        p.strokeWeight(1);
+        p.line(50, originY, 550, originY);
+        p.line(originX, 30, originX, 290);
+
+        // Vetor Referência (u): "Problema na Bateria"
+        let uX = refX - originX;
+        let uY = -(refY - originY);
+        p.stroke(16, 185, 129);
+        p.strokeWeight(3);
+        p.line(originX, originY, refX, refY);
+        p.fill(16, 185, 129);
+        p.noStroke();
+        p.circle(refX, refY, 10);
+        p.textSize(12);
+        p.text("Vetor Base: 'Falha de Bateria'", refX - 40, refY + 25);
+
+        // Se estiver arrastando com mouse
+        if (p.mouseIsPressed && p.dist(p.mouseX, p.mouseY, originX, originY) < 180 && p.mouseX > 50 && p.mouseX < 550) {
+            queryX = p.mouseX;
+            queryY = p.mouseY;
+        }
+
+        // Vetor Consulta (v)
+        let vX = queryX - originX;
+        let vY = -(queryY - originY);
+        p.stroke(66, 133, 244);
+        p.strokeWeight(3);
+        p.line(originX, originY, queryX, queryY);
+        p.fill(66, 133, 244);
+        p.noStroke();
+        p.circle(queryX, queryY, 12);
+        p.text("Vetor Consulta: 'Sem Energia' (Arraste-me)", queryX - 50, queryY - 15);
+
+        // Cálculo de Similaridade de Cosseno
+        let dot = uX * vX + uY * vY;
+        let magU = Math.sqrt(uX * uX + uY * uY);
+        let magV = Math.sqrt(vX * vX + vY * vY);
+        let cosSim = magU * magV > 0 ? (dot / (magU * magV)) : 0;
+        let angleDeg = Math.acos(Math.max(-1, Math.min(1, cosSim))) * (180 / Math.PI);
+
+        // Painel Superior de Métricas
+        p.fill(33);
+        p.textSize(14);
+        p.textStyle(p.BOLD);
+        p.text("Simulação Geométrica de Similaridade Semântica", 20, 25);
+        p.textStyle(p.NORMAL);
+        p.textSize(12);
+        p.text(`Ângulo θ: ${angleDeg.toFixed(1)}° | Similaridade de Cosseno: ${cosSim.toFixed(4)}`, 20, 45);
+
+        let statusText = cosSim > 0.8 ? "🟢 Alta Afinidade Semântica (Match Rápido)" : cosSim > 0.4 ? "🟡 Moderadamente Relevante" : "🔴 Não Relacionado / Distante";
+        p.fill(cosSim > 0.8 ? p.color(16, 185, 129) : cosSim > 0.4 ? p.color(245, 158, 11) : p.color(239, 68, 68));
+        p.text(statusText, 20, 65);
+    };
+}, "p5-cosine-container");
+</script>
+
+<hr>
+
+<h2 id="3-o-que-é-um-banco-de-dados-vetorial-vector-db">
+<a class="anchor" href="#3-o-que-%C3%A9-um-banco-de-dados-vetorial-vector-db" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. O que é um Banco de Dados Vetorial (Vector DB)?</h2>
+
+<p>Enquanto um banco SQL tradicional indexa colunas usando árvores B-Tree para buscas exatas (<code class="language-plaintext highlighter-rouge">id = 123</code>), um <strong>Banco Vetorial</strong> como o <strong>ChromaDB</strong> indexa vetores de alta dimensão usando algoritmos de <strong>Busca Aproximada pelos Vizinhos Mais Próximos (ANN - Approximate Nearest Neighbors)</strong>, como o algoritmo <strong>HNSW</strong> (<em>Hierarchical Navigable Small World</em>).</p>
+
+<p>Vantagens do ChromaDB para Edge AI:</p>
+<ul>
+  <li>
+<strong>100% Local e Gratuito:</strong> Roda embutido no processo Python sem necessidade de servidores externos.</li>
+  <li>
+<strong>Armazenamento em Disco ou Memória:</strong> Persistência em SQLite local com busca vetorial acelerada.</li>
+  <li>
+<strong>Metadados Anexados:</strong> Permite associar metadados a cada documento (ex: <code class="language-plaintext highlighter-rouge">{"modulo": "sensor_temperatura", "versao": "2.1"}</code>).</li>
+</ul>
+
+<hr>
+
+<h1 id="prática">
+<a class="anchor" href="#pr%C3%A1tica" aria-hidden="true"><span class="octicon octicon-link"></span></a>Prática</h1>
+
+<p>Nesta aula prática, vamos instalar o ChromaDB, baixar o modelo de embeddings ultrarrápido <code class="language-plaintext highlighter-rouge">nomic-embed-text</code> no Ollama e construir nosso primeiro banco de conhecimento vetorial para documentação de hardware IoT.</p>
+
+<h2 id="passo-1-instalação-e-download-do-modelo-de-embedding">
+<a class="anchor" href="#passo-1-instala%C3%A7%C3%A3o-e-download-do-modelo-de-embedding" aria-hidden="true"><span class="octicon octicon-link"></span></a>Passo 1: Instalação e Download do Modelo de Embedding</h2>
+
+<p>Instale a biblioteca <code class="language-plaintext highlighter-rouge">chromadb</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>chromadb
+</code></pre></div></div>
+
+<p>Baixe o modelo especializado de embeddings através do terminal do Ollama:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ollama pull nomic-embed-text
+</code></pre></div></div>
+
+<hr>
+
+<h2 id="passo-2-construindo-o-banco-de-manuais-de-hardware">
+<a class="anchor" href="#passo-2-construindo-o-banco-de-manuais-de-hardware" aria-hidden="true"><span class="octicon octicon-link"></span></a>Passo 2: Construindo o Banco de Manuais de Hardware</h2>
+
+<p>Crie o arquivo <code class="language-plaintext highlighter-rouge">vector_store.py</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">chromadb</span>
+<span class="kn">import</span> <span class="n">ollama</span>
+
+<span class="c1"># 1. Inicializa o cliente do ChromaDB (em memória para o laboratório)
+# Para salvar em disco permanente, use: chromadb.PersistentClient(path="./iot_db")
+</span><span class="n">client</span> <span class="o">=</span> <span class="n">chromadb</span><span class="p">.</span><span class="nc">Client</span><span class="p">()</span>
+
+<span class="c1"># Criação da coleção de manuais de IoT
+</span><span class="n">collection</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">create_collection</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sh">"</span><span class="s">iot_hardware_manuals</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="c1"># 2. Documentação Técnica Simulada do Gateway IoT
+</span><span class="n">documentos_tecnicos</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="sh">"</span><span class="s">Erro E01: Sensor de temperatura desconectado ou rompido. Verifique a fiação e o pino GPIO 4.</span><span class="sh">"</span><span class="p">,</span>
+    <span class="sh">"</span><span class="s">Erro E02: Tensão da bateria do nó remoto muito baixa (abaixo de 3.0V). Substitua a célula de lítio 3.3V.</span><span class="sh">"</span><span class="p">,</span>
+    <span class="sh">"</span><span class="s">Erro E03: Perda de sinal de rede Wi-Fi. Reinicie o roteador ou ajuste a antena externa de 2.4GHz.</span><span class="sh">"</span><span class="p">,</span>
+    <span class="sh">"</span><span class="s">Erro E04: Sobrecarga de corrente no relé principal. Desarme preventivo disparado no pino 12.</span><span class="sh">"</span><span class="p">,</span>
+    <span class="sh">"</span><span class="s">Procedimento de Reset: Mantenha pressionado o botão físico por 10 segundos até o LED piscar em azul.</span><span class="sh">"</span><span class="p">,</span>
+    <span class="sh">"</span><span class="s">Especificação Elétrica: A tensão de alimentação nominal de entrada do Gateway é de 5V DC com corrente mínima de 2A.</span><span class="sh">"</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">=== GERANDO EMBEDDINGS E INDEXANDO MANUAIS TÉCNICOS ===</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">doc</span> <span class="ow">in</span> <span class="nf">enumerate</span><span class="p">(</span><span class="n">documentos_tecnicos</span><span class="p">):</span>
+    <span class="c1"># Geramos o vetor de embedding através do nomic-embed-text
+</span>    <span class="n">response</span> <span class="o">=</span> <span class="n">ollama</span><span class="p">.</span><span class="nf">embeddings</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="sh">"</span><span class="s">nomic-embed-text</span><span class="sh">"</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="n">doc</span><span class="p">)</span>
+    <span class="n">vetor</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="sh">"</span><span class="s">embedding</span><span class="sh">"</span><span class="p">]</span>
+
+    <span class="c1"># Adicionamos ao banco vetorial com ID e metadados
+</span>    <span class="n">collection</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span>
+        <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="sh">"</span><span class="s">doc_</span><span class="si">{</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="sh">"</span><span class="p">],</span>
+        <span class="n">embeddings</span><span class="o">=</span><span class="p">[</span><span class="n">vetor</span><span class="p">],</span>
+        <span class="n">documents</span><span class="o">=</span><span class="p">[</span><span class="n">doc</span><span class="p">],</span>
+        <span class="n">metadatas</span><span class="o">=</span><span class="p">[{</span><span class="sh">"</span><span class="s">categoria</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">hardware_manual</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">origem</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">doc_v1.0</span><span class="sh">"</span><span class="p">}],</span>
+    <span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">Indexado [Doc </span><span class="si">{</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s">] - Vetor de dimensão: </span><span class="si">{</span><span class="nf">len</span><span class="p">(</span><span class="n">vetor</span><span class="p">)</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">✅ Todos os documentos foram indexados no ChromaDB com sucesso!</span><span class="se">\n</span><span class="sh">"</span><span class="p">)</span>
+
+
+<span class="c1"># 3. Função de Busca Semântica
+</span><span class="k">def</span> <span class="nf">buscar_solucao_no_manual</span><span class="p">(</span><span class="n">pergunta_usuario</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">n_resultados</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">🔍 Pergunta do Técnico: </span><span class="se">\"</span><span class="si">{</span><span class="n">pergunta_usuario</span><span class="si">}</span><span class="se">\"</span><span class="sh">"</span><span class="p">)</span>
+
+    <span class="c1"># Vetorizamos a pergunta com o mesmo modelo
+</span>    <span class="n">q_emb</span> <span class="o">=</span> <span class="n">ollama</span><span class="p">.</span><span class="nf">embeddings</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="sh">"</span><span class="s">nomic-embed-text</span><span class="sh">"</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="n">pergunta_usuario</span><span class="p">)[</span>
+        <span class="sh">"</span><span class="s">embedding</span><span class="sh">"</span>
+    <span class="p">]</span>
+
+    <span class="c1"># Consulta no ChromaDB por proximidade de cosseno
+</span>    <span class="n">busca</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="nf">query</span><span class="p">(</span>
+        <span class="n">query_embeddings</span><span class="o">=</span><span class="p">[</span><span class="n">q_emb</span><span class="p">],</span>
+        <span class="n">n_results</span><span class="o">=</span><span class="n">n_resultados</span><span class="p">,</span>
+        <span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="sh">"</span><span class="s">documents</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">distances</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">metadatas</span><span class="sh">"</span><span class="p">],</span>
+    <span class="p">)</span>
+
+    <span class="n">doc_encontrado</span> <span class="o">=</span> <span class="n">busca</span><span class="p">[</span><span class="sh">"</span><span class="s">documents</span><span class="sh">"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">distancia</span> <span class="o">=</span> <span class="n">busca</span><span class="p">[</span><span class="sh">"</span><span class="s">distances</span><span class="sh">"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">📖 Trecho Mais Relevante Encontrado (Distância L2: </span><span class="si">{</span><span class="n">distancia</span><span class="si">:</span><span class="p">.</span><span class="mi">4</span><span class="n">f</span><span class="si">}</span><span class="s">):</span><span class="sh">"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">   --&gt; </span><span class="se">\"</span><span class="si">{</span><span class="n">doc_encontrado</span><span class="si">}</span><span class="se">\"\n</span><span class="sh">"</span><span class="p">)</span>
+
+
+<span class="c1"># --- Testes de Busca Semântica com Termos Sinônimos (Sem correspondência exata de palavras) ---
+</span><span class="nf">buscar_solucao_no_manual</span><span class="p">(</span><span class="sh">"</span><span class="s">Meu aparelho está sem energia e desligando sozinho.</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">buscar_solucao_no_manual</span><span class="p">(</span><span class="sh">"</span><span class="s">Como restaurar o equipamento para as configurações de fábrica?</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">buscar_solucao_no_manual</span><span class="p">(</span><span class="sh">"</span><span class="s">A leitura de calor ambiente parou de funcionar.</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr>
+
+<h2 id="passo-3-executando-o-banco-vetorial">
+<a class="anchor" href="#passo-3-executando-o-banco-vetorial" aria-hidden="true"><span class="octicon octicon-link"></span></a>Passo 3: Executando o Banco Vetorial</h2>
+
+<p>Execute o script:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python vector_store.py
+</code></pre></div></div>
+
+<h3 id="saída-esperada">
+<a class="anchor" href="#sa%C3%ADda-esperada" aria-hidden="true"><span class="octicon octicon-link"></span></a>Saída Esperada:</h3>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>=== GERANDO EMBEDDINGS E INDEXANDO MANUAIS TÉCNICOS ===
+Indexado [Doc 1] - Vetor de dimensão: 768
+Indexado [Doc 2] - Vetor de dimensão: 768
+Indexado [Doc 3] - Vetor de dimensão: 768
+Indexado [Doc 4] - Vetor de dimensão: 768
+Indexado [Doc 5] - Vetor de dimensão: 768
+Indexado [Doc 6] - Vetor de dimensão: 768
+
+✅ Todos os documentos foram indexados no ChromaDB com sucesso!
+
+🔍 Pergunta do Técnico: "Meu aparelho está sem energia e desligando sozinho."
+📖 Trecho Mais Relevante Encontrado (Distância L2: 0.4281):
+   --&gt; "Erro E02: Tensão da bateria do nó remoto muito baixa (abaixo de 3.0V). Substitua a célula de lítio 3.3V."
+
+🔍 Pergunta do Técnico: "Como restaurar o equipamento para as configurações de fábrica?"
+📖 Trecho Mais Relevante Encontrado (Distância L2: 0.3850):
+   --&gt; "Procedimento de Reset: Mantenha pressionado o botão físico por 10 segundos até o LED piscar em azul."
+
+🔍 Pergunta do Técnico: "A leitura de calor ambiente parou de funcionar."
+📖 Trecho Mais Relevante Encontrado (Distância L2: 0.4120):
+   --&gt; "Erro E01: Sensor de temperatura desconectado ou rompido. Verifique a fiação e o pino GPIO 4."
+</code></pre></div></div>
+
+<blockquote>
+  <p>[!TIP]
+<strong>Destaque Pedagógico:</strong> Observe que a pergunta <em>“Meu aparelho está sem energia”</em> não continha a palavra <em>“bateria”</em>, <em>“tensão”</em> nem <em>“3.3V”</em>, mas o sistema localizou perfeitamente o <strong>Erro E02</strong>. Uma busca tradicional com SQL ou Regex teria falhado completamente!</p>
+</blockquote>
+
+<hr>
+
+<h1 id="questionário-de-fixação">
+<a class="anchor" href="#question%C3%A1rio-de-fixa%C3%A7%C3%A3o" aria-hidden="true"><span class="octicon octicon-link"></span></a>Questionário de Fixação</h1>
+
+<p><strong>1. O que representa um vetor de <em>Embedding</em> gerado por um modelo de linguagem?</strong><br>
+a) A contagem exata do número de caracteres de um texto.<br>
+b) Uma representação numérica de alta dimensão que captura o significado e as relações semânticas do texto.<br>
+c) Um código criptográfico irreversível para ocultar senhas de banco de dados.<br>
+d) Uma compilação de código Python em linguagem de máquina.<br>
+e) Um endereço IP exclusivo do dispositivo na rede local.</p>
+
+<p><strong>2. Na fórmula da Similaridade de Cosseno, o que indica um resultado igual a $1.0$?</strong><br>
+a) Que os dois textos possuem exatamente o mesmo tamanho em bytes.<br>
+b) Que os vetores são ortogonais e não possuem nenhuma relação semântica.<br>
+c) Que os vetores apontam exatamente na mesma direção ($\theta = 0^\circ$), indicando máxima afinidade semântica.<br>
+d) Que o banco de dados vetorial está corrompido.<br>
+e) Que a temperatura do microcontrolador atingiu 100°C.</p>
+
+<p><strong>3. Por que a busca semântica em bancos vetoriais supera a busca tradicional por palavras-chave (SQL <code class="language-plaintext highlighter-rouge">LIKE</code> ou Regex) em manuais técnicos?</strong><br>
+a) Porque a busca semântica é capaz de encontrar documentos relevantes mesmo quando o usuário utiliza sinônimos ou termos diferentes dos originais do manual.<br>
+b) Porque a busca vetorial só aceita arquivos binários compilados em C.<br>
+c) Porque os bancos relacionais foram descontinuados pelo IEEE.<br>
+d) Porque a busca por palavra-chave exige acesso obrigatório à internet.<br>
+e) Porque vetores eliminam a necessidade de processador no computador.</p>
+
+<p><strong>4. Qual é a principal característica do banco de dados vetorial <em>ChromaDB</em>?</strong><br>
+a) É um banco de dados proprietário que exige pagamento mensal em dólares.<br>
+b) É uma biblioteca open-source e local que pode ser executada embutida no Python para indexar e consultar vetores sem servidores externos.<br>
+c) É um driver de aceleração gráfica exclusivo para placas de vídeo Nvidia.<br>
+d) É uma linguagem de programação para microcontroladores PIC.<br>
+e) É um protocolo de comunicação sem fio para substituição do Wi-Fi.</p>
+
+<p><strong>5. Por que é mandatório utilizar o MESMO modelo de embedding (ex: <code class="language-plaintext highlighter-rouge">nomic-embed-text</code>) tanto na indexação dos documentos quanto na consulta da pergunta do usuário?</strong><br>
+a) Porque modelos diferentes possuem formatos de arquivo incompatíveis no sistema operacional.<br>
+b) Porque cada modelo de embedding projeta os textos em um espaço latente com dimensões e geometrias semânticas próprias; comparar vetores de modelos distintos geraria resultados incoerentes.<br>
+c) Porque o Python não permite carregar duas bibliotecas ao mesmo tempo.<br>
+d) Porque o modelo de embedding substitui a rede neural LLM principal.<br>
+e) Por uma mera exigência de licença comercial do software.</p>
+
+<hr>
+
+<h3 id="gabarito-comentado">
+<a class="anchor" href="#gabarito-comentado" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gabarito Comentado</h3>
+
+<ol>
+  <li>
+<strong>b) Uma representação numérica de alta dimensão que captura o significado…</strong><br>
+<em>Justificativa:</em> Embeddings transformam texto em coordenadas geométricas contínuas onde a proximidade espacial reflete a proximidade de significado.</li>
+  <li>
+<strong>c) Que os vetores apontam exatamente na mesma direção ($\theta = 0^\circ$), indicando máxima afinidade…</strong><br>
+<em>Justificativa:</em> O cosseno de $0^\circ$ é $1.0$, indicando alinhamento angular total entre os dois vetores no espaço vetorial.</li>
+  <li>
+<strong>a) Porque a busca semântica é capaz de encontrar documentos relevantes mesmo quando o usuário utiliza sinônimos…</strong><br>
+<em>Justificativa:</em> A busca semântica compreende o significado conceitual (ex: “sem energia” $\approx$ “tensão de bateria baixa”), superando as limitações do casamento exato de strings.</li>
+  <li>
+<strong>b) É uma biblioteca open-source e local que pode ser executada embutida no Python…</strong><br>
+<em>Justificativa:</em> O ChromaDB é a ferramenta ideal para sistemas de borda e privacidade local, pois opera sem custos e sem infraestrutura de servidores complexa.</li>
+  <li>
+<strong>b) Porque cada modelo de embedding projeta os textos em um espaço latente com dimensões e geometrias próprias…</strong><br>
+<em>Justificativa:</em> Vetores só podem ser comparados por produto escalar/cosseno se pertencerem ao mesmo espaço vetorial gerado pelo mesmo codificador.</li>
+</ol>
+
+            <hr/>
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                public class 
+                
+                <span class="nc ">Disruptive Architectures</span>
+                :
+                <span class="nc ">IA: Conhecimento & Ferramentas</span> 
+                
+                , 
+                <span class="nc ">4. Embeddings & Vector DBs</span>
+                
+            </div> 
+        </main>
+        <script type="text/javascript" src="/DisruptiveArchitectures/assets/scripts.js"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+        <script src=" https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js "></script>
+        <script type="module">
+            mermaid.initialize({theme:"neutral",
+                                securityLevel: "strict",
+                                startOnLoad: true
+                                });
+        </script>
+    </body>
+</html>

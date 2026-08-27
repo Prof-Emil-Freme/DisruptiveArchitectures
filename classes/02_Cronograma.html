@@ -10,10 +10,11 @@
     <body>
         <nav>
     
-    <a href="#" onclick="toggle_menu()" id="hamb_menu">☰</a>
+    <a href="javascript:void(0)" onclick="toggle_menu()" id="hamb_menu">☰ Aulas</a>
+    <a href="javascript:void(0)" onclick="toggle_toc()" id="toc_btn">📑 Índice</a>
     
     <a href="/DisruptiveArchitectures/">Index</a>&nbsp;
-    <a href="#" onclick="toggle_themes()">Mudar Tema</a>
+    <a href="javascript:void(0)" onclick="toggle_themes()">Mudar Tema</a>
 </nav>
 
         <aside id="course_menu">
@@ -63,15 +64,25 @@
     <b class="section_name">Sensores, Atuadores e IO</b>
     
     
-    <a href="/DisruptiveArchitectures/classes/11_sensore_controladores.html" class="class_link">Input: Keypad</a>
-    
     <a href="/DisruptiveArchitectures/classes/13_multisensores_analogicos.html" class="class_link">Sensores analógicos</a>
     
     <a href="/DisruptiveArchitectures/classes/14_motores.html" class="class_link">Motores</a>
     
+    <a href="/DisruptiveArchitectures/classes/11_sensore_controladores.html" class="class_link">Input: Keypad</a>
+    
     <a href="/DisruptiveArchitectures/classes/12_lcdi2c.html" class="class_link">Output: LCD 16x2 I2C</a>
     
     <a href="/DisruptiveArchitectures/classes/15_genius.html" class="class_link">Projeto: Genius</a>
+    
+    
+    <b class="section_name">IA: Fundamentos & Estruturação</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/15_ia_local_fundamentos.html" class="class_link">1. Demistificando GenAI & Modelos Locais</a>
+    
+    <a href="/DisruptiveArchitectures/classes/16_system_prompts.html" class="class_link">2. System Prompts & Guardrails</a>
+    
+    <a href="/DisruptiveArchitectures/classes/17_structured_outputs.html" class="class_link">3. Saídas Estruturadas & JSON</a>
     
     
     <b class="section_name">Backend</b>
@@ -86,10 +97,50 @@
     <a href="/DisruptiveArchitectures/classes/17_MQTT.html" class="class_link">MQTT</a>
     
     
+    <b class="section_name">IA: Conhecimento & Ferramentas</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/18_embeddings_vetores.html" class="class_link">4. Embeddings & Vector DBs</a>
+    
+    <a href="/DisruptiveArchitectures/classes/19_rag_local.html" class="class_link">5. RAG Local & Manuais Técnicos</a>
+    
+    <a href="/DisruptiveArchitectures/classes/20_function_calling.html" class="class_link">6. Function Calling & Tools</a>
+    
+    
+    <b class="section_name">IA: Visão & Agentes Autônomos</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/21_vlm_multimodal.html" class="class_link">7. Visão Computacional & VLMs</a>
+    
+    <a href="/DisruptiveArchitectures/classes/22_react_agents.html" class="class_link">8. Agentes ReAct em Python Puro</a>
+    
+    <a href="/DisruptiveArchitectures/classes/23_multi_agentes.html" class="class_link">9. Colaboração Multi-Agente</a>
+    
+    
     <b class="section_name">Desafio</b>
     
     
     <a href="/DisruptiveArchitectures/classes/18_Desafio.html" class="class_link">Genius + MQTT + Dashboard</a>
+    
+    
+    <b class="section_name">Plataformas IoT</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/19_IoTPlatforms.html" class="class_link">AWS IoT Core: Things</a>
+    
+    <a href="/DisruptiveArchitectures/classes/20_IoTPlatformsDevice.html" class="class_link">Configurando um dispositivo</a>
+    
+    
+    <b class="section_name">IA: Protocolos IoT & Edge Gateway</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/24_ia_mqtt_gateways.html" class="class_link">10. IA com Protocolo MQTT</a>
+    
+    <a href="/DisruptiveArchitectures/classes/25_quantizacao_edge.html" class="class_link">11. Quantização & Otimização Edge</a>
+    
+    <a href="/DisruptiveArchitectures/classes/26_projeto_gateway_part1.html" class="class_link">12. Projeto Gateway: Arquitetura</a>
+    
+    <a href="/DisruptiveArchitectures/classes/27_projeto_gateway_part2.html" class="class_link">13. Projeto Gateway: Resiliência</a>
     
     
 
@@ -97,9 +148,14 @@
   
 </aside>
 
-        <aside id="toc_menu" style="float:right"> 
+        <aside id="toc_menu"> 
     <ul id="toc" class="section-nav">
-<li class="toc-entry toc-h1"><a href="#cronograma-1o-sem-2026">Cronograma 1o Sem. 2026</a></li>
+<li class="toc-entry toc-h1"><a href="#cronograma-da-disciplina">Cronograma da Disciplina</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#módulo-1-fundamentos-de-iot--sistemas-embarcados-1o-semestre">Módulo 1: Fundamentos de IoT &amp; Sistemas Embarcados (1o Semestre)</a></li>
+<li class="toc-entry toc-h2"><a href="#módulo-2-inteligência-artificial-local--edge-smart-gateway-pbl---13-encontros">Módulo 2: Inteligência Artificial Local &amp; Edge Smart Gateway (PBL - 13 Encontros)</a></li>
+</ul>
+</li>
 </ul>
 </aside>
 
@@ -117,99 +173,174 @@
                 
             </div> 
             <center><h1> Cronograma</h1></center>
-            <h1 id="cronograma-1o-sem-2026">
-<a class="anchor" href="#cronograma-1o-sem-2026" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cronograma 1<sup>o</sup> Sem. 2026</h1>
+            <h1 id="cronograma-da-disciplina">
+<a class="anchor" href="#cronograma-da-disciplina" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cronograma da Disciplina</h1>
+
+<h2 id="módulo-1-fundamentos-de-iot--sistemas-embarcados-1o-semestre">
+<a class="anchor" href="#m%C3%B3dulo-1-fundamentos-de-iot--sistemas-embarcados-1o-semestre" aria-hidden="true"><span class="octicon octicon-link"></span></a>Módulo 1: Fundamentos de IoT &amp; Sistemas Embarcados (1<sup>o</sup> Semestre)</h2>
 
 <table>
   <thead>
     <tr>
       <th style="text-align: right">#</th>
       <th>Conteúdo</th>
-      <th>Dia</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td style="text-align: right">01</td>
       <td>
-<em>Introdução:</em> <br> Apresentação da disciplina, Avaliações, Cronograma, Definições de IoT</td>
-      <td>13/02</td>
+<em>Introdução:</em> Apresentação da disciplina, Avaliações, Cronograma, Definições de IoT</td>
     </tr>
     <tr>
       <td style="text-align: right">02</td>
       <td>
-<em>Circuítos eletrônicos:</em> <br> Leitura de diagrama e reconhecimento de componentes</td>
-      <td>20/02</td>
+<em>Circuítos eletrônicos:</em> Leitura de diagrama e reconhecimento de componentes</td>
     </tr>
     <tr>
       <td style="text-align: right">03</td>
       <td>
-<em>Arduino:</em> <br>  IDE, GPIO, PWM</td>
-      <td>27/02</td>
+<em>Arduino:</em> IDE, GPIO, PWM</td>
     </tr>
     <tr>
       <td style="text-align: right">04</td>
       <td>
-<em>Comunicação M2M:</em> <br> UART, I2C, SPI</td>
-      <td>06/03</td>
+<em>Comunicação M2M:</em> UART, I2C, SPI</td>
     </tr>
     <tr>
       <td style="text-align: right">05</td>
       <td>
-<em>Dipositivos:</em> <br> Sensores e Atuadores</td>
-      <td>13/03</td>
+<em>Dispositivos:</em> Sensores e Atuadores</td>
     </tr>
     <tr>
       <td style="text-align: right">06</td>
       <td>
-<em>ESP32, Webserver de Borda:</em> <br> HTTP, APIs, endpoints</td>
-      <td>20/03</td>
+<em>ESP32 &amp; Webserver de Borda:</em> HTTP, APIs, endpoints</td>
     </tr>
     <tr>
       <td style="text-align: right">08</td>
       <td>
-<em>APIs:</em> <br> REST, JSON, Schema</td>
-      <td>27/03</td>
-    </tr>
-    <tr>
-      <td style="text-align: right">09</td>
-      <td><em>!! Paixão de Cristo (aulas suspensas) !!</em></td>
-      <td>03/04</td>
+<em>APIs:</em> REST, JSON, Schema</td>
     </tr>
     <tr>
       <td style="text-align: right">10</td>
       <td>
-<em>MQTT:</em> <br> broker, pub/sub</td>
-      <td>10/04</td>
+<em>MQTT:</em> Broker, Pub/Sub</td>
     </tr>
     <tr>
       <td style="text-align: right">11</td>
       <td>
-<em>IoT Gateways:</em> <br> Node-Red, Python</td>
-      <td>17/04</td>
+<em>IoT Gateways:</em> Node-Red, Python</td>
     </tr>
     <tr>
       <td style="text-align: right">12</td>
       <td>
-<em>Persistência Local:</em> <br> CSV/SQLite</td>
-      <td>24/04</td>
-    </tr>
-    <tr>
-      <td style="text-align: right">13</td>
-      <td><em>!! Dia Mundial do Trabalho (aulas suspensas) !!</em></td>
-      <td>01/05</td>
+<em>Persistência Local:</em> CSV/SQLite</td>
     </tr>
     <tr>
       <td style="text-align: right">14</td>
       <td>
-<em>Plataformas</em> <br> AWS, Azure</td>
-      <td>08/05</td>
+<em>Plataformas:</em> AWS, Azure</td>
     </tr>
     <tr>
       <td style="text-align: right">15</td>
       <td>
-<em>Edge Computing</em> <br> TinyML</td>
-      <td>22/05</td>
+<em>Edge Computing:</em> TinyML</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2 id="módulo-2-inteligência-artificial-local--edge-smart-gateway-pbl---13-encontros">
+<a class="anchor" href="#m%C3%B3dulo-2-intelig%C3%AAncia-artificial-local--edge-smart-gateway-pbl---13-encontros" aria-hidden="true"><span class="octicon octicon-link"></span></a>Módulo 2: Inteligência Artificial Local &amp; Edge Smart Gateway (PBL - 13 Encontros)</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Encontro</th>
+      <th style="text-align: left">Tema &amp; Conteúdo Principal</th>
+      <th style="text-align: left">Entregável PBL / Foco Prático</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><strong>01 (Aula 15)</strong></td>
+      <td style="text-align: left">
+<strong>Demistificando GenAI &amp; Modelos Locais:</strong> Next-token prediction, Transformers, Tokens vs Palavras, Context Window, Temperatura, Edge AI vs Nuvem.</td>
+      <td style="text-align: left">Benchmark de taxa de geração (tokens/s) e TTFT com Ollama (<code class="language-plaintext highlighter-rouge">llama3.2:1b</code> e <code class="language-plaintext highlighter-rouge">qwen2.5:1.5b</code>).</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>02 (Aula 16)</strong></td>
+      <td style="text-align: left">
+<strong>System Prompts &amp; Instruções Estritas:</strong> Personas, Few-Shot, Guardrails determinísticos e defesas contra Prompt Injection.</td>
+      <td style="text-align: left">Controlador <code class="language-plaintext highlighter-rouge">thermostat.py</code> blindado que responde exclusivamente enums estritos.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>03 (Aula 17)</strong></td>
+      <td style="text-align: left">
+<strong>Saídas Estruturadas &amp; JSON Schemas:</strong> Grammar-Guided Decoding (GBNF), máscara de logits e validação com Pydantic v2.</td>
+      <td style="text-align: left">Extrator de comandos de climatização (<code class="language-plaintext highlighter-rouge">hvac_extractor.py</code>) com schema tipado e validação.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>04 (Aula 18)</strong></td>
+      <td style="text-align: left">
+<strong>Embeddings &amp; Bancos Vetoriais:</strong> Espaços latentes multidimensionais, Similaridade de Cosseno e busca semântica no ChromaDB.</td>
+      <td style="text-align: left">Base vetorial de manuais de hardware de IoT com o modelo <code class="language-plaintext highlighter-rouge">nomic-embed-text</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>05 (Aula 19)</strong></td>
+      <td style="text-align: left">
+<strong>RAG Local &amp; Manuais Técnicos:</strong> Arquitetura RAG (Chunking, Retrieval, Grounding), prevenção de alucinações e recusa explícita.</td>
+      <td style="text-align: left">Assistente de suporte técnico <code class="language-plaintext highlighter-rouge">rag_manuals.py</code> ancorado em datasheets de IoT com <code class="language-plaintext highlighter-rouge">llama3.2:3b</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>06 (Aula 20)</strong></td>
+      <td style="text-align: left">
+<strong>Function Calling &amp; Tool Use:</strong> Execution Handshake, definição de ferramentas tipadas em Python e acionamento de hardware.</td>
+      <td style="text-align: left">Agente com invocação dinâmica de funções Python de sensores e relés (<code class="language-plaintext highlighter-rouge">tool_agent.py</code>).</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>07 (Aula 21)</strong></td>
+      <td style="text-align: left">
+<strong>IA Multimodal na Borda (VLMs):</strong> Vision Transformers, Patch Embeddings, inspeção de LEDs e mostradores analógicos.</td>
+      <td style="text-align: left">Script <code class="language-plaintext highlighter-rouge">vlm_inspector.py</code> com o modelo ultraleve <code class="language-plaintext highlighter-rouge">moondream</code> gerando status visual em JSON.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>08 (Aula 22)</strong></td>
+      <td style="text-align: left">
+<strong>Agentes Autônomos de Loop Único (ReAct):</strong> Ciclo Thought $\to$ Action $\to$ Observation em Python puro com <code class="language-plaintext highlighter-rouge">max_iterations</code>.</td>
+      <td style="text-align: left">Agente de controle térmico autônomo com autocorreção em malha fechada (<code class="language-plaintext highlighter-rouge">react_agent.py</code>).</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>09 (Aula 23)</strong></td>
+      <td style="text-align: left">
+<strong>Gestão de Estado &amp; Multi-Agentes:</strong> Padrão Blackboard, Agente Monitor (1.5B) de alta frequência e Despachante (3B) sob alerta.</td>
+      <td style="text-align: left">Sistema distribuído de 2 agentes (<code class="language-plaintext highlighter-rouge">multi_agent_system.py</code>) com triagem rápida e alarme de emergência.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>10 (Aula 24)</strong></td>
+      <td style="text-align: left">
+<strong>IA sobre MQTT &amp; Gateways de Eventos:</strong> Pub/Sub assíncrono, tópicos hierárquicos, QoS e desacoplamento temporal com threads.</td>
+      <td style="text-align: left">Gateway assíncrono <code class="language-plaintext highlighter-rouge">mqtt_ai_gateway.py</code> integrado ao broker Mosquitto e tópicos de telemetria.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>11 (Aula 25)</strong></td>
+      <td style="text-align: left">
+<strong>Otimização na Borda &amp; Quantização:</strong> Tensores FP16 vs INT4, K-quants, formato GGUF e dimensionamento de RAM para Raspberry Pi 5.</td>
+      <td style="text-align: left">Relatório de benchmark de hardware comparando <code class="language-plaintext highlighter-rouge">qwen2.5:0.5b</code>, <code class="language-plaintext highlighter-rouge">llama3.2:1b</code> e <code class="language-plaintext highlighter-rouge">llama3.2:3b</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>12 (Aula 26)</strong></td>
+      <td style="text-align: left">
+<strong>Projeto Integrador - AI Smart Gateway (Parte 1):</strong> Arquitetura modular (<code class="language-plaintext highlighter-rouge">models.py</code>, <code class="language-plaintext highlighter-rouge">tools.py</code>, <code class="language-plaintext highlighter-rouge">rag_engine.py</code>, <code class="language-plaintext highlighter-rouge">gateway.py</code>).</td>
+      <td style="text-align: left">Roteador central inteligente integrando telemetria, diagnóstico RAG e controle de relés.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>13 (Aula 27)</strong></td>
+      <td style="text-align: left">
+<strong>Capstone Showcase &amp; Resiliência (Parte 2):</strong> Human-in-the-Loop, Engenharia de Caos, Circuit Breaker e fallbacks de hardware.</td>
+      <td style="text-align: left">Bateria de testes de caos (<code class="language-plaintext highlighter-rouge">chaos_test.py</code>) com injeção de falhas e defesa final do projeto.</td>
     </tr>
   </tbody>
 </table>

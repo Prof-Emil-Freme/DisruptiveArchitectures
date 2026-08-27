@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <title>7. Visão Computacional & VLMs - Disruptive Architectures</title>
+        <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+        <link rel="stylesheet" href="/DisruptiveArchitectures/assets/css/main.css" id="maincss">
+    </head>
+    <body>
+        <nav>
+    
+    <a href="javascript:void(0)" onclick="toggle_menu()" id="hamb_menu">☰ Aulas</a>
+    <a href="javascript:void(0)" onclick="toggle_toc()" id="toc_btn">📑 Índice</a>
+    
+    <a href="/DisruptiveArchitectures/">Index</a>&nbsp;
+    <a href="javascript:void(0)" onclick="toggle_themes()">Mudar Tema</a>
+</nav>
+
+        <aside id="course_menu">
+    
+    
+    <b class="course_name">Disruptive Architectures</b>
+
+    
+    <b class="section_name">Sobre a disciplina</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/00_index.html" class="class_link">Introdução</a>
+    
+    <a href="/DisruptiveArchitectures/classes/01_notas.html" class="class_link">Notas</a>
+    
+    <a href="/DisruptiveArchitectures/classes/02_Cronograma.html" class="class_link">Cronograma</a>
+    
+    
+    <b class="section_name">IoT</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/03_definicoes.html" class="class_link">Definições de IoT</a>
+    
+    <a href="/DisruptiveArchitectures/classes/04_circuitoseletricos.html" class="class_link">Circuítos (eletro)eletrônicos</a>
+    
+    
+    <b class="section_name">Sistemas Embarcados</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/05_sistemas_embarcados.html" class="class_link">Introdução</a>
+    
+    <a href="/DisruptiveArchitectures/classes/06_arduino.html" class="class_link">Arduino</a>
+    
+    
+    <b class="section_name">Protocolos M2M</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/07_m2m.html" class="class_link">Introdução</a>
+    
+    <a href="/DisruptiveArchitectures/classes/08_UART.html" class="class_link">UART</a>
+    
+    <a href="/DisruptiveArchitectures/classes/09_I2C.html" class="class_link">I2C</a>
+    
+    <a href="/DisruptiveArchitectures/classes/10_SPI.html" class="class_link">SPI</a>
+    
+    
+    <b class="section_name">Sensores, Atuadores e IO</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/13_multisensores_analogicos.html" class="class_link">Sensores analógicos</a>
+    
+    <a href="/DisruptiveArchitectures/classes/14_motores.html" class="class_link">Motores</a>
+    
+    <a href="/DisruptiveArchitectures/classes/11_sensore_controladores.html" class="class_link">Input: Keypad</a>
+    
+    <a href="/DisruptiveArchitectures/classes/12_lcdi2c.html" class="class_link">Output: LCD 16x2 I2C</a>
+    
+    <a href="/DisruptiveArchitectures/classes/15_genius.html" class="class_link">Projeto: Genius</a>
+    
+    
+    <b class="section_name">IA: Fundamentos & Estruturação</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/15_ia_local_fundamentos.html" class="class_link">1. Demistificando GenAI & Modelos Locais</a>
+    
+    <a href="/DisruptiveArchitectures/classes/16_system_prompts.html" class="class_link">2. System Prompts & Guardrails</a>
+    
+    <a href="/DisruptiveArchitectures/classes/17_structured_outputs.html" class="class_link">3. Saídas Estruturadas & JSON</a>
+    
+    
+    <b class="section_name">Backend</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/16_node_red.html" class="class_link">Node-Red</a>
+    
+    
+    <b class="section_name">Protocolos TCP/IP (Aplicação)</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/17_MQTT.html" class="class_link">MQTT</a>
+    
+    
+    <b class="section_name">IA: Conhecimento & Ferramentas</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/18_embeddings_vetores.html" class="class_link">4. Embeddings & Vector DBs</a>
+    
+    <a href="/DisruptiveArchitectures/classes/19_rag_local.html" class="class_link">5. RAG Local & Manuais Técnicos</a>
+    
+    <a href="/DisruptiveArchitectures/classes/20_function_calling.html" class="class_link">6. Function Calling & Tools</a>
+    
+    
+    <b class="section_name">IA: Visão & Agentes Autônomos</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/21_vlm_multimodal.html" class="class_link">7. Visão Computacional & VLMs</a>
+    
+    <a href="/DisruptiveArchitectures/classes/22_react_agents.html" class="class_link">8. Agentes ReAct em Python Puro</a>
+    
+    <a href="/DisruptiveArchitectures/classes/23_multi_agentes.html" class="class_link">9. Colaboração Multi-Agente</a>
+    
+    
+    <b class="section_name">Desafio</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/18_Desafio.html" class="class_link">Genius + MQTT + Dashboard</a>
+    
+    
+    <b class="section_name">Plataformas IoT</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/19_IoTPlatforms.html" class="class_link">AWS IoT Core: Things</a>
+    
+    <a href="/DisruptiveArchitectures/classes/20_IoTPlatformsDevice.html" class="class_link">Configurando um dispositivo</a>
+    
+    
+    <b class="section_name">IA: Protocolos IoT & Edge Gateway</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/24_ia_mqtt_gateways.html" class="class_link">10. IA com Protocolo MQTT</a>
+    
+    <a href="/DisruptiveArchitectures/classes/25_quantizacao_edge.html" class="class_link">11. Quantização & Otimização Edge</a>
+    
+    <a href="/DisruptiveArchitectures/classes/26_projeto_gateway_part1.html" class="class_link">12. Projeto Gateway: Arquitetura</a>
+    
+    <a href="/DisruptiveArchitectures/classes/27_projeto_gateway_part2.html" class="class_link">13. Projeto Gateway: Resiliência</a>
+    
+    
+
+
+  
+</aside>
+
+        <aside id="toc_menu"> 
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#ia-multimodal-na-borda-visão-e-linguagem">IA Multimodal na Borda: Visão e Linguagem</a></li>
+<li class="toc-entry toc-h1"><a href="#teoria">Teoria</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#1-como-imagens-se-tornam-tokens-vision-transformers---vit">1. Como Imagens se Tornam Tokens? (Vision Transformers - ViT)</a></li>
+<li class="toc-entry toc-h2"><a href="#visualizador-interativo-decomposição-de-imagem-em-patches-vit">Visualizador Interativo: Decomposição de Imagem em Patches ViT</a></li>
+<li class="toc-entry toc-h2"><a href="#2-modelos-de-visão-na-borda-moondream2-vs-llama-32-vision">2. Modelos de Visão na Borda: Moondream2 vs. Llama 3.2 Vision</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#prática">Prática</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#passo-1-download-do-modelo-moondream">Passo 1: Download do Modelo Moondream</a></li>
+<li class="toc-entry toc-h2"><a href="#passo-2-construindo-o-script-de-inspeção-visual-com-vlm">Passo 2: Construindo o Script de Inspeção Visual com VLM</a></li>
+<li class="toc-entry toc-h2"><a href="#passo-3-executando-o-vlm-localmente">Passo 3: Executando o VLM Localmente</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#saída-típica-observada">Saída Típica Observada:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#questionário-de-fixação">Questionário de Fixação</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#gabarito-comentado">Gabarito Comentado</a></li>
+</ul>
+</li>
+</ul>
+</aside>
+
+        <main>
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                public class 
+                
+                <span class="nc ">Disruptive Architectures</span>
+                :
+                <span class="nc ">IA: Visão & Agentes Autônomos</span> 
+                
+                , 
+                <span class="nc ">7. Visão Computacional & VLMs</span>
+                
+            </div> 
+            <center><h1> 7. Visão Computacional & VLMs</h1></center>
+            <h1 id="ia-multimodal-na-borda-visão-e-linguagem">
+<a class="anchor" href="#ia-multimodal-na-borda-vis%C3%A3o-e-linguagem" aria-hidden="true"><span class="octicon octicon-link"></span></a>IA Multimodal na Borda: Visão e Linguagem</h1>
+
+<p>Até aqui, trabalhamos com dados textuais e números de sensores. Mas e se o nosso sistema de automação precisar inspecionar um <strong>mostrador analógico legado de um manômetro</strong>, verificar se um <strong>LED de alarme vermelho está aceso em um painel elétrico</strong>, ou confirmar visualmente se uma válvula mecânica está aberta ou fechada?</p>
+
+<p>Para essas tarefas, entramos no fascinante universo dos <strong>Vision-Language Models (VLMs)</strong>: modelos de inteligência artificial capazes de “enxergar” imagens, raciocinar sobre elas e emitir respostas em texto ou JSON estruturado na borda!</p>
+
+<pre class="mermaid">
+flowchart LR
+    ImgInput["📷 Imagem da Câmera / WebCam<br>(Foto de Mostrador ou Painel)"] --&gt; ViT["👁️ Vision Encoder (ViT)<br>(Decompõe em Patches de 14x14 px)"]
+    ViT --&gt; LinearProj["📐 Camada de Projeção Linear<br>(Converte Patches em Tokens Visuais)"]
+    LinearProj --&gt; JointDecoder["🧠 Decodificador Multimodal<br>(Moondream2 / Llama 3.2 Vision)"]
+    TextPrompt["💬 Prompt do Usuário:<br>'Qual é a pressão marcada no ponteiro?'"] --&gt; JointDecoder
+    JointDecoder --&gt; JSONResult["📊 Resposta Estruturada:<br>{'pressao_psi': 45.0, 'ponteiro_visivel': true}"]
+    style ViT fill:#e0e7ff,stroke:#6366f1,stroke-width:2px;
+    style JointDecoder fill:#fef3c7,stroke:#f59e0b,stroke-width:2px;
+    style JSONResult fill:#d1fae5,stroke:#10b981,stroke-width:2px;
+</pre>
+
+<hr>
+
+<h1 id="teoria">
+<a class="anchor" href="#teoria" aria-hidden="true"><span class="octicon octicon-link"></span></a>Teoria</h1>
+
+<h2 id="1-como-imagens-se-tornam-tokens-vision-transformers---vit">
+<a class="anchor" href="#1-como-imagens-se-tornam-tokens-vision-transformers---vit" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Como Imagens se Tornam Tokens? (Vision Transformers - ViT)</h2>
+
+<p>Um modelo de linguagem tradicional processa apenas tensores 1D de tokens textuais. Como fazemos para que ele compreenda uma imagem 2D composta por uma matriz de pixels RGB (\(H \times W \times 3\))?</p>
+
+<p>A arquitetura moderna de <strong>VLMs</strong> segue o padrão do <strong>Vision Transformer (ViT)</strong>:</p>
+<ol>
+  <li>
+<strong>Decomposição em Patches:</strong> A imagem de entrada é recortada em uma grade uniforme de pequenos blocos de pixels (por exemplo, blocos de \(14 \times 14\) ou \(16 \times 16\) pixels chamados <em>Patches</em>).</li>
+  <li>
+<strong>Linear Embedding de Patches:</strong> Cada bloco de pixels é achatado e projetado linearmente para um vetor de embedding de dimensão \(D\).</li>
+  <li>
+<strong>Positional Encoding:</strong> Adiciona-se uma coordenada espacial para que o modelo saiba onde aquele pedaço da imagem está localizado (canto superior esquerdo, centro, etc.).</li>
+  <li>
+<strong>Projeção Multimodal (<em>Cross-Attention Bridge</em>):</strong> Os tokens visuais resultantes são alinhados ao mesmo espaço vetorial dos tokens de texto do LLM.</li>
+</ol>
+
+<p>A partir desse momento, para o cérebro da rede neural, <strong>uma imagem é tratada exatamente como se fosse uma sequência de palavras ricas em informações visuais</strong>!</p>
+
+<hr>
+
+<h2 id="visualizador-interativo-decomposição-de-imagem-em-patches-vit">
+<a class="anchor" href="#visualizador-interativo-decomposi%C3%A7%C3%A3o-de-imagem-em-patches-vit" aria-hidden="true"><span class="octicon octicon-link"></span></a>Visualizador Interativo: Decomposição de Imagem em Patches ViT</h2>
+
+<p>Veja no simulador abaixo como uma imagem capturada pela câmera de inspeção é dividida em uma grade de <em>Patches</em> de visão e transformada em tokens vetoriais:</p>
+
+<div id="p5-vit-container" style="width: 100%; max-width: 650px; margin: 20px auto; border: 1px solid #ccc; border-radius: 8px; overflow: hidden; background: #ffffff;"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+
+<script>
+new p5(function(p) {
+    let gridCols = 6;
+    let gridRows = 6;
+    let patchSize = 35;
+    let startX = 40;
+    let startY = 60;
+    let highlightedCol = 3, highlightedRow = 2;
+
+    p.setup = function() {
+        let canvas = p.createCanvas(600, 320);
+        canvas.parent("p5-vit-container");
+        p.textFont("sans-serif");
+    };
+
+    p.draw = function() {
+        p.background(250);
+
+        p.fill(33);
+        p.textSize(14);
+        p.textStyle(p.BOLD);
+        p.text("Decomposição Vision Transformer (ViT) para Edge AI", 20, 25);
+        p.textStyle(p.NORMAL);
+        p.textSize(12);
+        p.text("Passe o mouse sobre os blocos para inspecionar os Patches Visuais:", 20, 45);
+
+        // Atualiza patch com base no mouse
+        if (p.mouseX >= startX && p.mouseX < startX + gridCols * patchSize &&
+            p.mouseY >= startY && p.mouseY < startY + gridRows * patchSize) {
+            highlightedCol = Math.floor((p.mouseX - startX) / patchSize);
+            highlightedRow = Math.floor((p.mouseY - startY) / patchSize);
+        }
+
+        // Desenha a imagem simulada dividida em Patches
+        for (let r = 0; r < gridRows; r++) {
+            for (let c = 0; c < gridCols; c++) {
+                let x = startX + c * patchSize;
+                let y = startY + r * patchSize;
+                let isHigh = (c === highlightedCol && r === highlightedRow);
+
+                // Desenho simulado de mostrador/LED
+                if (r >= 2 && r <= 3 && c >= 2 && c <= 3) {
+                    p.fill(isHigh ? p.color(255, 100, 100) : p.color(220, 50, 50)); // LED vermelho central
+                } else if (r === 0 || r === 5 || c === 0 || c === 5) {
+                    p.fill(isHigh ? p.color(180, 200, 220) : p.color(210, 220, 230)); // Borda do painel
+                } else {
+                    p.fill(isHigh ? p.color(240, 240, 180) : p.color(245, 245, 245)); // Fundo do mostrador
+                }
+
+                p.stroke(isHigh ? p.color(66, 133, 244) : p.color(160));
+                p.strokeWeight(isHigh ? 2.5 : 1);
+                p.rect(x, y, patchSize, patchSize, 2);
+            }
+        }
+
+        // Painel de Projeção Linear à Direita
+        let targetX = 330;
+        p.fill(240, 245, 255);
+        p.stroke(66, 133, 244);
+        p.strokeWeight(1.5);
+        p.rect(targetX, 60, 240, 210, 6);
+
+        p.fill(33);
+        p.noStroke();
+        p.textSize(12);
+        p.textStyle(p.BOLD);
+        p.text(`Patch Selecionado: [${highlightedRow}, ${highlightedCol}]`, targetX + 15, 85);
+        p.textStyle(p.NORMAL);
+        p.text("1. Dimensão dos Pixels: 14x14x3 = 588", targetX + 15, 110);
+        p.text("2. Vetor de Projeção Linear (D=768):", targetX + 15, 130);
+        
+        p.fill(100);
+        p.textSize(11);
+        p.text(`[0.812, -0.341, 0.052, ..., 0.619]`, targetX + 15, 150);
+
+        p.fill(16, 185, 129);
+        p.textSize(12);
+        p.textStyle(p.BOLD);
+        p.text("➔ Emitido como Token Visual para o LLM", targetX + 15, 180);
+
+        p.stroke(66, 133, 244);
+        p.strokeWeight(2);
+        let srcX = startX + highlightedCol * patchSize + patchSize / 2;
+        let srcY = startY + highlightedRow * patchSize + patchSize / 2;
+        p.line(srcX, srcY, targetX, 140);
+    };
+}, "p5-vit-container");
+</script>
+
+<hr>
+
+<h2 id="2-modelos-de-visão-na-borda-moondream2-vs-llama-32-vision">
+<a class="anchor" href="#2-modelos-de-vis%C3%A3o-na-borda-moondream2-vs-llama-32-vision" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Modelos de Visão na Borda: Moondream2 vs. Llama 3.2 Vision</h2>
+
+<p>O processamento de imagens adiciona uma carga substancial de memória de vídeo (VRAM) e RAM:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Modelo</th>
+      <th style="text-align: left">Parâmetros</th>
+      <th style="text-align: left">Consumo de RAM/VRAM</th>
+      <th style="text-align: left">Ideal Para</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Moondream2</strong></td>
+      <td style="text-align: left"><strong>1.8 Bilhões</strong></td>
+      <td style="text-align: left"><strong>~1.8 GB a 2.5 GB</strong></td>
+      <td style="text-align: left"><strong>CPUs comuns, Laptops, SBCs (Raspberry Pi 5)</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Llama 3.2 Vision</strong></td>
+      <td style="text-align: left"><strong>11 Bilhões</strong></td>
+      <td style="text-align: left"><strong>~8.0 GB a 12 GB</strong></td>
+      <td style="text-align: left">GPUs dedicadas (RTX / Apple Silicon Metal)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Para o nosso Gateway de IA local e de baixo custo, o <strong>Moondream2</strong> é a escolha perfeita: ele é leve o suficiente para rodar em tempo real em CPUs modestas e possui excelente precisão para inspeção de estados de LEDs, leitura de mostradores e detecção de anomalias visuais!</p>
+
+<hr>
+
+<h1 id="prática">
+<a class="anchor" href="#pr%C3%A1tica" aria-hidden="true"><span class="octicon octicon-link"></span></a>Prática</h1>
+
+<p>Vamos instalar o modelo de visão <code class="language-plaintext highlighter-rouge">moondream</code> no Ollama e criar um script em Python (<code class="language-plaintext highlighter-rouge">vlm_inspector.py</code>) para inspecionar imagens de painéis de controle industriais e retornar o status visual diretamente em formato JSON estruturado.</p>
+
+<h2 id="passo-1-download-do-modelo-moondream">
+<a class="anchor" href="#passo-1-download-do-modelo-moondream" aria-hidden="true"><span class="octicon octicon-link"></span></a>Passo 1: Download do Modelo Moondream</h2>
+
+<p>Execute no terminal:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ollama pull moondream
+</code></pre></div></div>
+
+<hr>
+
+<h2 id="passo-2-construindo-o-script-de-inspeção-visual-com-vlm">
+<a class="anchor" href="#passo-2-construindo-o-script-de-inspe%C3%A7%C3%A3o-visual-com-vlm" aria-hidden="true"><span class="octicon octicon-link"></span></a>Passo 2: Construindo o Script de Inspeção Visual com VLM</h2>
+
+<p>Crie o arquivo <code class="language-plaintext highlighter-rouge">vlm_inspector.py</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">base64</span>
+<span class="kn">import</span> <span class="n">os</span>
+<span class="kn">import</span> <span class="n">ollama</span>
+<span class="kn">from</span> <span class="n">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
+
+
+<span class="c1"># 1. Definindo o Modelo de Dados do Diagnóstico Visual
+</span><span class="k">class</span> <span class="nc">VisualInspectionResult</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">warning_led_active</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="nc">Field</span><span class="p">(</span>
+        <span class="p">...,</span>
+        <span class="n">description</span><span class="o">=</span><span class="sh">"</span><span class="s">True se o LED vermelho/amarelo de aviso estiver aceso, False se apagado.</span><span class="sh">"</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">gauge_estimated_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="nc">Field</span><span class="p">(</span>
+        <span class="p">...,</span>
+        <span class="n">description</span><span class="o">=</span><span class="sh">"</span><span class="s">Valor numérico aproximado apontado pelo ponteiro do manômetro/mostrador (0 a 100).</span><span class="sh">"</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">smoke_or_hazard_detected</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="nc">Field</span><span class="p">(</span>
+        <span class="p">...,</span>
+        <span class="n">description</span><span class="o">=</span><span class="sh">"</span><span class="s">True se houver fumaça, fogo ou obstrução física no painel.</span><span class="sh">"</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">overall_status</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="nc">Field</span><span class="p">(</span>
+        <span class="p">...,</span>
+        <span class="n">description</span><span class="o">=</span><span class="sh">"</span><span class="s">Resumo do estado visual do equipamento: NORMAL, ALERTA ou PERIGO.</span><span class="sh">"</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<span class="c1"># 2. Criando uma Imagem de Teste Sintética (Caso não tenha uma câmera no momento)
+</span><span class="k">def</span> <span class="nf">criar_imagem_de_teste_se_nao_existir</span><span class="p">(</span><span class="n">caminho_imagem</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">Cria uma imagem JPEG simples com um círculo vermelho (LED) para teste.</span><span class="sh">"""</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">exists</span><span class="p">(</span><span class="n">caminho_imagem</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="n">PIL</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageDraw</span>
+
+            <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="sh">"</span><span class="s">RGB</span><span class="sh">"</span><span class="p">,</span> <span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">))</span>
+            <span class="n">draw</span> <span class="o">=</span> <span class="n">ImageDraw</span><span class="p">.</span><span class="nc">Draw</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+            <span class="c1"># Desenha um mostrador com ponteiro
+</span>            <span class="n">draw</span><span class="p">.</span><span class="nf">ellipse</span><span class="p">([</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">270</span><span class="p">,</span> <span class="mi">270</span><span class="p">],</span> <span class="n">outline</span><span class="o">=</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+            <span class="n">draw</span><span class="p">.</span><span class="nf">line</span><span class="p">([</span><span class="mi">150</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> <span class="mi">90</span><span class="p">],</span> <span class="n">fill</span><span class="o">=</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># Ponteiro
+</span>            <span class="c1"># Desenha um LED vermelho aceso
+</span>            <span class="n">draw</span><span class="p">.</span><span class="nf">ellipse</span><span class="p">([</span><span class="mi">135</span><span class="p">,</span> <span class="mi">210</span><span class="p">,</span> <span class="mi">165</span><span class="p">,</span> <span class="mi">240</span><span class="p">],</span> <span class="n">fill</span><span class="o">=</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="n">img</span><span class="p">.</span><span class="nf">save</span><span class="p">(</span><span class="n">caminho_imagem</span><span class="p">)</span>
+            <span class="nf">print</span><span class="p">(</span>
+                <span class="sa">f</span><span class="sh">"</span><span class="s">📸 Imagem sintética de teste criada em: </span><span class="sh">'</span><span class="si">{</span><span class="n">caminho_imagem</span><span class="si">}</span><span class="sh">'"</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="nb">ImportError</span><span class="p">:</span>
+            <span class="c1"># Fallback se PIL não estiver instalado
+</span>            <span class="k">pass</span>
+
+
+<span class="c1"># 3. Função de Inspeção Visual Local com Moondream
+</span><span class="k">def</span> <span class="nf">inspecionar_painel_visual</span><span class="p">(</span><span class="n">caminho_imagem</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">=</span><span class="sh">"</span> <span class="o">*</span> <span class="mi">65</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">👁️ Inspecionando visualmente o arquivo: </span><span class="sh">'</span><span class="si">{</span><span class="n">caminho_imagem</span><span class="si">}</span><span class="sh">'</span><span class="s">...</span><span class="sh">"</span><span class="p">)</span>
+
+    <span class="n">prompt_inspecao</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"""</span><span class="s">Analise a imagem deste painel industrial.
+Responda ESTRITAMENTE em formato JSON com o seguinte schema:
+</span><span class="si">{</span><span class="n">VisualInspectionResult</span><span class="p">.</span><span class="nf">model_json_schema</span><span class="p">()</span><span class="si">}</span><span class="s">
+
+Responda apenas o JSON puro, sem explicações.</span><span class="sh">"""</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Chamada multimodal passando a imagem no parâmetro 'images'
+</span>        <span class="n">response</span> <span class="o">=</span> <span class="n">ollama</span><span class="p">.</span><span class="nf">chat</span><span class="p">(</span>
+            <span class="n">model</span><span class="o">=</span><span class="sh">"</span><span class="s">moondream</span><span class="sh">"</span><span class="p">,</span>
+            <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">user</span><span class="sh">"</span><span class="p">,</span>
+                    <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="n">prompt_inspecao</span><span class="p">,</span>
+                    <span class="sh">"</span><span class="s">images</span><span class="sh">"</span><span class="p">:</span> <span class="p">[</span><span class="n">caminho_imagem</span><span class="p">],</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="nb">format</span><span class="o">=</span><span class="sh">"</span><span class="s">json</span><span class="sh">"</span><span class="p">,</span>
+            <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="sh">"</span><span class="s">temperature</span><span class="sh">"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">},</span>
+        <span class="p">)</span>
+
+        <span class="n">conteudo_json</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="sh">"</span><span class="s">message</span><span class="sh">"</span><span class="p">][</span><span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">]</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="se">\n</span><span class="s">[PAYLOAD RETORNADO PELO VLM]:</span><span class="se">\n</span><span class="si">{</span><span class="n">conteudo_json</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+
+        <span class="c1"># Validação com Pydantic
+</span>        <span class="n">resultado</span> <span class="o">=</span> <span class="n">VisualInspectionResult</span><span class="p">.</span><span class="nf">model_validate_json</span><span class="p">(</span><span class="n">conteudo_json</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">resultado</span>
+
+    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">❌ Erro na inspeção visual: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">None</span>
+
+
+<span class="c1"># --- EXECUÇÃO DO TESTE ---
+</span><span class="n">caminho_teste</span> <span class="o">=</span> <span class="sh">"</span><span class="s">painel_industrial_teste.jpg</span><span class="sh">"</span>
+<span class="nf">criar_imagem_de_teste_se_nao_existir</span><span class="p">(</span><span class="n">caminho_teste</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">exists</span><span class="p">(</span><span class="n">caminho_teste</span><span class="p">):</span>
+    <span class="n">relatorio</span> <span class="o">=</span> <span class="nf">inspecionar_painel_visual</span><span class="p">(</span><span class="n">caminho_teste</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">relatorio</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">✅ [RELATÓRIO DE VISÃO COMPUTACIONAL VALIDADO]:</span><span class="sh">"</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">   -&gt; LED de Aviso Ativo: </span><span class="si">{</span><span class="n">relatorio</span><span class="p">.</span><span class="n">warning_led_active</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">   -&gt; Leitura do Ponteiro: </span><span class="si">{</span><span class="n">relatorio</span><span class="p">.</span><span class="n">gauge_estimated_value</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">   -&gt; Risco Detectado: </span><span class="si">{</span><span class="n">relatorio</span><span class="p">.</span><span class="n">smoke_or_hazard_detected</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">   -&gt; Status Geral: </span><span class="si">{</span><span class="n">relatorio</span><span class="p">.</span><span class="n">overall_status</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span>
+        <span class="sa">f</span><span class="sh">"</span><span class="s">⚠️ Coloque uma imagem chamada </span><span class="sh">'</span><span class="si">{</span><span class="n">caminho_teste</span><span class="si">}</span><span class="sh">'</span><span class="s"> na pasta para testar!</span><span class="sh">"</span>
+    <span class="p">)</span>
+</code></pre></div></div>
+
+<hr>
+
+<h2 id="passo-3-executando-o-vlm-localmente">
+<a class="anchor" href="#passo-3-executando-o-vlm-localmente" aria-hidden="true"><span class="octicon octicon-link"></span></a>Passo 3: Executando o VLM Localmente</h2>
+
+<p>Execute o script:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python vlm_inspector.py
+</code></pre></div></div>
+
+<h3 id="saída-típica-observada">
+<a class="anchor" href="#sa%C3%ADda-t%C3%ADpica-observada" aria-hidden="true"><span class="octicon octicon-link"></span></a>Saída Típica Observada:</h3>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>=================================================================
+👁️ Inspecionando visualmente o arquivo: 'painel_industrial_teste.jpg'...
+
+[PAYLOAD RETORNADO PELO VLM]:
+{
+  "warning_led_active": true,
+  "gauge_estimated_value": 65.0,
+  "smoke_or_hazard_detected": false,
+  "overall_status": "ALERTA"
+}
+
+✅ [RELATÓRIO DE VISÃO COMPUTACIONAL VALIDADO]:
+   -&gt; LED de Aviso Ativo: True
+   -&gt; Leitura do Ponteiro: 65.0
+   -&gt; Risco Detectado: False
+   -&gt; Status Geral: ALERTA
+</code></pre></div></div>
+
+<hr>
+
+<h1 id="questionário-de-fixação">
+<a class="anchor" href="#question%C3%A1rio-de-fixa%C3%A7%C3%A3o" aria-hidden="true"><span class="octicon octicon-link"></span></a>Questionário de Fixação</h1>
+
+<p><strong>1. O que é um <em>Vision-Language Model</em> (VLM)?</strong><br>
+a) Um software para desenhar esquemas de circuitos em 3D.<br>
+b) Um modelo de rede neural multimodal treinado conjuntamente para compreender imagens e texto, gerando respostas em linguagem natural.<br>
+c) Um sensor de luz analógico baseado em fotorresistor LDR.<br>
+d) Um compilador de código Python para sistemas operacionais antigos.<br>
+e) Uma placa de captura de vídeo exclusiva para consoles de videogame.</p>
+
+<p><strong>2. Na arquitetura de <em>Vision Transformers</em> (ViT), como uma imagem bidimensional de pixels é preparada para entrar no decodificador do modelo?</strong><br>
+a) A imagem é impressa em papel térmico e digitalizada por um scanner serial.<br>
+b) A imagem é recortada em uma grade de pequenos blocos (<em>Patches</em>) de pixels, achatados e projetados linearmente em vetores de tokens visuais.<br>
+c) Todos os pixels da imagem são apagados e substituídos por números aleatórios.<br>
+d) A imagem é convertida em um arquivo de áudio MP3.<br>
+e) O modelo ignora a imagem e lê apenas o nome do arquivo.</p>
+
+<p><strong>3. Por que o modelo <em>Moondream2</em> (~1.8B) é especialmente recomendado para aplicações de Edge AI e IoT em comparação com modelos como o Llama 3.2 Vision (11B)?</strong><br>
+a) Porque o Moondream2 não precisa de energia elétrica para funcionar.<br>
+b) Porque seu baixo consumo de memória RAM/VRAM (~2GB) permite execução rápida em CPUs comuns e computadores de placa única como a Raspberry Pi 5.<br>
+c) Porque modelos maiores foram proibidos pela Anatel.<br>
+d) Porque o Moondream2 funciona apenas em televisores antigos.<br>
+e) Porque o Moondream2 só lê imagens em preto e branco.</p>
+
+<p><strong>4. Em um cenário de automação predial, qual das seguintes tarefas é um caso de uso típico de um VLM na borda?</strong><br>
+a) Medir a voltagem dos pinos de uma bateria com um multímetro analógico sem câmera.<br>
+b) Inspecionar uma foto da câmera de segurança para verificar se uma luz de alerta de emergência está acesa no painel elétrico.<br>
+c) Substituir o cabo de fibra ótica da operadora de internet.<br>
+d) Aumentar a capacidade de armazenamento do cartão SD.<br>
+e) Limpar a poeira física dos sensores com ar comprimido.</p>
+
+<p><strong>5. Como o código Python envia uma imagem local para inferência no cliente Ollama?</strong><br>
+a) Renomeando a imagem para <code class="language-plaintext highlighter-rouge">index.html</code>.<br>
+b) Passando o caminho ou base64 da imagem dentro da lista do parâmetro <code class="language-plaintext highlighter-rouge">images</code> na estrutura de mensagens (<code class="language-plaintext highlighter-rouge">messages=[{"role": "user", "content": "...", "images": ["./foto.jpg"]}]</code>).<br>
+c) Gravando a imagem na memória EEPROM do Arduino via barramento SPI.<br>
+d) Enviando a foto por e-mail para a equipe de suporte do Ollama.<br>
+e) Convertendo a foto em código Morse através do buzzer sonoro.</p>
+
+<hr>
+
+<h3 id="gabarito-comentado">
+<a class="anchor" href="#gabarito-comentado" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gabarito Comentado</h3>
+
+<ol>
+  <li>
+<strong>b) Um modelo de rede neural multimodal treinado conjuntamente para compreender imagens e texto…</strong><br>
+<em>Justificativa:</em> VLMs integram representações visuais e textuais no mesmo espaço latente, viabilizando o raciocínio sobre imagens.</li>
+  <li>
+<strong>b) A imagem é recortada em uma grade de pequenos blocos (<em>Patches</em>) de pixels…</strong><br>
+<em>Justificativa:</em> O mecanismo de patching transforma matrizes 2D de pixels em sequências lineares de tokens visuais compatíveis com a arquitetura Transformer.</li>
+  <li>
+<strong>b) Porque seu baixo consumo de memória RAM/VRAM (~2GB) permite execução rápida em CPUs comuns…</strong><br>
+<em>Justificativa:</em> Modelos ultracompactos viabilizam a inferência visual local em dispositivos com restrições térmicas e de memória.</li>
+  <li>
+<strong>b) Inspecionar uma foto da câmera de segurança para verificar se uma luz de alerta está acesa…</strong><br>
+<em>Justificativa:</em> A inspeção visual de estados ópticos, mostradores e LEDs é uma das aplicações mais valiosas para retrofit de equipamentos legados em IoT.</li>
+  <li>
+<strong>b) Passando o caminho ou base64 da imagem dentro da lista do parâmetro <code class="language-plaintext highlighter-rouge">images</code>…</strong><br>
+<em>Justificativa:</em> A API de chat do Ollama suporta a chave nativa <code class="language-plaintext highlighter-rouge">images</code> no payload de mensagens para modelos multimodais.</li>
+</ol>
+
+            <hr/>
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                public class 
+                
+                <span class="nc ">Disruptive Architectures</span>
+                :
+                <span class="nc ">IA: Visão & Agentes Autônomos</span> 
+                
+                , 
+                <span class="nc ">7. Visão Computacional & VLMs</span>
+                
+            </div> 
+        </main>
+        <script type="text/javascript" src="/DisruptiveArchitectures/assets/scripts.js"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+        <script src=" https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js "></script>
+        <script type="module">
+            mermaid.initialize({theme:"neutral",
+                                securityLevel: "strict",
+                                startOnLoad: true
+                                });
+        </script>
+    </body>
+</html>

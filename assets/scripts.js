@@ -1,7 +1,21 @@
 function toggle_menu(){
     var menu = document.getElementById("course_menu");
-    if(!menu.checkVisibility()){menu.style.display = "inherit";}
-    else{menu.style.display = "none";}
+    if(!menu) return;
+    if(window.getComputedStyle(menu).display === "none"){
+        menu.style.display = "block";
+    } else {
+        menu.style.display = "none";
+    }
+}
+
+function toggle_toc(){
+    var toc = document.getElementById("toc_menu");
+    if(!toc) return;
+    if(window.getComputedStyle(toc).display === "none"){
+        toc.style.display = "block";
+    } else {
+        toc.style.display = "none";
+    }
 }
 
 document.addEventListener("DOMContentLoaded", function(){

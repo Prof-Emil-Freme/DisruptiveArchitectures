@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <title>8. Agentes ReAct em Python Puro - Disruptive Architectures</title>
+        <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+        <link rel="stylesheet" href="/DisruptiveArchitectures/assets/css/main.css" id="maincss">
+    </head>
+    <body>
+        <nav>
+    
+    <a href="javascript:void(0)" onclick="toggle_menu()" id="hamb_menu">☰ Aulas</a>
+    <a href="javascript:void(0)" onclick="toggle_toc()" id="toc_btn">📑 Índice</a>
+    
+    <a href="/DisruptiveArchitectures/">Index</a>&nbsp;
+    <a href="javascript:void(0)" onclick="toggle_themes()">Mudar Tema</a>
+</nav>
+
+        <aside id="course_menu">
+    
+    
+    <b class="course_name">Disruptive Architectures</b>
+
+    
+    <b class="section_name">Sobre a disciplina</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/00_index.html" class="class_link">Introdução</a>
+    
+    <a href="/DisruptiveArchitectures/classes/01_notas.html" class="class_link">Notas</a>
+    
+    <a href="/DisruptiveArchitectures/classes/02_Cronograma.html" class="class_link">Cronograma</a>
+    
+    
+    <b class="section_name">IoT</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/03_definicoes.html" class="class_link">Definições de IoT</a>
+    
+    <a href="/DisruptiveArchitectures/classes/04_circuitoseletricos.html" class="class_link">Circuítos (eletro)eletrônicos</a>
+    
+    
+    <b class="section_name">Sistemas Embarcados</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/05_sistemas_embarcados.html" class="class_link">Introdução</a>
+    
+    <a href="/DisruptiveArchitectures/classes/06_arduino.html" class="class_link">Arduino</a>
+    
+    
+    <b class="section_name">Protocolos M2M</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/07_m2m.html" class="class_link">Introdução</a>
+    
+    <a href="/DisruptiveArchitectures/classes/08_UART.html" class="class_link">UART</a>
+    
+    <a href="/DisruptiveArchitectures/classes/09_I2C.html" class="class_link">I2C</a>
+    
+    <a href="/DisruptiveArchitectures/classes/10_SPI.html" class="class_link">SPI</a>
+    
+    
+    <b class="section_name">Sensores, Atuadores e IO</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/13_multisensores_analogicos.html" class="class_link">Sensores analógicos</a>
+    
+    <a href="/DisruptiveArchitectures/classes/14_motores.html" class="class_link">Motores</a>
+    
+    <a href="/DisruptiveArchitectures/classes/11_sensore_controladores.html" class="class_link">Input: Keypad</a>
+    
+    <a href="/DisruptiveArchitectures/classes/12_lcdi2c.html" class="class_link">Output: LCD 16x2 I2C</a>
+    
+    <a href="/DisruptiveArchitectures/classes/15_genius.html" class="class_link">Projeto: Genius</a>
+    
+    
+    <b class="section_name">IA: Fundamentos & Estruturação</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/15_ia_local_fundamentos.html" class="class_link">1. Demistificando GenAI & Modelos Locais</a>
+    
+    <a href="/DisruptiveArchitectures/classes/16_system_prompts.html" class="class_link">2. System Prompts & Guardrails</a>
+    
+    <a href="/DisruptiveArchitectures/classes/17_structured_outputs.html" class="class_link">3. Saídas Estruturadas & JSON</a>
+    
+    
+    <b class="section_name">Backend</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/16_node_red.html" class="class_link">Node-Red</a>
+    
+    
+    <b class="section_name">Protocolos TCP/IP (Aplicação)</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/17_MQTT.html" class="class_link">MQTT</a>
+    
+    
+    <b class="section_name">IA: Conhecimento & Ferramentas</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/18_embeddings_vetores.html" class="class_link">4. Embeddings & Vector DBs</a>
+    
+    <a href="/DisruptiveArchitectures/classes/19_rag_local.html" class="class_link">5. RAG Local & Manuais Técnicos</a>
+    
+    <a href="/DisruptiveArchitectures/classes/20_function_calling.html" class="class_link">6. Function Calling & Tools</a>
+    
+    
+    <b class="section_name">IA: Visão & Agentes Autônomos</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/21_vlm_multimodal.html" class="class_link">7. Visão Computacional & VLMs</a>
+    
+    <a href="/DisruptiveArchitectures/classes/22_react_agents.html" class="class_link">8. Agentes ReAct em Python Puro</a>
+    
+    <a href="/DisruptiveArchitectures/classes/23_multi_agentes.html" class="class_link">9. Colaboração Multi-Agente</a>
+    
+    
+    <b class="section_name">Desafio</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/18_Desafio.html" class="class_link">Genius + MQTT + Dashboard</a>
+    
+    
+    <b class="section_name">Plataformas IoT</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/19_IoTPlatforms.html" class="class_link">AWS IoT Core: Things</a>
+    
+    <a href="/DisruptiveArchitectures/classes/20_IoTPlatformsDevice.html" class="class_link">Configurando um dispositivo</a>
+    
+    
+    <b class="section_name">IA: Protocolos IoT & Edge Gateway</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/24_ia_mqtt_gateways.html" class="class_link">10. IA com Protocolo MQTT</a>
+    
+    <a href="/DisruptiveArchitectures/classes/25_quantizacao_edge.html" class="class_link">11. Quantização & Otimização Edge</a>
+    
+    <a href="/DisruptiveArchitectures/classes/26_projeto_gateway_part1.html" class="class_link">12. Projeto Gateway: Arquitetura</a>
+    
+    <a href="/DisruptiveArchitectures/classes/27_projeto_gateway_part2.html" class="class_link">13. Projeto Gateway: Resiliência</a>
+    
+    
+
+
+  
+</aside>
+
+        <aside id="toc_menu"> 
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#agentes-autônomos-de-loop-único-o-padrão-react">Agentes Autônomos de Loop Único: O Padrão ReAct</a></li>
+<li class="toc-entry toc-h1"><a href="#teoria">Teoria</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#1-o-que-é-o-padrão-react-reasoning--acting">1. O que é o Padrão ReAct (Reasoning + Acting)?</a></li>
+<li class="toc-entry toc-h2"><a href="#visualizador-interativo-o-ciclo-react-em-execução">Visualizador Interativo: O Ciclo ReAct em Execução</a></li>
+<li class="toc-entry toc-h2"><a href="#2-por-que-python-puro-e-zero-framework-na-borda">2. Por que Python Puro e Zero-Framework na Borda?</a></li>
+<li class="toc-entry toc-h2"><a href="#3-a-regra-de-ouro-da-segurança-limite-de-iterações-max_iterations">3. A Regra de Ouro da Segurança: Limite de Iterações (max_iterations)</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#prática">Prática</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#passo-1-construindo-o-ambiente-e-o-laço-autônomo-react">Passo 1: Construindo o Ambiente e o Laço Autônomo ReAct</a></li>
+<li class="toc-entry toc-h2"><a href="#passo-2-executando-e-acompanhando-a-autonomia">Passo 2: Executando e Acompanhando a Autonomia</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#saída-esperada-no-terminal">Saída Esperada no Terminal:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#questionário-de-fixação">Questionário de Fixação</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#gabarito-comentado">Gabarito Comentado</a></li>
+</ul>
+</li>
+</ul>
+</aside>
+
+        <main>
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                public class 
+                
+                <span class="nc ">Disruptive Architectures</span>
+                :
+                <span class="nc ">IA: Visão & Agentes Autônomos</span> 
+                
+                , 
+                <span class="nc ">8. Agentes ReAct em Python Puro</span>
+                
+            </div> 
+            <center><h1> 8. Agentes ReAct em Python Puro</h1></center>
+            <h1 id="agentes-autônomos-de-loop-único-o-padrão-react">
+<a class="anchor" href="#agentes-aut%C3%B4nomos-de-loop-%C3%BAnico-o-padr%C3%A3o-react" aria-hidden="true"><span class="octicon octicon-link"></span></a>Agentes Autônomos de Loop Único: O Padrão ReAct</h1>
+
+<p>Até a aula anterior, todas as interações com a IA seguiam um fluxo linear: o usuário enviava uma mensagem, o modelo chamava uma ferramenta uma única vez e respondia. Contudo, no mundo real da automação industrial, problemas complexos exigem <strong>múltiplas etapas consecutivas de tentativa, raciocínio, verificação e autocorreção</strong>.</p>
+
+<p>Hoje, construiremos nosso primeiro <strong>Agente Autônomo de Borda</strong> utilizando o padrão <strong>ReAct (Reasoning + Acting)</strong> implementado em <strong>Python puro (Zero-Framework)</strong>, sem dependências de bibliotecas externas pesadas como LangChain ou CrewAI!</p>
+
+<pre class="mermaid">
+flowchart TD
+    Start(["🎯 Meta de Alto Nível:<br>'Mantenha a sala entre 20°C e 22°C'"]) --&gt; LoopStart["🔄 Início da Iteração (Passo &lt;= Max_Steps)"]
+    
+    LoopStart --&gt; Thought["💭 1. Raciocínio (Thought):<br>'Vou ler o sensor de temperatura...'"]
+    Thought --&gt; Action["⚡ 2. Ação (Action):<br>Invocação de Tool: ler_temperatura()"]
+    Action --&gt; Observation["👁️ 3. Observação (Observation):<br>Sensor retornou 17.5°C (Frio!)"]
+    
+    Observation --&gt; Eval{"🎯 Meta Atingida?"}
+    Eval --&gt;|"Não (17.5°C &lt; 20°C)"| NextThought["💭 Novo Raciocínio:<br>'Preciso ligar o aquecedor por 2 ciclos...'"]
+    NextThought --&gt; LoopStart
+    
+    Eval --&gt;|"Sim (21.0°C)"| Finished["✅ Conclusão Final do Agente:<br>'Temperatura estabilizada em 21.0°C.'"]
+    
+    style Thought fill:#e0e7ff,stroke:#6366f1,stroke-width:2px;
+    style Action fill:#fef3c7,stroke:#f59e0b,stroke-width:2px;
+    style Observation fill:#d1fae5,stroke:#10b981,stroke-width:2px;
+    style Finished fill:#bbf7d0,stroke:#16a34a,stroke-width:2px;
+</pre>
+
+<hr>
+
+<h1 id="teoria">
+<a class="anchor" href="#teoria" aria-hidden="true"><span class="octicon octicon-link"></span></a>Teoria</h1>
+
+<h2 id="1-o-que-é-o-padrão-react-reasoning--acting">
+<a class="anchor" href="#1-o-que-%C3%A9-o-padr%C3%A3o-react-reasoning--acting" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. O que é o Padrão ReAct (Reasoning + Acting)?</h2>
+
+<p>Publicado originalmente por pesquisadores da Universidade de Princeton e Google (Yao et al., 2022), o padrão <strong>ReAct</strong> combina duas forças complementares:</p>
+<ol>
+  <li>
+<strong>Raciocínio (<em>Reasoning / Thought</em>):</strong> O modelo verbaliza em voz alta seu plano mental, avalia o estado atual do ambiente e decide o que fazer a seguir.</li>
+  <li>
+<strong>Atuação (<em>Acting / Action</em>):</strong> O modelo interage com ferramentas externas do mundo real (sensores, bancos vetoriais, atuadores).</li>
+  <li>
+<strong>Observação (<em>Observation</em>):</strong> O modelo lê o feedback real obtido e atualiza sua linha de raciocínio.</li>
+</ol>
+
+<p>Esse ciclo (<em>Thought $\to$ Action $\to$ Observation $\to$ Thought</em>) permite que o agente <strong>identifique falhas e se autocorrija</strong> caso uma ação não produza o resultado desejado!</p>
+
+<hr>
+
+<h2 id="visualizador-interativo-o-ciclo-react-em-execução">
+<a class="anchor" href="#visualizador-interativo-o-ciclo-react-em-execu%C3%A7%C3%A3o" aria-hidden="true"><span class="octicon octicon-link"></span></a>Visualizador Interativo: O Ciclo ReAct em Execução</h2>
+
+<p>Acompanhe no simulador abaixo as etapas de raciocínio, acionamento e feedback térmico de um agente autônomo convergindo para a temperatura desejada:</p>
+
+<div id="p5-react-container" style="width: 100%; max-width: 650px; margin: 20px auto; border: 1px solid #ccc; border-radius: 8px; overflow: hidden; background: #ffffff;"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+
+<script>
+new p5(function(p) {
+    let step = 0;
+    let temp = 16.0;
+    let target = 21.0;
+    let state = "Iniciando...";
+    let thought = "Meta: Atingir 21°C. Vou medir o ambiente.";
+    let action = "ler_sensor()";
+    let obs = "Temperatura atual = 16.0°C (Abaixo do alvo!)";
+    let timer = 0;
+
+    p.setup = function() {
+        let canvas = p.createCanvas(600, 320);
+        canvas.parent("p5-react-container");
+        p.textFont("sans-serif");
+    };
+
+    p.draw = function() {
+        p.background(250);
+
+        p.fill(33);
+        p.textSize(14);
+        p.textStyle(p.BOLD);
+        p.text("Simulação do Loop Autônomo ReAct (Edge IoT)", 20, 25);
+        p.textStyle(p.NORMAL);
+        p.textSize(12);
+        p.text(`Passo: ${step} / 4 | Temperatura Atual: ${temp.toFixed(1)}°C | Meta: ${target}°C`, 20, 45);
+
+        // Ciclo automático a cada 2 segundos
+        timer++;
+        if (timer > 120) {
+            timer = 0;
+            step++;
+            if (step === 1) {
+                thought = "Temperatura está em 16°C. Preciso ligar o aquecedor.";
+                action = "ligar_aquecedor(potencia='alta')";
+                temp += 3.0;
+                obs = `Aquecedor acionado. Nova temperatura: ${temp.toFixed(1)}°C.`;
+            } else if (step === 2) {
+                thought = `Temperatura subiu para ${temp.toFixed(1)}°C, mas ainda está < 21°C. Manter aquecimento moderado.`;
+                action = "ligar_aquecedor(potencia='baixa')";
+                temp += 2.0;
+                obs = `Nova leitura: ${temp.toFixed(1)}°C.`;
+            } else if (step === 3) {
+                thought = `Temperatura atingiu ${temp.toFixed(1)}°C (dentro da meta!). Vou desligar o aquecedor.`;
+                action = "desligar_aquecedor()";
+                obs = "Aquecedor desativado. Ambiente estável.";
+            } else if (step >= 4) {
+                thought = "Objetivo concluído com sucesso. Encerrando ciclo autônomo.";
+                action = "Nenhuma (Fim)";
+                obs = "Sistema em repouso.";
+            }
+        }
+
+        // Desenha os 3 Cards de Estado
+        let cardW = 170;
+        let cardH = 200;
+        let y = 70;
+
+        // Card 1: Thought
+        p.fill(238, 242, 255);
+        p.stroke(99, 102, 241);
+        p.strokeWeight(1.5);
+        p.rect(20, y, cardW, cardH, 6);
+        p.fill(67, 56, 202);
+        p.noStroke();
+        p.textStyle(p.BOLD);
+        p.text("💭 1. Thought (Raciocínio)", 30, y + 25);
+        p.textStyle(p.NORMAL);
+        p.fill(50);
+        p.textSize(11);
+        p.text(thought, 30, y + 50, cardW - 20, 140);
+
+        // Card 2: Action
+        p.fill(254, 243, 199);
+        p.stroke(245, 158, 11);
+        p.strokeWeight(1.5);
+        p.rect(210, y, cardW, cardH, 6);
+        p.fill(180, 83, 9);
+        p.noStroke();
+        p.textSize(12);
+        p.textStyle(p.BOLD);
+        p.text("⚡ 2. Action (Atuação)", 220, y + 25);
+        p.textStyle(p.NORMAL);
+        p.fill(50);
+        p.textSize(11);
+        p.text(action, 220, y + 50, cardW - 20, 140);
+
+        // Card 3: Observation
+        p.fill(220, 252, 231);
+        p.stroke(34, 197, 94);
+        p.strokeWeight(1.5);
+        p.rect(400, y, cardW, cardH, 6);
+        p.fill(21, 128, 61);
+        p.noStroke();
+        p.textSize(12);
+        p.textStyle(p.BOLD);
+        p.text("👁️ 3. Observation", 410, y + 25);
+        p.textStyle(p.NORMAL);
+        p.fill(50);
+        p.textSize(11);
+        p.text(obs, 410, y + 50, cardW - 20, 140);
+
+        // Barra de Progresso
+        p.fill(220);
+        p.rect(20, 290, 560, 10, 4);
+        let progress = (Math.min(step, 4) / 4) * 560;
+        p.fill(16, 185, 129);
+        p.rect(20, 290, progress, 10, 4);
+    };
+}, "p5-react-container");
+</script>
+
+<hr>
+
+<h2 id="2-por-que-python-puro-e-zero-framework-na-borda">
+<a class="anchor" href="#2-por-que-python-puro-e-zero-framework-na-borda" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Por que Python Puro e Zero-Framework na Borda?</h2>
+
+<p>No ecossistema de software, bibliotecas como LangChain, LlamaIndex ou CrewAI são populares na nuvem. Contudo, em sistemas embarcados e edge gateways (como Raspberry Pi, ESP32 gateways ou PCs de chão de fábrica):</p>
+<ul>
+  <li>Frameworks pesados adicionam centenas de dependências, dezenas de megabytes de memória desnecessária e camadas opacas de abstração que dificultam o debug.</li>
+  <li>Um loop ReAct robusto pode ser escrito em <strong>menos de 40 linhas de Python puro</strong>, oferecendo controle total sobre tratamento de exceções, consumo de bateria e limites de segurança!</li>
+</ul>
+
+<hr>
+
+<h2 id="3-a-regra-de-ouro-da-segurança-limite-de-iterações-max_iterations">
+<a class="anchor" href="#3-a-regra-de-ouro-da-seguran%C3%A7a-limite-de-itera%C3%A7%C3%B5es-max_iterations" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. A Regra de Ouro da Segurança: Limite de Iterações (<code class="language-plaintext highlighter-rouge">max_iterations</code>)</h2>
+
+<blockquote>
+  <p>[!CAUTION]
+<strong>NUNCA crie um agente autônomo com um laço infinito <code class="language-plaintext highlighter-rouge">while True:</code> sem critério de parada.</strong><br>
+Se o modelo entrar em um ciclo de alucinação lógica ou um sensor falhar repetidamente, um loop infinito esgotará 100% da CPU, aquecerá o hardware, consumirá memória e poderá acionar atuadores repetidas vezes de forma perigosa.</p>
+
+  <p>Todo agente autônomo profissional DEVE possuir um limitador de segurança: <code class="language-plaintext highlighter-rouge">for step in range(MAX_ITERATIONS):</code>.</p>
+</blockquote>
+
+<hr>
+
+<h1 id="prática">
+<a class="anchor" href="#pr%C3%A1tica" aria-hidden="true"><span class="octicon octicon-link"></span></a>Prática</h1>
+
+<p>Vamos construir um agente autônomo térmico em Python puro (<code class="language-plaintext highlighter-rouge">react_agent.py</code>) usando o modelo local <code class="language-plaintext highlighter-rouge">llama3.2:3b</code>.</p>
+
+<h2 id="passo-1-construindo-o-ambiente-e-o-laço-autônomo-react">
+<a class="anchor" href="#passo-1-construindo-o-ambiente-e-o-la%C3%A7o-aut%C3%B4nomo-react" aria-hidden="true"><span class="octicon octicon-link"></span></a>Passo 1: Construindo o Ambiente e o Laço Autônomo ReAct</h2>
+
+<p>Crie o arquivo <code class="language-plaintext highlighter-rouge">react_agent.py</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">json</span>
+<span class="kn">import</span> <span class="n">ollama</span>
+
+<span class="c1"># 1. AMBIENTE FÍSICO SIMULADO
+</span><span class="n">temperatura_ambiente</span> <span class="o">=</span> <span class="mf">16.5</span>  <span class="c1"># Inicia abaixo do setpoint desejado
+</span><span class="n">STATUS_AQUECEDOR</span> <span class="o">=</span> <span class="bp">False</span>
+
+
+<span class="k">def</span> <span class="nf">ler_temperatura_sensor</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sh">"""</span><span class="s">Lê o valor atualizado da temperatura ambiente medido pelo sensor em graus Celsius.</span><span class="sh">"""</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">   [SENSOR] 📡 Leitura real: </span><span class="si">{</span><span class="n">temperatura_ambiente</span><span class="si">:</span><span class="p">.</span><span class="mi">1</span><span class="n">f</span><span class="si">}</span><span class="s">°C</span><span class="sh">"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">json</span><span class="p">.</span><span class="nf">dumps</span><span class="p">({</span><span class="sh">"</span><span class="s">temperatura_atual</span><span class="sh">"</span><span class="p">:</span> <span class="nf">round</span><span class="p">(</span><span class="n">temperatura_ambiente</span><span class="p">,</span> <span class="mi">1</span><span class="p">)})</span>
+
+
+<span class="k">def</span> <span class="nf">ajustar_aquecedor</span><span class="p">(</span><span class="n">ligar</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sh">"""</span><span class="s">Liga ou desliga o relé do sistema de aquecimento.
+
+    Args:
+        ligar: True para ligar o aquecedor, False para desligar.
+    </span><span class="sh">"""</span>
+    <span class="k">global</span> <span class="n">temperatura_ambiente</span><span class="p">,</span> <span class="n">STATUS_AQUECEDOR</span>
+    <span class="n">STATUS_AQUECEDOR</span> <span class="o">=</span> <span class="n">ligar</span>
+    <span class="k">if</span> <span class="n">ligar</span><span class="p">:</span>
+        <span class="n">temperatura_ambiente</span> <span class="o">+=</span> <span class="mf">2.5</span>  <span class="c1"># O aquecedor eleva a temperatura em 2.5°C
+</span>        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"</span><span class="s">Aquecedor LIGADO. A temperatura subiu para </span><span class="si">{</span><span class="n">temperatura_ambiente</span><span class="si">:</span><span class="p">.</span><span class="mi">1</span><span class="n">f</span><span class="si">}</span><span class="s">°C.</span><span class="sh">"</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">temperatura_ambiente</span> <span class="o">-=</span> <span class="mf">0.5</span>  <span class="c1"># Resfriamento natural
+</span>        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"</span><span class="s">Aquecedor DESLIGADO. Temperatura atual: </span><span class="si">{</span><span class="n">temperatura_ambiente</span><span class="si">:</span><span class="p">.</span><span class="mi">1</span><span class="n">f</span><span class="si">}</span><span class="s">°C.</span><span class="sh">"</span>
+
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">   [ATUADOR] 🔌 </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">json</span><span class="p">.</span><span class="nf">dumps</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="sh">"</span><span class="s">status_aquecedor</span><span class="sh">"</span><span class="p">:</span> <span class="n">STATUS_AQUECEDOR</span><span class="p">,</span>
+            <span class="sh">"</span><span class="s">nova_temperatura</span><span class="sh">"</span><span class="p">:</span> <span class="nf">round</span><span class="p">(</span><span class="n">temperatura_ambiente</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+
+
+<span class="c1"># Mapeamento e registro de ferramentas
+</span><span class="n">MAPA_TOOLS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="sh">"</span><span class="s">ler_temperatura_sensor</span><span class="sh">"</span><span class="p">:</span> <span class="n">ler_temperatura_sensor</span><span class="p">,</span>
+    <span class="sh">"</span><span class="s">ajustar_aquecedor</span><span class="sh">"</span><span class="p">:</span> <span class="n">ajustar_aquecedor</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">TOOLS</span> <span class="o">=</span> <span class="p">[</span><span class="n">ler_temperatura_sensor</span><span class="p">,</span> <span class="n">ajustar_aquecedor</span><span class="p">]</span>
+
+
+<span class="c1"># 2. MOTOR DO AGENTE REACT EM PYTHON PURO
+</span><span class="k">def</span> <span class="nf">executar_agente_react</span><span class="p">(</span><span class="n">meta_usuario</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">max_passos</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">=</span><span class="sh">"</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">🎯 META DO AGENTE: </span><span class="se">\"</span><span class="si">{</span><span class="n">meta_usuario</span><span class="si">}</span><span class="se">\"</span><span class="sh">"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">=</span><span class="sh">"</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+
+    <span class="n">system_prompt</span> <span class="o">=</span> <span class="sh">"""</span><span class="s">Você é um Agente Autônomo ReAct controlador de ambiente industrial.
+Seu objetivo é atingir a meta estabelecida pelo operador através do ciclo de Raciocínio (Thought) e Ação (Action).
+
+Diretrizes:
+1. Sempre inspecione o estado atual com ferramentas antes de agir.
+2. A cada passo, avalie se a meta já foi atingida.
+3. Se a meta foi plenamente concluída, NÃO chame mais ferramentas e emita sua resposta final resumindo as ações tomadas.</span><span class="sh">"""</span>
+
+    <span class="n">mensagens</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span><span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">system</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="n">system_prompt</span><span class="p">},</span>
+        <span class="p">{</span><span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">user</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="n">meta_usuario</span><span class="p">},</span>
+    <span class="p">]</span>
+
+    <span class="c1"># Laço com guardrail rígido de limite de iterações
+</span>    <span class="k">for</span> <span class="n">passo</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_passos</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="se">\n</span><span class="s">--- 🔄 ITERAÇÃO </span><span class="si">{</span><span class="n">passo</span><span class="si">}</span><span class="s"> DE </span><span class="si">{</span><span class="n">max_passos</span><span class="si">}</span><span class="s"> ---</span><span class="sh">"</span><span class="p">)</span>
+
+        <span class="c1"># Inferência do modelo (Gera Thought e/ou Tool Calls)
+</span>        <span class="n">res</span> <span class="o">=</span> <span class="n">ollama</span><span class="p">.</span><span class="nf">chat</span><span class="p">(</span>
+            <span class="n">model</span><span class="o">=</span><span class="sh">"</span><span class="s">llama3.2:3b</span><span class="sh">"</span><span class="p">,</span>
+            <span class="n">messages</span><span class="o">=</span><span class="n">mensagens</span><span class="p">,</span>
+            <span class="n">tools</span><span class="o">=</span><span class="n">TOOLS</span><span class="p">,</span>
+            <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="sh">"</span><span class="s">temperature</span><span class="sh">"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">},</span>
+        <span class="p">)</span>
+
+        <span class="n">msg</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="sh">"</span><span class="s">message</span><span class="sh">"</span><span class="p">]</span>
+        <span class="n">mensagens</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+        <span class="c1"># Se o modelo não chamou ferramentas, significa que ele concluiu o raciocínio
+</span>        <span class="n">tool_calls</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">"</span><span class="s">tool_calls</span><span class="sh">"</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">tool_calls</span><span class="p">:</span>
+            <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="se">\n</span><span class="s">✅ [AGENTE CONCLUIU A META]:</span><span class="sh">"</span><span class="p">)</span>
+            <span class="nf">print</span><span class="p">(</span><span class="n">msg</span><span class="p">[</span><span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">])</span>
+            <span class="k">return</span>
+
+        <span class="c1"># Se o modelo emitiu texto de raciocínio (Thought), exibe
+</span>        <span class="k">if</span> <span class="n">msg</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">):</span>
+            <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">💭 Thought (Raciocínio da IA): </span><span class="si">{</span><span class="n">msg</span><span class="p">[</span><span class="sh">'</span><span class="s">content</span><span class="sh">'</span><span class="p">]</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+
+        <span class="c1"># Executa as ações recomendadas (Action -&gt; Observation)
+</span>        <span class="k">for</span> <span class="n">call</span> <span class="ow">in</span> <span class="n">tool_calls</span><span class="p">:</span>
+            <span class="n">nome_fn</span> <span class="o">=</span> <span class="n">call</span><span class="p">[</span><span class="sh">"</span><span class="s">function</span><span class="sh">"</span><span class="p">][</span><span class="sh">"</span><span class="s">name</span><span class="sh">"</span><span class="p">]</span>
+            <span class="n">args</span> <span class="o">=</span> <span class="n">call</span><span class="p">[</span><span class="sh">"</span><span class="s">function</span><span class="sh">"</span><span class="p">][</span><span class="sh">"</span><span class="s">arguments</span><span class="sh">"</span><span class="p">]</span>
+            <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">⚡ Action (Ação): Executar `</span><span class="si">{</span><span class="n">nome_fn</span><span class="si">}</span><span class="s">(</span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s">)`</span><span class="sh">"</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">nome_fn</span> <span class="ow">in</span> <span class="n">MAPA_TOOLS</span><span class="p">:</span>
+                <span class="n">obs</span> <span class="o">=</span> <span class="n">MAPA_TOOLS</span><span class="p">[</span><span class="n">nome_fn</span><span class="p">](</span><span class="o">**</span><span class="n">args</span><span class="p">)</span>
+                <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">👁️ Observation (Observação): </span><span class="si">{</span><span class="n">obs</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+                <span class="c1"># Realimenta o agente com a observação
+</span>                <span class="n">mensagens</span><span class="p">.</span><span class="nf">append</span><span class="p">({</span><span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">tool</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="n">obs</span><span class="p">})</span>
+
+    <span class="nf">print</span><span class="p">(</span>
+        <span class="sa">f</span><span class="sh">"</span><span class="se">\n</span><span class="s">⚠️ [AVISO DE SEGURANÇA]: O agente atingiu o limite de </span><span class="si">{</span><span class="n">max_passos</span><span class="si">}</span><span class="s"> iterações.</span><span class="sh">"</span>
+    <span class="p">)</span>
+
+
+<span class="c1"># --- EXECUÇÃO DO AGENTE ---
+</span><span class="nf">executar_agente_react</span><span class="p">(</span><span class="sh">"</span><span class="s">Garanta que a temperatura fique entre 21°C e 22°C.</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr>
+
+<h2 id="passo-2-executando-e-acompanhando-a-autonomia">
+<a class="anchor" href="#passo-2-executando-e-acompanhando-a-autonomia" aria-hidden="true"><span class="octicon octicon-link"></span></a>Passo 2: Executando e Acompanhando a Autonomia</h2>
+
+<p>Execute o script:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python react_agent.py
+</code></pre></div></div>
+
+<h3 id="saída-esperada-no-terminal">
+<a class="anchor" href="#sa%C3%ADda-esperada-no-terminal" aria-hidden="true"><span class="octicon octicon-link"></span></a>Saída Esperada no Terminal:</h3>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>======================================================================
+🎯 META DO AGENTE: "Garanta que a temperatura fique entre 21°C e 22°C."
+======================================================================
+
+--- 🔄 ITERAÇÃO 1 DE 5 ---
+⚡ Action (Ação): Executar `ler_temperatura_sensor({})`
+   [SENSOR] 📡 Leitura real: 16.5°C
+👁️ Observation (Observação): {"temperatura_atual": 16.5}
+
+--- 🔄 ITERAÇÃO 2 DE 5 ---
+⚡ Action (Ação): Executar `ajustar_aquecedor({'ligar': True})`
+   [ATUADOR] 🔌 Aquecedor LIGADO. A temperatura subiu para 19.0°C.
+👁️ Observation (Observação): {"status_aquecedor": true, "nova_temperatura": 19.0}
+
+--- 🔄 ITERAÇÃO 3 DE 5 ---
+⚡ Action (Ação): Executar `ajustar_aquecedor({'ligar': True})`
+   [ATUADOR] 🔌 Aquecedor LIGADO. A temperatura subiu para 21.5°C.
+👁️ Observation (Observação): {"status_aquecedor": true, "nova_temperatura": 21.5}
+
+--- 🔄 ITERAÇÃO 4 DE 5 ---
+⚡ Action (Ação): Executar `ajustar_aquecedor({'ligar': False})`
+   [ATUADOR] 🔌 Aquecedor DESLIGADO. Temperatura atual: 21.0°C.
+👁️ Observation (Observação): {"status_aquecedor": false, "nova_temperatura": 21.0}
+
+--- 🔄 ITERAÇÃO 5 DE 5 ---
+
+✅ [AGENTE CONCLUIU A META]:
+A temperatura ambiente foi ajustada e estabilizada com sucesso em 21.0°C (dentro da faixa alvo de 21°C a 22°C). O aquecedor foi desligado preventivamente.
+</code></pre></div></div>
+
+<hr>
+
+<h1 id="questionário-de-fixação">
+<a class="anchor" href="#question%C3%A1rio-de-fixa%C3%A7%C3%A3o" aria-hidden="true"><span class="octicon octicon-link"></span></a>Questionário de Fixação</h1>
+
+<p><strong>1. O que representa o ciclo ReAct (<em>Reasoning + Acting</em>) em agentes autônomos de IA?</strong><br>
+a) Um protocolo de transmissão de rádio analógico para walkie-talkies.<br>
+b) Um padrão de arquitetura onde o modelo alterna ciclicamente entre raciocinar sobre o estado atual (<em>Thought</em>), executar ações com ferramentas (<em>Action</em>) e avaliar os resultados obtidos (<em>Observation</em>).<br>
+c) Um método de criptografia de senhas para roteadores Wi-Fi.<br>
+d) A velocidade de clock do processador central.<br>
+e) Uma biblioteca exclusiva para criação de interfaces gráficas em React.js.</p>
+
+<p><strong>2. Por que em sistemas embarcados e edge gateways é vantajoso construir o laço ReAct em Python puro em vez de frameworks como LangChain ou CrewAI?</strong><br>
+a) Porque o Python puro não precisa de eletricidade para rodar.<br>
+b) Porque o Python puro elimina centenas de dependências desnecessárias, reduz o consumo de memória RAM e oferece controle e visibilidade total sobre o fluxo de execução.<br>
+c) Porque o Python puro é compilado diretamente para linguagem C pelo Arduino IDE.<br>
+d) Porque frameworks de IA foram banidos pelas diretrizes do Linux.<br>
+e) Não há nenhuma vantagem em usar Python puro.</p>
+
+<p><strong>3. Por que a imposição de uma variável <code class="language-plaintext highlighter-rouge">max_iterations</code> no laço do agente é considerada um guardrail crítico de segurança?</strong><br>
+a) Porque se o modelo entrar em um loop de raciocínio infinito ou se deparar com sensores com defeito, o limitador interrompe o processo, evitando sobrecarga de hardware e travamentos.<br>
+b) Porque o sistema operacional só permite que programas rodem até 5 linhas de código.<br>
+c) Para diminuir a resolução das imagens salvas em disco.<br>
+d) Para impedir que o usuário desligue o computador.<br>
+e) Porque o Pydantic só aceita laços finitos de 5 repetições.</p>
+
+<p><strong>4. O que indica para o código Python hospedeiro que o agente ReAct concluiu sua tarefa com sucesso e não precisa de mais ações?</strong><br>
+a) O modelo desliga a placa mãe do computador.<br>
+b) O modelo retorna uma mensagem contendo apenas texto final de resposta sem requisitar nenhuma chamada no campo <code class="language-plaintext highlighter-rouge">tool_calls</code>.<br>
+c) O modelo dispara um sinal sonoro no buzzer.<br>
+d) O modelo envia um código de erro HTTP 404.<br>
+e) O Python reinicia a máquina automaticamente.</p>
+
+<p><strong>5. Qual é o papel da etapa de <em>Observation</em> (Observação) no padrão ReAct?</strong><br>
+a) Gravar um vídeo da tela do usuário.<br>
+b) Alimentar o contexto do modelo com o retorno real gerado pelo hardware após a execução de uma ferramenta, permitindo que a IA avalie se sua ação surtiu o efeito desejado.<br>
+c) Apagar todos os dados do banco vetorial.<br>
+d) Trocar o modelo de linguagem por um modelo de visão.<br>
+e) Aumentar a temperatura de amostragem para 2.0.</p>
+
+<hr>
+
+<h3 id="gabarito-comentado">
+<a class="anchor" href="#gabarito-comentado" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gabarito Comentado</h3>
+
+<ol>
+  <li>
+<strong>b) Um padrão de arquitetura onde o modelo alterna ciclicamente entre raciocinar…</strong><br>
+<em>Justificativa:</em> O padrão ReAct formaliza a autonomia estruturada através da repetição iterativa de raciocínio $\to$ ação $\to$ observação.</li>
+  <li>
+<strong>b) Porque o Python puro elimina centenas de dependências desnecessárias, reduz o consumo de memória…</strong><br>
+<em>Justificativa:</em> Na borda de IoT, o minimalismo e a previsibilidade de recursos são essenciais; Python puro confere controle absoluto com zero overhead.</li>
+  <li>
+<strong>a) Porque se o modelo entrar em um loop de raciocínio infinito…</strong><br>
+<em>Justificativa:</em> Sem <code class="language-plaintext highlighter-rouge">max_iterations</code>, anomalias no ambiente físico podem prender a IA em loops eternos de tentativa e erro que travam o sistema.</li>
+  <li>
+<strong>b) O modelo retorna uma mensagem contendo apenas texto final de resposta sem requisitar…</strong><br>
+<em>Justificativa:</em> Quando a meta é atingida, o modelo decide que nenhuma nova tool é necessária e formula a conclusão final em linguagem natural.</li>
+  <li>
+<strong>b) Alimentar o contexto do modelo com o retorno real gerado pelo hardware…</strong><br>
+<em>Justificativa:</em> A observação fornece o feedback de realidade fundamental para a autocorreção do agente autônomo.</li>
+</ol>
+
+            <hr/>
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                public class 
+                
+                <span class="nc ">Disruptive Architectures</span>
+                :
+                <span class="nc ">IA: Visão & Agentes Autônomos</span> 
+                
+                , 
+                <span class="nc ">8. Agentes ReAct em Python Puro</span>
+                
+            </div> 
+        </main>
+        <script type="text/javascript" src="/DisruptiveArchitectures/assets/scripts.js"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+        <script src=" https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js "></script>
+        <script type="module">
+            mermaid.initialize({theme:"neutral",
+                                securityLevel: "strict",
+                                startOnLoad: true
+                                });
+        </script>
+    </body>
+</html>

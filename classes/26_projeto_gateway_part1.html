@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <title>12. Projeto Gateway: Arquitetura - Disruptive Architectures</title>
+        <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+        <link rel="stylesheet" href="/DisruptiveArchitectures/assets/css/main.css" id="maincss">
+    </head>
+    <body>
+        <nav>
+    
+    <a href="javascript:void(0)" onclick="toggle_menu()" id="hamb_menu">☰ Aulas</a>
+    <a href="javascript:void(0)" onclick="toggle_toc()" id="toc_btn">📑 Índice</a>
+    
+    <a href="/DisruptiveArchitectures/">Index</a>&nbsp;
+    <a href="javascript:void(0)" onclick="toggle_themes()">Mudar Tema</a>
+</nav>
+
+        <aside id="course_menu">
+    
+    
+    <b class="course_name">Disruptive Architectures</b>
+
+    
+    <b class="section_name">Sobre a disciplina</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/00_index.html" class="class_link">Introdução</a>
+    
+    <a href="/DisruptiveArchitectures/classes/01_notas.html" class="class_link">Notas</a>
+    
+    <a href="/DisruptiveArchitectures/classes/02_Cronograma.html" class="class_link">Cronograma</a>
+    
+    
+    <b class="section_name">IoT</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/03_definicoes.html" class="class_link">Definições de IoT</a>
+    
+    <a href="/DisruptiveArchitectures/classes/04_circuitoseletricos.html" class="class_link">Circuítos (eletro)eletrônicos</a>
+    
+    
+    <b class="section_name">Sistemas Embarcados</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/05_sistemas_embarcados.html" class="class_link">Introdução</a>
+    
+    <a href="/DisruptiveArchitectures/classes/06_arduino.html" class="class_link">Arduino</a>
+    
+    
+    <b class="section_name">Protocolos M2M</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/07_m2m.html" class="class_link">Introdução</a>
+    
+    <a href="/DisruptiveArchitectures/classes/08_UART.html" class="class_link">UART</a>
+    
+    <a href="/DisruptiveArchitectures/classes/09_I2C.html" class="class_link">I2C</a>
+    
+    <a href="/DisruptiveArchitectures/classes/10_SPI.html" class="class_link">SPI</a>
+    
+    
+    <b class="section_name">Sensores, Atuadores e IO</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/13_multisensores_analogicos.html" class="class_link">Sensores analógicos</a>
+    
+    <a href="/DisruptiveArchitectures/classes/14_motores.html" class="class_link">Motores</a>
+    
+    <a href="/DisruptiveArchitectures/classes/11_sensore_controladores.html" class="class_link">Input: Keypad</a>
+    
+    <a href="/DisruptiveArchitectures/classes/12_lcdi2c.html" class="class_link">Output: LCD 16x2 I2C</a>
+    
+    <a href="/DisruptiveArchitectures/classes/15_genius.html" class="class_link">Projeto: Genius</a>
+    
+    
+    <b class="section_name">IA: Fundamentos & Estruturação</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/15_ia_local_fundamentos.html" class="class_link">1. Demistificando GenAI & Modelos Locais</a>
+    
+    <a href="/DisruptiveArchitectures/classes/16_system_prompts.html" class="class_link">2. System Prompts & Guardrails</a>
+    
+    <a href="/DisruptiveArchitectures/classes/17_structured_outputs.html" class="class_link">3. Saídas Estruturadas & JSON</a>
+    
+    
+    <b class="section_name">Backend</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/16_node_red.html" class="class_link">Node-Red</a>
+    
+    
+    <b class="section_name">Protocolos TCP/IP (Aplicação)</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/17_MQTT.html" class="class_link">MQTT</a>
+    
+    
+    <b class="section_name">IA: Conhecimento & Ferramentas</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/18_embeddings_vetores.html" class="class_link">4. Embeddings & Vector DBs</a>
+    
+    <a href="/DisruptiveArchitectures/classes/19_rag_local.html" class="class_link">5. RAG Local & Manuais Técnicos</a>
+    
+    <a href="/DisruptiveArchitectures/classes/20_function_calling.html" class="class_link">6. Function Calling & Tools</a>
+    
+    
+    <b class="section_name">IA: Visão & Agentes Autônomos</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/21_vlm_multimodal.html" class="class_link">7. Visão Computacional & VLMs</a>
+    
+    <a href="/DisruptiveArchitectures/classes/22_react_agents.html" class="class_link">8. Agentes ReAct em Python Puro</a>
+    
+    <a href="/DisruptiveArchitectures/classes/23_multi_agentes.html" class="class_link">9. Colaboração Multi-Agente</a>
+    
+    
+    <b class="section_name">Desafio</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/18_Desafio.html" class="class_link">Genius + MQTT + Dashboard</a>
+    
+    
+    <b class="section_name">Plataformas IoT</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/19_IoTPlatforms.html" class="class_link">AWS IoT Core: Things</a>
+    
+    <a href="/DisruptiveArchitectures/classes/20_IoTPlatformsDevice.html" class="class_link">Configurando um dispositivo</a>
+    
+    
+    <b class="section_name">IA: Protocolos IoT & Edge Gateway</b>
+    
+    
+    <a href="/DisruptiveArchitectures/classes/24_ia_mqtt_gateways.html" class="class_link">10. IA com Protocolo MQTT</a>
+    
+    <a href="/DisruptiveArchitectures/classes/25_quantizacao_edge.html" class="class_link">11. Quantização & Otimização Edge</a>
+    
+    <a href="/DisruptiveArchitectures/classes/26_projeto_gateway_part1.html" class="class_link">12. Projeto Gateway: Arquitetura</a>
+    
+    <a href="/DisruptiveArchitectures/classes/27_projeto_gateway_part2.html" class="class_link">13. Projeto Gateway: Resiliência</a>
+    
+    
+
+
+  
+</aside>
+
+        <aside id="toc_menu"> 
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#projeto-integrador-o-ai-smart-gateway-parte-1">Projeto Integrador: O AI Smart Gateway (Parte 1)</a></li>
+<li class="toc-entry toc-h1"><a href="#teoria">Teoria</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#1-princípios-de-engenharia-de-software-para-edge-ai">1. Princípios de Engenharia de Software para Edge AI</a></li>
+<li class="toc-entry toc-h2"><a href="#2-a-estrutura-do-projeto-capstone">2. A Estrutura do Projeto Capstone</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#prática">Prática</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#passo-1-construindo-os-modelos-de-dados-modelspy">Passo 1: Construindo os Modelos de Dados (models.py)</a></li>
+<li class="toc-entry toc-h2"><a href="#passo-2-construindo-as-ferramentas-de-hardware-toolspy">Passo 2: Construindo as Ferramentas de Hardware (tools.py)</a></li>
+<li class="toc-entry toc-h2"><a href="#passo-3-construindo-o-motor-rag-de-diagnósticos-rag_enginepy">Passo 3: Construindo o Motor RAG de Diagnósticos (rag_engine.py)</a></li>
+<li class="toc-entry toc-h2"><a href="#passo-4-o-roteador-central-do-gateway-gatewaypy">Passo 4: O Roteador Central do Gateway (gateway.py)</a></li>
+<li class="toc-entry toc-h2"><a href="#passo-5-executando-o-gateway-integrado">Passo 5: Executando o Gateway Integrado</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#saída-esperada-no-terminal">Saída Esperada no Terminal:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#questionário-de-fixação">Questionário de Fixação</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#gabarito-comentado">Gabarito Comentado</a></li>
+</ul>
+</li>
+</ul>
+</aside>
+
+        <main>
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                public class 
+                
+                <span class="nc ">Disruptive Architectures</span>
+                :
+                <span class="nc ">IA: Protocolos IoT & Edge Gateway</span> 
+                
+                , 
+                <span class="nc ">12. Projeto Gateway: Arquitetura</span>
+                
+            </div> 
+            <center><h1> 12. Projeto Gateway: Arquitetura</h1></center>
+            <h1 id="projeto-integrador-o-ai-smart-gateway-parte-1">
+<a class="anchor" href="#projeto-integrador-o-ai-smart-gateway-parte-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Projeto Integrador: O AI Smart Gateway (Parte 1)</h1>
+
+<p>Chegamos à reta final da nossa disciplina! Ao longo das aulas anteriores, dominamos individualmente:</p>
+<ol>
+  <li>
+<strong>Modelos Locais &amp; Inferência Rápida</strong> (<code class="language-plaintext highlighter-rouge">llama3.2:1b</code>, <code class="language-plaintext highlighter-rouge">qwen2.5:1.5b</code>)</li>
+  <li>
+<strong>System Prompts &amp; Guardrails</strong> (Determinismo e segurança)</li>
+  <li>
+<strong>Saídas Estruturadas</strong> (JSON com Pydantic v2)</li>
+  <li>
+<strong>Bancos Vetoriais &amp; RAG</strong> (ChromaDB + <code class="language-plaintext highlighter-rouge">nomic-embed-text</code>)</li>
+  <li>
+<strong>Function Calling &amp; Tool Use</strong> (Acionamento de relés e atuadores)</li>
+  <li>
+<strong>Visão Computacional Multimodal</strong> (<code class="language-plaintext highlighter-rouge">moondream</code> VLM)</li>
+  <li>
+<strong>Protocolo MQTT</strong> (Mosquitto assíncrono com filas)</li>
+</ol>
+
+<p>Nesta aula e na próxima, uniremos todas essas peças em uma <strong>arquitetura de software de nível industrial</strong>: o <strong>Local AI Smart Gateway</strong>.</p>
+
+<pre class="mermaid">
+flowchart TD
+    subgraph INPUTS["1. Ingestão de Eventos (MQTT / Câmera / Usuário)"]
+        MQTT_IN["📡 Telemetria MQTT<br>(home/sensors/#)"]
+        IMG_IN["📷 Feed de Imagens<br>(home/camera/snapshot)"]
+        USER_IN["💬 Comando de Usuário<br>(home/commands/chat)"]
+    end
+
+    subgraph ROUTER["2. Roteador Central Inteligente (gateway.py)"]
+        RouterCheck{"🧭 Tipo de Evento?"}
+    end
+
+    subgraph MODULES["3. Módulos Especializados da Aplicação"]
+        ToolsMod["🔌 tools.py<br>(Acionamento de Relés &amp; Sensores)"]
+        RAGMod["📚 rag_engine.py<br>(ChromaDB + Manuais de Erro)"]
+        VisionMod["👁️ vlm_engine.py<br>(Moondream2 Inspeção de Painel)"]
+    end
+
+    subgraph OUTPUTS["4. Saídas &amp; Atuadores"]
+        MQTT_PUB["📢 Publicação MQTT em home/actuators/"]
+        AUDIT_LOG["📝 Logs Estruturados de Auditoria"]
+    end
+
+    MQTT_IN --&gt; RouterCheck
+    IMG_IN --&gt; RouterCheck
+    USER_IN --&gt; RouterCheck
+
+    RouterCheck --&gt;|"Comando de Atuação"| ToolsMod
+    RouterCheck --&gt;|"Código de Falha (E01-E04)"| RAGMod
+    RouterCheck --&gt;|"Payload com Imagem"| VisionMod
+
+    ToolsMod --&gt; MQTT_PUB
+    RAGMod --&gt; MQTT_PUB
+    VisionMod --&gt; MQTT_PUB
+    MQTT_PUB --&gt; AUDIT_LOG
+
+    style INPUTS fill:#f8fafc,stroke:#94a3b8,stroke-width:2px;
+    style ROUTER fill:#fef3c7,stroke:#f59e0b,stroke-width:2px;
+    style MODULES fill:#e0e7ff,stroke:#6366f1,stroke-width:2px;
+    style OUTPUTS fill:#d1fae5,stroke:#10b981,stroke-width:2px;
+</pre>
+
+<hr>
+
+<h1 id="teoria">
+<a class="anchor" href="#teoria" aria-hidden="true"><span class="octicon octicon-link"></span></a>Teoria</h1>
+
+<h2 id="1-princípios-de-engenharia-de-software-para-edge-ai">
+<a class="anchor" href="#1-princ%C3%ADpios-de-engenharia-de-software-para-edge-ai" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Princípios de Engenharia de Software para Edge AI</h2>
+
+<p>Em projetos reais de engenharia, <strong>nunca escrevemos toda a aplicação em um único arquivo de 500 linhas</strong>. Uma arquitetura de borda profissional deve seguir três princípios:</p>
+
+<ol>
+  <li>
+<strong>Separação de Preocupações (<em>Separation of Concerns</em>):</strong> Cada módulo deve ter uma única responsabilidade (esquemas de dados, ferramentas de hardware, motor RAG, motor de mensageria).</li>
+  <li>
+<strong>Roteamento Inteligente (<em>Smart Intent Routing</em>):</strong> Em vez de acionar todas as IAs para qualquer mensagem, o roteador analisa a natureza da entrada e dispara apenas o módulo estritamente necessário.</li>
+  <li>
+<strong>Auditabilidade &amp; Logs Estruturados:</strong> Toda decisão da IA, tempo de inferência e ação executada em atuador físico deve ser registrada em formato JSON para rastreamento.</li>
+</ol>
+
+<hr>
+
+<h2 id="2-a-estrutura-do-projeto-capstone">
+<a class="anchor" href="#2-a-estrutura-do-projeto-capstone" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. A Estrutura do Projeto Capstone</h2>
+
+<p>Nosso repositório do Gateway será organizado da seguinte forma:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ai_smart_gateway/
+├── models.py         # Contratos de dados e esquemas Pydantic v2
+├── tools.py          # Funções de hardware (leitura de GPIO, acionamento de relés)
+├── rag_engine.py     # Base de conhecimento vetorial e diagnóstico de manuais
+└── gateway.py        # Ponto de entrada (Main), cliente MQTT assíncrono e roteador
+</code></pre></div></div>
+
+<hr>
+
+<h1 id="prática">
+<a class="anchor" href="#pr%C3%A1tica" aria-hidden="true"><span class="octicon octicon-link"></span></a>Prática</h1>
+
+<p>Vamos construir os três primeiros módulos do nosso Gateway e integrá-los no módulo principal <code class="language-plaintext highlighter-rouge">gateway.py</code>.</p>
+
+<h2 id="passo-1-construindo-os-modelos-de-dados-modelspy">
+<a class="anchor" href="#passo-1-construindo-os-modelos-de-dados-modelspy" aria-hidden="true"><span class="octicon octicon-link"></span></a>Passo 1: Construindo os Modelos de Dados (<code class="language-plaintext highlighter-rouge">models.py</code>)</h2>
+
+<p>Crie o arquivo <code class="language-plaintext highlighter-rouge">models.py</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">typing</span> <span class="kn">import</span> <span class="n">Literal</span>
+<span class="kn">from</span> <span class="n">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
+
+
+<span class="c1"># Contrato de Telemetria recebida dos Sensores
+</span><span class="k">class</span> <span class="nc">SensorTelemetry</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">device_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="nc">Field</span><span class="p">(...,</span> <span class="n">description</span><span class="o">=</span><span class="sh">"</span><span class="s">Identificador único do dispositivo</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">temperature</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="nc">Field</span><span class="p">(...,</span> <span class="n">description</span><span class="o">=</span><span class="sh">"</span><span class="s">Temperatura em Celsius</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">humidity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="nc">Field</span><span class="p">(...,</span> <span class="n">description</span><span class="o">=</span><span class="sh">"</span><span class="s">Umidade relativa do ar (0-100%)</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">error_code</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="bp">None</span> <span class="o">=</span> <span class="nc">Field</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sh">"</span><span class="s">Código de erro técnico, se houver</span><span class="sh">"</span>
+    <span class="p">)</span>
+    <span class="n">camera_snapshot</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="bp">None</span> <span class="o">=</span> <span class="nc">Field</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sh">"</span><span class="s">Caminho da imagem capturada, se houver</span><span class="sh">"</span>
+    <span class="p">)</span>
+
+
+<span class="c1"># Contrato de Ação de Saída do Gateway
+</span><span class="k">class</span> <span class="nc">GatewayAction</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">target_actuator</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="nc">Field</span><span class="p">(</span>
+        <span class="p">...,</span> <span class="n">description</span><span class="o">=</span><span class="sh">"</span><span class="s">Nome do atuador a ser acionado</span><span class="sh">"</span>
+    <span class="p">)</span>
+    <span class="n">command</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="sh">"</span><span class="s">ON</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">OFF</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">SET_VALUE</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">ALERT_ONLY</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">NO_ACTION</span><span class="sh">"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="nc">Field</span><span class="p">(...,</span> <span class="n">description</span><span class="o">=</span><span class="sh">"</span><span class="s">Comando para o atuador</span><span class="sh">"</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">parameter_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="bp">None</span> <span class="o">=</span> <span class="nc">Field</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sh">"</span><span class="s">Valor numérico adicional (ex: setpoint)</span><span class="sh">"</span>
+    <span class="p">)</span>
+    <span class="n">diagnostic_report</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="nc">Field</span><span class="p">(</span>
+        <span class="p">...,</span> <span class="n">description</span><span class="o">=</span><span class="sh">"</span><span class="s">Explicação técnica da decisão tomada pelo Gateway</span><span class="sh">"</span>
+    <span class="p">)</span>
+</code></pre></div></div>
+
+<hr>
+
+<h2 id="passo-2-construindo-as-ferramentas-de-hardware-toolspy">
+<a class="anchor" href="#passo-2-construindo-as-ferramentas-de-hardware-toolspy" aria-hidden="true"><span class="octicon octicon-link"></span></a>Passo 2: Construindo as Ferramentas de Hardware (<code class="language-plaintext highlighter-rouge">tools.py</code>)</h2>
+
+<p>Crie o arquivo <code class="language-plaintext highlighter-rouge">tools.py</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">json</span>
+
+<span class="c1"># Estado simulado dos relés e atuadores conectados
+</span><span class="n">ESTADO_HARDWARE</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="sh">"</span><span class="s">rele_bomba_irrigacao</span><span class="sh">"</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+    <span class="sh">"</span><span class="s">rele_exaustor_clima</span><span class="sh">"</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+    <span class="sh">"</span><span class="s">alarme_sonoro</span><span class="sh">"</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">acionar_rele</span><span class="p">(</span><span class="n">nome_rele</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">estado</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sh">"""</span><span class="s">Aciona um relé físico no hardware do Gateway.
+
+    Args:
+        nome_rele: </span><span class="sh">'</span><span class="s">bomba_irrigacao</span><span class="sh">'</span><span class="s">, </span><span class="sh">'</span><span class="s">exaustor_clima</span><span class="sh">'</span><span class="s"> ou </span><span class="sh">'</span><span class="s">alarme_sonoro</span><span class="sh">'</span><span class="s">.
+        estado: True para ligar (HIGH), False para desligar (LOW).
+    </span><span class="sh">"""</span>
+    <span class="n">chave</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"</span><span class="s">rele_</span><span class="si">{</span><span class="n">nome_rele</span><span class="si">}</span><span class="sh">"</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">nome_rele</span><span class="p">.</span><span class="nf">startswith</span><span class="p">(</span><span class="sh">"</span><span class="s">rele_</span><span class="sh">"</span><span class="p">)</span> <span class="k">else</span> <span class="n">nome_rele</span>
+    <span class="k">if</span> <span class="n">chave</span> <span class="ow">in</span> <span class="n">ESTADO_HARDWARE</span><span class="p">:</span>
+        <span class="n">ESTADO_HARDWARE</span><span class="p">[</span><span class="n">chave</span><span class="p">]</span> <span class="o">=</span> <span class="n">estado</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"</span><span class="s">Relé </span><span class="sh">'</span><span class="si">{</span><span class="n">chave</span><span class="si">}</span><span class="sh">'</span><span class="s"> atualizado para: </span><span class="si">{</span><span class="sh">'</span><span class="s">LIGADO (HIGH)</span><span class="sh">'</span> <span class="k">if</span> <span class="n">estado</span> <span class="k">else</span> <span class="sh">'</span><span class="s">DESLIGADO (LOW)</span><span class="sh">'</span><span class="si">}</span><span class="s">.</span><span class="sh">"</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">   [HARDWARE GPIO] ⚡ </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">json</span><span class="p">.</span><span class="nf">dumps</span><span class="p">({</span><span class="sh">"</span><span class="s">status</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">SUCCESS</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">message</span><span class="sh">"</span><span class="p">:</span> <span class="n">msg</span><span class="p">})</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">json</span><span class="p">.</span><span class="nf">dumps</span><span class="p">(</span>
+            <span class="p">{</span><span class="sh">"</span><span class="s">status</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">ERROR</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">message</span><span class="sh">"</span><span class="p">:</span> <span class="sa">f</span><span class="sh">"</span><span class="s">Relé </span><span class="sh">'</span><span class="si">{</span><span class="n">nome_rele</span><span class="si">}</span><span class="sh">'</span><span class="s"> inexistente.</span><span class="sh">"</span><span class="p">}</span>
+        <span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">consultar_status_dispositivos</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sh">"""</span><span class="s">Retorna o estado atual de todos os relés e atuadores conectados.</span><span class="sh">"""</span>
+    <span class="k">return</span> <span class="n">json</span><span class="p">.</span><span class="nf">dumps</span><span class="p">(</span><span class="n">ESTADO_HARDWARE</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr>
+
+<h2 id="passo-3-construindo-o-motor-rag-de-diagnósticos-rag_enginepy">
+<a class="anchor" href="#passo-3-construindo-o-motor-rag-de-diagn%C3%B3sticos-rag_enginepy" aria-hidden="true"><span class="octicon octicon-link"></span></a>Passo 3: Construindo o Motor RAG de Diagnósticos (<code class="language-plaintext highlighter-rouge">rag_engine.py</code>)</h2>
+
+<p>Crie o arquivo <code class="language-plaintext highlighter-rouge">rag_engine.py</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">chromadb</span>
+<span class="kn">import</span> <span class="n">ollama</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">chromadb</span><span class="p">.</span><span class="nc">Client</span><span class="p">()</span>
+<span class="n">collection</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">create_collection</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sh">"</span><span class="s">gateway_troubleshooting_docs</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="c1"># Ingestão de Manuais Técnicos Oficiais de Diagnóstico
+</span><span class="n">MANUAIS_DE_FALHA</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span>
+        <span class="sh">"</span><span class="s">ERR-E01</span><span class="sh">"</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">Código E01: Falha de comunicação no barramento I2C do sensor de temperatura. Solução: Reiniciar o barramento e verificar resistores de pull-up.</span><span class="sh">"</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="p">(</span>
+        <span class="sh">"</span><span class="s">ERR-E02</span><span class="sh">"</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">Código E02: Nível crítico de subtensão (bateria &lt; 3.3V). Solução: Desligar cargas não essenciais e iniciar recarga.</span><span class="sh">"</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="p">(</span>
+        <span class="sh">"</span><span class="s">ERR-E03</span><span class="sh">"</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">Código E03: Obstrução de fluxo no ventilador de exaustão. Solução: Desarmar o relé do motor para evitar queima por sobrecarga.</span><span class="sh">"</span><span class="p">,</span>
+    <span class="p">),</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">doc_id</span><span class="p">,</span> <span class="n">txt</span> <span class="ow">in</span> <span class="n">MANUAIS_DE_FALHA</span><span class="p">:</span>
+    <span class="n">emb</span> <span class="o">=</span> <span class="n">ollama</span><span class="p">.</span><span class="nf">embeddings</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="sh">"</span><span class="s">nomic-embed-text</span><span class="sh">"</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="n">txt</span><span class="p">)[</span><span class="sh">"</span><span class="s">embedding</span><span class="sh">"</span><span class="p">]</span>
+    <span class="n">collection</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span>
+        <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="n">doc_id</span><span class="p">],</span>
+        <span class="n">embeddings</span><span class="o">=</span><span class="p">[</span><span class="n">emb</span><span class="p">],</span>
+        <span class="n">documents</span><span class="o">=</span><span class="p">[</span><span class="n">txt</span><span class="p">],</span>
+        <span class="n">metadatas</span><span class="o">=</span><span class="p">[{</span><span class="sh">"</span><span class="s">id</span><span class="sh">"</span><span class="p">:</span> <span class="n">doc_id</span><span class="p">}],</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">consultar_diagnostico_rag</span><span class="p">(</span><span class="n">codigo_erro</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sh">"""</span><span class="s">Busca a resolução oficial nos manuais técnicos para um código de falha.</span><span class="sh">"""</span>
+    <span class="n">q_emb</span> <span class="o">=</span> <span class="n">ollama</span><span class="p">.</span><span class="nf">embeddings</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="sh">"</span><span class="s">nomic-embed-text</span><span class="sh">"</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="n">codigo_erro</span><span class="p">)[</span>
+        <span class="sh">"</span><span class="s">embedding</span><span class="sh">"</span>
+    <span class="p">]</span>
+    <span class="n">busca</span> <span class="o">=</span> <span class="n">collection</span><span class="p">.</span><span class="nf">query</span><span class="p">(</span><span class="n">query_embeddings</span><span class="o">=</span><span class="p">[</span><span class="n">q_emb</span><span class="p">],</span> <span class="n">n_results</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">contexto</span> <span class="o">=</span> <span class="n">busca</span><span class="p">[</span><span class="sh">"</span><span class="s">documents</span><span class="sh">"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"""</span><span class="s">Você é o engenheiro especialista do Gateway. Responda em 1 frase direta com a ação de reparo.
+Contexto Oficial: </span><span class="si">{</span><span class="n">contexto</span><span class="si">}</span><span class="s">
+Código de Erro: </span><span class="si">{</span><span class="n">codigo_erro</span><span class="si">}</span><span class="sh">"""</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="n">ollama</span><span class="p">.</span><span class="nf">chat</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">=</span><span class="sh">"</span><span class="s">llama3.2:1b</span><span class="sh">"</span><span class="p">,</span>
+        <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">user</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="n">prompt</span><span class="p">}],</span>
+        <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="sh">"</span><span class="s">temperature</span><span class="sh">"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">},</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">res</span><span class="p">[</span><span class="sh">"</span><span class="s">message</span><span class="sh">"</span><span class="p">][</span><span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">].</span><span class="nf">strip</span><span class="p">()</span>
+</code></pre></div></div>
+
+<hr>
+
+<h2 id="passo-4-o-roteador-central-do-gateway-gatewaypy">
+<a class="anchor" href="#passo-4-o-roteador-central-do-gateway-gatewaypy" aria-hidden="true"><span class="octicon octicon-link"></span></a>Passo 4: O Roteador Central do Gateway (<code class="language-plaintext highlighter-rouge">gateway.py</code>)</h2>
+
+<p>Crie o arquivo <code class="language-plaintext highlighter-rouge">gateway.py</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">json</span>
+<span class="kn">import</span> <span class="n">time</span>
+<span class="kn">from</span> <span class="n">models</span> <span class="kn">import</span> <span class="n">GatewayAction</span><span class="p">,</span> <span class="n">SensorTelemetry</span>
+<span class="kn">from</span> <span class="n">rag_engine</span> <span class="kn">import</span> <span class="n">consultar_diagnostico_rag</span>
+<span class="kn">import</span> <span class="n">tools</span>
+
+
+<span class="k">def</span> <span class="nf">processar_evento_gateway</span><span class="p">(</span><span class="n">payload_json</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GatewayAction</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">=</span><span class="sh">"</span> <span class="o">*</span> <span class="mi">65</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">📥 [EVENTO INGESTADO]: </span><span class="si">{</span><span class="n">payload_json</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+
+    <span class="c1"># 1. Validação do Contrato de Entrada com Pydantic
+</span>    <span class="n">telemetria</span> <span class="o">=</span> <span class="n">SensorTelemetry</span><span class="p">.</span><span class="nf">model_validate_json</span><span class="p">(</span><span class="n">payload_json</span><span class="p">)</span>
+
+    <span class="c1"># 2. ROTEADOR INTELIGENTE (Smart Intent Router)
+</span>
+    <span class="c1"># CENÁRIO A: Código de Erro Detectado ➔ Dispara RAG
+</span>    <span class="k">if</span> <span class="n">telemetria</span><span class="p">.</span><span class="n">error_code</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span>
+            <span class="sa">f</span><span class="sh">"</span><span class="s">🧭 [ROTA RAG]: Código de erro </span><span class="sh">'</span><span class="si">{</span><span class="n">telemetria</span><span class="p">.</span><span class="n">error_code</span><span class="si">}</span><span class="sh">'</span><span class="s"> identificado.</span><span class="sh">"</span>
+        <span class="p">)</span>
+        <span class="n">diagnostico</span> <span class="o">=</span> <span class="nf">consultar_diagnostico_rag</span><span class="p">(</span><span class="n">telemetria</span><span class="p">.</span><span class="n">error_code</span><span class="p">)</span>
+        <span class="n">tools</span><span class="p">.</span><span class="nf">acionar_rele</span><span class="p">(</span><span class="sh">"</span><span class="s">alarme_sonoro</span><span class="sh">"</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nc">GatewayAction</span><span class="p">(</span>
+            <span class="n">target_actuator</span><span class="o">=</span><span class="sh">"</span><span class="s">alarme_sonoro</span><span class="sh">"</span><span class="p">,</span>
+            <span class="n">command</span><span class="o">=</span><span class="sh">"</span><span class="s">ON</span><span class="sh">"</span><span class="p">,</span>
+            <span class="n">diagnostic_report</span><span class="o">=</span><span class="sa">f</span><span class="sh">"</span><span class="s">Diagnóstico RAG: </span><span class="si">{</span><span class="n">diagnostico</span><span class="si">}</span><span class="sh">"</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="c1"># CENÁRIO B: Superaquecimento Térmico ➔ Dispara Acionamento de Exaustor
+</span>    <span class="k">elif</span> <span class="n">telemetria</span><span class="p">.</span><span class="n">temperature</span> <span class="o">&gt;</span> <span class="mf">35.0</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">🧭 [ROTA CONTROLE]: Temperatura crítica detectada (&gt;35°C).</span><span class="sh">"</span><span class="p">)</span>
+        <span class="n">tools</span><span class="p">.</span><span class="nf">acionar_rele</span><span class="p">(</span><span class="sh">"</span><span class="s">exaustor_clima</span><span class="sh">"</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nc">GatewayAction</span><span class="p">(</span>
+            <span class="n">target_actuator</span><span class="o">=</span><span class="sh">"</span><span class="s">exaustor_clima</span><span class="sh">"</span><span class="p">,</span>
+            <span class="n">command</span><span class="o">=</span><span class="sh">"</span><span class="s">ON</span><span class="sh">"</span><span class="p">,</span>
+            <span class="n">parameter_value</span><span class="o">=</span><span class="n">telemetria</span><span class="p">.</span><span class="n">temperature</span><span class="p">,</span>
+            <span class="n">diagnostic_report</span><span class="o">=</span><span class="sa">f</span><span class="sh">"</span><span class="s">Exaustor ativado preventivamente para mitigar temperatura de </span><span class="si">{</span><span class="n">telemetria</span><span class="p">.</span><span class="n">temperature</span><span class="si">}</span><span class="s">°C.</span><span class="sh">"</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="c1"># CENÁRIO C: Operação Normal
+</span>    <span class="k">else</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">🧭 [ROTA MONITOR]: Telemetria dentro dos parâmetros nominais.</span><span class="sh">"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nc">GatewayAction</span><span class="p">(</span>
+            <span class="n">target_actuator</span><span class="o">=</span><span class="sh">"</span><span class="s">none</span><span class="sh">"</span><span class="p">,</span>
+            <span class="n">command</span><span class="o">=</span><span class="sh">"</span><span class="s">NO_ACTION</span><span class="sh">"</span><span class="p">,</span>
+            <span class="n">diagnostic_report</span><span class="o">=</span><span class="sh">"</span><span class="s">Sistema operando dentro dos parâmetros de segurança.</span><span class="sh">"</span><span class="p">,</span>
+        <span class="p">)</span>
+
+
+<span class="c1"># --- EXECUÇÃO DE TESTES INTEGRADOS ---
+</span><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">=== INICIANDO AI SMART GATEWAY (PARTE 1) ===</span><span class="sh">"</span><span class="p">)</span>
+
+    <span class="n">testes_telemetria</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="sh">'</span><span class="s">{</span><span class="sh">"</span><span class="s">device_id</span><span class="sh">"</span><span class="s">: </span><span class="sh">"</span><span class="s">NODE-01</span><span class="sh">"</span><span class="s">, </span><span class="sh">"</span><span class="s">temperature</span><span class="sh">"</span><span class="s">: 23.4, </span><span class="sh">"</span><span class="s">humidity</span><span class="sh">"</span><span class="s">: 55.0}</span><span class="sh">'</span><span class="p">,</span>
+        <span class="sh">'</span><span class="s">{</span><span class="sh">"</span><span class="s">device_id</span><span class="sh">"</span><span class="s">: </span><span class="sh">"</span><span class="s">NODE-02</span><span class="sh">"</span><span class="s">, </span><span class="sh">"</span><span class="s">temperature</span><span class="sh">"</span><span class="s">: 41.2, </span><span class="sh">"</span><span class="s">humidity</span><span class="sh">"</span><span class="s">: 30.0}</span><span class="sh">'</span><span class="p">,</span>
+        <span class="sh">'</span><span class="s">{</span><span class="sh">"</span><span class="s">device_id</span><span class="sh">"</span><span class="s">: </span><span class="sh">"</span><span class="s">NODE-03</span><span class="sh">"</span><span class="s">, </span><span class="sh">"</span><span class="s">temperature</span><span class="sh">"</span><span class="s">: 25.0, </span><span class="sh">"</span><span class="s">humidity</span><span class="sh">"</span><span class="s">: 60.0, </span><span class="sh">"</span><span class="s">error_code</span><span class="sh">"</span><span class="s">: </span><span class="sh">"</span><span class="s">Erro E03</span><span class="sh">"</span><span class="s">}</span><span class="sh">'</span><span class="p">,</span>
+    <span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">testes_telemetria</span><span class="p">:</span>
+        <span class="n">acao</span> <span class="o">=</span> <span class="nf">processar_evento_gateway</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="se">\n</span><span class="s">📊 [AÇÃO EXECUTADA PELO GATEWAY]:</span><span class="sh">"</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">   -&gt; Atuador Alvo: </span><span class="si">{</span><span class="n">acao</span><span class="p">.</span><span class="n">target_actuator</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">   -&gt; Comando: </span><span class="si">{</span><span class="n">acao</span><span class="p">.</span><span class="n">command</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">   -&gt; Relatório: </span><span class="si">{</span><span class="n">acao</span><span class="p">.</span><span class="n">diagnostic_report</span><span class="si">}</span><span class="se">\n</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr>
+
+<h2 id="passo-5-executando-o-gateway-integrado">
+<a class="anchor" href="#passo-5-executando-o-gateway-integrado" aria-hidden="true"><span class="octicon octicon-link"></span></a>Passo 5: Executando o Gateway Integrado</h2>
+
+<p>Execute o script:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python gateway.py
+</code></pre></div></div>
+
+<h3 id="saída-esperada-no-terminal">
+<a class="anchor" href="#sa%C3%ADda-esperada-no-terminal" aria-hidden="true"><span class="octicon octicon-link"></span></a>Saída Esperada no Terminal:</h3>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>=== INICIANDO AI SMART GATEWAY (PARTE 1) ===
+=================================================================
+📥 [EVENTO INGESTADO]: {"device_id": "NODE-01", "temperature": 23.4, "humidity": 55.0}
+🧭 [ROTA MONITOR]: Telemetria dentro dos parâmetros nominais.
+
+📊 [AÇÃO EXECUTADA PELO GATEWAY]:
+   -&gt; Atuador Alvo: none
+   -&gt; Comando: NO_ACTION
+   -&gt; Relatório: Sistema operando dentro dos parâmetros de segurança.
+
+=================================================================
+📥 [EVENTO INGESTADO]: {"device_id": "NODE-02", "temperature": 41.2, "humidity": 30.0}
+🧭 [ROTA CONTROLE]: Temperatura crítica detectada (&gt;35°C).
+   [HARDWARE GPIO] ⚡ Relé 'rele_exaustor_clima' atualizado para: LIGADO (HIGH).
+
+📊 [AÇÃO EXECUTADA PELO GATEWAY]:
+   -&gt; Atuador Alvo: exaustor_clima
+   -&gt; Comando: ON
+   -&gt; Relatório: Exaustor ativado preventivamente para mitigar temperatura de 41.2°C.
+
+=================================================================
+📥 [EVENTO INGESTADO]: {"device_id": "NODE-03", "temperature": 25.0, "humidity": 60.0, "error_code": "Erro E03"}
+🧭 [ROTA RAG]: Código de erro 'Erro E03' identificado.
+   [HARDWARE GPIO] ⚡ Relé 'rele_alarme_sonoro' atualizado para: LIGADO (HIGH).
+
+📊 [AÇÃO EXECUTADA PELO GATEWAY]:
+   -&gt; Atuador Alvo: alarme_sonoro
+   -&gt; Comando: ON
+   -&gt; Relatório: Diagnóstico RAG: Desarme o relé do motor de exaustão para evitar queima por sobrecarga.
+</code></pre></div></div>
+
+<hr>
+
+<h1 id="questionário-de-fixação">
+<a class="anchor" href="#question%C3%A1rio-de-fixa%C3%A7%C3%A3o" aria-hidden="true"><span class="octicon octicon-link"></span></a>Questionário de Fixação</h1>
+
+<p><strong>1. Qual é o objetivo de modularizar a aplicação do Gateway em arquivos separados (<code class="language-plaintext highlighter-rouge">models.py</code>, <code class="language-plaintext highlighter-rouge">tools.py</code>, <code class="language-plaintext highlighter-rouge">rag_engine.py</code>, <code class="language-plaintext highlighter-rouge">gateway.py</code>)?</strong><br>
+a) Aumentar o tamanho do arquivo ZIP para entrega.<br>
+b) Aplicar o princípio de Separação de Preocupações (<em>Separation of Concerns</em>), facilitando a manutenção, testes unitários independentes e escalabilidade do software.<br>
+c) Forçar o sistema operacional a usar 100% da CPU.<br>
+d) Substituir a necessidade de instalar o Python.<br>
+e) Exigir que o usuário compre quatro computadores diferentes.</p>
+
+<p><strong>2. Qual é a responsabilidade do componente <em>Roteador Inteligente (Smart Router)</em> no <code class="language-plaintext highlighter-rouge">gateway.py</code>?</strong><br>
+a) Conectar cabos de rede azul nos conectores RJ45.<br>
+b) Inspecionar a carga útil (<em>payload</em>) recebida e direcionar o processamento para o módulo adequado (RAG, Controle de Relés ou Visão), evitando processamento computacional desnecessário.<br>
+c) Aumentar a temperatura do microcontrolador.<br>
+d) Apagar os arquivos de banco de dados do sistema.<br>
+e) Desligar o roteador Wi-Fi da sala.</p>
+
+<p><strong>3. No módulo <code class="language-plaintext highlighter-rouge">models.py</code>, qual é a função das classes baseadas em <code class="language-plaintext highlighter-rouge">pydantic.BaseModel</code>?</strong><br>
+a) Desenhar gráficos em 3D para a interface com o usuário.<br>
+b) Definir contratos de dados estritos com validação automática de tipos e limites numéricos para entradas de telemetria e saídas de comando do Gateway.<br>
+c) Compilar o firmware C++ para a placa de circuito impresso.<br>
+d) Criptografar senhas com chaves de 4096 bits.<br>
+e) Substituir a necessidade de usar memória RAM.</p>
+
+<p><strong>4. O que acontece quando o Gateway recebe uma telemetria que inclui o campo <code class="language-plaintext highlighter-rouge">"error_code": "Erro E03"</code>?</strong><br>
+a) O sistema trava imediatamente.<br>
+b) O roteador direciona o evento para o módulo <code class="language-plaintext highlighter-rouge">rag_engine.py</code>, que consulta o ChromaDB e formula a instrução de reparo correta ancorada nos manuais oficiais de hardware.<br>
+c) O Gateway formata o disco rígido.<br>
+d) O Gateway ignora o erro e desliga a energia do prédio.<br>
+e) O modelo de visão Moondream2 é desinstalado.</p>
+
+<p><strong>5. Por que os logs gerados pelo Gateway devem ser estruturados (ex: via JSON ou objetos Pydantic serializados)?</strong><br>
+a) Porque arquivos de texto desestruturados não podem ser lidos por humanos.<br>
+b) Para permitir que sistemas centrais de telemetria e auditoria analisem, filtrem e monitorem as decisões autônomas tomadas pela IA ao longo do tempo.<br>
+c) Para diminuir o consumo elétrico dos sensores analógicos.<br>
+d) Para obrigar o uso de telas de alta resolução.<br>
+e) Para impedir a conexão de novos dispositivos na rede MQTT.</p>
+
+<hr>
+
+<h3 id="gabarito-comentado">
+<a class="anchor" href="#gabarito-comentado" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gabarito Comentado</h3>
+
+<ol>
+  <li>
+<strong>b) Aplicar o princípio de Separação de Preocupações (<em>Separation of Concerns</em>)…</strong><br>
+<em>Justificativa:</em> A modularização permite testar componentes individualmente (como o motor RAG sem depender do hardware real) e melhora a organização do projeto.</li>
+  <li>
+<strong>b) Inspecionar a carga útil (<em>payload</em>) recebida e direcionar o processamento para o módulo adequado…</strong><br>
+<em>Justificativa:</em> O roteamento inteligente evita invocar modelos pesados para telemetria rotineira, otimizando o uso de recursos de borda.</li>
+  <li>
+<strong>b) Definir contratos de dados estritos com validação automática de tipos e limites…</strong><br>
+<em>Justificativa:</em> Modelos Pydantic garantem a integridade dos dados e rejeitam mensagens corrompidas antes que atinjam os atuadores.</li>
+  <li>
+<strong>b) O roteador direciona o evento para o módulo <code class="language-plaintext highlighter-rouge">rag_engine.py</code>, que consulta o ChromaDB…</strong><br>
+<em>Justificativa:</em> A integração entre roteamento e RAG automatiza o suporte técnico de primeiro nível em sistemas industriais.</li>
+  <li>
+<strong>b) Para permitir que sistemas centrais de telemetria e auditoria analisem, filtrem e monitorem…</strong><br>
+<em>Justificativa:</em> Logs estruturados são indispensáveis para observabilidade, rastreabilidade e auditoria de segurança em sistemas autônomos.</li>
+</ol>
+
+            <hr/>
+            <div style="font-size:1.1em;font-weight:700;margin:1em"
+                class="highlight">
+                public class 
+                
+                <span class="nc ">Disruptive Architectures</span>
+                :
+                <span class="nc ">IA: Protocolos IoT & Edge Gateway</span> 
+                
+                , 
+                <span class="nc ">12. Projeto Gateway: Arquitetura</span>
+                
+            </div> 
+        </main>
+        <script type="text/javascript" src="/DisruptiveArchitectures/assets/scripts.js"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+        <script src=" https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js "></script>
+        <script type="module">
+            mermaid.initialize({theme:"neutral",
+                                securityLevel: "strict",
+                                startOnLoad: true
+                                });
+        </script>
+    </body>
+</html>
