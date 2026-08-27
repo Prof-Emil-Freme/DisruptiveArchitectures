@@ -204,6 +204,53 @@ void loop() {
 
 ![](assets/node_red_ping_pong.png)
 
-```json
-[{"id":"388440c46d7e221d","type":"tab","label":"Flow 1","disabled":false,"info":"","env":[]},{"id":"bcad16c131945d35","type":"mqtt in","z":"388440c46d7e221d","name":"","topic":"ef_nr_test","qos":"2","datatype":"auto-detect","broker":"1904db3f823efbe2","nl":false,"rap":true,"rh":0,"inputs":0,"x":320,"y":260,"wires":[["ab369d63761969a7"]]},{"id":"ab369d63761969a7","type":"debug","z":"388440c46d7e221d","name":"debug 1","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"payload","targetType":"msg","statusVal":"","statusType":"auto","x":530,"y":260,"wires":[]},{"id":"d0d229874fb1161d","type":"mqtt out","z":"388440c46d7e221d","name":"","topic":"ef_nr_test","qos":"","retain":"","respTopic":"","contentType":"","userProps":"","correl":"","expiry":"","broker":"1904db3f823efbe2","x":540,"y":340,"wires":[]},{"id":"f7a36b9a52ff6386","type":"inject","z":"388440c46d7e221d","name":"","props":[{"p":"payload"},{"p":"topic","vt":"str"}],"repeat":"5","crontab":"","once":true,"onceDelay":0.1,"topic":"","payload":"Ping","payloadType":"str","x":330,"y":340,"wires":[["d0d229874fb1161d"]]},{"id":"1904db3f823efbe2","type":"mqtt-broker","name":"","broker":"localhost","port":1883,"clientid":"","autoConnect":true,"usetls":false,"protocolVersion":"5","keepalive":60,"cleansession":true,"autoUnsubscribe":true,"birthTopic":"","birthQos":"0","birthRetain":"false","birthPayload":"","birthMsg":{},"closeTopic":"","closeQos":"0","closeRetain":"false","closePayload":"","closeMsg":{},"willTopic":"","willQos":"0","willRetain":"false","willPayload":"","willMsg":{},"userProps":"","sessionExpiry":""}]
-```
+### Configurar a "Escuta" (Inscrição)
+
+1. Arraste um nó mqtt in para o canvas.
+1. Dê um clique duplo para editar. Em "Server", selecione Add new mqtt-broker
+   clicando no `+`.
+1. Na aba Connection, preencha:
+    Server: broker.emqx.io
+    Port: 1883
+1. Clique em Add. De volta à tela anterior, configure o tópico:
+    Topic: aula_disruptive/teste/seu_nome (Dica: use um tópico único com seu nome,
+    pois como o broker é público, todos podem ver as mensagens).
+1. Conecte um nó debug à saída deste nó.
+
+### Configurar o "Envio" (Publicação)
+
+1. Arraste um nó inject.
+1. Configure o Payload como string e escreva Mensagem via Nuvem.
+1. Configure o Repeat para interval a cada 5 seconds.
+1. Arraste um nó mqtt out.
+1. Dê um clique duplo. Certifique-se de que o Server broker.emqx.io:1883
+1. está selecionado.
+1. No campo Topic, coloque exatamente o mesmo tópico que você usou no passo
+1. anterior: aula_disruptive/teste/seu_nome.
+1. Conecte o nó inject ao nó mqtt out.
+
+### Ativar e Verificar
+
+Clique em Deploy.
+
+Observe abaixo dos nós MQTT: se estiver tudo certo, aparecerá o status
+verde "connected".
+
+Abra a aba Debug na lateral direita. Você verá sua mensagem chegando via
+internet, processada pelo broker público.
+
+## Por que usar um Broker Público?
+
+O broker.emqx.io permite que você envie dados de um ESP32 em sua casa e receba no
+Node-RED rodando em outro lugar.
+
+Podemos usar: 
+
+- EMQX : broker.emqx.io
+- HiveMQ: broker.hivemq.com
+- Mosquito: test.mosquitto.org
+- Eclipse: mqtt.eclipseproject.io
+
+> Atenção: Como o broker é público, não envie senhas ou informações sensíveis por
+> esses tópicos, pois qualquer pessoa conectada ao broker.emqx.io pode "escutar" o
+> seu tópico se souber o nome dele.

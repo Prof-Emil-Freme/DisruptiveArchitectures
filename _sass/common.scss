@@ -113,52 +113,110 @@ pre{
   }
 }
 
+.highlight pre{
+  white-space: pre-wrap;       /* Standard property to force wrapping */
+  word-wrap: break-word;      /* Breaks long words if necessary */
+  overflow-wrap: break-word;
+}
+
 .smallImgLeft{
   max-width: 100pt;
   float: left;
   margin: 1em;
 }
 
+// 1. Define your configuration map
+$admonition-types: (
+  "info": (label : "Info", color: #2196f3),
+  "tip": (label : "Dica!", color: #4caf50),
+  "example": (label : "Examplo", color: #9c27b0),
+  "warning": (label : "Aviso", color: #ff9800),
+  "danger": (label : "Perigo", color: #f44336),
+  "attention": (label : "Atenção!", color: #607d8b)
+);
 
-.info,
-.tip,
-.example,
-.warning,
-.danger,
-.attention {
-  border:none;
-  margin:2em;
-  padding:0;
-  border-radius: 0.5em 0.5em 0 0;
-  /*background-color:#f000f0;*/
-  ::before{
+// 2. Base Styles & Loop
+%admonition-base {
+  border: none;
+  margin: 2em;
+  padding: 0 1.5em;
+  border-radius: 0.5em;
+  
+  &::before {
     display: block;
-    padding:0.2em 1em;
-    margin:0 -2em 1em -2em;
+    padding: 0.2em 1em;
     background-color: rgba(128, 128, 128, 0.5);
     mix-blend-mode: divide;
     border-radius: 0.5em 0.5em 0 0;
-    border-bottom:none;
+    margin:0 -1.5em 1em -1.5em;
   }
-  ::after{
-    content:".";
+
+  &::after {
+    content: ".";
     display: block;
-    padding:0.2em 1em;
-    margin:1em -2em 0 -2em;
+    padding: 0.2em 1em;
     background-color: rgba(128, 128, 128, 0.5);
     mix-blend-mode: divide;
     border-radius: 0 0 0.5em 0.5em;
-    border-bottom:none;
-    text-align:right;
+    margin:0 -1.5em 1em -1.5em;
+    text-align: right;
   }
 }
 
-.attention {
-  ::before{
-    content:"Atenção!";
-    background-color: rgba(128, 128, 128, 0.5);
+// 3. Generate the classes automatically
+@each $class, $props in $admonition-types {
+  .#{$class} {
+    @extend %admonition-base;
+    
+    &::before {
+      content: "#{map-get($props, label)}";
+      background-color: map-get($props, color);
+    }
+    &::after{
+      background-color: map-get($props, color);
+    }
   }
 }
+
+//
+// .info,
+// .tip,
+// .example,
+// .warning,
+// .danger,
+// .attention{
+//   border:none;
+//   margin:2em;
+//   padding:0;
+//   border-radius: 0.5em 0.5em 0 0;
+//   /*background-color:#f000f0;*/
+// ::before{
+//     display: block;
+//     padding:0.2em 1em;
+//     margin:0 -2em 1em -2em;
+//     background-color: rgba(128, 128, 128, 0.5);
+//     mix-blend-mode: divide;
+//     border-radius: 0.5em 0.5em 0 0;
+//     border-bottom:none;
+//   }
+// ::after{
+//     content:".";
+//     display: block;
+//     padding:0.2em 1em;
+//     margin:1em -2em 0 -2em;
+//     background-color: rgba(128, 128, 128, 0.5);
+//     mix-blend-mode: divide;
+//     border-radius: 0 0 0.5em 0.5em;
+//     border-bottom:none;
+//     text-align:right;
+//   }
+// }
+//
+// .attention::before{
+//     content:"Atenção!";
+//     background-color: rgba(128, 128, 128, 0.5);
+// }
+
 
 @media (max-width:1324px){
   body{

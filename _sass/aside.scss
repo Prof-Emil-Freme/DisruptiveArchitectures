@@ -1,43 +1,49 @@
-#course_menu{
+#course_menu {
     background: $background;
     box-sizing: border-box;
-    position:sticky;
-    top:41px;
-    width:20%;
-    max-width:25ch;
+    position: sticky;
+    top: 41px;
+    width: 20%;
+    max-width: 25ch;
     max-height: calc(100vh - 45px);
     overflow-y: auto;
     overflow-x: hidden;
-    margin:0;
-    float:left;
+    margin: 0;
+    float: left;
     border-right: 1px solid $secondary;
     border-bottom: 1px solid $secondary;
-    padding:0.5em 1em 0.5em 1.5em;
+    padding: 0.5em 1em 0.5em 1.5em;
     z-index: 5;
-    a{
-        display:block;
 
-        &.class_link{
-            padding-left:0.2em;
+    a {
+        display: block;
+
+        &.class_link {
+            padding-left: 0.2em;
             text-decoration: none;
         }
-        &.class_link::before{
+
+        &.class_link::before {
             content: "❱ ";
             text-decoration: none;
-            font-weight:700;
+            font-weight: 700;
             color: $accent;
         }
-        &.class_link:hover{
-            background:$secondary;
+
+        &.class_link:hover {
+            background: $secondary;
             color: $accent;
         }
     }
-    b{
-        display:block;
-        &.course_name{
-            font-size:1.4em;
+
+    b {
+        display: block;
+
+        &.course_name {
+            font-size: 1.4em;
         }
-        &.section_name{
+
+        &.section_name {
             font-size: 1.2em;
             border-bottom: 2px solid $accent;
             border-left: 1ch solid $accent;
@@ -46,12 +52,13 @@
     }
 }
 
-#hamb_menu, #toc_btn{
-    display:none;
+#hamb_menu,
+#toc_btn {
+    display: none;
 }
 
-@media (max-width:1124px){
-    #course_menu{
+@media (max-width:1124px) {
+    #course_menu {
         width: 100%;
         max-width: 100%;
         max-height: 60vh;
@@ -62,12 +69,12 @@
         border-bottom: 2px solid $secondary;
     }
 
-    #hamb_menu, #toc_btn{
-        display:inline-block;
+    #hamb_menu,
+    #toc_btn {
+        display: inline-block;
         padding: 0 0.8em;
-        text-decoration:none;
-        font-weight:700;
+        text-decoration: none;
+        font-weight: 700;
         cursor: pointer;
     }
 }
-
