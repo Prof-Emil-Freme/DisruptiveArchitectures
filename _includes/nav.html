@@ -1,7 +1,8 @@
 <nav>
     {% if page.layout == "class" %}
-    <a href="#" onclick="toggle_menu()" id="hamb_menu">☰</a>
+    <a href="javascript:void(0)" onclick="toggle_menu()" id="hamb_menu">☰ Aulas</a>
+    <a href="javascript:void(0)" onclick="toggle_toc()" id="toc_btn">📑 Índice</a>
     {% endif %}
     <a href="{% link index.html %}">Index</a>&nbsp;
-    <a href="#" onclick="toggle_themes()">Mudar Tema</a>
+    <a href="javascript:void(0)" onclick="toggle_themes()">Mudar Tema</a>
 </nav>

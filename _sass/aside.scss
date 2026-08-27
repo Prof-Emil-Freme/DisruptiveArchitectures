@@ -5,11 +5,15 @@
     top:41px;
     width:20%;
     max-width:25ch;
+    max-height: calc(100vh - 45px);
+    overflow-y: auto;
+    overflow-x: hidden;
     margin:0;
     float:left;
     border-right: 1px solid $secondary;
     border-bottom: 1px solid $secondary;
     padding:0.5em 1em 0.5em 1.5em;
+    z-index: 5;
     a{
         display:block;
 
@@ -42,20 +46,28 @@
     }
 }
 
-#hamb_menu{
+#hamb_menu, #toc_btn{
     display:none;
 }
 
 @media (max-width:1124px){
     #course_menu{
-        width:90%;
-        display:none;
+        width: 100%;
+        max-width: 100%;
+        max-height: 60vh;
+        float: none;
+        display: none;
+        position: static;
+        border-right: none;
+        border-bottom: 2px solid $secondary;
     }
 
-    #hamb_menu{
+    #hamb_menu, #toc_btn{
         display:inline-block;
-        padding: 0 1em;
+        padding: 0 0.8em;
         text-decoration:none;
-        font-weight:900;
+        font-weight:700;
+        cursor: pointer;
     }
 }
+
